@@ -1,20 +1,14 @@
 {
   "name": "piano-duo",
   "version": "0.0.1",
-  "scripts": {
-    "lint": "eslint . --ignore-pattern strapi/"
-  },
   "type": "module",
+  "scripts": {
+    "lint": "echo '\\033[33mExecuting lint in react application...\\033[0m' && cd web/ && npm run lint && echo '\\033[1;32mLinter executed successfully!\\033[0m'",
+    "prepare": "husky"
+  },
   "author": "Adrian Dotel & Gabriela Buil",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "9.9.0",
-    "eslint": "8.57.0",
-    "globals": "15.9.0",
-    "standard": "17.1.0",
-    "typescript-eslint": "^8.1.0"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+    "husky": "^9.1.4"
   }
 }

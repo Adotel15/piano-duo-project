@@ -5,7 +5,10 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config({
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+        js.configs.recommended, 
+        ...tseslint.configs.recommended
+    ],
     files: ['**/*.{ts,tsx}'],
     ignores: ['dist'],
     languageOptions: {
@@ -15,16 +18,6 @@ export default tseslint.config({
     plugins: {
         'react-hooks': reactHooks,
         'react-refresh': reactRefresh,
-        'no-console': 'warn',
-        'no-unused-vars': 'warn',
-        semi: ['error', 'always'],
-        quotes: ['error', 'single'],
-        eqeqeq: 'error',
-        indent: ['error', 4],
-        'no-trailing-spaces': 'error',
-        'eol-last': ['error', 'always'],
-        'no-shadow': 'off',
-        '@typescript-eslint/no-shadow': ['error'],
     },
     rules: {
         ...reactHooks.configs.recommended.rules,
@@ -32,5 +25,17 @@ export default tseslint.config({
             'warn',
             { allowConstantExport: true },
         ],
+        'no-console': 'warn',
+        semi: ['error', 'always'],
+        quotes: ['error', 'single'],
+        eqeqeq: 'error',
+        indent: ['error', 4],
+        'no-trailing-spaces': 'error',
+        'eol-last': ['error', 'always'],
+        'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
+        'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+        'padded-blocks': ['error', 'never'],
+        'arrow-parens': ['error', 'as-needed'],
+        'no-extra-parens': ['error', 'all', { nestedBinaryExpressions: false }],
     },
 });
