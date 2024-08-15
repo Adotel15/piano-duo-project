@@ -1,4 +1,4 @@
-import "./Media.css";
+import "./Media.module.css";
 
 const Media = () => {
   return <div>Media</div>;

@@ -1,4 +1,4 @@
-import "./Reviews.css";
+import "./Reviews.module.css";
 
 const Reviews = () => {
   return <div>Reviews</div>;
