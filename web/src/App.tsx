@@ -1,7 +1,9 @@
-import './App.css';
+import "./App.css";
+
+import AppRoutes from "./routes/index.tsx";
 
 const App = () => {
-    return <main>Proyecto Piano Duo </main>;
+  return <AppRoutes />;
 };
 
 export default App;
