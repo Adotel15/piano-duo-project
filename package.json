@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "lint": "echo '\\033[33mExecuting lint in react application...\\033[0m' && cd web/ && npm run lint && echo '\\033[1;32mLinter executed successfully!\\033[0m'",
-    "prepare": "echo '\\033[1;33mPreparing husky hooks..\\033[0m' && husky",
-    "install-web-dependencies": "echo '\\033[1;33mInstalling Web Dependencies..\\033[0m' && cd web/ && npm install",
-    "start-dev-web": "echo '\\033[1;96mStarting Web dev environment\\n\\033[0m' && cd web/ && npm run dev",
-    "install-strapi-dependencies": "echo '\\033[1;33mInstalling Strapi Dependencies..\\033[0m' && cd strapi/ && npm install",
-    "start-dev-strapi": "echo '\\033[1;96mStarting Strapi dev environment\\n\\033[0m' && cd strapi/ && npm run develop",
-    "dev": "echo '\\033[1;96mStarting Piano Duo dev environment\\n\\033[0m' && npm run start-dev-web & npm run start-dev-strapi",
-    "configure-dev-environment": "echo '\\033[1;96mCreating Piano Duo dev environment\\n\\033[0m' && npm install && npm run prepare && npm run install-web-dependencies && npm run install-strapi-dependencies && echo '\\033[1;32mDev environment created successfully!\\033[0m'"
+    "lint": "echo '\\x1b[33mExecuting lint in react application...\\x1b[0m' && cd web/ && npm run lint && echo '\\x1b[1;32mLinter executed successfully!\\x1b[0m'",
+    "prepare": "echo '\\x1b[1;33mPreparing husky hooks..\\x1b[0m' && husky",
+    "install-web-dependencies": "echo '\\x1b[1;33mInstalling Web Dependencies..\\x1b[0m' && cd web/ && npm install",
+    "start-dev-web": "echo '\\x1b[1;96mStarting Web dev environment\\n\\x1b[0m' && cd web/ && npm run dev",
+    "install-strapi-dependencies": "echo '\\x1b[1;33mInstalling Strapi Dependencies..\\x1b[0m' && cd strapi/ && npm install",
+    "start-dev-strapi": "echo '\\x1b[1;96mStarting Strapi dev environment\\n\\x1b[0m' && cd strapi/ && npm run develop",
+    "dev": "echo '\\x1b[1;96mStarting Piano Duo dev environment\\n\\x1b[0m' && npm run start-dev-web & npm run start-dev-strapi",
+    "configure-dev-environment": "echo '\\x1b[1;96mCreating Piano Duo dev environment\\n\\x1b[0m' && npm install && npm run prepare && npm run install-web-dependencies && npm run install-strapi-dependencies && echo '\\x1b[1;32mDev environment created successfully!\\x1b[0m'"
   },
   "author": "Adrian Dotel & Gabriela Buil",
   "license": "ISC",
