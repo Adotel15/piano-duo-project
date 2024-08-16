@@ -1,7 +1,7 @@
-import "./Media.module.css";
+import './Media.module.css';
 
 const Media = () => {
-  return <div>Media</div>;
+    return <div>Media</div>;
 };
 
 export default Media;
