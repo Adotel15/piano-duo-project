@@ -1,17 +1,17 @@
 // import React from 'react';
-import './Home.module.css';
+import styles from './Home.module.css';
 import headerImage from '../../assets/Playa.webp';
 
 const Home = () => {
     return (
-        <>
-            <div className="container-header-img">
-                <img className="header-img" src={headerImage} alt="Playa" />
+        <main>
+            <div className={styles.container_header_img}>
+                <img className={styles.header_img}src={headerImage} alt="Playa" />
             </div>
-            <div className="section">
+            <div className={styles.section}>
                 <div>Home</div>
             </div>
-        </>
+        </main>
     );
 };
 
