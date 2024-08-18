@@ -1,4 +1,4 @@
-// import React from 'react';
+
 import styles from './Home.module.css';
 import headerImage from '../../assets/Playa.webp';
 
@@ -11,6 +11,7 @@ const Home = () => {
             <div className={styles.section}>
                 <div>Home</div>
             </div>
+
         </main>
     );
 };
