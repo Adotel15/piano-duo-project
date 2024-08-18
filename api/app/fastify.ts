@@ -1,11 +1,11 @@
 import Fastify from 'fastify';
-import FastifyStatic from 'fastify-static';
+// import FastifyStatic from 'fastify-static';
 
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config();
 
@@ -43,9 +43,7 @@ const manageError = error => {
 const startServer = async () => {
     try {
         fastifyServer.listen(fastifyData, (err, address) => {
-            if (err)
-                manageError(err);
-
+            if (err) manageError(err);
             // eslint-disable-next-line no-console
             console.log('Server listening at', address);
         });
