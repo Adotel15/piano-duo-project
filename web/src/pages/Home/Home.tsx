@@ -1,15 +1,14 @@
 
 import styles from './Home.module.css';
 import headerImage from '../../assets/Playa.webp';
-import Button from '../../components/Button/Button';
+
+import Menu from '../../components/Menu/Menu';
 
 const Home = () => {
-    const handleClick = () => {
-        console.log('Menu Opened');
-    };
     return (
         <main>
-            <Button label="Menu" onClick={handleClick}></Button>
+            <Menu />
+
             <div className={styles.container_header_img}>
                 <img className={styles.header_img}src={headerImage} alt="Playa" />
             </div>
