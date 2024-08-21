@@ -6,7 +6,6 @@ const Reviews = () => {
         <div>
             <Menu />
             <div>Reviews</div>
-
         </div>
     );
 };

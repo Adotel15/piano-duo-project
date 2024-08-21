@@ -46,9 +46,10 @@ const Menu = () => {
             <button className={styles['menu-button']} onClick={toggleMenu}>Menu</button>
             {isMenuOpen &&
                 <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles.show : ''}`}>
-                    {menuOptions.map(option =>                 <li key={option.id}>
-                        <Link to={option.path}>{option.label}</Link>
-                    </li>
+                    {menuOptions.map(option =>
+                        <li key={option.id}>
+                            <Link to={option.path}>{option.label}</Link>
+                        </li>
                     )}
                 </ul>
             }

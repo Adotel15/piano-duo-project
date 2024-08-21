@@ -4,7 +4,6 @@ import './Contact.module.css';
 const Contact = () => {
     return (
         <div>
-
             <Menu />
             <div> Contact</div>
         </div>
