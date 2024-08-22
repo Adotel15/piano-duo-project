@@ -5,8 +5,7 @@ export type StrapiArray<T> = StrapiObject<T>[]
 export type StrapiResponse = {
     data: StrapiArray<Record<string, unknown>> | StrapiObject<Record<string, unknown>>,
     meta: {
-        pagination:
-        { page: number, pageSize: number, pageCount: number, total: number }
+        pagination: { page: number, pageSize: number, pageCount: number, total: number }
     }
 }
 
