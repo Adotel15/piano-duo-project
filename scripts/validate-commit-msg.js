@@ -1,13 +1,10 @@
 import fs from 'fs';
 
-const commitMsg = fs.readFileSync(process.env.HUSKY_GIT_PARAMS || '.git/COMMIT_EDITMSG', 'utf-8').trim();
+import { BOLD_CODE, RED_CODE, RESET_CODE, YELLOW_CODE, GREEN_CODE } from './constants.js';
 
 const COMMIT_MESSAGE = /^PD-\w{9}\s/;
-const BOLD_CODE = '\x1b[1m';
-const YELLOW_CODE = '\x1b[33m';
-const RED_CODE = '\x1b[31m';
-const RESET_CODE = '\x1b[0m';
-const GREEN_CODE = '\x1b[32m';
+
+const commitMsg = fs.readFileSync(process.env.HUSKY_GIT_PARAMS || '.git/COMMIT_EDITMSG', 'utf-8').trim();
 
 if (!COMMIT_MESSAGE.test(commitMsg)) {
     console.error(`${BOLD_CODE}${RED_CODE}\nError: Commit messages must be required format "PD-{ClickUp Task ID} {commit changes}"${RESET_CODE}`);

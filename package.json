@@ -10,7 +10,7 @@
     "install-strapi-dependencies": "echo '\\033[1;33mInstalling Strapi Dependencies..\\033[0m' && cd strapi/ && npm install",
     "start-dev-strapi": "echo -e '\\033[1;96mStarting Strapi dev environment\\n\\033[0m' && cd strapi/ && npm run develop",
     "dev": "echo -e '\\033[1;96mStarting Piano Duo dev environment\\n\\033[0m' && npm run start-dev-web & npm run start-dev-strapi",
-    "configure-dev-environment": "echo -e '\\033[1;96mCreating Piano Duo dev environment\\n\\033[0m' && npm install && npm run prepare && npm run install-web-dependencies && npm run install-strapi-dependencies && echo -e '\\033[1;32mDev environment created successfully!\\033[0m'"
+    "configure-dev-environment": "node ./scripts/configure-dev-environment.js"
   },
   "author": "Adrian Dotel & Gabriela Buil",
   "license": "ISC",
