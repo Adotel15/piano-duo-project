@@ -368,6 +368,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
     singularName: 'review';
     pluralName: 'reviews';
     displayName: 'Criticas';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -385,11 +386,24 @@ export interface ApiReviewReview extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    content: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    images: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    reviewer: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;

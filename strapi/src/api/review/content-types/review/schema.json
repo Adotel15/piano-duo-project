@@ -4,7 +4,8 @@
   "info": {
     "singularName": "review",
     "pluralName": "reviews",
-    "displayName": "Criticas"
+    "displayName": "Criticas",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,13 +25,35 @@
       "type": "string",
       "required": true
     },
-    "description": {
+    "content": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "text",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "reviewer": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
       "required": true
     }
   }
