@@ -1,4 +1,4 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyRequest } from 'fastify';
 
 import { StrapiRoutes } from './v1/strapi/route';
 
@@ -10,6 +10,11 @@ import { ROUTES } from './config/routes';
 const server = Fastify();
 
 server.register(StrapiRoutes, { prefix: ROUTES.v1.strapi });
+
+server.addHook('onRequest', async (request: FastifyRequest) => {
+    // eslint-disable-next-line no-console
+    console.log(`Petition on path => ${request.url}`);
+});
 
 const startServer = async () => {
     try {
