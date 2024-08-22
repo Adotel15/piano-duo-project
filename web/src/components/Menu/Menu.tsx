@@ -1,40 +1,10 @@
 import { Link } from 'react-router-dom';
 import styles from './Menu.module.css';
 import { useState } from 'react';
-
-interface MenuOptions{
-    id: number;
-    label: string;
-    path: string;
-}
+import { MenuOptions, menuOptions as defaultMenuOptions } from './ui';
 
 const Menu = () => {
-    const [menuOptions, /*setMenuOptions*/]= useState<MenuOptions[]>([
-        {
-            id: 0,
-            label: 'Inicio',
-            path: '/',
-
-        },
-        {
-            id: 1,
-            label: 'Reviews',
-            path: '/reviews',
-
-        },
-        {
-            id: 2,
-            label: 'Contacto',
-            path: '/contact',
-
-        },
-        {
-            id: 3,
-            label: 'Media',
-            path: '/media',
-
-        }
-    ]);
+    const [menuOptions/*, setMenuOptions*/] = useState<MenuOptions[]>(defaultMenuOptions);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
