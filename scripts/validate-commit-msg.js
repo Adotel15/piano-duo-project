@@ -8,7 +8,7 @@ const commitMsg = fs.readFileSync(process.env.HUSKY_GIT_PARAMS || '.git/COMMIT_E
 
 if (!COMMIT_MESSAGE.test(commitMsg)) {
     console.error(`${BOLD_CODE}${RED_CODE}\nError: Commit messages must be required format "PD-{ClickUp Task ID} {commit changes}"${RESET_CODE}`);
-    console.error(`${YELLOW_CODE}${BOLD_CODE}Example: PD-8695e3wdu Created new component\n${RESET_CODE}`);
+    console.error(`${YELLOW_CODE}${BOLD_CODE}Example: Pgit D-8695e3wdu Created new component\n${RESET_CODE}`);
     process.exit(1);
 }
 
