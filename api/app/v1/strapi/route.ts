@@ -5,34 +5,43 @@ import { collectionExists } from '../helpers/collections';
 
 import { StrapiEndpoints } from '../../types/strapi';
 
-export const StrapiRoutes = (app: FastifyInstance, _: Record<string, unknown>, done: () => void): void  => {
-    app.route({
-        method: 'GET',
-        url: '/:collection',
-        handler: async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
-            const { collection } = request.params as { collection: string };
+export class StrapiRoutes {
+    strapiService: StrapiService;
 
-            if(!collectionExists(collection)) {
-                return reply.status(400).send({ error: 'Collection not found.' });
+    constructor() {
+        this.strapiService = new StrapiService();
+    }
+
+    routes = (app: FastifyInstance, _: Record<string, unknown>, done: () => void) => {
+        app.route({
+            method: 'GET',
+            url: '/:collection',
+            handler: async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+                const { collection } = request.params as { collection: StrapiEndpoints };
+
+                if(!collectionExists(collection)) {
+                    return reply.status(400).send({ error: 'Collection not found.' });
+                }
+
+                return await this.strapiService.getAll(collection, request, reply);
             }
+        });
 
-            return await new StrapiService().getAll(collection as StrapiEndpoints, request, reply);
-        }
-    });
+        app.route({
+            method: 'GET',
+            url: '/:collection/:id',
+            handler: async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+                const { collection, id } = request.params as { collection: StrapiEndpoints; id: string };
 
-    app.route({
-        method: 'GET',
-        url: '/:collection/:id',
-        handler: async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
-            const { collection, id } = request.params as { collection: string; id: string };
+                if(!collectionExists(collection)) {
+                    return reply.status(400).send({ error: 'Collection not found.' });
+                }
 
-            if(!collectionExists(collection)) {
-                return reply.status(400).send({ error: 'Collection not found.' });
+                return await this.strapiService.getOne(collection, id, request, reply);
             }
+        });
 
-            return await new StrapiService().getOne(collection as StrapiEndpoints, id, request, reply);
-        }
-    });
+        done();
+    };
+}
 
-    done();
-};
