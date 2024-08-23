@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "lint": "echo -e '\\033[33mExecuting lint in react application...\\033[0m' && cd web/ && npm run lint && echo -e '\\033[1;32mLinter executed successfully!\\033[0m'",
-    "prepare": "echo -e '\\033[1;33mPreparing husky hooks..\\033[0m' && husky",
-    "install-web-dependencies": "echo -e '\\033[1;33mInstalling Web Dependencies..\\033[0m' && cd web/ && npm install",
-    "start-dev-web": "echo -e '\\033[1;96mStarting Web dev environment\\n\\033[0m' && cd web/ && npm run dev",
-    "install-strapi-dependencies": "echo '\\033[1;33mInstalling Strapi Dependencies..\\033[0m' && cd strapi/ && npm install",
-    "start-dev-strapi": "echo -e '\\033[1;96mStarting Strapi dev environment\\n\\033[0m' && cd strapi/ && npm run develop",
-    "dev": "echo -e '\\033[1;96mStarting Piano Duo dev environment\\n\\033[0m' && npm run start-dev-web & npm run start-dev-strapi",
-    "configure-dev-environment": "node ./scripts/configure-dev-environment.js"
+    "lint": "node ./scripts/lint/lint.js",
+    "prepare": "node ./scripts/environment/prepare.js",
+    "install-web-dependencies": "node ./scripts/web/install-web-dependencies.js",
+    "start-dev-web": "node ./scripts/web/start-dev-web.js",
+    "install-strapi-dependencies": "node ./scripts/strapi/install-strapi-dependencies.js",
+    "start-dev-strapi": "node ./scripts/strapi/start-dev-strapi.js",
+    "install-api-dependencies": "node ./scripts/api/install-api-dependencies.js",
+    "start-dev-api": "node ./scripts/api/start-dev-api.js",
+    "configure-dev-environment": "node ./scripts/environment/configure-dev-environment.js"
   },
   "author": "Adrian Dotel & Gabriela Buil",
   "license": "ISC",

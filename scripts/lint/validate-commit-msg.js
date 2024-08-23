@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { BOLD_CODE, RED_CODE, RESET_CODE, YELLOW_CODE, GREEN_CODE } from './constants.js';
+import { BOLD_CODE, RED_CODE, RESET_CODE, YELLOW_CODE, GREEN_CODE } from '../constants.js';
 
 const COMMIT_MESSAGE = /^PD-\w{9}\s/;
 
