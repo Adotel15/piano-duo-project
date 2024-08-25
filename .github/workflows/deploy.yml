@@ -5,7 +5,7 @@ on:
   push:
 
 jobs:
-    execute-linter:
+    lint:
       runs-on: debian-latest
       steps:
         - name: Checkout code
@@ -22,7 +22,7 @@ jobs:
         - name: Run linter
           run: npm run lint
           
-    execute-tests:
+    test:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
