@@ -34,7 +34,7 @@ jobs:
             node-version: '20'
 
         - name: Install dependencies
-          run: npm run configure-dev-dependencies
+          run: npm run configure-dev-environment
   
         - name: Run tests
           run: npm run test  
