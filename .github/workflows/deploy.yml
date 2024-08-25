@@ -19,77 +19,25 @@ jobs:
             node-version: '20'
 
         - name: Install dependencies
-          run: npm install
+          run: npm run configure-dev-dependencies
 
         - name: Run linter
           run: npm run lint
-  # build-and-deploy:
-  #   runs-on: ubuntu-latest
+          
+    execute-tests:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
 
-  #   steps:
-  #     # Step 1: Checkout the repository
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '20'
 
-  #     # Step 2: Set up Node.js environment
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: '18'  # Asegúrate de usar la versión correcta
-
-  #     # Step 3: Install dependencies and build React project
-  #     - name: Install dependencies and build React project
-  #       run: |
-  #         cd react-project-directory
-  #         npm install
-  #         npm run build
-
-  #     # Step 4: Install dependencies and build Node project
-  #     - name: Install dependencies and build Node project
-  #       run: |
-  #         cd ../node-project-directory
-  #         npm install
-  #         npm run build
-
-  #     # Step 5: Install dependencies and build Strapi project
-  #     - name: Install dependencies and build Strapi project
-  #       run: |
-  #         cd ../strapi-project-directory
-  #         npm install
-  #         npm run build
-
-  #     # Step 6: Deploy to server via SSH
-  #     - name: Deploy to Production Server
-  #       env:
-  #         REACT_ENV: ${{ secrets.REACT_ENV }}
-  #         NODE_ENV: ${{ secrets.NODE_ENV }}
-  #         STRAPI_ENV: ${{ secrets.STRAPI_ENV }}
-  #       run: |
-  #         ssh -o StrictHostKeyChecking=no user@your-server-ip << 'EOF'
-  #           cd /path/to/react-project
-  #           git pull origin main
-  #           npm install
-  #           npm run build
-  #           export $(echo "$REACT_ENV" | tr '|' '\n')
-  #           pm2 restart react-app
-
-  #           cd /path/to/node-project
-  #           git pull origin main
-  #           npm install
-  #           npm run build
-  #           export $(echo "$NODE_ENV" | tr '|' '\n')
-  #           pm2 restart node-app
-
-  #           cd /path/to/strapi-project
-  #           git pull origin main
-  #           npm install
-  #           npm run build
-  #           export $(echo "$STRAPI_ENV" | tr '|' '\n')
-  #           pm2 restart strapi-app
-  #         EOF
-  #       shell: bash
-
-  #     # Step 7: Notify deployment success (optional)
-  #     - name: Notify
-  #       if: success()
-  #       run: echo "Deployment to production successful!"
+        - name: Install dependencies
+          run: npm run configure-dev-dependencies
+  
+        - name: Run tests
+          run: npm run test  
+    
