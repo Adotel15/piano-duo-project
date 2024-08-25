@@ -3,8 +3,6 @@ name: Testing pipelines
 
 on:
   push:
-    branches:
-      - PD-8695g51hp
 
 jobs:
     execute-linter:
