@@ -8,10 +8,10 @@ const Home = () => {
     return (
         <main>
             <Menu />
-            <div className={styles.container_header_img}>
-                <img className={styles.header_img}src={headerImage} alt="Playa" />
+            <div className={styles['container_header_img']}>
+                <img className={styles['header_img']}src={headerImage} alt="Playa" />
             </div>
-            <div className={styles.section}>
+            <div className={styles['section']}>
                 <div>Home</div>
             </div>
         </main>

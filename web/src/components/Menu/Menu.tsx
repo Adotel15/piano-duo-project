@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './Menu.module.css';
 import { useState } from 'react';
-import { MenuOptions, menuOptions as defaultMenuOptions } from './ui';
+import { menuOptions as defaultMenuOptions } from '../../constants/ui';
 
 const Menu = () => {
-    const [menuOptions/*, setMenuOptions*/] = useState<MenuOptions[]>(defaultMenuOptions);
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -16,7 +14,7 @@ const Menu = () => {
             <button className={styles['menu-button']} onClick={toggleMenu}>Menu</button>
             {isMenuOpen &&
                 <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles.show : ''}`}>
-                    {menuOptions.map(option =>
+                    {defaultMenuOptions.map(option =>
                         <li key={option.id}>
                             <Link to={option.path}>{option.label}</Link>
                         </li>
