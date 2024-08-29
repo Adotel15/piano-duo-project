@@ -11,7 +11,8 @@
     "start-dev-strapi": "node ./scripts/strapi/start-dev-strapi.js",
     "install-api-dependencies": "node ./scripts/api/install-api-dependencies.js",
     "start-dev-api": "node ./scripts/api/start-dev-api.js",
-    "configure-dev-environment": "node ./scripts/environment/configure-dev-environment.js"
+    "configure-dev-environment": "node ./scripts/environment/configure-dev-environment.js",
+    "test": "node ./scripts/environment/test.js"
   },
   "author": "Adrian Dotel & Gabriela Buil",
   "license": "ISC",
