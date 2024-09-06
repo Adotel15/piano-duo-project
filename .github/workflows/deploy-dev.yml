@@ -1,0 +1,89 @@
+# .github/workflows/deploy-dev.yml
+name: Deploy to Development
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and build projects
+        env:
+          # WEB
+          VITE_API_URL: ${{ secrets.VITE_API_URL_DEV }}
+          VITE_PORT: ${{ secrets.VITE_PORT_DEV }}
+          # API
+          FASTIFY_PORT: ${{ secrets.FASTIFY_PORT_DEV }}
+          FASTIFY_INTERFACE: ${{ secrets.FASTIFY_INTERFACE_DEV }}
+          STRAPI_URL: ${{ secrets.STRAPI_URL }}
+          STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
+          # STRAPI
+          HOST: ${{ secrets.HOST }}
+          PORT: ${{ secrets.PORT }}
+          APP_KEYS: ${{ secrets.APP_KEYS }}
+          API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT }}
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
+          TRANSFER_TOKEN_SALT: ${{ secrets.TRANSFER_TOKEN_SALT }}
+          DATABASE_CLIENT: ${{ secrets.DATABASE_CLIENT }}
+          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_SSL: ${{ secrets.DATABASE_SSL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_CLOUD_BUCKET_NAME: ${{ secrets.GOOGLE_CLOUD_BUCKET_NAME }}
+        run: |
+          cd web
+          npm install
+          npm run build
+
+          cd ../api
+          npm install
+          npm run build
+
+          cd ../strapi
+          npm install
+          npm run build
+
+      - name: Deploy to Development Server
+        run: |
+          ssh -o StrictHostKeyChecking=no user@development-server-ip << 'EOF'
+            cd /path/to/react-project
+            git pull origin develop
+            npm install
+            npm run build
+            export $(echo "$REACT_ENV" | tr '|' '\n')
+            pm2 restart react-app
+
+            cd /path/to/node-project
+            git pull origin develop
+            npm install
+            npm run build
+            export $(echo "$NODE_ENV" | tr '|' '\n')
+            pm2 restart node-app
+
+            cd /path/to/strapi-project
+            git pull origin develop
+            npm install
+            npm run build
+            export $(echo "$STRAPI_ENV" | tr '|' '\n')
+            pm2 restart strapi-app
+          EOF
+        shell: bash
+
+      - name: Notify
+        if: success()
+        run: echo "Deployment to development successful!"

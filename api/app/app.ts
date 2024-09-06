@@ -26,7 +26,7 @@ class FastifyServer {
                 // eslint-disable-next-line no-console
                 console.log(`Fastify API Dev server listening at ${address}!`);
             });
-        } catch (err) {
+        } catch (err: unknown) {
             manageError(this.server, err);
         }
     };

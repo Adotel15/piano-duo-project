@@ -1,0 +1,68 @@
+# .github/workflows/deploy-prod.yml
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy-pro:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and build projects
+        run: |
+          cd web
+          npm install
+          npm run build
+
+          cd ../api
+          npm install
+          npm run build
+
+          cd ../strapi
+          npm install
+          npm run build
+
+      - name: Deploy to Production Server
+        env:
+          REACT_ENV: ${{ secrets.REACT_ENV }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          STRAPI_ENV: ${{ secrets.STRAPI_ENV }}
+        run: |
+          ssh -o StrictHostKeyChecking=no user@production-server-ip << 'EOF'
+            cd /path/to/react-project
+            git pull origin main
+            npm install
+            npm run build
+            export $(echo "$REACT_ENV" | tr '|' '\n')
+            pm2 restart react-app
+
+            cd /path/to/node-project
+            git pull origin main
+            npm install
+            npm run build
+            export $(echo "$NODE_ENV" | tr '|' '\n')
+            pm2 restart node-app
+
+            cd /path/to/strapi-project
+            git pull origin main
+            npm install
+            npm run build
+            export $(echo "$STRAPI_ENV" | tr '|' '\n')
+            pm2 restart strapi-app
+          EOF
+        shell: bash
+
+      - name: Notify
+        if: success()
+        run: echo "Deployment to production successful!"

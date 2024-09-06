@@ -1,39 +1,39 @@
-import type { StrapiEndpoints, StrapiResponse } from '../../types/strapi';
-import type { GenericObject } from '../../types/generic';
+// import type { StrapiEndpoints, StrapiResponse } from '../../types/strapi';
+// import type { GenericObject } from '../../types/generic';
 
 export class StrapiCache {
     // TODO: Implement functional cache
-    private cache: GenericObject = {};
+    // private cache: GenericObject = {};
 
-    constructor(){
-        this.cache = {};
-    }
+    // constructor(){
+    //     this.cache = {};
+    // }
 
-    check = (collection: StrapiEndpoints, id?: string): boolean => {
-        if(id) {
-            return this.cache[collection] && this.cache[collection][id];
-        }
-        return !!this.cache[collection];
-    };
+    // check = (collection: StrapiEndpoints, id?: string): boolean => {
+    //     if(id) {
+    //         return this.cache[collection] && this.cache[collection][id];
+    //     }
+    //     return !!this.cache[collection];
+    // };
 
-    set = (collection: StrapiEndpoints, data: StrapiResponse, id?: string): void => {
-        if(id) {
-            if(!this.cache[collection]) {
-                this.cache[collection] = {};
-            }
-            // this.cache[collection][id] = data;
-        } else {
-            this.cache[collection] = data;
-        }
-    };
+    // set = (collection: StrapiEndpoints, data: StrapiResponse, id?: string): void => {
+    //     if(id) {
+    //         if(!this.cache[collection]) {
+    //             this.cache[collection] = {};
+    //         }
+    //         // this.cache[collection][id] = data;
+    //     } else {
+    //         this.cache[collection] = data;
+    //     }
+    // };
 
-    delete = (collection: StrapiEndpoints, id?: string): void => {
-        if(id) {
-            if(this.cache[collection]) {
-                delete this.cache[collection][id];
-            }
-        } else {
-            delete this.cache[collection];
-        }
-    };
+    // delete = (collection: StrapiEndpoints, id?: string): void => {
+    //     if(id) {
+    //         if(this.cache[collection]) {
+    //             delete this.cache[collection][id];
+    //         }
+    //     } else {
+    //         delete this.cache[collection];
+    //     }
+    // };
 }
