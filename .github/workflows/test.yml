@@ -10,7 +10,7 @@ on:
       - '**'
 
 jobs:
-  test:
+  test-services:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
