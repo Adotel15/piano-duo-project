@@ -1,4 +1,3 @@
-
 import styles from './Home.module.css';
 import headerImage from '../../assets/Playa.webp';
 

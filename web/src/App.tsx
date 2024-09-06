@@ -1,4 +1,3 @@
-//
 import AppRoutes from './routes/index.tsx';
 
 const App = () => {
