@@ -25,4 +25,4 @@ jobs:
         run: npm run configure-dev-environment
 
       - name: Build projects
-        run: echo 'TODO: Add build commands here'
+        run: echo "Add build commands here"
