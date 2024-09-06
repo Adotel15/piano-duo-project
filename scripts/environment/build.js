@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { BLUE_CODE, RESET_CODE, BOLD_CODE } from '../constants.js';
+import { BLUE_CODE, RESET_CODE, BOLD_CODE, RED_CODE } from '../constants.js';
 
 try {
     console.log(`${BOLD_CODE}${BLUE_CODE}Build Piano duo project\n${RESET_CODE}`);
