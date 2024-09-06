@@ -4,7 +4,7 @@ name: Deploy to Development
 on:
   push:
     branches:
-      - develop
+      - CI-CD-Setup
 
 jobs:
   build-and-deploy-dev:
