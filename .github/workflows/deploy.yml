@@ -1,0 +1,41 @@
+# .github/workflows/deploy.yml
+name: Testing pipelines
+
+on:
+  push:
+
+jobs:
+    lint:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '20'
+
+        - name: Install dependencies
+          run: npm run configure-dev-environment
+
+        - name: Run linter
+          run: npm run lint
+          
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '20'
+
+        - name: Install dependencies
+          run: npm run configure-dev-environment
+  
+        - name: Run tests
+          run: npm run test  
+    
