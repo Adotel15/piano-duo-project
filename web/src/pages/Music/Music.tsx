@@ -1,10 +1,10 @@
+import './Music.module.css';
 import Menu from '../../components/Menu/Menu';
-import './Contact.module.css';
 
-const Contact = () => {
+const Music = () => {
     return (
         <div>
-            <h1>Contacto</h1>
+            <h1>Música</h1>
             <div>
                 <Menu />
             </div>
@@ -12,4 +12,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default Music;
