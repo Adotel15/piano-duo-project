@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+
+body {
+    background-color: #F4EFDF;
+    height: 100vh;
+}
+
+.section-contact{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.container-image-Contact{
+    margin: 186px 35px 86px 20px;
+    max-width: 603px;
+
+}
+.image-Contact {
+    object-fit: cover;
+}
+
+.div-form {
+padding-bottom: 100px;
+}
+
+h1 {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 60.55px;
+    color: #344FAB;
+    margin-bottom: 20px;
+}
+
+.container-form-contact{
+    font-family: 'Hind', serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.62px;
+    display: flex; 
+    flex-direction: column;
+    justify-items: flex-start;
+    /* align-items: flex-start; */
+    max-width: 603px;
+    color: #344FAB;
+}
+
+.input-form, textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #344FAB;
+    background-color:#F4EFDF;
+    box-sizing: border-box;
+    resize: vertical;
+    
+}
+
+/* .input-form[type=textarea] {
+    min-height: 100px;
+    align-content:start;
+} */
+/* No se aplica a nada */
+label.checkbox-label{
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"]:focus, textarea:focus {
+    background-color: rgba(212, 181, 137, 0.27);
+    outline: none;
+    border-radius: 4px;
+}
+
+input[type=checkbox]{
+    margin-right: 5px;
+    
+}
+
+span{
+    text-decoration: underline 1px #344FAB;
+}
+
+input[type=submit]{
+    background-color:#F4EFDF;
+    font-weight: 600;
+    font-size: 13px;
+    color: #344FAB;
+    padding: 8px 17px;
+    border: 1px solid #344FAB;
+    font-family: 'Hind', serif;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    align-self: flex-end;
+    margin-top: 20px;
+}
+
+input[type=submit]:hover {
+    background-color:rgba(212, 181, 137, 0.27);
+    
+}
