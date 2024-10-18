@@ -1,4 +1,5 @@
 import Fastify, { FastifyInstance, FastifyRequest } from 'fastify';
+import cors from '@fastify/cors';
 
 import { StrapiRoutes } from './v1/strapi/route';
 
@@ -13,6 +14,10 @@ class FastifyServer {
     constructor() {
         this.server = Fastify();
         this.server.register(new StrapiRoutes().routes, { prefix: ROUTES.v1.strapi });
+        this.server.register(cors, {
+            origin: true,
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        });
         this.server.addHook('onRequest', async (request: FastifyRequest) => {
             // eslint-disable-next-line no-console
             console.log(`Petition on path => ${request.url}`);
