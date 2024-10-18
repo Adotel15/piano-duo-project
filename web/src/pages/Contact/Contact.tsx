@@ -4,8 +4,10 @@ import './Contact.module.css';
 const Contact = () => {
     return (
         <div>
-            <Menu />
-            <div> Contact</div>
+            <h1>Contacto</h1>
+            <div>
+                <Menu />
+            </div>
         </div>
     );
 };

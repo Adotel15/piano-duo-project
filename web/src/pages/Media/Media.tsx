@@ -3,10 +3,12 @@ import './Media.module.css';
 
 const Media = () => {
     return(
-        <>
-            <Menu />
-            <div>Media</div>
-        </>
+        <div>
+            <h1>Media</h1>
+            <div>
+                <Menu />
+            </div>
+        </div>
     );
 };
 
