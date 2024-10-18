@@ -24,7 +24,7 @@ body {
 }
 
 .div-form {
-padding-bottom: 100px;
+padding-bottom: 70px;
 }
 
 h1 {
@@ -58,13 +58,15 @@ h1 {
     background-color:#F4EFDF;
     box-sizing: border-box;
     resize: vertical;
-    
+    position: relative;
+    overflow: hidden;
 }
 
-/* .input-form[type=textarea] {
-    min-height: 100px;
-    align-content:start;
-} */
+textarea {
+    max-height: 250px;
+    position: relative;
+}
+
 /* No se aplica a nada */
 label.checkbox-label{
     display: flex;
