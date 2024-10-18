@@ -13,13 +13,13 @@ const AppRoutes = () =>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="media" element={<Media />} />
+            <Route path="biography" element={<Biography />}/>
             <Route path="reviews" element={<Reviews />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="media" element={<Media />} />
             <Route path="gallery" element={<Gallery />}/>
             <Route path="music" element={<Music />}/>
-            <Route path="Repertoire" element={<Repertoire />}/>
-            <Route path="Biography" element={<Biography />}/>
+            <Route path="repertoire" element={<Repertoire />}/>
+            <Route path="contact" element={<Contact />} />
         </Routes>
     </BrowserRouter>
 ;

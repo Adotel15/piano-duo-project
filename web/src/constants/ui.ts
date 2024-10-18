@@ -8,37 +8,42 @@ export interface MenuOptions{
 export const menuOptions: MenuOptions[] = [
     {
         id: 0,
+        label: 'Home',
+        path: '/'
+    },
+    {
+        id: 1,
         label: 'Biografía',
         path: '/biography',
     },
     {
-        id: 1,
+        id: 2,
         label: 'Prensa',
         path: '/reviews',
     },
     {
-        id: 2,
+        id: 3,
         label: 'Media',
         path: '/media',
     },
     {
-        id: 3,
+        id: 4,
         label: 'Galería',
-        path: '/galery',
+        path: '/gallery',
     },
     {
-        id: 4,
+        id: 5,
         label: 'Música',
         path: '/music',
     },
     {
-        id: 5,
+        id: 6,
         label: 'Repertorio',
         path: '/repertoire',
     },
     {
-        id: 6,
+        id: 7,
         label: 'Contacto',
         path: '/contact',
-    }
+    },
 ];
