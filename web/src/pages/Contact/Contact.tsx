@@ -25,13 +25,17 @@ const Contact = () => {
                         <input className={styles['input-form']} id="subject" type="text" />
 
                         <label htmlFor="message">Mensaje
-                            <textarea className={styles['input-form']} id="message" rows={7}></textarea>
+                            <textarea className={[styles['input-form'], styles['textarea']].join(' ')} id="message" rows={7} />
                         </label>
 
-                        <label htmlFor="checkbox" className="checkbox-label">
-                            <input type="checkbox" id="checkbox" />
-                            He leído y acepto los <span>términos y condiciones</span> y acepto la <span>política de privacidad</span>
-                        </label>
+                        <div className={styles['terms-and-conditions-container']}>
+                            <div className={styles['checkbox-container']}>
+                                <input id="checkbox" type="checkbox" className={styles['checkbox-style']} />
+                            </div>
+                            <label>
+                                He leído y acepto los <span>términos y condiciones</span> y acepto la <span>política de privacidad</span>
+                            </label>
+                        </div>
 
                         <input type="submit" value="Submit"/>
                     </form>

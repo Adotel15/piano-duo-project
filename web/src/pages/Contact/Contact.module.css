@@ -1,30 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
-
 body {
+    /* This should go into main.css*/
     background-color: #F4EFDF;
+    /* This should go into main, all the page should go in a main not a div*/
     height: 100vh;
 }
 
-.section-contact{
+.section-contact {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
+
+/* Better not to use uppercases, and name should be reverse, image-container, its more declarative */
 .container-image-Contact{
+    /* Risky to put pixels because design must be consistent in all screens*/
     margin: 186px 35px 86px 20px;
     max-width: 603px;
 
 }
+
+/* Better not to use uppercases */
 .image-Contact {
     object-fit: cover;
 }
 
+/* Should be more representative like form-container*/
 .div-form {
-padding-bottom: 70px;
+    padding-bottom: 70px;
 }
 
 h1 {
@@ -36,10 +43,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Order in classname should be inverse*/
 .container-form-contact{
     font-family: 'Hind', serif;
     font-size: 16px;
     font-weight: 400;
+    /* Be careful with pixels*/
     line-height: 25.62px;
     display: flex; 
     flex-direction: column;
@@ -49,6 +58,7 @@ h1 {
     color: #344FAB;
 }
 
+/* Be careful using generic html tags for styles better to use classes for more control*/
 .input-form, textarea {
     width: 100%;
     margin-bottom: 20px;
@@ -57,20 +67,41 @@ h1 {
     border-bottom: 1px solid #344FAB;
     background-color:#F4EFDF;
     box-sizing: border-box;
-    resize: vertical;
     position: relative;
     overflow: hidden;
 }
 
-textarea {
+.textarea {
+    /* To make it not resize */
+    resize: none;
     max-height: 250px;
+    /* This is applied in the class above*/
     position: relative;
 }
 
-/* No se aplica a nada */
-label.checkbox-label{
+.terms-and-conditions-container {
     display: flex;
     align-items: center;
+    gap: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.checkbox-style {
+    /* 
+        Checkbox styles are wierd, need to make it invisible first and then apply 
+        styles that you want, if you want to change the color
+    */
+    /* appearance: none; */
+}
+
+.checkbox-style:checked {
+    /* This changes color when selected if needed */
+    background-color: #000; 
 }
 
 input[type="text"]:focus, textarea:focus {
@@ -79,16 +110,11 @@ input[type="text"]:focus, textarea:focus {
     border-radius: 4px;
 }
 
-input[type=checkbox]{
-    margin-right: 5px;
-    
-}
-
 span{
     text-decoration: underline 1px #344FAB;
 }
 
-input[type=submit]{
+input[type="submit"]{
     background-color:#F4EFDF;
     font-weight: 600;
     font-size: 13px;
@@ -103,7 +129,7 @@ input[type=submit]{
     margin-top: 20px;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
     background-color:rgba(212, 181, 137, 0.27);
     
 }
