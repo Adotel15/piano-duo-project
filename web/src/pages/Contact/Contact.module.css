@@ -1,0 +1,128 @@
+
+
+body {
+    background-color: var(--primary_color);
+    height: 100vh;
+}
+
+.section-contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-image-contact{
+    margin: 12rem 2rem 5rem 1.25rem;
+    max-width: 90%;
+}
+
+.image-contact {
+    object-fit: cover;
+}
+
+h1 {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 600;
+    font-size: 3em;
+    line-height: 2.7em;
+    color: var(--secondary_color);
+    margin-bottom: 0.5em;
+}
+
+.contact-form-container{
+    font-family: 'Hind', serif;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+    display: flex; 
+    flex-direction: column;
+    justify-items: flex-start;
+    max-width: 90%;
+    color: var(--secondary_color);
+}
+
+.input-form, .contact-textarea {
+    width: 100%;
+    margin-bottom: 1.2em;
+    padding: 0.7em;
+    border: none;
+    border-bottom: 1px solid var(--secondary_color);
+    background-color:var(--primary_color);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-textarea {
+    resize: none;
+    max-height: 15.5em;
+}
+
+.terms-and-conditions-container {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-style {
+    appearance: none;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: var(--primary_color);
+    border: 1px solid var(--secondary_color);
+    border-radius: 0.2em;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.checkbox-style:checked {
+    background-color: var(--secondary_color);
+}
+
+.checkbox-style:checked::before {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.8em;
+}
+
+input[type="text"]:focus, .contact-textarea:focus {
+    background-color: var(--hover_primary_color);
+    outline: none;
+    border-radius: 0.2em;
+}
+
+span{
+    text-decoration: underline 1px var(--secondary_color);
+}
+
+input[type="submit"]{
+    background-color: var(--primary_color);
+    font-weight: 600;
+    font-size: 0.8em;
+    color: var(--secondary_color);
+    padding: 0.5em 1em;
+    border: 1px solid var(--secondary_color);
+    font-family: 'Hind', serif;
+    border-radius: 0.2em;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    align-self: flex-end;
+    margin-top: 1.2em;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--hover_primary_color);
+    
+}
