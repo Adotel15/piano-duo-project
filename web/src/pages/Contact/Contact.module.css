@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
 
 body {
-    /* This should go into main.css*/
-    background-color: #F4EFDF;
-    /* This should go into main, all the page should go in a main not a div*/
+    background-color: var(--primary_color);
     height: 100vh;
 }
 
@@ -16,21 +13,17 @@ body {
     width: 100%;
 }
 
-/* Better not to use uppercases, and name should be reverse, image-container, its more declarative */
-.container-image-Contact{
-    /* Risky to put pixels because design must be consistent in all screens*/
-    margin: 186px 35px 86px 20px;
-    max-width: 603px;
-
+.container-image-contact{
+    margin: 12rem 2rem 5rem 1.25rem;
+    max-width: 90%;
 }
 
-/* Better not to use uppercases */
-.image-Contact {
+.image-contact {
     object-fit: cover;
 }
 
-/* Should be more representative like form-container*/
-.div-form {
+
+.form-container {
     padding-bottom: 70px;
 }
 
@@ -39,12 +32,11 @@ h1 {
     font-weight: 600;
     font-size: 50px;
     line-height: 60.55px;
-    color: #344FAB;
+    color: var(--secondary_color);
     margin-bottom: 20px;
 }
 
-/* Order in classname should be inverse*/
-.container-form-contact{
+.contact-form-container{
     font-family: 'Hind', serif;
     font-size: 16px;
     font-weight: 400;
@@ -53,30 +45,25 @@ h1 {
     display: flex; 
     flex-direction: column;
     justify-items: flex-start;
-    /* align-items: flex-start; */
     max-width: 603px;
-    color: #344FAB;
+    color: var(--secondary_color);
 }
 
-/* Be careful using generic html tags for styles better to use classes for more control*/
-.input-form, textarea {
+.input-form, .contact-textarea {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
     border: none;
-    border-bottom: 1px solid #344FAB;
-    background-color:#F4EFDF;
+    border-bottom: 1px solid var(--secondary_color);
+    background-color:var(--primary_color);
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
 
-.textarea {
-    /* To make it not resize */
+.contact-textarea {
     resize: none;
     max-height: 250px;
-    /* This is applied in the class above*/
-    position: relative;
 }
 
 .terms-and-conditions-container {
@@ -88,39 +75,51 @@ h1 {
 .checkbox-container {
     display: flex;
     align-items: center;
-    border: 1px solid red;
 }
 
 .checkbox-style {
-    /* 
-        Checkbox styles are wierd, need to make it invisible first and then apply 
-        styles that you want, if you want to change the color
-    */
-    /* appearance: none; */
+    appearance: none;
+    width: 15px;
+    height:15px;
+    background-color: var(--primary_color);
+    border: 1px solid var(--secondary_color);
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
 }
 
 .checkbox-style:checked {
-    /* This changes color when selected if needed */
-    background-color: #000; 
+    background-color: var(--secondary_color);
+}
+
+.checkbox-style:checked::before {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
 }
 
 input[type="text"]:focus, textarea:focus {
-    background-color: rgba(212, 181, 137, 0.27);
+    background-color: var(--hover_primary_color);
     outline: none;
     border-radius: 4px;
 }
 
 span{
-    text-decoration: underline 1px #344FAB;
+    text-decoration: underline 1px var(--secondary_color);
 }
 
 input[type="submit"]{
-    background-color:#F4EFDF;
+    background-color: var(--primary_color);
     font-weight: 600;
     font-size: 13px;
-    color: #344FAB;
+    color: var(--secondary_color);
     padding: 8px 17px;
-    border: 1px solid #344FAB;
+    border: 1px solid var(--secondary_color);
     font-family: 'Hind', serif;
     border-radius: 4px;
     cursor: pointer;
@@ -130,6 +129,6 @@ input[type="submit"]{
 }
 
 input[type="submit"]:hover {
-    background-color:rgba(212, 181, 137, 0.27);
+    background-color: var(--hover_primary_color);
     
 }

@@ -9,12 +9,12 @@ const Contact = () => {
                 <Menu />
             </div>
             <section className={styles['section-contact']}>
-                <div className={styles['container-image-Contact']}>
+                <div className={styles['container-image-contact']}>
                     <img className={styles['image-Contact']} src={imageContact} alt="Pianists"/>
                 </div>
-                <div className={styles['div-form']}>
+                <div className={styles['form-container']}>
                     <h1>—Contacto</h1>
-                    <form className={styles['container-form-contact']}>
+                    <form className={styles['contact-form-container']}>
                         <label htmlFor="name">Nombre</label>
                         <input className={styles['input-form']} id="name" type="text" />
 
@@ -25,7 +25,7 @@ const Contact = () => {
                         <input className={styles['input-form']} id="subject" type="text" />
 
                         <label htmlFor="message">Mensaje
-                            <textarea className={[styles['input-form'], styles['textarea']].join(' ')} id="message" rows={7} />
+                            <textarea className={[styles['input-form'], styles['contact-textarea']].join(' ')} id="message" rows={7} />
                         </label>
 
                         <div className={styles['terms-and-conditions-container']}>
