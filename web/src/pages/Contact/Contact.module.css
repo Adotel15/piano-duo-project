@@ -22,37 +22,31 @@ body {
     object-fit: cover;
 }
 
-
-.form-container {
-    padding-bottom: 70px;
-}
-
 h1 {
     font-family: 'Cormorant Infant', serif;
     font-weight: 600;
-    font-size: 50px;
-    line-height: 60.55px;
+    font-size: 3em;
+    line-height: 2.7em;
     color: var(--secondary_color);
-    margin-bottom: 20px;
+    margin-bottom: 0.5em;
 }
 
 .contact-form-container{
     font-family: 'Hind', serif;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 400;
-    /* Be careful with pixels*/
-    line-height: 25.62px;
+    line-height: 1.5em;
     display: flex; 
     flex-direction: column;
     justify-items: flex-start;
-    max-width: 603px;
+    max-width: 90%;
     color: var(--secondary_color);
 }
 
 .input-form, .contact-textarea {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 1.2em;
+    padding: 0.7em;
     border: none;
     border-bottom: 1px solid var(--secondary_color);
     background-color:var(--primary_color);
@@ -63,13 +57,13 @@ h1 {
 
 .contact-textarea {
     resize: none;
-    max-height: 250px;
+    max-height: 15.5em;
 }
 
 .terms-and-conditions-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.7em;
 }
 
 .checkbox-container {
@@ -79,11 +73,11 @@ h1 {
 
 .checkbox-style {
     appearance: none;
-    width: 15px;
-    height:15px;
+    width: 1.2em;
+    height: 1.2em;
     background-color: var(--primary_color);
     border: 1px solid var(--secondary_color);
-    border-radius: 2px;
+    border-radius: 0.2em;
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -100,13 +94,13 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 12px;
+    font-size: 0.8em;
 }
 
-input[type="text"]:focus, textarea:focus {
+input[type="text"]:focus, .contact-textarea:focus {
     background-color: var(--hover_primary_color);
     outline: none;
-    border-radius: 4px;
+    border-radius: 0.2em;
 }
 
 span{
@@ -116,16 +110,16 @@ span{
 input[type="submit"]{
     background-color: var(--primary_color);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 0.8em;
     color: var(--secondary_color);
-    padding: 8px 17px;
+    padding: 0.5em 1em;
     border: 1px solid var(--secondary_color);
     font-family: 'Hind', serif;
-    border-radius: 4px;
+    border-radius: 0.2em;
     cursor: pointer;
     letter-spacing: 0.1em;
     align-self: flex-end;
-    margin-top: 20px;
+    margin-top: 1.2em;
 }
 
 input[type="submit"]:hover {
