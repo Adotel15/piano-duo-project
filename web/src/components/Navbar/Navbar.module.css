@@ -1,0 +1,47 @@
+.navbar-container{
+    width: 100%;
+    height: 6em;
+    background-color: #F4EFDF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em;
+    position: sticky;
+    z-index: 11;
+}
+
+.namesImage-container {
+    margin-left: 3em;
+    display: flex; /* Asegura que la imagen en este contenedor también se alinee verticalmente */
+    align-items: center;
+}
+
+.namesImage {
+    height: 2.5em;
+    width: 9.5em;
+}
+
+.navbarRight-container{
+    display: flex; /* Asegura que la imagen en este contenedor también se alinee verticalmente */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+}
+
+.musicOnOff-container {
+    margin-right: 1em; /* Puedes usar margen en lugar de float para separar del borde derecho */
+    display: flex;
+    align-items: center; /* Asegura que la imagen en este contenedor también se alinee verticalmente */
+}
+
+.menu-container {
+    margin-right: 1em; /* Puedes usar margen en lugar de float para separar del borde derecho */
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+
