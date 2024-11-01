@@ -10,19 +10,40 @@ const Menu = () => {
     };
 
     return (
-        <div className={styles['menu-container']}>
+        <>
             <button className={styles['menu-button']} onClick={toggleMenu}>Menu</button>
             {isMenuOpen &&
-                <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles.show : ''}`}>
-                    {defaultMenuOptions.map(option =>
-                        <li key={option.id}>
-                            <Link to={option.path}>{option.label}</Link>
-                        </li>
-                    )}
-                </ul>
+                <div className={styles['menu-container']}>
+                    <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles.show : ''}`}>
+                        {defaultMenuOptions.map(option =>
+                            <li key={option.id}>
+                                <Link to={option.path}>{option.label}</Link>
+                            </li>
+                        )}
+                    </ul>
+                </div>
             }
-        </div>
+        </>
     );
 };
 
 export default Menu;
+
+/*
+    Així es com estaba abans, ho he cambiat, si tens dubtes ho veiem
+*/
+
+// return (
+//     <div className={styles['menu-container']}>
+//         <button className={styles['menu-button']} onClick={toggleMenu}>Menu</button>
+//         {isMenuOpen &&
+//             <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles.show : ''}`}>
+//                 {defaultMenuOptions.map(option =>
+//                     <li key={option.id}>
+//                         <Link to={option.path}>{option.label}</Link>
+//                     </li>
+//                 )}
+//             </ul>
+//         }
+//     </div>
+// );
