@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
-.menu-button {
-    background-color: #ffffff00;
-    color: #344FAB;
+/* .menu-button {
+    background-color: transparent;
+    
     padding: 20px;
     border: none ;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-     /*
+    /*
         Aixo no ha d'estar en posició absoluta
         position: absolute;
         z-index: 1;
     */
-}
+
 
 .menu-container {
     width: 100%;
