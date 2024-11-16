@@ -1,12 +1,12 @@
 import styles from './Home.module.css';
 import headerImage from '../../assets/HomePD.png';
 import logoImage from '../../assets/Logo.png';
-import Menu from '../../components/Menu/Menu';
+import Navbar from '../../components/Navbar/NavBar';
 
 const Home = () => {
     return (
         <main>
-            <Menu />
+            <Navbar />
             <div className={styles['section']}>
                 <div>
                     <img src={logoImage} alt='Logo'/>

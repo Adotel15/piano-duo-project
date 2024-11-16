@@ -1,13 +1,11 @@
 import './Repertoire.module.css';
-import Menu from '../../components/Menu/Menu';
+import Navbar from '../../components/Navbar/NavBar';
 
 const Repertoire = () => {
     return (
         <div>
+            <Navbar/>
             <h1>Repertorio</h1>
-            <div>
-                <Menu />
-            </div>
         </div>
     );
 };

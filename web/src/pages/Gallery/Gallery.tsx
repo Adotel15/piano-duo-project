@@ -1,5 +1,4 @@
 import './Gallery.module.css';
-
 import Navbar from '../../components/Navbar/NavBar';
 
 const Gallery = () => {

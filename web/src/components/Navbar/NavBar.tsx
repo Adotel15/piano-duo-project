@@ -20,29 +20,4 @@ const Navbar = () => {
     );
 };
 
-/**
- *
- * Et deixo l'antiga versió que havies fet perque comparis, quan vagis a fer la PR elimina todo el bloque aquest!
- *
- */
-
-// const Navbar = () => {
-//     return (
-//         <>
-//             <div className={styles['navbar-container']}>
-//                 <div className={styles['namesImage-container']}>
-//                     <img src={NamesImage} className={styles['namesImage']} alt="names" />
-//                 </div>
-//                 {/* <section className={styles['navbarRight-container']}> */}
-//                 <div className={styles['musicOnOff-container']}>
-//                     <img src={musicOnOff} alt="Music_ON/OFF" />
-//                 </div>
-//                 {/* <div className={styles['menu-container']}> */}
-//                 {/* </div>
-//             </section> */}
-//             </div>
-//             <Menu />
-//         </>
-//     );
-// };
 export default Navbar;
