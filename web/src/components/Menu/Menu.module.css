@@ -85,3 +85,14 @@ a {
     letter-spacing: 0.1em;
     color: #344FAB;
 }
+
+.menu-closed {
+    border: none;
+    background-color: transparent;
+}
+
+
+.menu-open {
+    border: none;
+    background-color: transparent;
+}

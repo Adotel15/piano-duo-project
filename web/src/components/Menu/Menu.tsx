@@ -13,7 +13,7 @@ const Menu = () => {
 
     return (
         <>
-            <button className={isMenuOpen ? 'menu-open' : 'menu-closed'} onClick={toggleMenu}>
+            <button className={isMenuOpen ? styles['menu-open'] : styles['menu-closed']} onClick={toggleMenu}>
                 <img src={isMenuOpen ? MenuOpen : MenuClosed} alt="Menu Icon"/>
             </button>
 
