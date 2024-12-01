@@ -1,20 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
-/* .menu-button {
-    background-color: transparent;
-    
-    padding: 20px;
-    border: none ;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    /*
-        Aixo no ha d'estar en posició absoluta
-        position: absolute;
-        z-index: 1;
-    */
-
 
 .menu-container {
     width: 100%;
@@ -28,22 +14,9 @@
     text-decoration: none;
 }
 
-/*
-    Així es com estaba abans, ho he cambiat, si tens dubtes ho veiem
-*/
-
-/* .menu-container {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    text-transform: uppercase;
-    text-decoration: none;
-} */
-
-
 .menu-dropdown {
     padding-top: 30px;
-    display: none; /* Oculto por defecto */
+    display: none; /*Oculto por defecto*/
     position: relative;
     width: 100%;
     height: 100vh;
@@ -58,7 +31,6 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    
 }
 
 .menu-dropdown li {
@@ -69,6 +41,7 @@
     font-weight: 200;
     line-height: 1.2;
     border-bottom: 0.5px solid rgba(220, 218, 212, 1);
+    transition: 0.3s ease;
 }
 
 .menu-dropdown li:hover {
@@ -77,7 +50,6 @@
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.1em;
-    
 }
 
 a {
@@ -86,13 +58,7 @@ a {
     color: #344FAB;
 }
 
-.menu-closed {
-    border: none;
-    background-color: transparent;
-}
-
-
-.menu-open {
+.menu-closed, .menu-open {
     border: none;
     background-color: transparent;
 }
