@@ -1,6 +1,7 @@
 import styles from'./Biography.module.css';
 import Menu from '../../components/Menu/Menu';
 import Header from '../../components/Header/Header';
+import imageBiography from '../..//assets/Biography/Concerts_014 1.png';
 
 const Biography = () => {
     return (
@@ -44,7 +45,7 @@ const Biography = () => {
                     <h3 className={styles['biography-title']}>Luis y Lourdes Pérez-Molina</h3>
                     <div className={styles['biography-content']}>
                         <p>
-                            Lluís y Mª Lourdes Pérez Molina forman un destacado dúo de pianos, reconocido por sus actuaciones a nivel nacional e internacional. Ambos hermanos realizaron los estudios en el Conservatorio Superior de Música del Liceo de Barcelona, la Academia Franz Liszt de Budapest y la Manhattan School of Music de Nueva York, donde obtuvieron un Máster y un Doctorado en Artes Musicales.
+                            Lluís y Mª Lourdes Pérez Molina forman un destacado dúo de pianos, reconocido por sus actuaciones a nivel nacional e internacional. Ambos hermanos realizaron los estudios en el Conservatorio Superior de Música del Liceo de Barcelona, la Academia Franz Liszt de Budapest y la Manhattan School of Music de Nueva York, donde obtuvieron un <span>Máster</span> y un <span>Doctorado en Artes Musicales</span>.
                         </p>
                         <p>
                             A lo largo de su carrera profesional han realizado giras de conciertos en países como España, Italia, Suiza, Hungría, Bulgaria, Estados Unidos (New York, New Jersey, Illinois, Missouri, Connecticut, Wisconsin y Florida) y Colombia (Bogotá, Cali, Medellín y Bucaramanga).
@@ -53,13 +54,13 @@ const Biography = () => {
                             Como solistas, han colaborado con orquestas como la Orquesta Sinfónica de Barcelona y Nacional de Cataluña, la European Union Chamber Orchestra, la Orquesta Filarmónica de Florida, la Real Filharmonía de Galicia, los "Solistes de Catalunya", Orquesta Sinfónica del “Valle del Cauca”, Orquesta Sinfónica “Julià Carbonell”, bajo la dirección de reconocidos directores como Antoni Ros Marbà, Christian Zacharias, Francesco Belli, Matthias Wollong, Virgínia Martínez, Alfons Reverté, ...
                         </p>
                         <p>
-                            El dúo ha grabado varios CDs (Los 2 pianos en el siglo XX, Fantasías para dúo de pianos, etc.), y ha realizado numerosas grabaciones para radios y televisiones tanto en España como en el extranjero. Además, han recibido múltiples premios de música de cámara, incluyendo el primer premio en el V Concurso Permanente de Juventudes Musicales de España, el segundo premio en el II Concurso Yamaha, el premio especial "Amis de Mozart" en el Concurso Internacional de Música de Cámara de París, primer premio en Finale-Ligure (Italia), segundo premio en Caltanisseta (Italia) y el tercer premio en el Concurso Internacional “ Dranoff “ para dos pianos de Miami. En 1993 ganaron el “Artists International Auditions” y fueron presentados en un New York debut en la Weill Recital Hall del Carnegie Hall, que supuso un importante impulso a su carrera profesional.
+                            El dúo ha grabado varios CDs (<span>Los 2 pianos en el siglo XX</span>, <span>Fantasías para dúo de pianos</span>, etc.), y ha realizado numerosas grabaciones para radios y televisiones tanto en España como en el extranjero. Además, han recibido múltiples premios de música de cámara, incluyendo el <span>primer premio</span> en el V Concurso Permanente de Juventudes Musicales de España, el <span>segundo premio</span> en el II Concurso Yamaha, el <span>premio especial "Amis de Mozart"</span> en el Concurso Internacional de Música de Cámara de París, <span>primer premio</span> en Finale-Ligure (Italia), <span>segundo premio</span> en Caltanisseta (Italia) y el <span>tercer premio</span> en el Concurso Internacional “ Dranoff “ para dos pianos de Miami. En 1993 ganaron el “Artists International Auditions” y fueron presentados en un New York debut en la Weill Recital Hall del Carnegie Hall, que supuso un importante impulso a su carrera profesional.
                         </p>
                         <p>
                             Merece la pena destacar el trabajo de investigación que han realizado los hermanos Pérez Molina, en el conocimiento de la literatura para dos pianos y piano a 4 manos.
                         </p>
                     </div>
-                    <img src="" alt="" />
+                    <img className={styles['image-Biography']}src={imageBiography} alt="Concert" />
                 </section>
             </div>
         </div>
