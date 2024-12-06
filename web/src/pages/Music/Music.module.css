@@ -1,0 +1,43 @@
+.header-container{
+    margin-left: 4em;
+}
+
+.sections-container{
+    width: 100%;
+    padding-left: 4em;
+    display: flex;
+    flex-direction: column;
+    color: #344FAB;
+    font-family: 'Hind', sans-serif;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    margin-bottom: 3.2em;
+}
+
+.content-container {
+    width: 100%;
+    margin-left: 3.2em;
+}
+
+.h3-container {
+    border-top: #344FAB solid ;
+    width: 100%;
+    margin-right: 7em;
+
+}
+
+h3 {
+    padding-top: 0.5em;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+}
+
+.author {
+    font-size: 1em;
+    font-weight: 500;
+}
