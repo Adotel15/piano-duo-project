@@ -19,7 +19,9 @@ const Music = () => {
             </div>
             <div className={styles['sections-container']}>
                 <section className={styles['CD-1']}>
-                    <img src={FrontCD1} alt="CD 1" />
+                    <div className={styles['CD-img-container']}>
+                        <img src={FrontCD1} alt="CD 1" />
+                    </div>
                     <div className={styles['content-container']}>
                         <div className={styles['h3-container']}>
                             <h3>Els dos pianos al segle XX  (1990)</h3>
@@ -52,7 +54,9 @@ const Music = () => {
                     </div>
                 </section>
                 <section className={styles['CD-2']}>
-                    <img src={FrontCD2} alt="CD 2" />
+                    <div className={styles['CD-img-container']}>
+                        <img src={FrontCD2} alt="CD 2" />
+                    </div>
                     <div className={styles['content-container']}>
                         <div className={styles['h3-container']}>
                             <h3>Schubert / Rachmaninof / Scriabin / Gershwin: Fantasies per a Piano Duet (1998)</h3>
@@ -73,7 +77,9 @@ const Music = () => {
                     </div>
                 </section>
                 <section className={styles['CD-3']}>
-                    <img src={FrontCD3} alt="" />
+                    <div className={styles['CD-img-container']}>
+                        <img src={FrontCD3} alt="CD3" />
+                    </div>
                     <div className={styles['content-container']}>
                         <div className={styles['h3-container']}>
                             <h3> Integral De L'Obra Per A Piano - Vol. I (1998)</h3>
@@ -110,7 +116,9 @@ const Music = () => {
                     </div>
                 </section>
                 <section className={styles['CD-4']}>
-                    <img src={FrontCD4} alt="" />
+                    <div className={styles['CD-img-container']}>
+                        <img src={FrontCD4} alt="CD-4" />
+                    </div>
                     <div className={styles['content-container']}>
                         <div className={styles['h3-container']}>
                             <h3>Llorenç balsach – visions grotesques (1997)</h3>

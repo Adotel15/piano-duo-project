@@ -5,6 +5,7 @@
 .sections-container{
     width: 100%;
     padding-left: 4em;
+    padding-right: 4em;
     display: flex;
     flex-direction: column;
     color: #344FAB;
@@ -17,8 +18,14 @@ section {
     margin-bottom: 3.2em;
 }
 
+.CD-img-container{
+    object-fit: cover;
+    width: 30.125em;
+    height: 30.125em;
+}
+
 .content-container {
-    max-width: 50em;
+    
     margin-left: 3.2em;
 }
 
