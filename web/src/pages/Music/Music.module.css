@@ -1,0 +1,76 @@
+.header-container{
+    margin-left: 4em;
+}
+
+.sections-container{
+    width: 100%;
+    padding-left: 4em;
+    padding-right: 4em;
+    display: flex;
+    flex-direction: column;
+    color: #344FAB;
+    font-family: 'Hind', sans-serif;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    margin-bottom: 3.2em;
+}
+
+.CD-img-container{
+    object-fit: cover;
+    
+}
+
+.content-container {
+    
+    margin-left: 3.2em;
+}
+
+.h3-container {
+    border-top: #344FAB solid ;
+    width: 100%;
+    margin-right: 7em;
+
+}
+
+h3 {
+    padding-top: 0.5em;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+}
+
+.author {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.ol-container{
+    padding-left: 15px;
+    font-weight: 500;
+    line-height: 1.9em;
+}
+
+.extraMusic-listItem{
+    font-weight:400;
+    line-height: 1.5em;
+    padding-left: 15px;
+    margin-top: -5px;
+}
+
+.CD3-orderedList{
+    display: flex;
+    padding-left: 15px;
+    justify-content: space-between;
+    max-width: 40em;
+    line-height: 1.9em;
+    font-weight: 500;
+}
+
+.CD4-subtitle{
+    margin-top: 1.7em;
+}
