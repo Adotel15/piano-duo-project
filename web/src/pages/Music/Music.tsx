@@ -1,13 +1,11 @@
 import './Music.module.css';
-import Menu from '../../components/Menu/Menu';
+import Navbar from '../../components/Navbar/NavBar';
 
 const Music = () => {
     return (
         <div>
+            <Navbar/>
             <h1>Música</h1>
-            <div>
-                <Menu />
-            </div>
         </div>
     );
 };

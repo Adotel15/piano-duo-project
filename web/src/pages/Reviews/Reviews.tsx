@@ -1,4 +1,4 @@
-import Menu from '../../components/Menu/Menu';
+import Navbar from '../../components/Navbar/NavBar';
 import './Reviews.module.css';
 
 import { useState, useEffect } from 'react';
@@ -27,7 +27,7 @@ const Reviews = () => {
         <div>
             <h1>Reviews</h1>
             <div>
-                <Menu />
+                <Navbar />
                 {reviews.map(review => {
                     return (
                         <section key={review.id}>

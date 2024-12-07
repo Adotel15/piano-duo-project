@@ -1,4 +1,4 @@
-import Menu from '../../components/Menu/Menu';
+import Navbar from '../../components/Navbar/NavBar';
 import styles from './Contact.module.css';
 import imageContact from '../../assets/Contact/Concerts_017.png';
 import React, {useState} from 'react';
@@ -39,9 +39,7 @@ const Contact = () => {
 
     return (
         <div>
-            <div>
-                <Menu />
-            </div>
+            <Navbar/>
             <section className={styles['section-contact']}>
                 <div className={styles['container-image-contact']}>
                     <img className={styles['image-Contact']} src={imageContact} alt="Pianists"/>

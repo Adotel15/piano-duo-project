@@ -1,13 +1,11 @@
 import './Biography.module.css';
-import Menu from '../../components/Menu/Menu';
+import Navbar from '../../components/Navbar/NavBar';
 
 const Biography = () => {
     return (
         <div>
+            <Navbar/>
             <h1>Biography</h1>
-            <div>
-                <Menu />
-            </div>
         </div>
     );
 };
