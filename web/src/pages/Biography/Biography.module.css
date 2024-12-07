@@ -16,8 +16,8 @@ ul{
     margin-bottom: 20px;
 }
 
-.titulo-lista{
-    color: #222D52;
+.title-list{
+    color: var(--secondary_color);
     font-family: 'Cormorant Infant', sans-serif;
     font-size: 1.25em;
     text-decoration: underline 1px;
@@ -30,7 +30,7 @@ li {
     padding-bottom: 0.5em;
     font-size: 0.87em;
     font-family: 'Hind', sans-serif;
-    color: #222D52;
+    color: var(--secondary_color);
     line-height: 1.2em;
 }
 
@@ -38,13 +38,13 @@ li {
 .biography-container{
     width: 70%;
     padding-left: 10%;
-    color: #222D52;
+    color: var(--secondary_color);
     font-family: 'Hind', sans-serif;
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
 .biography-title {
-    color: #344FAB;
+    color: var(--secondary_color);
     font-weight: 500;
 }
 
