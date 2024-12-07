@@ -1,19 +1,26 @@
 
-.header-container{
-    margin-left: 2em;
-    padding-left: 1.6em;
-    padding-top: 2.5em;
-
-}
-
-.section-container {
-    margin: -1.6em 4.3em 0 6.9em;
+.page-container {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-ul{
-    margin-bottom: 20px;
+.header-container{
+    width: 90%;
+}
+
+.content-container {
+    width: 90%;
+    display: flex;
+    gap: 10px;
+}
+
+.titles-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .title-list{
@@ -25,6 +32,11 @@ ul{
     padding-bottom: 5px;
 }
 
+ul{
+    margin-bottom: 20px;
+}
+
+
 li {
     list-style: none;
     padding-bottom: 0.5em;
@@ -34,10 +46,10 @@ li {
     line-height: 1.2em;
 }
 
-
 .biography-container{
+    display: flex;
+    flex-direction: column;
     width: 70%;
-    padding-left: 10%;
     color: var(--secondary_color);
     font-family: 'Hind', sans-serif;
     font-size: 1em;

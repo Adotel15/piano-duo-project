@@ -6,14 +6,13 @@ import { data } from '../../data/biography';
 
 const Biography = () => {
     return (
-        <div>
+        <main className={styles['page-container']}>
             <Navbar/>
-            <h1>Biography</h1>
             <div className={styles['header-container']}>
                 <Header content='—Biografía'></Header>
             </div>
-            <div className={styles['section-container']}>
-                <section>
+            <div className={styles['content-container']}>
+                <section className={styles['titles-container']}>
                     <div>
                         <ul>
                             <h3 className={styles['title-list']}>{data.educationSection.header}</h3>
@@ -23,7 +22,7 @@ const Biography = () => {
 
                         </ul>
                     </div>
-                    <div className={styles['titles-container']}>
+                    <div>
                         <ul>
                             <h3 className={styles['title-list']}>{data.titlesSection.header}</h3>
                             {data.titlesSection.titles.map(titleItem =>
@@ -50,7 +49,7 @@ const Biography = () => {
                     <img className={styles['image-biography']} src={data.image} alt="Concert" />
                 </section>
             </div>
-        </div>
+        </main>
     );
 };
 
