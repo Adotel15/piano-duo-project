@@ -1,6 +1,8 @@
 import Navbar from '../../components/Navbar/NavBar';
-import './Reviews.module.css';
+import styles from './Reviews.module.css';
+import Header from '../../components/Header/Header';
 
+import minImage from '../../assets/Reviews/bitcoin-icons_plus-outline.png';
 import { useState, useEffect } from 'react';
 
 type Review = {
@@ -8,6 +10,7 @@ type Review = {
     title: string,
     content: string,
     reviewer: string,
+    publisher_date: string,
     image: string,
 }
 
@@ -24,20 +27,36 @@ const Reviews = () => {
         setReviews(data.data);
     };
     return (
-        <div>
-            <h1>Reviews</h1>
-            <div>
-                <Navbar />
-                {reviews.map(review => {
-                    return (
-                        <section key={review.id}>
-                            <h2>{review.title}</h2>
-                            <p>{review.content}</p>
-                            <p>{review.reviewer}</p>
-                            <img src={review.image} alt={review.title} />
-                        </section>
-                    );
-                })}
+        <div className={styles['page-container']}>
+            <Navbar />
+            <div className={styles['container']}>
+                <div>
+                    <Header content='—Prensa'></Header>
+                </div>
+                <div className={styles['reviews-container']}>
+                    {reviews.map(review => {
+                        return (
+                            <section key={review.id} className={styles['review-section-container']}>
+                                <div className={styles['heading-container']}>
+                                    <div className={styles['title-publisher-date-container']}>
+                                        <div className={styles['title-container']}>
+                                            <h2 className={styles['title']}>{review.title}</h2>
+                                        </div>
+                                        <div className={styles['publisher-date-container']}>
+                                            <p className={styles['publisher-date']}>{review.publisher_date}</p>
+                                        </div>
+                                    </div>
+                                    <img src={minImage} className={styles['min-button']} alt='boton de minimizar'/>
+                                </div>
+                                <div className={styles['content-container']}>
+                                    <p className={styles['content']}>{review.content} <br/>{review.reviewer}</p>
+                                    <img src={review.image} alt={review.title} />
+                                </div>
+                            </section>
+                        );
+                    })}
+
+                </div>
             </div>
         </div>
     );
