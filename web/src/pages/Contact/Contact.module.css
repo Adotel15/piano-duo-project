@@ -138,11 +138,13 @@ input[type="submit"]:hover {
     display: flex;
     gap: 0.5em;
     font-family: 'Hind', sans-serif;
-    font-size: 0.9em;
+    font-size: 1em;
+    font-weight: 500;
     color: var(--secondary_color);
     align-items: flex-end;
+    text-align: end;
     border: solid 1px red;
-    
+    margin-bottom: 1.3em;
 }
 
 .icon{

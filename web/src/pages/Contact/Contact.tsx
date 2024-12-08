@@ -8,6 +8,8 @@ import location from '../../assets/Contact/location.png';
 import phone from '../../assets/Contact/phone.png';
 import mail from '../../assets/Contact/mail.png';
 
+import Socials from '../../components/Socials/Socials';
+
 const Contact = () => {
     type Event = React.ChangeEvent<
     HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -92,7 +94,7 @@ const Contact = () => {
                         <img src={mail} alt="mail icon" className={styles['icon']}/>
                         <p>mail@example.com</p>
                     </div>
-                    <div>socials</div>
+                    <Socials/>
                 </div>
             </div>
         </div>
