@@ -52,8 +52,9 @@
     width: 100%;
 }
 
-.menu-list-item{
-    font-size: 0.8em;
+.menu-list-item a{
+    letter-spacing: normal;
+    font-size: 1em;
     font-family: 'DM Sans', sans-serif;
 }
 
