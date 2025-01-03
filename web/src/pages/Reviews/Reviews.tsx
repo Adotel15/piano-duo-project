@@ -16,6 +16,8 @@ type Review = {
 
 const Reviews = () => {
     const [reviews, setReviews] = useState <Review[]> ([]);
+    const [minimized, setMinimized] = useState<string>('-1');
+
     useEffect(() => {
         getReviews();
     }, []
@@ -23,9 +25,15 @@ const Reviews = () => {
 
     const getReviews = async () => {
         const response = await fetch('http://localhost:8081/v1/api/reviews');
-        const data = await response.json();
-        setReviews(data.data);
+        const { data } = await response.json();
+        setReviews(data);
     };
+
+    const openReview = (id: string) => {
+        if (minimized === id) setMinimized('-1');
+        else setMinimized(id);
+    };
+
     return (
         <div className={styles['page-container']}>
             <Navbar />
@@ -37,7 +45,7 @@ const Reviews = () => {
                     {reviews.map(review => {
                         return (
                             <section key={review.id} className={styles['review-section-container']}>
-                                <div className={styles['heading-container']}>
+                                <div className={styles['heading-container']} onClick={() => openReview(review.id)}>
                                     <div className={styles['title-publisher-date-container']}>
                                         <div className={styles['title-container']}>
                                             <h2 className={styles['title']}>{review.title}</h2>
@@ -48,14 +56,21 @@ const Reviews = () => {
                                     </div>
                                     <img src={minImage} className={styles['min-button']} alt='boton de minimizar'/>
                                 </div>
-                                <div className={styles['content-container']}>
+
+                                <div
+                                    className={`${styles['content-container']} ${
+                                        minimized === review.id ? styles['open'] : styles['closed']
+                                    }`}
+                                >
                                     <p className={styles['content']}>{review.content} <br/>{review.reviewer}</p>
-                                    <img src={review.image} alt={review.title} />
+                                    <div className={styles['review-image-container']}>
+                                        <img className={styles['review-image']} src={review.image} alt={review.title} />
+                                    </div>
                                 </div>
+
                             </section>
                         );
                     })}
-
                 </div>
             </div>
         </div>
