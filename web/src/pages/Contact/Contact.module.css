@@ -1,34 +1,32 @@
-
-
-body {
+.page-container{
+    width: 100%;
     background-color: var(--primary_color);
-    height: 100vh;
+}
+
+.contact-container{
+    width: 100%;
+    display: flex;
+    gap: 10em;
 }
 
 .section-contact {
+    margin-left: 5em;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    gap: 3em;
+    align-items: flex-end;
+    width: 65%;
+    margin-top: 2rem;
 }
 
 .container-image-contact{
-    margin: 12rem 2rem 5rem 1.25rem;
-    max-width: 90%;
+    height: 39em;
+    width: 33em;
+    object-fit: contain;
+    overflow: hidden;
 }
 
-.image-contact {
-    object-fit: cover;
-}
-
-h1 {
-    font-family: 'Cormorant Infant', serif;
-    font-weight: 600;
-    font-size: 3em;
-    line-height: 2.7em;
-    color: var(--secondary_color);
-    margin-bottom: 0.5em;
+.form-container{
+    width: 60%;
 }
 
 .contact-form-container{
@@ -38,8 +36,8 @@ h1 {
     line-height: 1.5em;
     display: flex; 
     flex-direction: column;
-    justify-items: flex-start;
-    max-width: 90%;
+    justify-content:space-evenly;
+    max-width: 100%;
     color: var(--secondary_color);
 }
 
@@ -64,6 +62,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 0.7em;
+    font-size: 0.8em;
 }
 
 .checkbox-container {
@@ -103,26 +102,52 @@ input[type="text"]:focus, .contact-textarea:focus {
     border-radius: 0.2em;
 }
 
-span{
+label > span{
     text-decoration: underline 1px var(--secondary_color);
 }
 
 input[type="submit"]{
-    background-color: var(--primary_color);
-    font-weight: 600;
-    font-size: 0.8em;
-    color: var(--secondary_color);
-    padding: 0.5em 1em;
+    background-color: #222D52;
+    color: #ebebeb;
     border: 1px solid var(--secondary_color);
+    border-radius: 0.5em;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 0.4em 1em;
     font-family: 'Hind', serif;
-    border-radius: 0.2em;
     cursor: pointer;
-    letter-spacing: 0.1em;
-    align-self: flex-end;
     margin-top: 1.2em;
 }
 
 input[type="submit"]:hover {
-    background-color: var(--hover_primary_color);
-    
+    background-color: var(--secondary_color);
+}
+
+
+/*Contact info*/
+.contact-information-container{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin-top: 2rem;
+    border: solid 1px red;
+}
+
+.info-container{
+    display: flex;
+    gap: 0.5em;
+    font-family: 'Hind', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--secondary_color);
+    align-items: flex-end;
+    text-align: end;
+    border: solid 1px red;
+    margin-bottom: 1.3em;
+}
+
+.icon{
+    height: 1.5em;
+    width: 1.5em;
 }
