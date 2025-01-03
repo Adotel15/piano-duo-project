@@ -16,7 +16,7 @@ const Music = () => {
                 <Header content='—Cds'></Header>
             </div>
             <div className={styles['sections-container']}>
-                <section className={styles['CD-1']}>
+                <section className={styles['section-cd']}>
                     <div className={styles['CD-img-container']}>
                         <img src={FrontCD1} alt="CD 1" />
                     </div>
@@ -51,7 +51,7 @@ const Music = () => {
                         </div>
                     </div>
                 </section>
-                <section className={styles['CD-2']}>
+                <section className={styles['section-cd']}>
                     <div className={styles['CD-img-container']}>
                         <img src={FrontCD2} alt="CD 2" />
                     </div>
@@ -74,7 +74,7 @@ const Music = () => {
                         </div>
                     </div>
                 </section>
-                <section className={styles['CD-3']}>
+                <section className={styles['section-cd']}>
                     <div className={styles['CD-img-container']}>
                         <img src={FrontCD3} alt="CD3" />
                     </div>
@@ -113,7 +113,7 @@ const Music = () => {
                         </div>
                     </div>
                 </section>
-                <section className={styles['CD-4']}>
+                <section className={styles['section-cd']}>
                     <div className={styles['CD-img-container']}>
                         <img src={FrontCD4} alt="CD-4" />
                     </div>

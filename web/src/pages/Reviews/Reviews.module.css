@@ -1,0 +1,104 @@
+.page-container{
+    width: 100%;
+    color: var(--secondary_color);
+}
+
+.container{
+    width: 90%;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+}
+
+.reviews-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Has to be the same as review-section-container padding-bottom */
+}
+
+.review-section-container{
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 1.5px var(--secondary_color);
+    padding-bottom: 10px;
+    font-family: 'Hind', sans-serif;
+}
+
+.heading-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 10px 10px;
+}
+
+.heading-container:hover {
+    border-radius: 0.3em;
+    background-color: var(--hover_primary_color);
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    font-size: 1em;
+    padding-left: 0.5em;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.title-publisher-date-container{
+    width: 100%;
+    display: flex;
+}
+
+.title-container{
+    width: 80%;
+}
+
+.title{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.publisher-date-container {
+    width: 20%;
+}
+
+.publisher-date{
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.min-button{
+    width: 2em;
+    height: 2em;
+}
+
+.review-image-container {
+    width: 500px;
+}
+
+.review-image {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.closed {
+    max-height: 0; 
+    opacity: 0;
+}
+
+.open {
+    max-height: 1000px; 
+    opacity: 1;
+}
+
+
+
+

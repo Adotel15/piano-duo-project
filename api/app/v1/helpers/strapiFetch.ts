@@ -4,8 +4,8 @@ import type { StrapiEndpoints } from '../../types/strapi';
 
 export const strapiFetch = async (collection: StrapiEndpoints, id?: string): Promise<unknown> => {
     const path = id ?
-        `${STRAPI_URL}/${collection as string}/${id}`
-        : `${STRAPI_URL}/${collection as string}`;
+        `${STRAPI_URL}/${collection as string}/${id}?populate=*`
+        : `${STRAPI_URL}/${collection as string}?populate=*`;
 
     const response = await fetch(path, {
         method: 'GET',

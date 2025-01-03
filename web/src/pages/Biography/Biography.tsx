@@ -43,7 +43,7 @@ const Biography = () => {
                     <h3 className={styles['biography-title']}>{data.biographyContent.header}</h3>
                     <div>
                         {data.biographyContent.paragraphs.map(paragraph=>
-                            <p>{paragraph.paragraph}</p>
+                            <p className={styles['p']}>{paragraph.paragraph}</p>
                         )}
                     </div>
                     <img className={styles['image-biography']} src={data.image} alt="Concert" />
