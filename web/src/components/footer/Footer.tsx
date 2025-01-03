@@ -1,0 +1,57 @@
+import styles from './Footer.module.css';
+
+import { Link } from 'react-router-dom';
+import { menuOptions } from '../../constants/ui';
+import Youtube from '../../assets/Socials/youtube_1.png';
+import Linkedin from '../../assets/Socials/Linkedin.png';
+import Facebook from '../../assets/Socials/Facebook_1.png';
+import Spotify from '../../assets/Socials/Spotify.png';
+import Instagram from '../../assets/Socials/Instagram.png';
+
+import Logo from '../../assets/PianoDuoLogo.png';
+
+const Footer = () => {
+    return (
+        <div className={styles['component-container']}>
+            <div className={styles['footer-container']}>
+                <div className={styles['logo-container']}>
+                    <img src={Logo} alt="Logo" />
+                    <div className={styles['logo-title']}>
+                        <p className={styles['logo-title-item']}>PEREZ MOLINA</p>
+                        <p className={styles['logo-title-item']}>PIANO DÚO</p>
+                    </div>
+                </div>
+                <div className={styles['menu-socials-container']}>
+                    <div className={styles['menu-options-container']}>
+                        <ul className={styles['menu-options-list']}>
+                            {menuOptions.map(option =>
+                                <li key={option.id} className={styles['menu-list-item']}>
+                                    <Link to={option.path}>{option.label}</Link>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
+                    <div className={styles['socials-list-container']}>
+                        <li><img src={Youtube} alt="" /></li>
+                        <li><img src={Linkedin} alt="" /></li>
+                        <li><img src={Instagram} alt="" /></li>
+                        <li><img src={Facebook} alt="" /></li>
+                        <li><img src={Spotify} alt="" /></li>
+                    </div>
+                </div>
+                <div className={styles['info-container']}>
+                    <div className={styles['rights-container']}>
+                        <p>© 2024. Pérez Molina Piano Dúo. Todos los derechos reservados</p>
+                    </div>
+                    <div className={styles['conditions-container']}>
+                        <p>Términos y condiciones</p>
+                        <p>Política de privacidad</p>
+                        <p>Política de cookies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Footer;

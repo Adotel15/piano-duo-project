@@ -1,0 +1,88 @@
+.component-container{
+    width: 100%;
+    background: linear-gradient(rgb(244,239,223, 0.4), rgb(207,162,94, 0.39));
+}
+
+.footer-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4em;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Cormorant Infant', sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+    color: var(--secondary_color)
+}
+
+.logo-title-item{
+    padding: 0;
+}
+
+.menu-socials-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    width: 70%;
+}
+
+.menu-options-container{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.menu-options-list{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.menu-list-item a{
+    letter-spacing: normal;
+    font-size: 1em;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.socials-list-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    align-items: center;
+}
+
+.info-container{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--secondary_color);
+    font-size: 0.8em;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.rights-container{
+    width: 50%;
+}
+
+.conditions-container{
+    display: flex;
+    width: 50%;
+    gap: 1em;
+    justify-content: end;
+    text-decoration: underline 1px;
+}
