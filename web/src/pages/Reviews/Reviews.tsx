@@ -1,8 +1,9 @@
 import Navbar from '../../components/Navbar/NavBar';
 import styles from './Reviews.module.css';
 import Header from '../../components/Header/Header';
-
+import Footer from '../../components/footer/Footer';
 import minImage from '../../assets/Reviews/bitcoin-icons_plus-outline.png';
+import plusImage from '../../assets/Reviews/plusbtn.png';
 import { useState, useEffect } from 'react';
 
 type Review = {
@@ -54,9 +55,11 @@ const Reviews = () => {
                                             <p className={styles['publisher-date']}>{review.publisher_date}</p>
                                         </div>
                                     </div>
-                                    <img src={minImage} className={styles['min-button']} alt='boton de minimizar'/>
+                                    <img src={minimized === review.id ? minImage : plusImage}
+                                        className={`${styles['min-button']} ${minimized === review.id ? styles['expanded'] : ''}`}
+                                        alt={minimized === review.id ? 'minimizar' : 'expandir'}
+                                    />
                                 </div>
-
                                 <div
                                     className={`${styles['content-container']} ${
                                         minimized === review.id ? styles['open'] : styles['closed']
@@ -67,12 +70,12 @@ const Reviews = () => {
                                         <img className={styles['review-image']} src={review.image} alt={review.title} />
                                     </div>
                                 </div>
-
                             </section>
                         );
                     })}
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
