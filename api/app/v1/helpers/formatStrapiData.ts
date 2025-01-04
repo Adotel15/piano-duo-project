@@ -14,6 +14,7 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
         }));
     } else if (collection === 'cds') {
         return strapiResponse.map(item => ({
+            id: item.id,
             title: item.attributes.title,
             composer: item.attributes.composer,
             frontImage: item.attributes.front?.data ? item.attributes.front?.data[0]?.attributes.url : null,
@@ -27,7 +28,7 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const formatStrapiObject = (strapiResponse: StrapiObject<Record<string, any>>, collection:string) => {
+export const formatStrapiObject = (strapiResponse: StrapiObject<Record<string, any>>, /*collection:string*/) => {
     return {
         id: strapiResponse.id,
         title: strapiResponse.attributes.title,
