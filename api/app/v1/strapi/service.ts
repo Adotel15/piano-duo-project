@@ -17,7 +17,7 @@ export class StrapiService {
 
     getAll = async (collection: StrapiEndpoints, _: FastifyRequest, reply: FastifyReply): Promise<void> => {
         const collectionData = await strapiFetch(collection) as StrapiResponse;
-        return reply.code(200).send({ data: formatStrapiArray(collectionData.data as StrapiArray<GenericObject>) });
+        return reply.code(200).send({ data: formatStrapiArray(collectionData.data as StrapiArray<GenericObject>, collection) });
     };
 
     getOne = async (collection: StrapiEndpoints, id: string, _: FastifyRequest, reply: FastifyReply): Promise<void> => {
