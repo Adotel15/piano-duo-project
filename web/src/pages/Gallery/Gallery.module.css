@@ -1,0 +1,25 @@
+
+.gallery-page-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-header-container{
+    width: 90%;
+    justify-items: center;
+}
+
+.gallery-container{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.photos-container{
+    height: 100px;
+    width: auto;
+}
