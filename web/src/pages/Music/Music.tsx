@@ -17,7 +17,11 @@ type CD = {
     frontImage: string,
     backImage: string,
     subtitle: string,
-    pieces: string,
+    pieces: Array<{
+        id: string;
+        name: string;
+        sections: string[];
+    }> | null;
 }
 
 const Music = () => {
@@ -56,7 +60,11 @@ const Music = () => {
                                 <h4>{cd.subtitle}</h4>
                                 <div className={styles['ol-container']}>
                                     <ol>
-                                        <li>{cd.pieces}</li>
+                                        {cd.pieces && cd.pieces.map(piece =>
+                                            <li key={piece.id}>{piece.name}
+                                                <li>{piece.sections}</li>
+                                            </li>
+                                        )}
                                     </ol>
                                 </div>
                             </div>

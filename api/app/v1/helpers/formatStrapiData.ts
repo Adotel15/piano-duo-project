@@ -17,18 +17,16 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             id: item.id,
             title: item.attributes.title,
             composer: item.attributes.composer,
-            /**
-             * Et faig spoiler que aixo es una mica diferent, perque a diferencia de
-             * images a reviews aixo sempre sera una imatge y no un array de imatges
-             */
-            frontImage: item.attributes.front?.data ? item.attributes.front?.data[0]?.attributes.url : null,
-            backImage: item.attributes.back?.data ? item.attributes.back?.data[0]?.attributes.url : null,
+            frontImage: item.attributes.front?.data ? item.attributes.front?.data?.attributes.url : null,
+            backImage: item.attributes.back?.data ? item.attributes.back?.data?.attributes.url : null,
             subtitle: item.attributes.subtitle,
-            /**
-             * Un altre spoiler es que falta una cosa aquí també perque la info arribi
-             * be al front
-             */
-            pieces: item.attributes.pieces,
+            pieces: Array.isArray(item.attributes.pieces?.data)
+                ? item.attributes.pieces.data.map(piece => ({
+                    id: piece.id,
+                    name: piece.title,
+                    sections: piece?.sections ? piece.sections : null,
+                }))
+                : item.attributes.pieces.data || null,
         }));
     } else {
         return [];
