@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
-import styles from './Menu.module.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import styles from './Menu.module.css';
+
 import { menuOptions as defaultMenuOptions } from '../../constants/ui';
-import MenuOpen from '../../assets/Menu/healthicons_ui-menu.png';
-import MenuClosed from '../../assets/Menu/healthicons_ui-menu (1).png';
+
+import MenuOpen from '../../assets/Menu/menu-open-icon.png';
+import MenuClosed from '../../assets/Menu/menu-closed-icon.png';
 
 const Menu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
