@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Menu from '../Menu/Menu';
 
 import styles from './Navbar.module.css';
@@ -10,13 +12,14 @@ const Navbar = () => {
         <nav className={styles['nav-container']}>
             <div
                 className={styles['nav-logo-container']}
-                onClick={() => window.location.href = '/'}
             >
-                <img
-                    src={PianoDuoLogo}
-                    className={styles['nav-logo']}
-                    alt="piano-duo-logo"
-                />
+                <Link to="/">
+                    <img
+                        src={PianoDuoLogo}
+                        className={styles['nav-logo']}
+                        alt="piano-duo-logo"
+                    />
+                </Link>
             </div>
             <div className={styles['nav-controls-container']}>
                 <div className={styles['control-container']}>
