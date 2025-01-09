@@ -62,7 +62,7 @@ const Music = () => {
                                     <ol>
                                         {cd.pieces && cd.pieces.map(piece =>
                                             <li key={piece.id}>{piece.name}
-                                                <li>{piece.sections}</li>
+                                                <ol>{piece.sections}</ol>
                                             </li>
                                         )}
                                     </ol>
