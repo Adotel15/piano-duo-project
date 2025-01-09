@@ -1,14 +1,15 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Footer.module.css';
 
-import { Link } from 'react-router-dom';
 import { menuOptions } from '../../constants/ui';
+
+import Logo from '../../assets/PianoDuoLogo.png';
 import Youtube from '../../assets/Socials/youtube_1.png';
 import Linkedin from '../../assets/Socials/Linkedin.png';
 import Facebook from '../../assets/Socials/Facebook_1.png';
 import Spotify from '../../assets/Socials/Spotify.png';
 import Instagram from '../../assets/Socials/Instagram.png';
-
-import Logo from '../../assets/PianoDuoLogo.png';
 
 const Footer = () => {
     return (
