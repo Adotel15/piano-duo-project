@@ -11,15 +11,34 @@
 
 .nav-logo-container {
     position: relative;
+    width: 155px;
+}
+
+.nav-logo-container img{
+    cursor: pointer;
 }
 
 .nav-logo {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .nav-controls-container {
     display: flex;
     align-items: center;
     gap: 30px;
+}
+
+.control-container {
+    position: relative;
+    width: 35px;
+}
+
+.control-container img {
+    width: 100%;
+    height: auto;
+}
+
+.control-container img:hover {
+    cursor: pointer;
 }

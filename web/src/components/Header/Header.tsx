@@ -1,8 +1,8 @@
 import styles from './Header.module.css';
 
-const Header = ({ content } : { content:string }) => {
+const Header = ({ content }:{ content:string }) => {
     return (
-        <h2 className={styles ['h2']}>{content}</h2>
+        <h2 className={styles['h2']}>{content}</h2>
     );
 };
 

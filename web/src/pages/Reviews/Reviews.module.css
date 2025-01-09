@@ -8,6 +8,7 @@
     display: flex;
     justify-self: center;
     flex-direction: column;
+    margin-bottom: 30px;
 }
 
 .reviews-container {
@@ -33,10 +34,10 @@
     transition: 0.3s ease-in-out;
     cursor: pointer;
     padding: 10px 10px;
+    border-radius: 0.3em;
 }
 
 .heading-container:hover {
-    border-radius: 0.3em;
     background-color: var(--hover_primary_color);
 }
 
@@ -61,7 +62,7 @@
 }
 
 .title{
-    font-size: 1.2em;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -70,13 +71,18 @@
 }
 
 .publisher-date{
-    font-size: 1.3em;
+    font-size: 24px;
     font-weight: 500;
 }
 
 .min-button{
     width: 2em;
     height: 2em;
+    transition: transform 0.3s ease;
+}
+
+.min-button.expanded {
+    transform: rotate(180deg);
 }
 
 .review-image-container {
