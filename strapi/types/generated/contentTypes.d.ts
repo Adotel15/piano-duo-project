@@ -821,12 +821,13 @@ export interface ApiPhotoPhoto extends Schema.CollectionType {
     singularName: 'photo';
     pluralName: 'photos';
     displayName: 'Gallery';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Photo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    photos: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

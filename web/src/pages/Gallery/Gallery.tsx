@@ -6,7 +6,7 @@ import styles from './Gallery.module.css';
 
 type Photo = {
     id: string,
-    image: string,
+    image: string | null,
 }
 
 const Gallery = () => {
@@ -31,9 +31,11 @@ const Gallery = () => {
                 </div>
                 <div className={styles['gallery-container']}>
                     {photos.map(photo =>
-                        <div key={photo.id} className={styles['photos-container']}>
-                            <img className={styles['gallery-photo']} src={photo.image} alt="" />
-                        </div>
+                        photo.image ?
+                            <div key={photo.id} className={styles['photos-container']}>
+                                <img className={styles['gallery-photo']} src={photo.image} alt="" />
+                            </div>
+                            : null
                     )}
                 </div>
             </div>

@@ -1,1 +1,1 @@
-export const STRAPI_ENDPOINTS = ['reviews'];
+export const STRAPI_ENDPOINTS = ['reviews', 'photos'];

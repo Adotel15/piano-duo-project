@@ -15,7 +15,7 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
     } else if (collection === 'photos') {
         return strapiResponse.map(item => ({
             id: item.id,
-            image: item.attributes.images?.data ? item.attributes.images?.data[0]?.attributes.url : null,
+            image: item.attributes.images?.data ? item.attributes.images?.data[0].attributes.url : null,
         }));
     } else {
         return [];
