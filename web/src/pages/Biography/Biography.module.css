@@ -37,7 +37,7 @@ ul{
 }
 
 
-li {
+.list-container {
     list-style: none;
     padding-bottom: 0.5em;
     font-size: 0.87em;

@@ -25,18 +25,18 @@ const Footer = () => {
                     <div className={styles['menu-options-container']}>
                         <ul className={styles['menu-options-list']}>
                             {menuOptions.map(option =>
-                                <li key={option.id} className={styles['menu-list-item']}>
+                                <li   className={`${styles['list-container']} ${styles['menu-list-item']}`} key={option.id}>
                                     <Link to={option.path}>{option.label}</Link>
                                 </li>
                             )}
                         </ul>
                     </div>
                     <div className={styles['socials-list-container']}>
-                        <li><img src={Youtube} alt="" /></li>
-                        <li><img src={Linkedin} alt="" /></li>
-                        <li><img src={Instagram} alt="" /></li>
-                        <li><img src={Facebook} alt="" /></li>
-                        <li><img src={Spotify} alt="" /></li>
+                        <li className={styles['list-container']}><img src={Youtube} alt="" /></li>
+                        <li className={styles['list-container']}><img src={Linkedin} alt="" /></li>
+                        <li className={styles['list-container']}><img src={Instagram} alt="" /></li>
+                        <li className={styles['list-container']}><img src={Facebook} alt="" /></li>
+                        <li className={styles['list-container']}><img src={Spotify} alt="" /></li>
                     </div>
                 </div>
                 <div className={styles['info-container']}>

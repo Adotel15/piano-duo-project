@@ -19,7 +19,6 @@
 }
 .images-container{
     width: 500px;
-    border: 1px solid red;
 }
 
 .CD-front-image-container, .CD-back-image-container {
@@ -29,9 +28,9 @@
 }
 
 .CD-image{
-    object-fit: cover;
-    height: 100%;
+    object-fit: contain;
     width: 100%;
+    height: auto;
 }
 
 .content-container {
@@ -62,7 +61,6 @@ h3 {
 .ol-container{
     padding-left: 15px;
     font-weight: 500;
-    line-height: 1.9em;
 }
 
 .extraMusic-listItem{
@@ -85,6 +83,11 @@ h3 {
     margin-top: 1.7em;
 }
 
+.pieces-list {
+    font-size: 14px;
+    line-height: 1.9em;
+}
+
 .piece-status-incative{
-    color: #cdcdcde2
+    color: #cdcdcde2;
 }
