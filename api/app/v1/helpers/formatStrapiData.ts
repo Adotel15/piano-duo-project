@@ -25,6 +25,7 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
                     id: piece.id,
                     name: piece.title,
                     sections: piece?.sections ? piece.sections : null,
+                    status: piece?.status? piece.status : null,
                 }))
                 : item.attributes.pieces.data || null,
         }));

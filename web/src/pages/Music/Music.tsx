@@ -21,11 +21,13 @@ type CD = {
         id: string;
         name: string;
         sections: string[];
+        status: string,
     }> | null;
 }
 
 const Music = () => {
     const [CDs, setCDs] = useState <CD[]> ([]);
+
     useEffect(() => {
         getCDs();
     }, []);
@@ -46,12 +48,16 @@ const Music = () => {
                 {CDs.map(cd => {
                     return (
                         <section key={cd.id} className={styles['section-cd']}>
-                            <div className={styles['CD-img-container']}>
-                                <img src={cd.frontImage} alt="CD 1" />
+                            <div className= {styles['images-container']}>
+                                {cd.frontImage && <div className={styles['CD-front-image-container']}>
+                                    <img className={styles['CD-image']} src={cd.frontImage} alt="CD 1" />
+                                </div>
+                                }
+                                <div className={styles['CD-back-image-container']}>
+                                    <img className={styles['CD-image']} src={cd.backImage} alt="CD 1" />
+                                </div>
                             </div>
-                            <div className={styles['CD-img-container']}>
-                                <img src={cd.backImage} alt="CD 1" />
-                            </div>
+
                             <div className={styles['content-container']}>
                                 <div className={styles['h3-container']}>
                                     <h3>{cd.title}</h3>
@@ -61,7 +67,9 @@ const Music = () => {
                                 <div className={styles['ol-container']}>
                                     <ol>
                                         {cd.pieces && cd.pieces.map(piece =>
-                                            <li key={piece.id}>{piece.name}
+                                            <li className= {`${
+                                                piece.status ? ` ${styles['piece-status-incative']}` : ''
+                                            }`} key={piece.id}>{piece.name}
                                                 <ol>{piece.sections}</ol>
                                             </li>
                                         )}
