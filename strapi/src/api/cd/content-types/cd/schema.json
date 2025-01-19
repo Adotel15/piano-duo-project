@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cd",
     "pluralName": "cds",
-    "displayName": "CDs"
+    "displayName": "CDs",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,18 +20,20 @@
       "type": "string"
     },
     "front": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "back": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "subtitle": {
       "type": "string",

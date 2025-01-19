@@ -17,14 +17,23 @@
     display: flex;
     margin-bottom: 3.2em;
 }
+.images-container{
+    width: 500px;
+}
 
-.CD-img-container{
-    object-fit: cover;
-    
+.CD-front-image-container, .CD-back-image-container {
+    overflow: hidden;
+    height: 500px;
+    width: 500px;
+}
+
+.CD-image{
+    object-fit: contain;
+    width: 100%;
+    height: auto;
 }
 
 .content-container {
-    
     margin-left: 3.2em;
 }
 
@@ -52,7 +61,6 @@ h3 {
 .ol-container{
     padding-left: 15px;
     font-weight: 500;
-    line-height: 1.9em;
 }
 
 .extraMusic-listItem{
@@ -73,4 +81,13 @@ h3 {
 
 .CD4-subtitle{
     margin-top: 1.7em;
+}
+
+.pieces-list {
+    font-size: 14px;
+    line-height: 1.9em;
+}
+
+.piece-status-incative{
+    color: #cdcdcde2;
 }

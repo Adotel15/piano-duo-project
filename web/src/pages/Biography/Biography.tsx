@@ -17,7 +17,7 @@ const Biography = () => {
                         <ul>
                             <h3 className={styles['title-list']}>{data.educationSection.header}</h3>
                             {data.educationSection.educations.map(education =>
-                                <li>{education.school}<br />{education.location} </li>
+                                <li className={styles['list-container']}>{education.school}<br />{education.location} </li>
                             )}
 
                         </ul>
@@ -26,7 +26,7 @@ const Biography = () => {
                         <ul>
                             <h3 className={styles['title-list']}>{data.titlesSection.header}</h3>
                             {data.titlesSection.titles.map(titleItem =>
-                                <li>{titleItem.title}<br />{titleItem.school}<br />{titleItem.location}</li>
+                                <li className={styles['list-container']}>{titleItem.title}<br />{titleItem.school}<br />{titleItem.location}</li>
                             )}
                         </ul>
                     </div>
@@ -34,7 +34,7 @@ const Biography = () => {
                         <ul>
                             <h3 className={styles['title-list']}>{data.awardsSection.header}</h3>
                             {data.awardsSection.awards.map(awardItem =>
-                                <li>{awardItem.award}<br />{awardItem.contest}</li>
+                                <li className={styles['list-container']}>{awardItem.award}<br />{awardItem.contest}</li>
                             )}
                         </ul>
                     </div>

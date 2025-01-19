@@ -368,6 +368,7 @@ export interface ApiCdCd extends Schema.CollectionType {
     singularName: 'cd';
     pluralName: 'cds';
     displayName: 'CDs';
+    description: '';
   };
   options: {
     draftAndPublish: true;
