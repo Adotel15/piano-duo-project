@@ -12,10 +12,10 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             publisher_date: item.attributes.publisher_date,
             image: item.attributes.images?.data ? item.attributes.images?.data[0]?.attributes.url : null,
         }));
-    } else if (collection === 'photos') {
+    } else if (collection === 'gallery') {
         return strapiResponse.map(item => ({
             id: item.id,
-            image: item.attributes.images?.data ? item.attributes.images?.data[0].attributes.url : null,
+            image: item.attributes.photos?.data ? item.attributes.photos?.data[0].attributes.url : null,
         }));
     } else {
         return [];
