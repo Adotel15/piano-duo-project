@@ -2,16 +2,19 @@
 .gallery-page-container{
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .gallery-header-container{
-    width: 90%;
+    width: 100%;
     justify-items: center;
+    align-items: center;
 }
 
 .gallery-container{
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -20,6 +23,13 @@
 }
 
 .photos-container{
-    height: 100px;
+    height: 300px;
     width: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-photo{
+    object-fit: contain;
 }
