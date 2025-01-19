@@ -4,26 +4,22 @@ import Footer from '../../components/footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './Gallery.module.css';
 
-type Photo = {
-    id: string,
-    image: string | null,
-}
-
 const Gallery = () => {
-    const [photos, setPhotos] = useState<Photo[]>([]);
-    const [error, setError] = useState<string | null>(null); // Para manejar errores (opcional)
+    const [photos, setPhotos] = useState<string[]>([]);
+    const [error, setError] = useState<string | null>(null);
+
     const getPhotos = async () => {
         try{
-            const response = await fetch('http://35.204.174.205/api/gallery');
+            const response = await fetch('http://localhost:8081/v1/api/gallery');
             if(!response.ok) {
                 throw new Error(`Error:${response.status} ${response.statusText}`);
             }
+
             const { data } = await response.json();
-            setPhotos(data);
+            setPhotos(data.photos);
         } catch (err) {
-            // Manejo del error
             if (err instanceof Error) {
-                setError(err.message); // Guardar el mensaje de error (opcional)
+                setError(err.message);
                 console.error('Error fetching photos:', err.message);
             } else {
                 console.error('Unknown error occurred:', err);
@@ -47,12 +43,10 @@ const Gallery = () => {
                     <Header content='—Galería'></Header>
                 </div>
                 <div className={styles['gallery-container']}>
-                    {photos.map(photo =>
-                        photo.image ?
-                            <div key={photo.id} className={styles['photos-container']}>
-                                <img className={styles['gallery-photo']} src={photo.image} alt="" />
-                            </div>
-                            : null
+                    {photos.map((photo, index) =>
+                        <div key={index} className={styles['photos-container']}>
+                            <img className={styles['gallery-photo']} src={photo} alt="" />
+                        </div>
                     )}
                 </div>
             </div>
