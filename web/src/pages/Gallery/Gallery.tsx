@@ -11,16 +11,33 @@ type Photo = {
 
 const Gallery = () => {
     const [photos, setPhotos] = useState<Photo[]>([]);
-
+    const [error, setError] = useState<string | null>(null); // Para manejar errores (opcional)
     const getPhotos = async () => {
-        const response = await fetch('http://localhost:8081/v1/api/photos');
-        const { data } = await response.json();
-        setPhotos(data);
+        try{
+            const response = await fetch('http://35.204.174.205/api/gallery');
+            if(!response.ok) {
+                throw new Error(`Error:${response.status} ${response.statusText}`);
+            }
+            const { data } = await response.json();
+            setPhotos(data);
+        } catch (err) {
+            // Manejo del error
+            if (err instanceof Error) {
+                setError(err.message); // Guardar el mensaje de error (opcional)
+                console.error('Error fetching photos:', err.message);
+            } else {
+                console.error('Unknown error occurred:', err);
+            }
+        }
     };
 
     useEffect(() => {
         getPhotos();
     }, []);
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div>
