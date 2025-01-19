@@ -29,7 +29,19 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
                 }))
                 : item.attributes.pieces.data || null,
         }));
-    } else {
+    } else if (collection === 'repertoires'){
+        return strapiResponse.map(item => ({
+            id: item.id,
+            title: item.attributes.title,
+            piece_author: Array.isArray(item.attributes.piece_author?.data)
+                ? item.attributes.piece_author.data.map(piece_author => ({
+                    title: piece_author.title,
+                    author: piece_author.author,
+                }))
+                : item.attributes.piece_author.data || null,
+
+        }));
+    } else{
         return [];
     };
 };
