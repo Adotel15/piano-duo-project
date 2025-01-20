@@ -29,6 +29,12 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
                 }))
                 : item.attributes.pieces.data || null,
         }));
+    } else if (collection === 'audios') {
+        return strapiResponse.map(item => ({
+            id: item.id,
+            name: item.attributes.name,
+
+        }));
     } else {
         return [];
     };
