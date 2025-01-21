@@ -18,6 +18,7 @@ type Repertoire = {
 
 const Repertoire = () => {
     const [Repertoires, setRepertoires] = useState <Repertoire[]> ([]);
+    const [selectedId, setSelectedId] = useState('1');
 
     useEffect(() => {
         getRepertoires();
@@ -27,6 +28,13 @@ const Repertoire = () => {
         const response = await fetch('http://localhost:8081/v1/api/repertoires');
         const { data } = await response.json();
         setRepertoires(data);
+
+        const defaultRepertoire = data.find((rep: Repertoire) => rep.id === '1');
+        if (defaultRepertoire) {
+            setSelectedId(defaultRepertoire.id);
+        } else if (data.length > 0) {
+            setSelectedId(data[0].id);
+        }
     };
 
     return (
@@ -38,10 +46,16 @@ const Repertoire = () => {
             <div className={styles['repertoire-content-container']}>
                 <div className={styles['left-repertoire-container']}>
                     <div className={styles['repertoire-menu-container']}>
-                        {Repertoires.map(Repertoires => {
+                        {Repertoires.map(repertoire => {
                             return (
-                                <div key={Repertoires.id}>
-                                    <p className={styles['repertoire_menu']}>{Repertoires.title}</p>
+                                <div key={repertoire.id}
+                                    onClick={() => setSelectedId(repertoire.id)} defaultValue={'1'}
+                                >
+                                    <p className={`${styles['repertoire-menu']} 
+                                    ${selectedId === repertoire.id ? styles['repertoire-menu-active'] : ''}`}
+                                    >
+                                        {repertoire.title}
+                                    </p>
                                 </div>
                             );
                         })}
@@ -51,7 +65,8 @@ const Repertoire = () => {
                     </div>
                 </div>
                 <div className={styles['right-repertorie-conatiner']}>
-                    {Repertoires.map(Repertoires => {
+                    {selectedId &&
+                    Repertoires.filter(repertoire => repertoire.id === selectedId).map(Repertoires => {
                         return (
                             <div className={styles['repertories-conatiner']}>
                                 <div className={styles['repertorie-title-conatiner']} key={Repertoires.id}>
