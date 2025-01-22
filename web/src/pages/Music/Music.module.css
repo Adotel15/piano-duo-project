@@ -17,22 +17,66 @@
     display: flex;
     margin-bottom: 3.2em;
 }
+
 .images-container{
     width: 500px;
+    
 }
 
 .CD-front-image-container, .CD-back-image-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 0;
+    width: 500px;
+    backface-visibility: hidden; 
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center top;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.show {
+    height: 500px;
+    transform: rotateY(0deg) scale(1) translateY(0);
+    opacity: 1;
+}
+
+.hide {
+    height: 0;
+    transform: rotateY(-90deg) scale(0.9) translateY(-50px);
+    opacity: 0;
+}
+
+ .CD-back-image-containe-only{
     overflow: hidden;
     height: 500px;
     width: 500px;
-}
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+ }
 .CD-image{
     object-fit: contain;
     width: 100%;
     height: auto;
 }
 
+
+
+.toggle-image-container{
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.toggle-image{
+    width: 50px;
+    position: absolute;
+    top: 430px;
+    left: 20px
+}
 .content-container {
     margin-left: 3.2em;
 }
