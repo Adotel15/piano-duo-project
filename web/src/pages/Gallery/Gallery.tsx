@@ -7,6 +7,20 @@ import styles from './Gallery.module.css';
 const Gallery = () => {
     const [photos, setPhotos] = useState<string[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+    const [closing, setClosing] = useState(false);
+
+    const openModal = (photo : string) => {
+        setSelectedPhoto(photo);
+    };
+
+    const closeModal = () => {
+        setClosing(true);
+        setTimeout(() => {
+            setSelectedPhoto(null);
+            setClosing(false); //resetear
+        }, 350); //tiene que coincidir con el tiempo de animacion
+    };
 
     const getPhotos = async () => {
         try{
@@ -44,11 +58,21 @@ const Gallery = () => {
                 </div>
                 <div className={styles['gallery-container']}>
                     {photos.map((photo, index) =>
-                        <div key={index} className={styles['photos-container']}>
+                        <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
                             <img className={styles['gallery-photo']} src={photo} alt="" />
                         </div>
                     )}
                 </div>
+
+                {/* Modal */}
+                {selectedPhoto &&
+                    <div className={`${styles.modal} ${selectedPhoto ? styles.show : ''} ${closing ? styles.closing : ''}`} onClick={closeModal}>
+
+                        <div className={styles['modal-content']} onClick={e => e.stopPropagation()}>
+                            <img src={selectedPhoto} alt="Selected" className={styles['modal-photo']} />
+                        </div>
+                    </div>
+                }
             </div>
             <Footer/>
         </div>

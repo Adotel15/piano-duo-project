@@ -23,14 +23,81 @@
     justify-content: center;
 }
 
-.photos-container{
+.photo-container{
     height: 300px;
     width: auto;
     overflow: hidden;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.photo-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .gallery-photo{
     object-fit: contain;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.modal.show {
+    animation: fadeIn 0.5s ease;
+}
+
+.modal.closing{
+    animation: fadeOut 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+.modal-content {
+    position: relative;
+    cursor: default;
+    }
+
+.modal-photo {
+    max-height: 600px;
+    width: auto;
+    object-fit: contain;
+}
+
+.close-modal {
+  position: absolute;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 11;
 }
