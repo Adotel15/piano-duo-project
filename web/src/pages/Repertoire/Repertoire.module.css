@@ -1,0 +1,121 @@
+.repertoire-page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-repertoire-container {
+    width: 90%;
+}
+
+.repertoire-content-container {
+    width: 90%;
+    display: flex;
+    gap: 200px;
+}
+
+.left-repertoire-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.repertoire-menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.repertoire-menu {
+    font-family: "Cormorant Infant", "Sans Serif";
+    color: var(--secondary_color);
+    font-weight: 600;
+    font-size: 24px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.repertoire-menu::after {
+    content: ""; 
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 0%; 
+    height: 2px;
+    background-color: var(--secondary_color); 
+    transition: width 0.3s ease-in-out;
+}
+
+.repertoire-menu:hover {
+    color: var(--secondary_color);
+}
+
+.repertoire-menu:hover::after {
+    width: 100%;
+}
+
+.repertoire-menu-active::after {
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    height: 2px;
+    background-color: var(--secondary_color); 
+}
+
+.image-repertorie-conatiner {
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.image-repertorie {
+    height: 400px;
+    width: auto;
+}
+
+.right-repertorie-conatiner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.repertories-conatiner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.repertorie-title-conatiner {
+    font-family: "Hind", "Sans Serif";
+    font-size: 24px;
+    color: var(--secondary_color); 
+    font-weight: 500;
+}
+
+.piece-author-content-conatiner {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.piece-author-conatiner{
+    display: flex;
+    align-items:baseline;
+    justify-content: space-between;
+    font-family: "Hind", "Sans Serif";
+    font-size: 18px;
+    color: rgba(34, 45, 82, 1); 
+    font-weight: 400;
+}
+
+.line-repertoire {
+    flex-grow: 1;
+    margin: 0 10px;
+    border-bottom: 2px dashed var(--hover_primary_color);
+    text-overflow: hidden;
+}
