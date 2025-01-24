@@ -1,8 +1,8 @@
-.header-container{
+.header-container {
     margin-left: 4em;
 }
 
-.sections-container{
+.sections-container {
     width: 100%;
     padding-left: 4em;
     padding-right: 4em;
@@ -17,22 +17,64 @@
     display: flex;
     margin-bottom: 3.2em;
 }
-.images-container{
+
+.images-container {
+    height: 500px;
     width: 500px;
+    overflow: hidden;
 }
 
 .CD-front-image-container, .CD-back-image-container {
-    overflow: hidden;
-    height: 500px;
+    display: flex;
+    align-items: flex-start;
+    height: 0;
     width: 500px;
+    backface-visibility: hidden; 
+    transition: all 0.5s ease-in-out;
+    transform-origin: center top;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.CD-image{
+.CD-back-image-container-only {
+    display: flex;
+    align-items: flex-start;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+ }
+
+
+.show {
+    height: auto;
+    transform: rotateY(0deg) scale(1) translateX(0);
+    opacity: 1;
+}
+
+.hide {
+    height: 0;
+    transform: rotateY(-90deg) scale(1) translateX(-50px);
+    opacity: 0;
+}
+
+.CD-image {
     object-fit: contain;
     width: 100%;
     height: auto;
 }
 
+.toggle-image-container {
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.toggle-image{
+    width: 50px;
+    position: absolute;
+    top: 430px;
+    left: 20px
+}
 .content-container {
     margin-left: 3.2em;
 }
@@ -41,7 +83,6 @@
     border-top: #344FAB solid ;
     width: 100%;
     margin-right: 7em;
-
 }
 
 h3 {
@@ -49,7 +90,7 @@ h3 {
     font-size: 1.5em;
     font-weight: 500;
     text-transform: uppercase;
-    
+
 }
 
 .author {
