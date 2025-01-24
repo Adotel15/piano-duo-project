@@ -5,10 +5,6 @@ import Footer from '../../components/footer/Footer';
 
 //Assets
 import toggleImage from '../../assets/Cds/material-symbols_flip-camera-android-rounded.png';
-// import FrontCD1 from '../../assets/Cds/DVD_02.png';
-// import FrontCD2 from '../../assets/Cds/DVD_05.png';
-// import FrontCD3 from '../../assets/Cds/DVD_13.png';
-// import FrontCD4 from '../../assets/Cds/DVD_09.png';
 import { useState, useEffect } from 'react';
 
 type CD = {
@@ -35,7 +31,7 @@ const Music = () => {
     useEffect(() => {
         const initialState = CDs.reduce(
             (acc: { [id: string]: boolean }, cd: CD) => {
-                acc[cd.id] = true; // Assume frontImage is visible initially
+                acc[cd.id] = true; 
                 return acc;
             },
             {}
@@ -46,7 +42,7 @@ const Music = () => {
     const handleToggle = (id: string) => {
         setVisibleStates(prev => ({
             ...prev,
-            [id]: !prev[id], // Invierte el estado de visibilidad para el CD correspondiente
+            [id]: !prev[id],
         }));
     };
 
@@ -93,7 +89,7 @@ const Music = () => {
                                         </div>
                                     </>
                                     :
-                                    <div className={styles['CD-back-image-containe-only']}>
+                                    <div className={styles['CD-back-image-container-only']}>
                                         <img className={styles['CD-image']} src={cd.backImage} alt="CD 1" />
                                     </div>
                                 }
