@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+
+import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
-import Header from '../../components/Header/Header';
+
 import styles from './Gallery.module.css';
 
 const Gallery = () => {
@@ -9,6 +11,7 @@ const Gallery = () => {
     const [error, setError] = useState<string | null>(null);
     const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
     const [closing, setClosing] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const openModal = (photo : string) => {
         setSelectedPhoto(photo);
@@ -18,8 +21,8 @@ const Gallery = () => {
         setClosing(true);
         setTimeout(() => {
             setSelectedPhoto(null);
-            setClosing(false); //resetear
-        }, 350); //tiene que coincidir con el tiempo de animacion
+            setClosing(false);
+        }, 350);
     };
 
     const getPhotos = async () => {
@@ -30,14 +33,12 @@ const Gallery = () => {
             }
 
             const { data } = await response.json();
+
             setPhotos(data.photos);
+            setLoading(false);
         } catch (err) {
-            if (err instanceof Error) {
-                setError(err.message);
-                console.error('Error fetching photos:', err.message);
-            } else {
-                console.error('Unknown error occurred:', err);
-            }
+            setError(`${err}`);
+            setLoading(false);
         }
     };
 
@@ -56,18 +57,21 @@ const Gallery = () => {
                 <div className={styles['gallery-header-container']}>
                     <Header content='—Galería'></Header>
                 </div>
-                <div className={styles['gallery-container']}>
-                    {photos.map((photo, index) =>
-                        <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
-                            <img className={styles['gallery-photo']} src={photo} alt="" />
+                { loading && <div>Loading...</div> }
+                {
+                    !loading &&
+                        <div className={styles['gallery-container']}>
+                            {photos.map((photo, index) =>
+                                <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
+                                    <img className={styles['gallery-photo']} src={photo} alt="" />
+                                </div>
+                            )}
                         </div>
-                    )}
-                </div>
+                }
 
                 {/* Modal */}
                 {selectedPhoto &&
                     <div className={`${styles.modal} ${selectedPhoto ? styles.show : ''} ${closing ? styles.closing : ''}`} onClick={closeModal}>
-
                         <div className={styles['modal-content']} onClick={e => e.stopPropagation()}>
                             <img src={selectedPhoto} alt="Selected" className={styles['modal-photo']} />
                         </div>
