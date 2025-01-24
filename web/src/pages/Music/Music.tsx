@@ -1,11 +1,12 @@
-import styles from './Music.module.css';
+import { useState, useEffect } from 'react';
+
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
 
+import styles from './Music.module.css';
 //Assets
 import toggleImage from '../../assets/Cds/material-symbols_flip-camera-android-rounded.png';
-import { useState, useEffect } from 'react';
 
 type CD = {
     id : string,
@@ -31,7 +32,7 @@ const Music = () => {
     useEffect(() => {
         const initialState = CDs.reduce(
             (acc: { [id: string]: boolean }, cd: CD) => {
-                acc[cd.id] = true; 
+                acc[cd.id] = true;
                 return acc;
             },
             {}
@@ -54,6 +55,7 @@ const Music = () => {
         try{
             const response = await fetch('http://localhost:8081/v1/api/cds');
             const { data } = await response.json();
+            // Antes del setCDS ordenar el data, spoiler .sort()
             setCDs(data);
         } catch (error) {
             console.error('Error fetching CDs:' , error);

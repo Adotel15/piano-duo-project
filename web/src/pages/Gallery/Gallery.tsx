@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import Header from '../../components/Header/Header';
+import Loader from '../../components/Loader/Loader';
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 
@@ -57,13 +58,13 @@ const Gallery = () => {
                 <div className={styles['gallery-header-container']}>
                     <Header content='—Galería'></Header>
                 </div>
-                { loading && <div>Loading...</div> }
+                { loading && <Loader /> }
                 {
                     !loading &&
                         <div className={styles['gallery-container']}>
                             {photos.map((photo, index) =>
                                 <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
-                                    <img className={styles['gallery-photo']} src={photo} alt="" />
+                                    <img className={styles['gallery-photo']} src={photo} alt="" loading="lazy" />
                                 </div>
                             )}
                         </div>
@@ -72,7 +73,7 @@ const Gallery = () => {
                 {/* Modal */}
                 {selectedPhoto &&
                     <div className={`${styles.modal} ${selectedPhoto ? styles.show : ''} ${closing ? styles.closing : ''}`} onClick={closeModal}>
-                        <div className={styles['modal-content']} onClick={e => e.stopPropagation()}>
+                        <div className={styles['modal-content']}>
                             <img src={selectedPhoto} alt="Selected" className={styles['modal-photo']} />
                         </div>
                     </div>
