@@ -32,8 +32,11 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
     } else if (collection === 'audios') {
         return strapiResponse.map(item => ({
             id: item.id,
+            number: item.attributes.number,
             name: item.attributes.name,
-
+            author: item.attributes.author,
+            duration: item.attributes.duration,
+            audio: item.attributes.audio.data ? item.attributes.audio.data.attributes.url : null,
         }));
     } else {
         return [];

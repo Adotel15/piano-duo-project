@@ -1,6 +1,6 @@
 
 
-.media-page-container{
+.media-page-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.media-page-content-container{
+.media-page-content-container {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -16,18 +16,18 @@
     align-items: center;
 }
 
-.media-content-container{
+.media-content-container {
     width: 100%;
 }
 
-.media-buttons-container{
+.media-buttons-container {
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 70px;
 }
 
-.media-button{
+.media-button {
     width: 100px;
     height: 50px;
     background-color: #ffffff00;
@@ -37,6 +37,7 @@
     font-Size: 28px;
     color: rgba(52, 79, 171, 0.51);
     font-weight: 600;
+    cursor: pointer;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -48,4 +49,174 @@
 .media-button.active {
     background-color: var(--hover_primary_color);
     color: var(--secondary_color);
+}
+
+/*AUDIO STYLES*/
+.audios-page-container {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    gap: 50px;
+    justify-content: space-between;
+    color: var(--secondary_color);
+    font-family: "Hind", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+}
+
+.audio-image-container {
+    max-height: 600px;
+    
+}
+
+.audio-image {
+    object-fit: contain;
+    max-height: 600px;
+}
+
+.all-audios-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-content: center;
+}
+
+.audio-content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.audio-section-container, .audio-section-line-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    gap: 15px;
+}
+
+.audio-section-line-container {
+    border-bottom: 1px solid rgba(211, 182, 138, 0.3);
+}
+
+.audio-right-section-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 35%;
+}
+
+.audio-pause-button, .audio-share-download-button {
+    width: 25px;
+    object-fit: contain;
+}
+
+.audio-share-download-button-container {
+    width: 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+.audio-toggle-pause-button {
+    width: 25px;
+    cursor: pointer;
+}
+
+.audio-pause-button {
+    width: 25px;
+    cursor: pointer;
+}
+
+.audio-number {
+    text-align: center;
+    font-size: 20px;
+}
+
+.audio-number.hide {
+    opacity: 0;
+}
+
+.audio-name-author-container {
+    display: flex;
+    flex-direction: column
+}
+
+.audio-slider-timer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 3px;
+    width: 60%;
+}
+
+.audio-slider-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-slider {
+    width: 100%;
+    cursor: pointer;
+    --slider-background: rgba(180, 178, 179, 1);
+    --seek-before-color: rgba(211, 182, 138, 1);
+    --seek-before-width: 50%;
+    appearance: none;
+    position: relative;
+    height: 4px;
+    border-radius: 4px;
+    outline: none;
+    background: var(--slider-background);
+}
+
+/* Chrome, Safari, Opera, and Edge Chromium*/
+.audio-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    background: var(--slider-background);
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Firefox */
+.audio-slider::-moz-range-track {
+    height: 4px;
+    background: var(--slider-background);
+    border-radius: 4px;
+    position: relative;
+}
+
+.audio-slider::before {
+    content: '';
+    background-color: var(--seek-before-color);
+    border-radius: 4px;
+    width: var(--seek-before-width);
+    height: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.audio-slider::-webkit-slider-thumb {
+    border: none;
+    appearance: none;
+    height: 12px;
+    width: 6px;
+    background-color: var(--seek-before-color);
+    border-radius: 50%;
+    margin-top: -4px;
+}
+
+.audio-timer-duration-container {
+    display: flex;
+    font-size: 10px;
+    color: rgba(180, 178, 179, 1);
+    justify-content: space-between;
+    align-items: center;
 }
