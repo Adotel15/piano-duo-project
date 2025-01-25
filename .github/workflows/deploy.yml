@@ -1,41 +1,51 @@
 # .github/workflows/deploy.yml
-name: Testing pipelines
+name: Deploy
 
 on:
   push:
+    branches:
+      - develop
 
 jobs:
-    lint:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
+  build:
+    name: Build
+    runs-on: ubuntu-latest
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: '20'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-        - name: Install dependencies
-          run: npm run configure-dev-environment
+      - name: Setup Node
+        uses: actions/setup-node@v3
 
-        - name: Run linter
-          run: npm run lint
-          
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
+      - name: Install dependencies
+        working-directory: ./web
+        run: npm install
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: '20'
+      - name: Build project
+        working-directory: ./web
+        run: npm run build
 
-        - name: Install dependencies
-          run: npm run configure-dev-environment
-  
-        - name: Run tests
-          run: npm run test  
-    
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: ./web/dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./dist
