@@ -1,4 +1,4 @@
-import { useState,useEffect, useRef } from 'react';
+import { useState,useEffect, /*useRef*/ } from 'react';
 // import AudioPlayer from '../../components/AudioPlayer/AudioPlayer';
 
 import Navbar from '../../components/Navbar/NavBar';
@@ -35,15 +35,15 @@ const Media = () => {
     };
 
     const [isPlaying, setIsPlaying] = useState<string>('');
-    const audioPlayer = useRef();
+    // const audioPlayer = useRef();
     const togglePausePlay = (id: string) => {
         setIsPlaying(prevState => prevState === id ? '' : id);
 
-        if (isPlaying) {
-            audioPlayer.current.play();
-        } else {
-            audioPlayer.current.pause();
-        }
+        // if (isPlaying) {
+        //     audioPlayer.current.play();
+        // } else {
+        //     audioPlayer.current.pause();
+        // }
     };
 
     const [hover, setHover] = useState<string>('');
