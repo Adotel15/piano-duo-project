@@ -27,7 +27,7 @@ const Repertoire = () => {
 
     const getRepertoires = async () => {
         try {
-            const response = await fetch('http://localhost:8081/v1/api/repertoires');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/repertoires`);
             const { data } = await response.json();
             setRepertoires(data);
 

@@ -1,14 +1,16 @@
+import { useState } from 'react';
+
 import Navbar from '../../components/Navbar/NavBar';
-import styles from './Contact.module.css';
-import imageContact from '../../assets/Contact/Concerts_017.png';
-import React, {useState} from 'react';
 import Header from '../../components/Header/Header';
+import Socials from '../../components/Socials/Socials';
+import Footer from '../../components/footer/Footer';
 
 import location from '../../assets/Contact/location.png';
+import imageContact from '../../assets/Contact/Concerts_017.png';
 import phone from '../../assets/Contact/phone.png';
 import mail from '../../assets/Contact/mail.png';
 
-import Socials from '../../components/Socials/Socials';
+import styles from './Contact.module.css';
 
 const Contact = () => {
     type Event = React.ChangeEvent<
@@ -45,7 +47,7 @@ const Contact = () => {
     };
 
     return (
-        <div className={styles['page-container']}>
+        <main className={styles['page-container']}>
             <Navbar/>
             <div className={styles['contact-container']}>
 
@@ -84,7 +86,7 @@ const Contact = () => {
                 <div className={styles['contact-information-container']}>
                     <div className={styles['info-container']}>
                         <img src={location} alt="location icon" className={styles['icon']}/>
-                        <p>location</p>
+                        <p>Barcelona, España</p>
                     </div>
                     <div className={styles['info-container']}>
                         <img src={phone} alt="telephone icon" className={styles['icon']}/>
@@ -92,12 +94,13 @@ const Contact = () => {
                     </div>
                     <div className={styles['info-container']}>
                         <img src={mail} alt="mail icon" className={styles['icon']}/>
-                        <p>mail@example.com</p>
+                        <p>admin@pianoduo.com</p>
                     </div>
                     <Socials/>
                 </div>
             </div>
-        </div>
+            <Footer/>
+        </main>
     );
 };
 

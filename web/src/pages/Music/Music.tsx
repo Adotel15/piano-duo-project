@@ -53,7 +53,7 @@ const Music = () => {
 
     const getCDs = async () => {
         try{
-            const response = await fetch('http://localhost:8081/v1/api/cds');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/cds`);
             const { data } = await response.json();
             // Antes del setCDS ordenar el data, spoiler .sort()
             setCDs(data);

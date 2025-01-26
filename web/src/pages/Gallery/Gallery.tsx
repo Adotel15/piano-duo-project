@@ -28,7 +28,7 @@ const Gallery = () => {
 
     const getPhotos = async () => {
         try{
-            const response = await fetch('http://localhost:8081/v1/api/gallery');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`);
             if(!response.ok) {
                 throw new Error(`Error:${response.status} ${response.statusText}`);
             }

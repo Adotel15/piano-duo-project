@@ -30,7 +30,7 @@ const Reviews = () => {
 
     const getReviews = async () => {
         try {
-            const response = await fetch('http://localhost:8081/v1/api/reviews');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews`);
             const { data } = await response.json();
             setReviews(data);
             setLoading(false);
