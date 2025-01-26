@@ -1,12 +1,12 @@
 import Fastify, { FastifyInstance, FastifyRequest } from 'fastify';
 import cors from '@fastify/cors';
 
-import { StrapiRoutes } from './v1/strapi/route';
+import { StrapiRoutes } from './v1/strapi/route.js';
 
-import { manageError } from './v1/utils/errorHandler';
+import { manageError } from './v1/utils/errorHandler.js';
 
-import { FASTIFY_SERVER_ADDRESS } from './v1/constants/env';
-import { ROUTES } from './config/routes';
+import { FASTIFY_SERVER_ADDRESS } from './v1/constants/env.js';
+import { ROUTES } from './config/routes.js';
 
 class FastifyServer {
     private server: FastifyInstance;
@@ -31,7 +31,8 @@ class FastifyServer {
                 // eslint-disable-next-line no-console
                 console.log(`Fastify API Dev server listening at ${address}!`);
             });
-        } catch (err) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (err: any) {
             manageError(this.server, err);
         }
     };

@@ -1,5 +1,5 @@
-import type { StrapiEndpoints, StrapiResponse } from '../../types/strapi';
-import type { GenericObject } from '../../types/generic';
+import type { StrapiEndpoints, StrapiResponse } from '../../types/strapi.js';
+import type { GenericObject } from '../../types/generic.js';
 
 export class StrapiCache {
     // TODO: Implement functional cache

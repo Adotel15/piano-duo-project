@@ -1,4 +1,4 @@
-import type { StrapiArray, StrapiObject } from '../../types/strapi';
+import type { StrapiArray, StrapiObject } from '../../types/strapi.js';
 
 // TODO: Do this more generic
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,7 +26,8 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             backImage: item.attributes.back?.data ? item.attributes.back?.data?.attributes.url : null,
             subtitle: item.attributes.subtitle,
             pieces: Array.isArray(item.attributes.pieces?.data)
-                ? item.attributes.pieces.data.map(piece => ({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ? item.attributes.pieces.data.map((piece: any) => ({
                     id: piece.id,
                     name: piece.title,
                     sections: piece?.sections ? piece.sections : null,
@@ -39,7 +40,8 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             id: item.id,
             title: item.attributes.title,
             piece_author: Array.isArray(item.attributes.piece_author?.data)
-                ? item.attributes.piece_author.data.map(piece_author => ({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ? item.attributes.piece_author.data.map((piece_author:any) => ({
                     title: piece_author.title,
                     author: piece_author.author,
                 }))

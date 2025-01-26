@@ -7,11 +7,17 @@
         "types": ["jest", "node"],
 
         /* Bundler mode */
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
+        "moduleResolution": "node",
         "isolatedModules": true,
         "moduleDetection": "force",
-        "noEmit": true,
+        "esModuleInterop": true,
+
+        /* Output */
+        "outDir": "./dist",
+        "rootDir": "./app",
+        "declaration": true, 
+        "declarationMap": true, 
+        "sourceMap": true,
 
         /* Linting */
         "strict": true,
@@ -19,5 +25,6 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["app"]
+    "include": ["app"],
+    "exclude": ["node_modules"]
 }

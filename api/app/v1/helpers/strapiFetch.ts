@@ -1,6 +1,6 @@
-import { STRAPI_URL, STRAPI_TOKEN } from '../constants/env';
+import { STRAPI_URL, STRAPI_TOKEN } from '../constants/env.js';
 
-import type { StrapiEndpoints } from '../../types/strapi';
+import type { StrapiEndpoints } from '../../types/strapi.js';
 
 export const strapiFetch = async (collection: StrapiEndpoints, id?: string): Promise<unknown> => {
     const path = id ?

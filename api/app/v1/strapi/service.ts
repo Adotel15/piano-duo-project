@@ -1,12 +1,12 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 
-import { StrapiCache } from './cache';
+import { StrapiCache } from './cache.js';
 
-import { strapiFetch } from '../helpers/strapiFetch';
-import { formatStrapiArray, formatStrapiObject } from '../helpers/formatStrapiData';
+import { strapiFetch } from '../helpers/strapiFetch.js';
+import { formatStrapiArray, formatStrapiObject } from '../helpers/formatStrapiData.js';
 
-import type { StrapiArray,StrapiObject, StrapiResponse, StrapiEndpoints } from '../../types/strapi';
-import type { GenericObject } from '../../types/generic';
+import type { StrapiArray,StrapiObject, StrapiResponse, StrapiEndpoints } from '../../types/strapi.js';
+import type { GenericObject } from '../../types/generic.js';
 
 export class StrapiService {
     strapiCache: StrapiCache;
