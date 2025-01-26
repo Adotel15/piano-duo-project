@@ -7,6 +7,9 @@ export const strapiFetch = async (collection: StrapiEndpoints, id?: string): Pro
         `${STRAPI_URL}/${collection as string}/${id}?populate=*`
         : `${STRAPI_URL}/${collection as string}?populate=*`;
 
+    // eslint-disable-next-line no-console
+    console.log(path);
+
     const response = await fetch(path, {
         method: 'GET',
         headers: {
