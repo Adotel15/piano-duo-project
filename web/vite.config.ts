@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react-swc';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: 'https://adotel15.github.io/piano-duo-project/',
+    base: './',
     test: {
         globals: true,
         environment: 'jsdom',
