@@ -13,13 +13,12 @@ import StartImage from '../../assets/SocialMedia/instagram.png';
 import DownloadImage from '../../assets/Media/material-symbols-light_download.png';
 import ShareImage from '../../assets/Media/material-symbols-light_share-outline.png';
 
-type Audio =
-{
+type Audio = {
     id: string,
-    number: string,
-    name: string,
-    author: string,
-    duration: string,
+    number: string | null,
+    name: string | null,
+    author: string | null,
+    duration: string | null,
     audio: string,
 };
 
@@ -67,13 +66,21 @@ const Media = () => {
 
     const getAudios = async () => {
         try {
+            console.log('inicia fetch');
             const response = await fetch('http://localhost:8081/v1/api/audios');
+            console.log('Respuesta recibida:', response.status);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
             const { data } = await response.json();
+            console.log('muerte');
             setAudio(data);
             setLoading(false);
         } catch (error) {
             // eslint-disable-next-line no-console
-            console.error('Error fetching reviews', error);
+            console.error('Error fetching audios', error);
             setLoading(true);
         }
     };
