@@ -27,7 +27,7 @@ const Footer = () => {
                         <ul className={styles['menu-options-list']}>
                             {menuOptions.map(option =>
                                 <li   className={`${styles['list-container']} ${styles['menu-list-item']}`} key={option.id}>
-                                    <Link to={option.path}>{option.label}</Link>
+                                    <Link to={option.path}>{option.label.es}</Link>
                                 </li>
                             )}
                         </ul>

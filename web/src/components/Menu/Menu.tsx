@@ -1,36 +1,86 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+import { useAppContext } from '../../context/AppContext';
 
 import styles from './Menu.module.css';
 
-import { menuOptions as defaultMenuOptions } from '../../constants/ui';
+import { menuOptions } from '../../constants/ui';
+import { routes } from '../../constants/routes';
 
-import MenuOpen from '../../assets/Menu/menu-open-icon.png';
-import MenuClosed from '../../assets/Menu/menu-closed-icon.png';
+import MusicLogo from '../../assets/Navbar/music-button.png';
 
 const Menu = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const location = useLocation();
+    const { isMenuOpen, language, setLanguage, setIsMenuOpen } = useAppContext();
+
+    const [pageSelected, setPageSelected] = useState<keyof typeof routes | '/'>('/');
+    const languages = ['cat', 'es', 'en'] as const;
+
+    useEffect(() => {
+        const currentPath = Object.entries(routes).find(
+            ([, path]) => path === location.pathname
+        )?.[0] as keyof typeof routes || '/';
+
+        setPageSelected(currentPath);
+    }, [location.pathname]);
 
     return (
         <>
-            <button className={isMenuOpen ? styles['menu-open'] : styles['menu-closed']} onClick={toggleMenu}>
-                <img src={isMenuOpen ? MenuOpen : MenuClosed} alt="Menu Icon"/>
-            </button>
-
-            {isMenuOpen &&
-                <div className={styles['menu-container']}>
-                    <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles.show : ''}`}>
-                        {defaultMenuOptions.map(option =>
-                            <li key={option.id}>
-                                <Link to={option.path}>{option.label}</Link>
-                            </li>
-                        )}
-                    </ul>
+            <button
+                className={isMenuOpen ? styles['menu-open'] : styles['menu-closed']}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+                <div className={styles['hamburger-icon']}>
+                    <span className={styles['bar']}></span>
+                    <span className={styles['bar']}></span>
                 </div>
-            }
+            </button>
+            <div className={`${styles['menu-container']} ${isMenuOpen ? styles['open'] : ''}`}>
+                <ul className={`${styles['menu-dropdown']} ${isMenuOpen ? styles['show'] : ''}`}>
+                    {menuOptions.map(option =>
+                        <Link
+                            key={option.id}
+                            className={`
+                                ${styles['menu-item']} 
+                                ${styles['item']} 
+                                ${pageSelected === option.path.slice(1) ? styles['page-selected'] : ''}
+                            `}
+                            to={option.path}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            <p className={styles['menu-link']}>{option.label.es}</p>
+                            {
+                                option.subtitle &&
+                                    <p className={styles['menu-subtitle']}>({option.subtitle.es})</p>
+                            }
+                        </Link>
+                    )}
+                </ul>
+                <div className={`${styles['menu-footer']} ${isMenuOpen ? '' : styles['hide']}`}>
+                    <div className={styles['music-control-container']}>
+                        <img src={MusicLogo} alt="turn-on-off-music" />
+                    </div>
+                    <div>
+                        {
+                            languages.map((lang, index) =>
+                                <button
+                                    key={lang}
+                                    className={`${styles['language'] } ${language === lang ? styles['language-selected'] : ''}`}
+                                    onClick={() => setLanguage(lang)}
+                                >
+                                    {lang}
+                                    {
+                                        index !== languages.length - 1 &&
+                                        <span className={styles['separator']}></span>
+                                    }
+                                </button>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+
         </>
     );
 };

@@ -9,17 +9,19 @@ import Music from '../pages/Music/Music';
 import Repertoire from '../pages/Repertoire/Repertoire';
 import Biography from '../pages/Biography/Biography';
 
+import { routes } from '../constants/routes';
+
 const AppRoutes = () =>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="biography" element={<Biography />}/>
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="media" element={<Media />} />
-            <Route path="gallery" element={<Gallery />}/>
-            <Route path="music" element={<Music />}/>
-            <Route path="repertoire" element={<Repertoire />}/>
-            <Route path="contact" element={<Contact />} />
+            <Route path={routes.biography} element={<Biography />}/>
+            <Route path={routes.reviews} element={<Reviews />} />
+            <Route path={routes.media} element={<Media />} />
+            <Route path={routes.gallery} element={<Gallery />}/>
+            <Route path={routes.music} element={<Music />}/>
+            <Route path={routes.repertoire} element={<Repertoire />}/>
+            <Route path={routes.contact} element={<Contact />} />
         </Routes>
     </BrowserRouter>
 ;
