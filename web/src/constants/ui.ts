@@ -1,49 +1,75 @@
+import { routes } from './routes';
 
-export interface MenuOptions{
-    id: number;
-    label: string;
-    path: string;
-}
+import { MenuOptions } from '../types';
 
 export const menuOptions: MenuOptions[] = [
     {
         id: 0,
-        label: 'Home',
-        path: '/'
+        label: {
+            es: 'Biografía',
+            en: 'Biography',
+            cat: 'Biografia'
+        },
+        path: routes.biography,
     },
     {
         id: 1,
-        label: 'Biografía',
-        path: '/biography',
+        label: {
+            es:'Prensa',
+            en: 'Press',
+            cat: 'Premsa'
+        },
+        path: routes.reviews,
     },
     {
         id: 2,
-        label: 'Prensa',
-        path: '/reviews',
-    },
-    {
-        id: 3,
-        label: 'Media',
-        path: '/media',
-    },
-    {
-        id: 4,
-        label: 'Galería',
-        path: '/gallery',
+        label: {
+            es: 'Media',
+            en: 'Media',
+            cat: 'Mitjans'
+        },
+        subtitle: {
+            es: 'audios y videos',
+            en: 'audios and videos',
+            cat: 'audios i videos'
+        },
+        path: routes.media,
     },
     {
         id: 5,
-        label: 'Música',
-        path: '/music',
+        label: {
+            es: 'Repertorio',
+            en: 'Repertoire',
+            cat: 'Repertori'
+        },
+        path: routes.repertoire,
+    },
+    {
+        id: 3,
+        label: {
+            es: 'Galería',
+            en: 'Gallery',
+            cat: 'Galeria'
+        },
+        path: routes.gallery,
+    },
+    {
+        id: 4,
+        label:{
+            es:'CDS',
+            en: 'CDS',
+            cat: 'CD\'S'
+        },
+        path: routes.music,
     },
     {
         id: 6,
-        label: 'Repertorio',
-        path: '/repertoire',
-    },
-    {
-        id: 7,
-        label: 'Contacto',
-        path: '/contact',
+        label: {
+            es: 'Contacto',
+            en: 'Contact',
+            cat: 'Contacte'
+        },
+        path: routes.contact,
     },
 ];
+
