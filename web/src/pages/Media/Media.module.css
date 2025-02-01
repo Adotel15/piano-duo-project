@@ -51,7 +51,7 @@
     color: var(--secondary_color);
 }
 
-/*AUDIO STYLES*/
+/*************AUDIO STYLES****************/
 .audios-page-container {
     width: 100%;
     display: flex;
@@ -83,3 +83,18 @@
     align-content: center;
 }
 
+
+/*************VIDEO STYLES****************/
+
+.videos-page-container {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    gap: 50px;
+    justify-content: center;
+    color: var(--secondary_color);
+    font-family: "Hind", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    flex-wrap: wrap;
+}

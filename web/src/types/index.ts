@@ -6,3 +6,9 @@ export type AudioPlayerType =  {
     duration: string,
     audio: string
 }
+
+export type VideoPlayerType = {
+    id: number,
+    title: string,
+    link: string
+}
