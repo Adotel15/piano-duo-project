@@ -24,6 +24,7 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
     const audioPlayerRef = useRef<ReactAudioPlayer>(null);
+    const sliderRef = useRef<HTMLInputElement>(null);
 
     const formatTime = (seconds: number) => {
         const mins = Math.floor(seconds / 60);
@@ -58,13 +59,23 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
         }
     }, [isPlaying, id]);
 
+    useEffect(() => {
+        if (sliderRef.current && audioDuration > 0) {
+            const progressPercent = (currentTime / audioDuration) * 100;
+            sliderRef.current.style.setProperty('--seek-before-width', `${progressPercent}%`);
+        }
+    }, [currentTime, audioDuration]);
+
     const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const audioElement = audioPlayerRef.current?.audioEl.current;
-        if (!audioElement) return;
+        if (!audioElement || !audioDuration) return;
 
         const newTime = Number(e.target.value);
         audioElement.currentTime = newTime;
         setCurrentTime(newTime);
+
+        const progressPercent = newTime / audioDuration * 100;
+        e.target.style.setProperty('--seek-before-width', `${progressPercent}%`);
     };
 
     const handlePlayPause = () => {
@@ -104,10 +115,11 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                     <div className={styles['audio-slider-timer-container']}>
                         <div className={styles['audio-slider-container']}>
                             <input
+                                ref={sliderRef}
                                 type="range"
                                 className={styles['audio-slider']}
                                 min={0}
-                                max={audioDuration || 1}
+                                max={audioPlayerRef.current?.audioEl.current?.duration || 0}
                                 value={currentTime}
                                 onChange={handleSliderChange}
                             />
