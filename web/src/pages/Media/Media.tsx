@@ -32,67 +32,39 @@ const Media = () => {
         setIsPlaying(prevState => prevState === id ? -1 : id);
     };
 
-    /*const getData = async () => {
+    const getData = async () => {
         try {
-            const audioData = fetch('http://localhost:8081/v1/api/audios');
-            //const videoData = fetch('https://api.example.com/video');
-
-            const [audio] = await Promise.all([audioData]);
-
-            const { data:dataAudio } = audio;
-            //const { data:dataVideo } = video;
-
-            setAudio(dataAudio);
-            //setVideo(dataVideo);
-        }catch(error) {
-            console.log(error);
-        }
-    }; */
-
-    const getAudios = async () => {
-        try {
-            console.log('inicia fetch');
-            const response = await fetch('http://localhost:8081/v1/api/audios');
-            console.log('Respuesta recibida:', response.status);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const { data } = await response.json();
-            console.log(data);
-            setAudio(data);
-            setLoading(false);
-        } catch (error) {
-            // eslint-disable-next-line no-console
-            console.error('Error fetching audios', error);
             setLoading(true);
-        }
-    };
-    const getVideos = async () => {
-        try {
-            console.log('inicia fetch');
-            const response = await fetch('http://localhost:8081/v1/api/videos');
-            console.log('Respuesta recibida:', response.status);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            const [audiosResponse, videosResponse] = await Promise.all([
+                fetch('http://localhost:8081/v1/api/audios'),
+                fetch('http://localhost:8081/v1/api/videos')
+            ]);
+            if (!audiosResponse.ok || !videosResponse.ok) {
+                const errorMessage = `HTTP error! Audios: ${audiosResponse.status}, Videos: ${videosResponse.status}`;
+                throw new Error(errorMessage);
             }
-
-            const { data } = await response.json();
-            console.log(data);
-            setVideo(data);
-            setLoading(false);
+            const [audiosData, videosData] = await Promise.all([
+                audiosResponse.json(),
+                videosResponse.json()
+            ]);
+            setAudio(audiosData.data);
+            setVideo(videosData.data);
         } catch (error) {
-            // eslint-disable-next-line no-console
-            console.error('Error fetching audios', error);
-            setLoading(true);
+            console.error('Error fetching media:', error);
+            if (error instanceof Error) {
+                if (error.message.includes('Audios')) {
+                    console.error('Error específico en audios');
+                } else if (error.message.includes('Videos')) {
+                    console.error('Error específico en videos');
+                }
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        getAudios();
-        getVideos();
+        getData();
     }, []);
 
     return(

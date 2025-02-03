@@ -3,7 +3,6 @@ import type { StrapiArray, StrapiObject } from '../../types/strapi';
 // TODO: Do this more generic
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any>>, collection:string) => {
-    console.log('strapiResponse:', strapiResponse);
     if(collection === 'reviews') {
         return strapiResponse.map(item => ({
             id: item.id,
@@ -22,7 +21,8 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             backImage: item.attributes.back?.data ? item.attributes.back?.data?.attributes.url : null,
             subtitle: item.attributes.subtitle,
             pieces: Array.isArray(item.attributes.pieces?.data)
-                ? item.attributes.pieces.data.map(piece => ({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ? item.attributes.pieces.data.map((piece: Record<string, any>) => ({
                     id: piece.id,
                     name: piece.title,
                     sections: piece?.sections ? piece.sections : null,
@@ -31,25 +31,6 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
                 : item.attributes.pieces.data || null,
         }));
     } else if (collection === 'audios') {
-        console.log('audios');
-        return strapiResponse.map(item => {
-            console.log('id:', item?.id);
-            console.log('number:', item?.attributes?.number);
-            console.log('name:', item?.attributes?.name);
-            console.log('author:', item?.attributes?.author);
-            console.log('duration:', item?.attributes?.duration);
-            console.log('audio url:', item?.attributes?.audio?.data?.attributes?.url);
-
-            return {
-                id: item?.id,
-                number: item?.attributes?.number ?? null,
-                name: item?.attributes?.name ?? null,
-                author: item?.attributes?.author ?? null,
-                duration: item?.attributes?.duration ?? null,
-                audio: item?.attributes?.audio?.data?.attributes?.url ?? null,
-            };
-        });
-
         return strapiResponse.map(item => ({
             id: item.id,
             number: item.attributes.number ? item.attributes.number : null,
@@ -57,6 +38,12 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             author: item.attributes.author ? item.attributes.author : null,
             duration: item.attributes.duration ? item.attributes.duration : null,
             audio: item.attributes.audio.data ? item.attributes.audio.data.attributes.url : null,
+        }));
+    } else if (collection === 'videos') {
+        return strapiResponse.map(item => ({
+            id: item.id,
+            title: item.attributes.title,
+            link: item.attributes.link,
         }));
     } else {
         return [];
