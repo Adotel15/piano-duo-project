@@ -1,7 +1,9 @@
 import { useRef, useEffect } from 'react';
-import styles from './VideoPlayer.module.css';
-import { VideoPlayerType } from '../../types';
 import ReactPlayer from 'react-player';
+
+import styles from './VideoPlayer.module.css';
+
+import { VideoPlayerType } from '../../types';
 
 type VideoPlayerProps ={
     data : VideoPlayerType

@@ -14,7 +14,7 @@ type AudioPlayerProps = {
     data: AudioPlayerType,
     hover: number,
     setHover: (id: number) => void,
-    isPlaying: number,
+    isPlaying: number | null,
     togglePausePlay: (id: number) => void,
 }
 
