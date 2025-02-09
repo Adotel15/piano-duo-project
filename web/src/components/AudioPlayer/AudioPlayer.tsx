@@ -3,8 +3,8 @@ import ReactAudioPlayer from 'react-audio-player';
 
 import PauseImage from '../../assets/Media/gridicons_pause.png';
 import StartImage from '../../assets/SocialMedia/instagram.png';
-import DownloadImage from '../../assets/Media/material-symbols-light_download.png';
-import ShareImage from '../../assets/Media/material-symbols-light_share-outline.png';
+// import DownloadImage from '../../assets/Media/material-symbols-light_download.png';
+// import ShareImage from '../../assets/Media/material-symbols-light_share-outline.png';
 
 import styles from './AudioPlayer.module.css';
 
@@ -140,14 +140,14 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                     />
                 </div>
 
-                <div className={styles['audio-share-download-button-container']}>
+                {/* <div className={styles['audio-share-download-button-container']}>
                     <div className={styles['audio-share-download-button-container']}>
                         <img src={ShareImage}  className={styles['audio-share-download-button']} alt="" />
                     </div>
                     <div className={styles['audio-share-download-button-container']}>
                         <img src={DownloadImage}  className={styles['audio-share-download-button']} alt="" />
                     </div>
-                </div>
+                </div> */}
             </section>
         </div>
     );
