@@ -2,13 +2,9 @@ import { useState } from 'react';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
-import Socials from '../../components/Socials/Socials';
 import Footer from '../../components/footer/Footer';
 
-import location from '../../assets/Contact/location.png';
 import imageContact from '../../assets/Contact/Concerts_017.png';
-import phone from '../../assets/Contact/phone.png';
-import mail from '../../assets/Contact/mail.png';
 
 import styles from './Contact.module.css';
 
@@ -83,21 +79,6 @@ const Contact = () => {
                         </form>
                     </div>
                 </section>
-                <div className={styles['contact-information-container']}>
-                    <div className={styles['info-container']}>
-                        <img src={location} alt="location icon" className={styles['icon']}/>
-                        <p>Barcelona, España</p>
-                    </div>
-                    <div className={styles['info-container']}>
-                        <img src={phone} alt="telephone icon" className={styles['icon']}/>
-                        <p>00000000</p>
-                    </div>
-                    <div className={styles['info-container']}>
-                        <img src={mail} alt="mail icon" className={styles['icon']}/>
-                        <p>admin@pianoduo.com</p>
-                    </div>
-                    <Socials/>
-                </div>
             </div>
             <Footer/>
         </main>
