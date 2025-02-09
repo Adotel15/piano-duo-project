@@ -43,7 +43,6 @@ const Menu = () => {
                             key={option.id}
                             className={`
                                 ${styles['menu-item']} 
-                                ${styles['item']} 
                                 ${pageSelected === option.path.slice(1) ? styles['page-selected'] : ''}
                             `}
                             to={option.path}
