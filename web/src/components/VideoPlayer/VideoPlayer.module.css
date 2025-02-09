@@ -1,0 +1,12 @@
+.video-title-container {
+    width:  600px;
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 600px;
+    height: auto;
+}

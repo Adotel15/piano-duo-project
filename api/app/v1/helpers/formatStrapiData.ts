@@ -30,13 +30,28 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             subtitle: item.attributes.subtitle,
             pieces: Array.isArray(item.attributes.pieces?.data)
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                ? item.attributes.pieces.data.map((piece: any) => ({
+                ? item.attributes.pieces.data.map((piece: Record<string, any>) => ({
                     id: piece.id,
                     name: piece.title,
                     sections: piece?.sections ? piece.sections : null,
                     status: piece?.status? piece.status : null,
                 }))
                 : item.attributes.pieces.data || null,
+        }));
+    } else if (collection === 'audios') {
+        return strapiResponse.map(item => ({
+            id: item.id,
+            number: item.attributes.number ? item.attributes.number : null,
+            name: item.attributes.name ? item.attributes.name : null,
+            author: item.attributes.author ? item.attributes.author : null,
+            duration: item.attributes.duration ? item.attributes.duration : null,
+            audio: item.attributes.audio.data ? item.attributes.audio.data.attributes.url : null,
+        }));
+    } else if (collection === 'videos') {
+        return strapiResponse.map(item => ({
+            id: item.id,
+            title: item.attributes.title,
+            link: item.attributes.link,
         }));
     } else if (collection === 'repertoires'){
         return strapiResponse.map(item => ({
