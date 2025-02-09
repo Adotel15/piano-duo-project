@@ -4,7 +4,7 @@ import type { StrapiArray, StrapiObject } from '../../types/strapi.js';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any>>, collection: string) => {
     if (collection === 'reviews') {
-        const data = strapiResponse.map(item => ({
+        return strapiResponse.map(item => ({
             id: item.id,
             title: item.attributes.title,
             content: item.attributes.content,
@@ -12,15 +12,12 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
             publisher_date: item.attributes.publisher_date,
             image: item.attributes.images?.data ? item.attributes.images?.data[0]?.attributes.url : null,
         }));
-        // eslint-disable-next-line no-console
-        console.log(data);
-        return data;
     } else if (collection === 'gallery') {
         return {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             photos: (strapiResponse as any).attributes.photos?.data.map((photo:Record<string, any>) => photo.attributes.url),
         };
-    }  else if (collection === 'cds') {
+    } else if (collection === 'cds') {
         return strapiResponse.map(item => ({
             id: item.id,
             title: item.attributes.title,
