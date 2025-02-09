@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
 
-import imageContact from '../../assets/Contact/Concerts_017.png';
+import imageContact from '../../assets/Contact/Estudi_003.jpg';
 
 import styles from './Contact.module.css';
 

@@ -12,7 +12,6 @@
 }
 
 .section-contact {
-
     display: flex;
     justify-content: center;
     gap: 60px;
@@ -22,10 +21,19 @@
 }
 
 .container-image-contact{
-    height: 39em;
-    width: 33em;
-    object-fit: contain;
+    height: 600px;
+    width: 400px;
+    object-fit: cover;
     overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.image-contact {
+    width: 400px;
+    align-self: flex-end;
+    justify-self: flex-end;
 }
 
 .form-container{
@@ -103,6 +111,7 @@ input[type="text"]:focus, .contact-textarea:focus {
     background-color: var(--hover_primary_color);
     outline: none;
     border-radius: 0.2em;
+    font-family: 'Hind', serif;
 }
 
 label > span{
@@ -129,4 +138,33 @@ input[type="submit"]:hover {
 
 @media (max-width: 760px) {
     
+    .form-container {
+    width: 100%;
+    }
+
+    .section-contact {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+
+        width: 90%;
+        margin-top: 30px;
+    }
+
+    .container-image-contact {
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        overflow: hidden;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .image-contact {
+        height: 600px;
+        align-self: center;
+        justify-self: center;
+    }
 }
