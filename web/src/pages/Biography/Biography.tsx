@@ -15,7 +15,7 @@ const Biography = () => {
             </div>
             <div className={styles['content-container']}>
                 <section className={styles['titles-container']}>
-                    <div>
+                    <div >
                         <ul className={styles['biography_element']}>
                             <h3 className={styles['title-list']}>{data.educationSection.header}</h3>
                             {data.educationSection.educations.map(education =>
@@ -49,6 +49,9 @@ const Biography = () => {
                         )}
                     </div>
                     <img className={styles['image-biography']} src={data.image} alt="Concert" />
+                    <div className={styles['text-image-container-biography']}>
+                        <p className={styles['text-image-biography']}>Carnegie Hall, Weill Recital Hall</p>
+                    </div>
                 </section>
             </div>
             <Footer />
