@@ -5,7 +5,7 @@ import Home from '../pages/Home/Home';
 import Media from '../pages/Media/Media';
 import Reviews from '../pages/Reviews/Reviews';
 import Gallery from '../pages/Gallery/Gallery';
-import Music from '../pages/Music/Music';
+import Cds from '../pages/CDs/Cds';
 import Repertoire from '../pages/Repertoire/Repertoire';
 import Biography from '../pages/Biography/Biography';
 
@@ -19,7 +19,7 @@ const AppRoutes = () =>
             <Route path={routes.reviews} element={<Reviews />} />
             <Route path={routes.media} element={<Media />} />
             <Route path={routes.gallery} element={<Gallery />}/>
-            <Route path={routes.music} element={<Music />}/>
+            <Route path={routes.music} element={<Cds />}/>
             <Route path={routes.repertoire} element={<Repertoire />}/>
             <Route path={routes.contact} element={<Contact />} />
         </Routes>
