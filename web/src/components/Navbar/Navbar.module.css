@@ -42,3 +42,9 @@
 .control-container img:hover {
     cursor: pointer;
 }
+
+@media (max-width: 1195px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+}
