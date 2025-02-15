@@ -6,10 +6,10 @@ import { menuOptions } from '../../constants/ui';
 
 import Logo from '../../assets/PianoDuoLogo.png';
 import Youtube from '../../assets/Socials/youtube_1.png';
-import Linkedin from '../../assets/Socials/Linkedin.png';
-import Facebook from '../../assets/Socials/Facebook_1.png';
 import Spotify from '../../assets/Socials/Spotify.png';
-import Instagram from '../../assets/Socials/Instagram.png';
+// import Linkedin from '../../assets/Socials/Linkedin.png';
+// import Facebook from '../../assets/Socials/Facebook_1.png';
+// import Instagram from '../../assets/Socials/Instagram.png';
 
 const Footer = () => {
     return (
@@ -34,9 +34,9 @@ const Footer = () => {
                     </div>
                     <div className={styles['socials-list-container']}>
                         <li className={styles['list-container']}><img src={Youtube} alt="" /></li>
-                        <li className={styles['list-container']}><img src={Linkedin} alt="" /></li>
-                        <li className={styles['list-container']}><img src={Instagram} alt="" /></li>
-                        <li className={styles['list-container']}><img src={Facebook} alt="" /></li>
+                        {/* <li className={styles['list-container']}><img src={Linkedin} alt="" /></li> */}
+                        {/* <li className={styles['list-container']}><img src={Instagram} alt="" /></li> */}
+                        {/* <li className={styles['list-container']}><img src={Facebook} alt="" /></li> */}
                         <li className={styles['list-container']}><img src={Spotify} alt="" /></li>
                     </div>
                 </div>
