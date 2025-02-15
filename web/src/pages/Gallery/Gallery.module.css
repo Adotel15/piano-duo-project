@@ -8,10 +8,8 @@
     margin-bottom: 70px;
 }
 
-.gallery-header-container{
-    width: 100%;
-    justify-items: center;
-    align-items: center;
+.gallery-header-container {
+    width: 90%;
 }
 
 .gallery-container{
@@ -95,9 +93,25 @@
 }
 
 .close-modal {
-  position: absolute;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  z-index: 11;
+    position: absolute;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 11;
+}
+
+@media (max-width: 768px ) {
+    .gallery-container {
+        width: 95%;
+        gap: 15px;
+    }
+
+    .photo-container {
+        height: 150px;
+    }
+
+    .modal-photo {
+        max-height: 80vh;
+        max-width: 90vw;
+    }
 }

@@ -8,22 +8,32 @@
     display: flex;
     gap: 10em;
     padding-bottom: 100px;
+    justify-content: center;
 }
 
 .section-contact {
-    margin-left: 5em;
     display: flex;
-    gap: 3em;
+    justify-content: center;
+    gap: 60px;
     align-items: flex-end;
-    width: 65%;
+    width: 90%;
     margin-top: 2rem;
 }
 
 .container-image-contact{
-    height: 39em;
-    width: 33em;
-    object-fit: contain;
+    height: 600px;
+    width: 400px;
+    object-fit: cover;
     overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.image-contact {
+    width: 400px;
+    align-self: flex-end;
+    justify-self: flex-end;
 }
 
 .form-container{
@@ -101,6 +111,7 @@ input[type="text"]:focus, .contact-textarea:focus {
     background-color: var(--hover_primary_color);
     outline: none;
     border-radius: 0.2em;
+    font-family: 'Hind', serif;
 }
 
 label > span{
@@ -125,28 +136,35 @@ input[type="submit"]:hover {
     background-color: var(--secondary_color);
 }
 
+@media (max-width: 760px) {
+    
+    .form-container {
+    width: 100%;
+    }
 
-/*Contact info*/
-.contact-information-container{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin-top: 2rem;
-}
+    .section-contact {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
 
-.info-container{
-    display: flex;
-    gap: 0.5em;
-    font-family: 'Hind', sans-serif;
-    font-size: 1em;
-    font-weight: 500;
-    color: var(--secondary_color);
-    align-items: flex-end;
-    text-align: end;
-    margin-bottom: 1.3em;
-}
+        width: 90%;
+        margin-top: 30px;
+    }
 
-.icon{
-    height: 1.5em;
-    width: 1.5em;
+    .container-image-contact {
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        overflow: hidden;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .image-contact {
+        height: 600px;
+        align-self: center;
+        justify-self: center;
+    }
 }

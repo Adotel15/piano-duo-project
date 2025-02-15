@@ -13,7 +13,8 @@
 .repertoire-content-container {
     width: 90%;
     display: flex;
-    gap: 200px;
+    justify-content: space-between;
+    gap: 100px;
 }
 
 .left-repertoire-container {
@@ -82,6 +83,7 @@
     flex-direction: column;
     gap: 50px;
 }
+
 .repertories-conatiner {
     width: 100%;
     display: flex;
@@ -97,14 +99,16 @@
     font-weight: 500;
 }
 
-.piece-author-content-conatiner {
+.piece-author-content-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 5px;
 }
 
 .piece-author-conatiner{
     display: flex;
+    width: 100%;
     align-items:baseline;
     justify-content: space-between;
     font-family: "Hind", "Sans Serif";
@@ -118,4 +122,98 @@
     margin: 0 10px;
     border-bottom: 2px dashed var(--hover_primary_color);
     text-overflow: hidden;
+}
+
+.image-repertorie-conatiner-mobile {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+}
+
+@media (min-width: 931px) and (max-width: 1510px) {
+    .piece-author-4-content-container{
+        gap: 10px;
+    }
+
+    .piece-author-4-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 930px) {
+
+    .image-repertorie-conatiner {
+    height: 0px;
+    overflow: hidden;
+    }
+
+
+    .repertoire-content-container {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0 20px;
+    }
+
+    .left-repertoire-container {
+    gap: 30px;
+    }
+
+    .image-repertorie {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    }
+
+    .repertoire-menu {
+    font-size: 24px;
+    }
+
+    .repertorie-title-conatiner {
+    font-size: 20px;
+    }
+
+    .piece-author-content-conatiner {
+    gap: 30px;
+    }
+
+    .piece-author-conatiner {
+    flex-direction: column;
+    align-items: flex-start;
+    align-items:baseline;
+    justify-content: space-between;
+    font-size: 18px;
+    }
+
+    .line-repertoire {
+    flex-grow: 1;
+    margin: 0 10px;
+    border-bottom: 2px dashed var(--hover_primary_color);
+    text-overflow: hidden;
+    }
+
+    .header-repertoire-container {
+    width: 100%;
+    padding: 0 20px;
+    }
+
+    .right-repertorie-conatiner {
+    gap: 30px;
+    }
+
+    .image-repertorie-conatiner-mobile {
+    height: 400px;
+    width: auto;
+    object-fit: contain;
+    overflow: hidden;
+    margin-top: 20px;
+    position:relative;
+    }
+
+    .image-repertorie-mobile{
+    height: 400px;
+    width: auto;
+    }
 }

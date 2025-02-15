@@ -21,7 +21,6 @@ const Biography = () => {
                             {data.educationSection.educations.map(education =>
                                 <li className={styles['list-container']}>{education.school}<br />{education.location} </li>
                             )}
-
                         </ul>
                     </div>
                     <div>
@@ -49,6 +48,9 @@ const Biography = () => {
                         )}
                     </div>
                     <img className={styles['image-biography']} src={data.image} alt="Concert" />
+                    <div className={styles['text-image-container-biography']}>
+                        <p className={styles['text-image-biography']}>Carnegie Hall, Weill Recital Hall</p>
+                    </div>
                 </section>
             </div>
             <Footer />

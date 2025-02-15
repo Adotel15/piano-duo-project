@@ -78,10 +78,10 @@ const Repertoire = () => {
                                 <div className={styles['repertorie-title-conatiner']} key={repertoire.id}>
                                     <div>{repertoire.title}</div>
                                 </div>
-                                <div className={styles['piece-author-content-conatiner']}>
+                                <div className={`${styles['piece-author-content-container']} ${repertoire.id === '4' ? styles['piece-author-4-content-container'] : ''}`}>
                                     {repertoire.piece_author.map(piece_author => {
                                         return (
-                                            <div className={styles['piece-author-conatiner']}>
+                                            <div className={`${styles['piece-author-conatiner']} ${repertoire.id === '4' ? styles['piece-author-4-container'] : ''}`}>
                                                 <p>{piece_author.title}</p>
                                                 <p className={styles['line-repertoire']}></p>
                                                 <p>{piece_author.author}</p>
@@ -93,7 +93,9 @@ const Repertoire = () => {
                         );
                     })}
                 </div>
-
+                <div className={styles['image-repertorie-conatiner-mobile']}>
+                    <img className={styles['image-repertorie-mobile']} src={ReperoireImage} alt="Repertoire" />
+                </div>
             </div>
             <Footer/>
         </div>
