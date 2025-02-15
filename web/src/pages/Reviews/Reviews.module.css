@@ -86,13 +86,14 @@
 }
 
 .review-image-container {
-    width: 500px;
+    height: 500px;
+    width: auto;
+    object-fit: contain;
 }
 
 .review-image {
-    position: relative;
     height: 100%;
-    width: 100%;
+
 }
 
 .closed {
@@ -106,5 +107,16 @@
 }
 
 
+@media(max-width: 800px) {
+    .publisher-date{
+        font-size: 18px;
+        font-weight: 500;
+    }
 
+    .title{
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+}
 

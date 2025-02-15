@@ -77,9 +77,15 @@ const Reviews = () => {
                                     }`}
                                 >
                                     <p className={styles['content']}>{review.content} <br/>{review.reviewer}</p>
-                                    <div className={styles['review-image-container']}>
-                                        <img className={styles['review-image']} src={review.image} alt={review.title} />
-                                    </div>
+                                    {review.image ?
+                                        <>
+                                            <div className={styles['review-image-container']}>
+                                                <img className={`${styles['review-image']} `} src={review.image} alt={review.title} />
+                                            </div>
+                                        </>
+                                        :
+                                        ''
+                                    }
                                 </div>
                             </section>
                         );
