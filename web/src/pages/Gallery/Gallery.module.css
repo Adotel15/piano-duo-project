@@ -8,10 +8,8 @@
     margin-bottom: 70px;
 }
 
-.gallery-header-container{
-    width: 100%;
-    justify-items: center;
-    align-items: center;
+.gallery-header-container {
+    width: 90%;
 }
 
 .gallery-container{

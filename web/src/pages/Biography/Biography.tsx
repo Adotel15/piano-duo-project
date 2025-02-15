@@ -15,13 +15,12 @@ const Biography = () => {
             </div>
             <div className={styles['content-container']}>
                 <section className={styles['titles-container']}>
-                    <div >
+                    <div>
                         <ul className={styles['biography_element']}>
                             <h3 className={styles['title-list']}>{data.educationSection.header}</h3>
                             {data.educationSection.educations.map(education =>
                                 <li className={styles['list-container']}>{education.school}<br />{education.location} </li>
                             )}
-
                         </ul>
                     </div>
                     <div>
