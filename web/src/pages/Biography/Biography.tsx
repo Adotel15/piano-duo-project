@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
@@ -7,11 +9,12 @@ import styles from'./Biography.module.css';
 import { data } from '../../data/biography';
 
 const Biography = () => {
+    const { t } = useTranslation();
     return (
         <main className={styles['page-container']}>
             <Navbar/>
             <div className={styles['header-container']}>
-                <Header content='—Biografía'></Header>
+                <Header content={t('biography.title')}></Header>
             </div>
             <div className={styles['content-container']}>
                 <section className={styles['titles-container']}>

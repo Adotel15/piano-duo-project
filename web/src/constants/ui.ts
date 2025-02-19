@@ -5,70 +5,38 @@ import { MenuOptions } from '../types';
 export const menuOptions: MenuOptions[] = [
     {
         id: 0,
-        label: {
-            es: 'Biografía',
-            en: 'Biography',
-            cat: 'Biografia'
-        },
+        jsonKey: 'biography',
         path: routes.biography,
     },
     {
         id: 1,
-        label: {
-            es:'Prensa',
-            en: 'Press',
-            cat: 'Premsa'
-        },
+        jsonKey: 'reviews',
         path: routes.reviews,
     },
     {
         id: 2,
-        label: {
-            es: 'Media',
-            en: 'Media',
-            cat: 'Mitjans'
-        },
-        subtitle: {
-            es: 'audios y videos',
-            en: 'audios and videos',
-            cat: 'audios i videos'
-        },
+        jsonKey: 'media',
+        subtitleKey: 'audioAndVideo',
         path: routes.media,
     },
     {
         id: 5,
-        label: {
-            es: 'Repertorio',
-            en: 'Repertoire',
-            cat: 'Repertori'
-        },
+        jsonKey: 'repertoire',
         path: routes.repertoire,
     },
     {
         id: 3,
-        label: {
-            es: 'Galería',
-            en: 'Gallery',
-            cat: 'Galeria'
-        },
+        jsonKey: 'gallery',
         path: routes.gallery,
     },
     {
         id: 4,
-        label:{
-            es:'CDS',
-            en: 'CDS',
-            cat: 'CD\'S'
-        },
+        jsonKey: 'cds',
         path: routes.music,
     },
     {
         id: 6,
-        label: {
-            es: 'Contacto',
-            en: 'Contact',
-            cat: 'Contacte'
-        },
+        jsonKey: 'contact',
         path: routes.contact,
     },
 ];

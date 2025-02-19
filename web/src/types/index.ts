@@ -1,15 +1,7 @@
 export interface MenuOptions {
     id: number;
-    label: {
-        es: string;
-        en: string;
-        cat: string
-    };
-    subtitle?: {
-        es: string;
-        en: string;
-        cat: string
-    };
+    jsonKey: string;
+    subtitleKey?: string;
     path: string;
 }
 

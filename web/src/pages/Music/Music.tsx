@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
@@ -7,6 +8,9 @@ import Footer from '../../components/footer/Footer';
 import styles from './Music.module.css';
 //Assets
 import toggleImage from '../../assets/Cds/material-symbols_flip-camera-android-rounded.png';
+
+import fetchData from '../../utils/api';
+import i18n from '../../../i18n';
 
 type CD = {
     id : string,
@@ -24,12 +28,14 @@ type CD = {
 }
 
 const Music = () => {
-    const [CDs, setCDs] = useState <CD[]> ([]);
-    const [visibleStates, setVisibleStates] = useState<{ [id: string]: boolean }>(
-        {}
-    );
+    const [CDs, setCDs] = useState <CD[] | null> ([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [visibleStates, setVisibleStates] = useState<{ [id: string]: boolean }>({});
+
+    const { t } = useTranslation();
 
     useEffect(() => {
+        if(!CDs) return;
         const initialState = CDs.reduce(
             (acc: { [id: string]: boolean }, cd: CD) => {
                 acc[cd.id] = true;
@@ -53,10 +59,10 @@ const Music = () => {
 
     const getCDs = async () => {
         try{
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/cds`);
-            const { data } = await response.json();
+            const data = await fetchData<CD[]>('cds', i18n.language);
             // Antes del setCDS ordenar el data, spoiler .sort()
             setCDs(data);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching CDs:' , error);
         }
@@ -66,10 +72,12 @@ const Music = () => {
         <div>
             <Navbar/>
             <div className={styles['header-container']}>
-                <Header content='—Cds'></Header>
+                <Header content={t('cds.title')}></Header>
             </div>
             <div className={styles['sections-container']}>
-                {CDs.map(cd => {
+                {/** This should not happen */}
+                {!loading && (CDs?.length === 0 || !CDs) && <p>Language not translated</p>}
+                {CDs && CDs.map(cd => {
                     const isFrontVisible = visibleStates[cd.id];
                     return (
                         <section key={cd.id} className={styles['section-cd']}>

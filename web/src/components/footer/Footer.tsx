@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import styles from './Footer.module.css';
 
@@ -12,6 +13,7 @@ import Spotify from '../../assets/Socials/Spotify.png';
 // import Instagram from '../../assets/Socials/Instagram.png';
 
 const Footer = () => {
+    const { t } = useTranslation();
     return (
         <div className={styles['component-container']}>
             <div className={styles['footer-container']}>
@@ -27,7 +29,7 @@ const Footer = () => {
                         <ul className={styles['menu-options-list']}>
                             {menuOptions.map(option =>
                                 <li   className={`${styles['list-container']} ${styles['menu-list-item']}`} key={option.id}>
-                                    <Link to={option.path}>{option.label.es}</Link>
+                                    <Link to={option.path}>{t(`menu.${option.jsonKey}`)}</Link>
                                 </li>
                             )}
                         </ul>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { useAppContext } from '../../context/AppContext';
 
@@ -12,10 +13,11 @@ import MusicLogo from '../../assets/Navbar/music-button.png';
 
 const Menu = () => {
     const location = useLocation();
-    const { isMenuOpen, language, setLanguage, setIsMenuOpen } = useAppContext();
+    const { isMenuOpen, i18n, setIsMenuOpen } = useAppContext();
+    const { t } = useTranslation();
 
     const [pageSelected, setPageSelected] = useState<keyof typeof routes | '/'>('/');
-    const languages = ['cat', 'es', 'en'] as const;
+    const languages = ['ca', 'es', 'en'] as const;
 
     useEffect(() => {
         const currentPath = Object.entries(routes).find(
@@ -48,10 +50,10 @@ const Menu = () => {
                             to={option.path}
                             onClick={() => setIsMenuOpen(false)}
                         >
-                            <p className={styles['menu-link']}>{option.label.es}</p>
+                            <p className={styles['menu-link']}>{t(`menu.${option.jsonKey}`)}</p>
                             {
-                                option.subtitle &&
-                                    <p className={styles['menu-subtitle']}>({option.subtitle.es})</p>
+                                option.subtitleKey &&
+                                    <p className={styles['menu-subtitle']}>{t(`menu.${option.subtitleKey}`)}</p>
                             }
                         </Link>
                     )}
@@ -65,8 +67,12 @@ const Menu = () => {
                             languages.map((lang, index) =>
                                 <button
                                     key={lang}
-                                    className={`${styles['language'] } ${language === lang ? styles['language-selected'] : ''}`}
-                                    onClick={() => setLanguage(lang)}
+                                    className={`${styles['language'] } ${i18n?.language === lang ? styles['language-selected'] : ''}`}
+                                    onClick={() => {
+                                        i18n?.changeLanguage(lang);
+                                        setIsMenuOpen(false);
+                                        window.location.reload();
+                                    }}
                                 >
                                     {lang}
                                     {

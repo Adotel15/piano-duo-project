@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
@@ -10,6 +11,9 @@ import minImage from '../../assets/Reviews/bitcoin-icons_plus-outline.png';
 import plusImage from '../../assets/Reviews/plusbtn.png';
 import Loader from '../../components/Loader/Loader';
 
+import fetchData from '../../utils/api';
+import i18n from '../../../i18n';
+
 type Review = {
     id : string,
     title: string,
@@ -20,9 +24,11 @@ type Review = {
 }
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState <Review[]> ([]);
+    const [reviews, setReviews] = useState <Review[] | null> ([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [minimized, setMinimized] = useState<string>('-1');
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         getReviews();
@@ -30,8 +36,7 @@ const Reviews = () => {
 
     const getReviews = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews`);
-            const { data } = await response.json();
+            const data = await fetchData<Review[]>('reviews', i18n.language);
             setReviews(data);
             setLoading(false);
         } catch (error) {
@@ -50,11 +55,13 @@ const Reviews = () => {
             <Navbar />
             <div className={styles['container']}>
                 <div>
-                    <Header content='—Prensa'></Header>
+                    <Header content={t('reviews.title')}></Header>
                 </div>
                 <div className={styles['reviews-container']}>
                     {loading && <Loader />}
-                    {!loading && reviews.map(review => {
+                    {/** This should not happen */}
+                    {!loading && (reviews?.length === 0 || !reviews) && <p>Language not translated</p>}
+                    {!loading && reviews && reviews.map(review => {
                         return (
                             <section key={review.id} className={styles['review-section-container']}>
                                 <div className={styles['heading-container']} onClick={() => openReview(review.id)}>

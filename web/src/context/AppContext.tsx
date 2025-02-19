@@ -1,3 +1,4 @@
+import { i18n } from 'i18next';
 import {
     createContext,
     useState,
@@ -6,24 +7,23 @@ import {
     SetStateAction,
     ReactNode,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type AppContextType = {
     isMenuOpen: boolean;
     setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-    language: 'es' | 'cat' | 'en';
-    setLanguage: Dispatch<SetStateAction<'es' | 'cat' | 'en'>>;
+    i18n: i18n | null;
 }
 
 const AppContext = createContext<AppContextType>({
     isMenuOpen: false,
     setIsMenuOpen: () => {},
-    language: 'es',
-    setLanguage: () => {},
+    i18n: null,
 });
 
 const AppProvider = ({ children }:{ children: ReactNode }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [language, setLanguage] = useState<'es'|'cat'|'en'>('es');
+    const { i18n } = useTranslation();
 
     // Cuando se ponga la música se puede manejar por aquí
     // const [isMusicPlaying, setIsMusicPlaying] = useState(false);
@@ -31,9 +31,8 @@ const AppProvider = ({ children }:{ children: ReactNode }) => {
     return (
         <AppContext.Provider value={{
             isMenuOpen,
-            language,
             setIsMenuOpen,
-            setLanguage,
+            i18n
         }}>
             {children}
         </AppContext.Provider>
