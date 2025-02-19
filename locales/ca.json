@@ -1,0 +1,32 @@
+{
+    "menu": {
+        "biography": "Biografia",
+        "reviews": "Premsa",
+        "media": "Mèdia",
+        "repertoire": "Repertori",
+        "gallery": "Galeria",
+        "cds": "CDs",
+        "contact": "Contacte"
+    },
+    "biography": {
+        "title": "—Biografia"
+    },
+    "reviews": {
+        "title": "—Premsa"
+    },
+    "media": {
+        "title": "—Mèdia"
+    },
+    "repertoire": {
+        "title": "—Repertori"
+    },
+    "gallery": {
+        "title": "—Galeria"
+    },
+    "cds": {
+        "title": "—CDs"
+    },
+    "contact": {
+        "title": "—Contacte"
+    }
+}
