@@ -8,9 +8,9 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
     plugins: [react()],
     base: '/',
-    // server: {
-    //     port: 8080,
-    // },
+    server: {
+        port: 8080,
+    },
     test: {
         globals: true,
         environment: 'jsdom',
