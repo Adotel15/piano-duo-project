@@ -15,13 +15,13 @@ export class StrapiService {
         this.strapiCache = new StrapiCache();
     }
 
-    getAll = async (collection: StrapiEndpoints, _: FastifyRequest, reply: FastifyReply): Promise<void> => {
-        const collectionData = await strapiFetch(collection) as StrapiResponse;
+    getAll = async (collection: StrapiEndpoints, _: FastifyRequest, language: string, reply: FastifyReply): Promise<void> => {
+        const collectionData = await strapiFetch(collection, language) as StrapiResponse;
         return reply.code(200).send({ data: formatStrapiArray(collectionData.data as StrapiArray<GenericObject>, collection) });
     };
 
-    getOne = async (collection: StrapiEndpoints, id: string, _: FastifyRequest, reply: FastifyReply): Promise<void> => {
-        const collectionData = await strapiFetch(collection, id) as StrapiResponse;
+    getOne = async (collection: StrapiEndpoints, id: string, _: FastifyRequest, language: string, reply: FastifyReply): Promise<void> => {
+        const collectionData = await strapiFetch(collection, language, id) as StrapiResponse;
         return reply.code(200).send({ data: formatStrapiObject(collectionData.data as StrapiObject<GenericObject>, /*collection*/) });
     };
 }

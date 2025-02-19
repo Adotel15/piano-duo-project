@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import AudioPlayer from '../../components/AudioPlayer/AudioPlayer';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
@@ -13,13 +14,18 @@ import AudioImage from '../../assets/Media/Concerts_022 2.png';
 
 import { AudioPlayerType, VideoPlayerType } from '../../types';
 
+import i18n from '../../../i18n';
+import fetchData from '../../utils/api';
+
 const Media = () => {
     const [page, setPage] = useState<'audio' | 'video'>('audio');
     const [loading, setLoading] = useState<boolean>(true);
     const [isPlaying, setIsPlaying] = useState<number | null>(null);
     const [hover, setHover] = useState<number>(-1);
-    const [audio, setAudio] = useState <AudioPlayerType[]> ([]);
-    const [video, setVideo] = useState <VideoPlayerType[]> ([]);
+    const [audio, setAudio] = useState <AudioPlayerType[] | null> ([]);
+    const [video, setVideo] = useState <VideoPlayerType[] | null> ([]);
+
+    const { t } = useTranslation();
 
     const onChangePage = (page: 'audio' | 'video') => {
         setPage(page);
@@ -34,19 +40,11 @@ const Media = () => {
         try {
             setLoading(true);
             const [audiosResponse, videosResponse] = await Promise.all([
-                fetch(`${import.meta.env.VITE_API_URL}/audios`),
-                fetch(`${import.meta.env.VITE_API_URL}/videos`),
+                fetchData<AudioPlayerType[]>('audios', i18n.language),
+                fetchData<VideoPlayerType[]>('videos', i18n.language),
             ]);
-            if (!audiosResponse.ok || !videosResponse.ok) {
-                const errorMessage = `HTTP error! Audios: ${audiosResponse.status}, Videos: ${videosResponse.status}`;
-                throw new Error(errorMessage);
-            }
-            const [audiosData, videosData] = await Promise.all([
-                audiosResponse.json(),
-                videosResponse.json()
-            ]);
-            setAudio(audiosData.data);
-            setVideo(videosData.data);
+            setAudio(audiosResponse);
+            setVideo(videosResponse);
         } catch (error) {
             // eslint-disable-next-line no-console
             console.error('Error fetching media', error);
@@ -63,7 +61,7 @@ const Media = () => {
         <div className={styles['media-page-container']}>
             <Navbar/>
             <div className={styles['media-page-content-container']}>
-                <Header content="—Media"></Header>
+                <Header content={t('media.title')}></Header>
                 <div className={styles['media-content-container']}>
                     <div className={styles['media-buttons-container']}>
                         <button
@@ -82,8 +80,10 @@ const Media = () => {
                     {page === 'audio' &&
                         <main className={styles['audios-page-container']}>
                             {loading && <Loader />}
+                            {/** This should not happen */}
+                            {!loading && (audio?.length === 0 || !audio) && <p>Language not translated</p>}
                             <div className={styles['all-audios-container']}>
-                                {!loading && audio.map(audios => {
+                                {!loading && audio && audio.map(audios => {
                                     return (
                                         <AudioPlayer
                                             key={audios.id}
@@ -104,7 +104,9 @@ const Media = () => {
                     {page === 'video' &&
                         <main className={styles['videos-page-container']}>
                             {loading && <Loader />}
-                            {!loading && video.map(videos =>{
+                            {/** This should not happen */}
+                            {!loading && (video?.length === 0 || !video) && <p>Language not translated</p>}
+                            {!loading && video && video.map(videos =>{
                                 return(
                                     <VideoPlayer
                                         data={videos}

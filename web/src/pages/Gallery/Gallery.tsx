@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 
+import fetchData from '../../utils/api';
+
 import styles from './Gallery.module.css';
+import i18n from '../../../i18n';
 
 const Gallery = () => {
-    const [photos, setPhotos] = useState<string[]>([]);
+    const [photos, setPhotos] = useState<string[] | null>([]);
     const [error, setError] = useState<string | null>(null);
     const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
     const [closing, setClosing] = useState(false);
     const [loading, setLoading] = useState(true);
+
+    const { t } = useTranslation();
 
     const openModal = (photo : string) => {
         setSelectedPhoto(photo);
@@ -28,14 +34,8 @@ const Gallery = () => {
 
     const getPhotos = async () => {
         try{
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`);
-            if(!response.ok) {
-                throw new Error(`Error:${response.status} ${response.statusText}`);
-            }
-
-            const { data } = await response.json();
-
-            setPhotos(data.photos);
+            const data = await fetchData<{ photos: string[] }>('gallery', i18n.language);
+            setPhotos(data?.photos ?? []);
             setLoading(false);
         } catch (err) {
             setError(`${err}`);
@@ -56,11 +56,13 @@ const Gallery = () => {
             <Navbar/>
             <div className={styles['gallery-page-container']}>
                 <div className={styles['gallery-header-container']}>
-                    <Header content='—Galería'></Header>
+                    <Header content={t('gallery.title')}></Header>
                 </div>
                 { loading && <Loader /> }
+                {/** This should not happen */}
+                {!loading && (photos?.length === 0 || !photos) && <p>Language not translated</p>}
                 {
-                    !loading &&
+                    !loading && photos &&
                         <div className={styles['gallery-container']}>
                             {photos.map((photo, index) =>
                                 <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>

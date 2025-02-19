@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
@@ -9,6 +10,7 @@ import imageContact from '../../assets/Contact/Estudi_003.jpg';
 import styles from './Contact.module.css';
 
 const Contact = () => {
+    const { t } = useTranslation();
     type Event = React.ChangeEvent<
     HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >;
@@ -52,7 +54,7 @@ const Contact = () => {
                         <img className={styles['image-contact']} src={imageContact} alt="Pianists"/>
                     </div>
                     <div className={styles['form-container']}>
-                        <Header content='—Contacto'></Header>
+                        <Header content={t('contact.title')}></Header>
                         <form className={styles['contact-form-container']} onSubmit={handleSubmit}>
                             <label htmlFor="name">Nombre</label>
                             <input className={styles['input-form']} name='name' id="name" type="text" onChange={e => onChange(e)}/>
