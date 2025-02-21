@@ -1,9 +1,9 @@
-.page-container{
+.page-container {
     width: 100%;
     color: var(--secondary_color);
 }
 
-.container{
+.container {
     width: 90%;
     display: flex;
     justify-self: center;
@@ -35,13 +35,14 @@
     cursor: pointer;
     padding: 10px 10px;
     border-radius: 0.3em;
+    gap: 50px;
 }
 
 .heading-container:hover {
     background-color: var(--hover_primary_color);
 }
 
-.content-container{
+.content-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -52,16 +53,17 @@
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.title-publisher-date-container{
+.title-publisher-date-container {
     width: 100%;
     display: flex;
+    gap: 50px;
 }
 
-.title-container{
-    width: 80%;
+.title-container {
+    width: 70%;    
 }
 
-.title{
+.title {
     font-size: 20px;
     font-weight: 600;
 }
@@ -70,12 +72,12 @@
     width: 20%;
 }
 
-.publisher-date{
+.publisher-date {
     font-size: 24px;
     font-weight: 500;
 }
 
-.min-button{
+.min-button {
     width: 2em;
     height: 2em;
     transition: transform 0.3s ease;
@@ -93,7 +95,6 @@
 
 .review-image {
     height: 100%;
-
 }
 
 .closed {
@@ -107,9 +108,10 @@
 }
 
 
-@media(max-width: 800px) {
+@media(max-width: 1000px) {
+
     .publisher-date{
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 500;
     }
 
@@ -118,5 +120,43 @@
         font-weight: 600;
     }
 
+    .publisher-date-container {
+        width: 30%;
+        align-items: end;
+    }
+
+    .title-publisher-date-container {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .heading-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+        padding: 10px 10px;
+        border-radius: 0.3em;
+        gap: 15px;
+    }
+
+    .content-container {
+        width: 100%;
+    }
+
+    .review-image-container {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .review-image {
+        height: auto;
+        width: 100%;
+        object-fit: contain;
+    }
 }
 
