@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 import PauseImage from '../../assets/Media/gridicons_pause.png';
-import StartImage from '../../assets/SocialMedia/instagram.png';
+import StartImage from '../../assets/Media/gridicons_play.svg';
 // import DownloadImage from '../../assets/Media/material-symbols-light_download.png';
 // import ShareImage from '../../assets/Media/material-symbols-light_share-outline.png';
 
@@ -95,12 +95,12 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                         >
                             {isPlaying === id ?
                                 <div>
-                                    <img src={StartImage} className={styles['audio-pause-button']} alt="start" />
+                                    <img src={PauseImage} className={styles['audio-pause-button']} alt="start" />
                                 </div>
                                 :
                                 hover === id ?
                                     <div className={styles['audio-pause-button-container']}>
-                                        <img src={PauseImage} className={styles['audio-pause-button']} alt="Pause" />
+                                        <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
                                     </div>
                                     :
                                     <p className={styles['audio-number']}>{number}</p>
