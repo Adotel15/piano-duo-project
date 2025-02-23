@@ -107,8 +107,8 @@ const Media = () => {
                             {!loading && video.map(videos =>{
                                 return(
                                     <VideoPlayer
-                                        data={videos}
                                         key={videos.id}
+                                        data={videos}
                                         isActive={isPlaying === videos.id}
                                         onPlay={() => setIsPlaying(videos.id)}
                                     />
