@@ -19,9 +19,10 @@
 }
 
 .images-container {
-    height: 500px;
-    width: 500px;
+    height: auto;
+    width: 40%;
     overflow: hidden;
+    position: relative;
 }
 
 .CD-front-image-container, .CD-back-image-container {
@@ -33,16 +34,19 @@
     transition: all 0.5s ease-in-out;
     transform-origin: center top;
     z-index: 1;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    height: auto;
+    width: 100%;
 }
 
 .CD-back-image-container-only {
     display: flex;
     align-items: flex-start;
     height: auto;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
- }
+    width: 500px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+    }
 
 
 .show {
@@ -65,6 +69,8 @@
 
 .toggle-image-container {
     position: absolute;
+    height: 100%;
+    width: 100%;
     cursor: pointer;
     z-index: 5;
 }
@@ -72,9 +78,10 @@
 .toggle-image {
     width: 50px;
     position: absolute;
-    top: 430px;
-    left: 20px
+    top: 85%;
+    left: 5%;
 }
+
 .content-container {
     margin-left: 3.2em;
 }
@@ -85,12 +92,11 @@
     margin-right: 7em;
 }
 
-h3 {
+.h3 {
     padding-top: 0.5em;
     font-size: 1.5em;
     font-weight: 500;
     text-transform: uppercase;
-
 }
 
 .author {
@@ -104,25 +110,6 @@ h3 {
     font-weight: 500;
 }
 
-.extraMusic-listItem {
-    font-weight:400;
-    line-height: 1.5em;
-    padding-left: 15px;
-    margin-top: -5px;
-}
-
-.CD3-orderedList {
-    display: flex;
-    padding-left: 15px;
-    justify-content: space-between;
-    max-width: 40em;
-    line-height: 1.9em;
-    font-weight: 500;
-}
-
-.CD4-subtitle {
-    margin-top: 1.7em;
-}
 
 .pieces-list {
     font-size: 14px;
@@ -131,4 +118,65 @@ h3 {
 
 .piece-status-incative {
     color: #cdcdcde2;
+}
+
+.piece-sections-container {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 800px) {
+    .section-cd {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: #344FAB solid ;
+    }
+
+    .content-container {
+        margin-left: 0;
+    }
+
+    .h3-container {
+        border: none;
+        width: 100%;
+        font-size: 14px;
+        margin-right: 0;
+    }
+
+    .CD-image {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+    }
+
+    .sections-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        color: #344FAB;
+        font-family: 'Hind', sans-serif;
+    }
+
+    .pieces-list {
+        font-size: 10px;
+        line-height: 1.9em;
+    }
+
+    
+    .images-container {
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .toggle-image {
+        width: 40px;
+        position: absolute;
+        top: 85%;
+        left: 5%;
+    }
 }

@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
 
-import styles from './Music.module.css';
+import styles from './Cds.module.css';
 //Assets
 import toggleImage from '../../assets/Cds/material-symbols_flip-camera-android-rounded.png';
 
@@ -107,7 +107,7 @@ const Music = () => {
 
                             <div className={styles['content-container']}>
                                 <div className={styles['h3-container']}>
-                                    <h3>{cd.title}</h3>
+                                    <h3 className={styles['h3']}>{cd.title}</h3>
                                 </div>
                                 <p className={styles['author']}>{cd.composer}</p>
                                 <h4>{cd.subtitle}</h4>
@@ -116,8 +116,15 @@ const Music = () => {
                                         {cd.pieces && cd.pieces.map(piece =>
                                             <li className= {`${
                                                 piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
-                                            }`} key={piece.id}>{piece.name}
-                                                <ol>{piece.sections}</ol>
+                                            }`} key={piece.id}> {piece.name}
+                                                <ol className={styles['piece-sections-container']}>
+                                                    {piece.sections?.map((section, index) =>
+                                                        <li key={`${piece.id}-section-${index}`}
+                                                            className={styles['piece-sections-container']}>
+                                                            {section}
+                                                        </li>
+                                                    )}
+                                                </ol>
                                             </li>
                                         )}
                                     </ol>

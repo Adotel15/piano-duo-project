@@ -7,6 +7,23 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    width: 600px;
+    width: 100%;
     height: auto;
+}
+
+@media (max-width: 768px) {
+
+    .video-title-container {
+    height: 350px;
+    justify-content: center;
+    }
+
+    .video-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        width: auto;
+        height: 100%;
+    }
 }

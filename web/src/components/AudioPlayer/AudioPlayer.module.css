@@ -136,3 +136,11 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media (max-width: 943px) {
+        .audio-number {
+        text-align: start;
+        font-size: 15px;
+    }
+
+}
