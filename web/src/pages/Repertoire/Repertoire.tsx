@@ -118,8 +118,9 @@ const Repertoire = () => {
             {/** MOBILE */}
             <section className={styles['repertoire-content-container-mobile']}>
                 <div className={styles['repertoire-list-container-mobile']}>
+                    {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
                     {
-                        repertoires.map(repertoire =>
+                        repertoires && repertoires.map(repertoire =>
                             <section
                                 key={repertoire.id}
                                 className={styles['repertoire-list-element-mobile']}
