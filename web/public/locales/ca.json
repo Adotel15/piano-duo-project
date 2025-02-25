@@ -9,7 +9,88 @@
         "contact": "Contacte"
     },
     "biography": {
-        "title": "—Biografia"
+        "title": "—Biografia",
+        "educationSection": {
+            "header": "Formació",
+            "educations": [
+                {
+                    "school": "Conservatori del Liceu.",
+                    "location": "Barcelona"
+                },
+                {
+                    "school": "Acadèmia Franz Liszt.",
+                    "location": "Budapest"
+                },
+                {
+                    "school": "Manhattan School of Music.",
+                    "location": "Nova York"
+                }
+            ]
+        },
+        "titlesSection": {
+            "header": "Títols",
+            "titles": [
+                {
+                    "title": "“Doctor of Musical Arts”",
+                    "school": "Manhattan School of Music.",
+                    "location": "Nova York"
+                },
+                {
+                    "title": "“Master of Music”",
+                    "school": "Manhattan School of Music.",
+                    "location": "Nova York"
+                }
+            ]
+        },
+        "awardsSection": {
+            "header": "Premis",
+            "awards": [
+                {
+                    "award": "1r Premi",
+                    "contest": "Concurs Jeunesses Musicales — Espanya"
+                },
+                {
+                    "award": "1r Premi",
+                    "contest": "Concursos internacionals de Finale-Ligure — Espanya"
+                },
+                {
+                    "award": "Premi especial “Amics de Mozart”",
+                    "contest": "Concurs Internacional de Música de Cambra — París"
+                },
+                {
+                    "award": "2n Premi",
+                    "contest": "Caltanissetta — Itàlia"
+                },
+                {
+                    "award": "3r Premi",
+                    "contest": "Concurs de dos pianos “Murray Dranoff” — Miami"
+                },
+                {
+                    "award": "1r Premi",
+                    "contest": "Audicions d'Artistes Internacionals"
+                }
+            ]
+        },
+        "biographyContent": {
+            "header": "Lluís i Lourdes Pérez-Molina",
+            "paragraphs": [
+                {
+                    "paragraph": "Lluís i Mª Lourdes Pérez Molina formen un destacat duet de pianos, reconegut per les seves actuacions a nivell nacional i internacional. Tots dos germans van realitzar els estudis al Conservatori Superior de Música del Liceu de Barcelona, l’Acadèmia Franz Liszt de Budapest i la Manhattan School of Music de Nova York, on van obtenir un <span>Màster</span> i un <span>Doctorat en Arts Musicals</span>."
+                },
+                {
+                    "paragraph": "Al llarg de la seva carrera professional han realitzat gires de concerts a països com Espanya, Itàlia, Suïssa, Hongria, Bulgària, Estats Units (Nova York, Nova Jersey, Illinois, Missouri, Connecticut, Wisconsin i Florida) i Colòmbia (Bogotà, Cali, Medellín i Bucaramanga)."
+                },
+                {
+                    "paragraph": "Com a solistes, han col·laborat amb orquestres com l’Orquestra Simfònica de Barcelona i Nacional de Catalunya, la European Union Chamber Orchestra, l’Orquestra Filharmònica de Florida, la Real Filharmonía de Galícia, els 'Solistes de Catalunya', l’Orquestra Simfònica del “Valle del Cauca”, l’Orquestra Simfònica “Julià Carbonell”, sota la direcció de reconeguts directors com Antoni Ros Marbà, Christian Zacharias, Francesco Belli, Matthias Wollong, Virgínia Martínez, Alfons Reverté, ..."
+                },
+                {
+                    "paragraph": "El duet ha gravat diversos CDs (<span>Els 2 pianos al segle XX</span>, <span>Fantasies per a duet de pianos</span>, etc.), i ha realitzat nombroses gravacions per a ràdios i televisions tant a Espanya com a l’estranger. A més, han rebut múltiples premis de música de cambra, incloent el <span>primer premi</span> al V Concurs Permanent de Joventuts Musicals d’Espanya, el <span>segon premi</span> al II Concurs Yamaha, el <span>premi especial 'Amics de Mozart'</span> al Concurs Internacional de Música de Cambra de París, <span>primer premi</span> a Finale-Ligure (Itàlia), <span>segon premi</span> a Caltanissetta (Itàlia) i el <span>tercer premi</span> al Concurs Internacional “Dranoff” per a dos pianos de Miami. L’any 1993 van guanyar l’“Artists International Auditions” i van ser presentats en un debut a Nova York a la Weill Recital Hall del Carnegie Hall, fet que va suposar un important impuls a la seva carrera professional."
+                },
+                {
+                    "paragraph": "Cal destacar la tasca de recerca que han dut a terme els germans Pérez Molina en el coneixement de la literatura per a dos pianos i piano a quatre mans."
+                }
+            ]
+        }
     },
     "reviews": {
         "title": "—Premsa"
@@ -27,6 +108,20 @@
         "title": "—CDs"
     },
     "contact": {
-        "title": "—Contacte"
+        "title": "—Contacte",
+        "form": {
+            "name": "Nom",
+            "email": "Correu electrònic",
+            "case": "Assumpte",
+            "message": "Missatge",
+            "terms": "He llegit i accepto els <span>termes i condicions</span> i accepto la <span>política de privacitat</span>",
+            "send": "Enviar"
+        }
+    },
+    "footer": {
+        "rights": "© 2024. Pérez Molina Piano Dúo. Tots els drets reservats",
+        "terms": "Termes i condicions",
+        "privacy": "Política de privacitat",
+        "cookies": "Política de galetes"
     }
 }
