@@ -123,7 +123,9 @@
                 "subject": "*Enter the subject",
                 "message": "*Enter the message",
                 "terms": "*You must accept the terms and conditions and the privacy policy"
-            }
+            },
+            "success": "Message sent successfully, we will contact you as soon as possible",
+            "failure": "There was an error sending the message, please try again"
         }
     },
     "footer": {

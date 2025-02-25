@@ -123,7 +123,9 @@
                 "subject": "*Introdueix l'assumpte",
                 "message": "*Introdueix el missatge",
                 "terms": "*Has d'acceptar els termes i condicions i la política de privacitat"
-            }
+            },
+            "success": "Missatge enviat correctament, ens posarem en contacte amb tu al més aviat possible",
+            "failure": "Hi ha hagut un error en enviar el missatge, si us plau, intenta-ho de nou"
         }
     },
     "footer": {

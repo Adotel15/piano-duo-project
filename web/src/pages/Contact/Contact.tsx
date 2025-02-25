@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import {  useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Navbar from '../../components/Navbar/NavBar';
@@ -22,7 +22,7 @@ const Contact = () => {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const validateForm = () => {
+    const validateForm = useCallback(() => {
         const newErrors: Record<string, string> = {};
         const fields = ['name', 'email', 'subject', 'message'] as const;
 
@@ -38,14 +38,37 @@ const Contact = () => {
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
-    };
+    }, [formData, t]);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (validateForm()) {
-            // TODO: Call api
+        if (!validateForm()) return;
+
+        try {
+            const { name, email, subject, message } = formData;
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/send-mail`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    from: email,
+                    subject: `${name} - ${subject}`,
+                    content: message,
+                }),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.error);
+            }
+
+            alert(t('contact.form.success'));
+            setFormData(prev => ({ ...prev, name: '', email: '', subject: '', message: '', terms: false }));
+        } catch (error) {
+            // eslint-disable-next-line no-console
+            console.error('Error:', error);
+            alert(t('contact.form.failure'));
         }
-    };
+    }, [formData, validateForm, t]);
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const target = event.target as HTMLInputElement;
