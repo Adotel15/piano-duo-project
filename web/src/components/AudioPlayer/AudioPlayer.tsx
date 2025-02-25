@@ -87,6 +87,7 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
             <section className={styles['audio-section-container']}>
                 <div className={styles['audio-section-line-container']}>
                     <div className={styles['audio-right-section-container']}>
+                        {/** DESKTOP BUTTON */}
                         <div
                             onMouseEnter={() => setHover(id)}
                             onMouseLeave={() => setHover(-1)}
@@ -106,27 +107,44 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                                     <p className={styles['audio-number']}>{number}</p>
                             }
                         </div>
-
                         <div className={styles['audio-name-author-container']}>
                             <p>{name}</p>
                             <p>{author}</p>
                         </div>
                     </div>
                     <div className={styles['audio-slider-timer-container']}>
-                        <div className={styles['audio-slider-container']}>
-                            <input
-                                ref={sliderRef}
-                                type="range"
-                                className={styles['audio-slider']}
-                                min={0}
-                                max={audioPlayerRef.current?.audioEl.current?.duration || 0}
-                                value={currentTime}
-                                onChange={handleSliderChange}
-                            />
+                        {/** MOBILE BUTTON */}
+                        <div
+                            onClick={handlePlayPause}
+                            className={styles['audio-toggle-pause-button-mobile']}
+                        >
+                            {isPlaying === id ?
+                                <div>
+                                    <img src={PauseImage} className={styles['audio-pause-button']} alt="start" />
+                                </div>
+                                :
+                                <div className={styles['audio-pause-button-container']}>
+                                    <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
+                                </div>
+
+                            }
                         </div>
-                        <div className={styles['audio-timer-duration-container']}>
-                            <p>{formatTime(currentTime)}</p>
-                            <p>{formatTime(audioDuration)}</p>
+                        <div className={styles['audio-slider-section']}>
+                            <div className={styles['audio-slider-container']}>
+                                <input
+                                    ref={sliderRef}
+                                    type="range"
+                                    className={styles['audio-slider']}
+                                    min={0}
+                                    max={audioPlayerRef.current?.audioEl.current?.duration || 0}
+                                    value={currentTime}
+                                    onChange={handleSliderChange}
+                                />
+                            </div>
+                            <div className={styles['audio-timer-duration-container']}>
+                                <p>{formatTime(currentTime)}</p>
+                                <p>{formatTime(audioDuration)}</p>
+                            </div>
                         </div>
                     </div>
                     <ReactAudioPlayer
@@ -139,15 +157,6 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                         onEnded={() => setCurrentTime(0)}
                     />
                 </div>
-
-                {/* <div className={styles['audio-share-download-button-container']}>
-                    <div className={styles['audio-share-download-button-container']}>
-                        <img src={ShareImage}  className={styles['audio-share-download-button']} alt="" />
-                    </div>
-                    <div className={styles['audio-share-download-button-container']}>
-                        <img src={DownloadImage}  className={styles['audio-share-download-button']} alt="" />
-                    </div>
-                </div> */}
             </section>
         </div>
     );

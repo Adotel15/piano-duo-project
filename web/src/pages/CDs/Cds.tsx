@@ -64,12 +64,13 @@ const Music = () => {
             setCDs(data);
             setLoading(false);
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.error('Error fetching CDs:' , error);
         }
     };
 
     return (
-        <div>
+        <main className={styles['page-container']}>
             <Navbar/>
             <div className={styles['header-container']}>
                 <Header content={t('cds.title')}></Header>
@@ -135,7 +136,7 @@ const Music = () => {
                 })}
             </div>
             <Footer/>
-        </div>
+        </main>
     );
 };
 

@@ -130,6 +130,7 @@ input[type="submit"]{
     font-family: 'Hind', serif;
     cursor: pointer;
     margin-top: 1.2em;
+    transition: all .5s ease-in-out;
 }
 
 input[type="submit"]:hover {
