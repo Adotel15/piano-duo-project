@@ -116,7 +116,14 @@
             "case": "Asunto",
             "message": "Mensaje",
             "terms": "He leído y acepto los <span>términos y condiciones</span> y acepto la <span>política de privacidad</span>",
-            "send": "Enviar"
+            "send": "Enviar",
+            "error": {
+                "name": "*Introduce el nombre",
+                "email": "*Introduce un correo electrónico válido",
+                "subject": "*Introduce el asunto",
+                "message": "*Introduce el mensaje",
+                "terms": "*Debes aceptar los términos y condiciones y la política de privacidad"
+            }
         }
     },
     "footer": {
