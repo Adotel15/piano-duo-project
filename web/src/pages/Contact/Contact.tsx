@@ -56,16 +56,16 @@ const Contact = () => {
                     <div className={styles['form-container']}>
                         <Header content={t('contact.title')}></Header>
                         <form className={styles['contact-form-container']} onSubmit={handleSubmit}>
-                            <label htmlFor="name">Nombre</label>
+                            <label htmlFor="name">{t('contact.form.name')}</label>
                             <input className={styles['input-form']} name='name' id="name" type="text" onChange={e => onChange(e)}/>
 
-                            <label htmlFor="email">Correo electrónico</label>
+                            <label htmlFor="email">{t('contact.form.email')}</label>
                             <input className={styles['input-form']} name='email' id="email" type="text" onChange={e => onChange(e)} />
 
-                            <label htmlFor="subject">Asunto</label>
+                            <label htmlFor="subject">{t('contact.form.case')}</label>
                             <input className={styles['input-form']} name='subject' id="subject" type="text" onChange={e => onChange(e)}/>
 
-                            <label htmlFor="message">Mensaje
+                            <label htmlFor="message">{t('contact.form.message')}
                                 <textarea className={[styles['input-form'], styles['contact-textarea']].join(' ')} id="message" rows={7} onChange={e => onChange(e)}/>
                             </label>
 
@@ -73,11 +73,10 @@ const Contact = () => {
                                 <div className={styles['checkbox-container']}>
                                     <input name='terms' id="checkbox" type="checkbox" className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
                                 </div>
-                                <label className={styles['terms-conditions']}>
-                                He leído y acepto los <span>términos y condiciones</span> y acepto la <span>política de privacidad</span>
-                                </label>
+                                <label className={styles['terms-conditions']} dangerouslySetInnerHTML={{__html: t('contact.form.terms')}}/>
+
                             </div>
-                            <input type="submit" value="Enviar"/>
+                            <input type="submit" value={t('contact.form.send')}/>
                         </form>
                     </div>
                 </section>

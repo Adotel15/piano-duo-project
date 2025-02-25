@@ -44,12 +44,12 @@ const Footer = () => {
                 </div>
                 <div className={styles['info-container']}>
                     <div className={styles['rights-container']}>
-                        <p>© 2024. Pérez Molina Piano Dúo. Todos los derechos reservados</p>
+                        <p>{t('footer.rights')}</p>
                     </div>
                     <div className={styles['conditions-container']}>
-                        <p>Términos y condiciones</p>
-                        <p>Política de privacidad</p>
-                        <p>Política de cookies</p>
+                        <p>{t('footer.terms')}</p>
+                        <p>{t('footer.privacy')}</p>
+                        <p>{t('footer.cookies')}</p>
                     </div>
                 </div>
             </div>
