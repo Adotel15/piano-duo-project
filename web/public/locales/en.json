@@ -116,7 +116,16 @@
             "case": "Subject",
             "message": "Message",
             "terms": "I have read and accept the <span>terms and conditions</span> and agree to the <span>privacy policy</span>",
-            "send": "Send"
+            "send": "Send",
+            "error": {
+                "name": "*Enter the name",
+                "email": "*Enter a valid email",
+                "subject": "*Enter the subject",
+                "message": "*Enter the message",
+                "terms": "*You must accept the terms and conditions and the privacy policy"
+            },
+            "success": "Message sent successfully, we will contact you as soon as possible",
+            "failure": "There was an error sending the message, please try again"
         }
     },
     "footer": {

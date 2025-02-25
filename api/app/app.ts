@@ -2,6 +2,7 @@ import Fastify, { FastifyInstance, FastifyRequest } from 'fastify';
 import cors from '@fastify/cors';
 
 import { StrapiRoutes } from './v1/strapi/route.js';
+import { BrevoRoutes } from './v1/brevo.js';
 
 import { manageError } from './v1/utils/errorHandler.js';
 
@@ -13,7 +14,8 @@ class FastifyServer {
 
     constructor() {
         this.server = Fastify();
-        this.server.register(new StrapiRoutes().routes, { prefix: ROUTES.v1.strapi });
+        this.server.register(new StrapiRoutes().routes, { prefix: ROUTES.v1.api });
+        this.server.register(BrevoRoutes, { prefix: ROUTES.v1.api });
         this.server.register(cors, {
             origin: true,
             methods: ['GET', 'POST', 'PUT', 'DELETE'],

@@ -116,7 +116,16 @@
             "case": "Assumpte",
             "message": "Missatge",
             "terms": "He llegit i accepto els <span>termes i condicions</span> i accepto la <span>política de privacitat</span>",
-            "send": "Enviar"
+            "send": "Enviar",
+            "error": {
+                "name": "*Introdueix el nom",
+                "email": "*Introdueix un correu electrònic vàlid",
+                "subject": "*Introdueix l'assumpte",
+                "message": "*Introdueix el missatge",
+                "terms": "*Has d'acceptar els termes i condicions i la política de privacitat"
+            },
+            "success": "Missatge enviat correctament, ens posarem en contacte amb tu al més aviat possible",
+            "failure": "Hi ha hagut un error en enviar el missatge, si us plau, intenta-ho de nou"
         }
     },
     "footer": {
