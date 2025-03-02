@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "audios",
+  "info": {
+    "singularName": "audio",
+    "pluralName": "audios",
+    "displayName": "Audios",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "audio": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "audios"
+      ]
+    },
+    "author": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    }
+  }
+}

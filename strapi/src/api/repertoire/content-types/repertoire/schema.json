@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "repertoires",
+  "info": {
+    "singularName": "repertoire",
+    "pluralName": "repertoires",
+    "displayName": "Repertoire",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "piece_author": {
+      "type": "json"
+    }
+  }
+}
