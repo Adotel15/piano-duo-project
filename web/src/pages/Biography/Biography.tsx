@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/NavBar';
+import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/footer/Footer';
 
 import styles from'./Biography.module.css';
@@ -24,7 +25,9 @@ const Biography = () => {
                 <Header content={t('biography.title')}></Header>
             </div>
             {
-                !ready ? <p>Loading</p> :
+                !ready ?
+                    <Loader />
+                    :
                     <div className={styles['content-container']}>
                         <section className={styles['titles-container']}>
                             <div>

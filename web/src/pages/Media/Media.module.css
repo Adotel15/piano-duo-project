@@ -4,8 +4,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 .media-page-content-container {
@@ -13,7 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: space-between;
     padding-bottom: 80px;
 }
 
