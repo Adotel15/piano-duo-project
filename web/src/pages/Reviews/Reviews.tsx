@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
+import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/footer/Footer';
 
 import styles from './Reviews.module.css';
 
 import minImage from '../../assets/Reviews/bitcoin-icons_plus-outline.png';
 import plusImage from '../../assets/Reviews/plusbtn.png';
-import Loader from '../../components/Loader/Loader';
 
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';

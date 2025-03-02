@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
+import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/footer/Footer';
 
 import styles from './Cds.module.css';
@@ -76,6 +77,7 @@ const Music = () => {
                 <Header content={t('cds.title')}></Header>
             </div>
             <div className={styles['sections-container']}>
+                {loading && <Loader />}
                 {/** This should not happen */}
                 {!loading && (CDs?.length === 0 || !CDs) && <p>Language not translated</p>}
                 {CDs && CDs.map(cd => {

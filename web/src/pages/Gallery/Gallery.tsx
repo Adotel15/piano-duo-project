@@ -36,11 +36,10 @@ const Gallery = () => {
         try{
             const data = await fetchData<{ photos: string[] }>('gallery', i18n.language);
             setPhotos(data?.photos ?? []);
-            setLoading(false);
         } catch (err) {
             setError(`${err}`);
-            setLoading(false);
         }
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -58,7 +57,7 @@ const Gallery = () => {
                 <div className={styles['gallery-header-container']}>
                     <Header content={t('gallery.title')}></Header>
                 </div>
-                { loading && <Loader /> }
+                {loading && <Loader /> }
                 {/** This should not happen */}
                 {!loading && (photos?.length === 0 || !photos) && <p>Language not translated</p>}
                 {

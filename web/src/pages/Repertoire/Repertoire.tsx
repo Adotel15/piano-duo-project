@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/Header/Header';
+import Loader from '../../components/Loader/Loader';
 
 import styles from './Repertoire.module.css';
 
@@ -60,101 +61,111 @@ const Repertoire = () => {
             </div>
             {/** DESKTOP */}
             <div className={styles['repertoire-content-container']}>
-                <div className={styles['left-repertoire-container']}>
-                    <div className={styles['repertoire-menu-container']}>
-                        {/** This should not happen */}
-                        {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
-                        {repertoires && repertoires.map(repertoire => {
-                            return (
-                                <div
-                                    key={repertoire.id}
-                                    onClick={() => setSelectedId(repertoire.id)}
-                                >
-                                    <p
-                                        className={`${styles['repertoire-menu']} 
-                                            ${selectedId === repertoire.id ? styles['repertoire-menu-active'] : ''}`
-                                        }
-                                    >
-                                        {repertoire.title}
-                                    </p>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className={styles['image-repertorie-conatiner']}>
-                        <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
-                    </div>
-                </div>
-                <div className={styles['right-repertorie-conatiner']}>
-                    {/** This should not happen */}
-                    {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
-                    {
-                        selectedId && repertoires &&
-                        repertoires.filter(repertoire => repertoire.id === selectedId).map(repertoire => {
-                            return (
-                                <div className={styles['repertories-conatiner']}>
-                                    <div className={styles['repertorie-title-conatiner']} key={repertoire.id}>
-                                        <div>{repertoire.title}</div>
-                                    </div>
-                                    <div className={`${styles['piece-author-content-container']} ${repertoire.id === '4' ? styles['piece-author-4-content-container'] : ''}`}>
-                                        {repertoire.piece_author.map(piece_author => {
-                                            return (
-                                                <div className={`${styles['piece-author-conatiner']} ${repertoire.id === '4' ? styles['piece-author-4-container'] : ''}`}>
-                                                    <p>{piece_author.title}</p>
-                                                    <p className={styles['line-repertoire']}></p>
-                                                    <p>{piece_author.author}</p>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                </div>
-                <div className={styles['image-repertorie-conatiner-mobile']}>
-                    <img className={styles['image-repertorie-mobile']} src={ReperoireImage} alt="Repertoire" />
-                </div>
+                {loading && <Loader />}
+                {!loading &&
+                    <>
+                        <div className={styles['left-repertoire-container']}>
+                            <div className={styles['repertoire-menu-container']}>
+                                {/** This should not happen */}
+                                {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
+                                {repertoires && repertoires.map(repertoire => {
+                                    return (
+                                        <div
+                                            key={repertoire.id}
+                                            onClick={() => setSelectedId(repertoire.id)}
+                                        >
+                                            <p
+                                                className={`${styles['repertoire-menu']} 
+                                                    ${selectedId === repertoire.id ? styles['repertoire-menu-active'] : ''}`
+                                                }
+                                            >
+                                                {repertoire.title}
+                                            </p>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            <div className={styles['image-repertorie-conatiner']}>
+                                <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
+                            </div>
+                        </div>
+                        <div className={styles['right-repertorie-conatiner']}>
+                            {/** This should not happen */}
+                            {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
+                            {
+                                selectedId && repertoires &&
+                                repertoires.filter(repertoire => repertoire.id === selectedId).map(repertoire => {
+                                    return (
+                                        <div className={styles['repertories-conatiner']}>
+                                            <div className={styles['repertorie-title-conatiner']} key={repertoire.id}>
+                                                <div>{repertoire.title}</div>
+                                            </div>
+                                            <div className={`${styles['piece-author-content-container']} ${repertoire.id === '4' ? styles['piece-author-4-content-container'] : ''}`}>
+                                                {repertoire.piece_author.map(piece_author => {
+                                                    return (
+                                                        <div className={`${styles['piece-author-conatiner']} ${repertoire.id === '4' ? styles['piece-author-4-container'] : ''}`}>
+                                                            <p>{piece_author.title}</p>
+                                                            <p className={styles['line-repertoire']}></p>
+                                                            <p>{piece_author.author}</p>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                        </div>
+                        <div className={styles['image-repertorie-conatiner-mobile']}>
+                            <img className={styles['image-repertorie-mobile']} src={ReperoireImage} alt="Repertoire" />
+                        </div>
+                    </>
+                }
             </div>
             {/** MOBILE */}
             <section className={styles['repertoire-content-container-mobile']}>
-                <div className={styles['repertoire-list-container-mobile']}>
-                    {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
-                    {
-                        repertoires && repertoires.map(repertoire =>
-                            <section
-                                key={repertoire.id}
-                                className={styles['repertoire-list-element-mobile']}
-                            >
-                                <div
-                                    key={repertoire.id}
-                                    onClick={() => setSelectedId(repertoire.id)}
-                                >
-                                    <p
-                                        className={`${styles['repertoire-menu']} 
-                                            ${selectedId === repertoire.id ? styles['repertoire-menu-active'] : ''}`
-                                        }
+                {loading && <Loader />}
+                {!loading &&
+                    <>
+                        <div className={styles['repertoire-list-container-mobile']}>
+                            {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
+                            {
+                                repertoires && repertoires.map(repertoire =>
+                                    <section
+                                        key={repertoire.id}
+                                        className={styles['repertoire-list-element-mobile']}
                                     >
-                                        {repertoire.title}
-                                    </p>
-                                </div>
-                                {
-                                    selectedId === repertoire.id &&
-                                    <div>
+                                        <div
+                                            key={repertoire.id}
+                                            onClick={() => setSelectedId(repertoire.id)}
+                                        >
+                                            <p
+                                                className={`${styles['repertoire-menu']} 
+                                                    ${selectedId === repertoire.id ? styles['repertoire-menu-active'] : ''}`
+                                                }
+                                            >
+                                                {repertoire.title}
+                                            </p>
+                                        </div>
                                         {
-                                            repertoire.piece_author.map(piece_author =>
-                                                <div className={styles['piece-author-conatiner']}>
-                                                    <p>{piece_author.title}</p>
-                                                    <p className={styles['line-repertoire']}></p>
-                                                    <p>{piece_author.author}</p>
-                                                </div>
-                                            )
+                                            selectedId === repertoire.id &&
+                                            <div>
+                                                {
+                                                    repertoire.piece_author.map(piece_author =>
+                                                        <div className={styles['piece-author-conatiner']}>
+                                                            <p>{piece_author.title}</p>
+                                                            <p className={styles['line-repertoire']}></p>
+                                                            <p>{piece_author.author}</p>
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
                                         }
-                                    </div>
-                                }
-                            </section>
-                        )
-                    }
-                </div>
+                                    </section>
+                                )
+                            }
+                        </div>
+                    </>
+                }
                 <div className={styles['image-repertorie-conatiner']}>
                     <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
                 </div>

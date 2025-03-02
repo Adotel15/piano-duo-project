@@ -9,7 +9,7 @@ import styles from './Menu.module.css';
 import { menuOptions } from '../../constants/ui';
 import { routes } from '../../constants/routes';
 
-import MusicLogo from '../../assets/Navbar/music-button.png';
+import WebMusicButton from '../WebMusicButton/WebMusicButton';
 
 const Menu = () => {
     const location = useLocation();
@@ -60,7 +60,7 @@ const Menu = () => {
                 </ul>
                 <div className={`${styles['menu-footer']} ${isMenuOpen ? '' : styles['hide']}`}>
                     <div className={styles['music-control-container']}>
-                        <img src={MusicLogo} alt="turn-on-off-music" />
+                        <WebMusicButton />
                     </div>
                     <div>
                         {

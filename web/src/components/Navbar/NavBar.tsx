@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
 import Menu from '../Menu/Menu';
+import WebMusicButton from '../WebMusicButton/WebMusicButton';
 
 import { useAppContext } from '../../context/AppContext';
 
 import styles from './Navbar.module.css';
 
-import MusicLogo from '../../assets/Navbar/music-button.png';
 import PianoDuoLogo from '../../assets/piano-duo-logo.png';
 
 const Navbar = () => {
@@ -26,12 +26,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className={styles['nav-controls-container']}>
-                {
-                    !isMenuOpen &&
-                    <div className={styles['control-container']}>
-                        <img src={MusicLogo} alt="turn-on-off-music" />
-                    </div>
-                }
+                {!isMenuOpen && <WebMusicButton />}
                 <Menu />
             </div>
         </nav>
