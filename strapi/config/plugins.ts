@@ -19,6 +19,7 @@ export default () => ({
             serviceAccount: GCP_SERVICE_ACCOUNT, 
             baseUrl: `https://storage.googleapis.com/${BUCKET_NAME}`,
             basePath: '',
+	    sizeLimit: 500 * 1024 * 1024,
         },
       },
     },
