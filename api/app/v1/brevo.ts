@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
-import { BREVO_API_KEY, BREVO_API_URL, EMAIL_DESTINATION } from './constants/env';
+import { BREVO_API_KEY, BREVO_API_URL, EMAIL_DESTINATION } from './constants/env.js';
 
 const sendMailBrevoService = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
     const { from, subject, content } = request.body as {
