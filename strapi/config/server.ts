@@ -1,7 +1,7 @@
 export default ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
-  url: 'http://35.204.174.205/strapi',
+  // url: 'http://35.204.174.205/strapi',
   admin: {
 	  url: '/admin',
 	  serveAdminPanel: true
