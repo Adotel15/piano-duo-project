@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: piano-duo-images/web
+    container_name: web
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api
+      - strapi
+    networks:
+      - piano_duo_network
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: piano-duo-images/api
+    container_name: api
+    ports:
+      - "8081:8081"
+    depends_on:
+      - strapi
+    networks:
+      - piano_duo_network
+
+  strapi:
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    image: piano-duo-images/strapi
+    container_name: strapi
+    ports:
+      - "8082:8082"
+    networks:
+      - piano_duo_network
+
+networks:
+  piano_duo_network:
+    driver: bridge
