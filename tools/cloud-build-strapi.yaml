@@ -23,6 +23,8 @@ steps:
         echo "GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON=${_GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON}" >> strapi/.env
         echo "GOOGLE_CLOUD_BUCKET_NAME=${_GOOGLE_CLOUD_BUCKET_NAME}" >> strapi/.env
         echo "NODE_ENV=${_NODE_ENV}" >> strapi/.env
+
+        cat strapi/.env
   - name: gcr.io/cloud-builders/docker
     args:
       - build
