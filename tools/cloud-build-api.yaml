@@ -11,6 +11,7 @@ steps:
         echo "BREVO_API_URL=${_BREVO_API_URL}" >> api/.env
         echo "BREVO_API_KEY=${_BREVO_API_KEY}" >> api/.env
         echo "EMAIL_DESTINATION=${_EMAIL_DESTINATION}" >> api/.env
+        echo "EMAIL_FROM=${_EMAIL_FROM}" >> api/.env
   - name: gcr.io/cloud-builders/docker
     args:
       - build
@@ -64,6 +65,7 @@ substitutions:
   _BREVO_API_URL: injected-brevo-api-url
   _BREVO_API_KEY: injected-brevo-api-key
   _EMAIL_DESTINATION: injected-email-destination
+  _EMAIL_FROM: injected-email-from
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed

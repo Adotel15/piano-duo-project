@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
-import { BREVO_API_KEY, BREVO_API_URL, EMAIL_DESTINATION } from './constants/env.js';
+import { BREVO_API_KEY, BREVO_API_URL, EMAIL_DESTINATION, EMAIL_FROM } from './constants/env.js';
 
 const sendMailBrevoService = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
     const { from, subject, content } = request.body as {
@@ -16,10 +16,10 @@ const sendMailBrevoService = async (request: FastifyRequest, reply: FastifyReply
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                sender: { email: from },
+                sender: { email: EMAIL_FROM as string },
                 to: [{ email: EMAIL_DESTINATION as string }],
                 subject: subject,
-                htmlContent: content,
+                htmlContent: `email: ${from}\n${content}`,
             }),
         });
 

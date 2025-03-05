@@ -10,6 +10,7 @@ export const STRAPI_TOKEN = process.env.STRAPI_TOKEN;
 export const BREVO_API_URL = process.env.BREVO_API_URL;
 export const BREVO_API_KEY = process.env.BREVO_API_KEY;
 export const EMAIL_DESTINATION = process.env.EMAIL_DESTINATION;
+export const EMAIL_FROM = process.env.EMAIL_FROM;
 
 // TODO: Separate environment variables for development and production
 export const FASTIFY_SERVER_ADDRESS = {
@@ -29,6 +30,6 @@ if(!BREVO_API_URL || !BREVO_API_KEY) {
     throw new Error('Please provide a valid BREVO_API_URL and BREVO_API_KEY');
 }
 
-if(!EMAIL_DESTINATION) {
+if(!EMAIL_DESTINATION || !EMAIL_FROM) {
     throw new Error('Please provide a valid EMAIL_DESTINATION');
 }
