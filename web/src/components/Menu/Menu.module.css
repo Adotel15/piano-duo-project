@@ -21,21 +21,13 @@
     background: rgba(212, 181, 137, 0.27);
 }
 
+/* Bars for normal navbar */
 .bar {
     position: absolute;
     left: 0;
     height: 1px;
     width: 100%;
     background: #344FAB;
-    transition: all 0.3s ease;
-}
-
-.bar-transparent {
-    position: absolute;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background: white;
     transition: all 0.3s ease;
 }
 
@@ -53,6 +45,16 @@
 
 .menu-open .bar:nth-child(2) {
     transform: translateY(-7px) rotate(-10deg);
+}
+
+/* Bars for transparent navbar */
+.bar-transparent {
+    position: absolute;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: white;
+    transition: all 0.3s ease;
 }
 
 .bar-transparent:nth-child(1) {

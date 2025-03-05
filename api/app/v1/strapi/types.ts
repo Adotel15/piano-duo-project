@@ -1,6 +1,6 @@
-import { STRAPI_ENDPOINTS } from '../v1/strapi/constants.js';
+import { STRAPI_ENDPOINTS } from './constants.js';
 
-import type { GenericObject } from './generic.js';
+import type { GenericObject } from '../types/generic.js';
 
 export type StrapiObject<T> = { id: number, attributes: T }
 export type StrapiArray<T> = StrapiObject<T>[]

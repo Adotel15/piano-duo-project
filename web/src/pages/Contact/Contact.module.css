@@ -64,6 +64,7 @@
     position: relative;
     overflow: hidden;
     font-family: "Hind", sans-serif;
+    font-size: 15px;
 }
 
 .input-form:focus, .contact-textarea:focus {

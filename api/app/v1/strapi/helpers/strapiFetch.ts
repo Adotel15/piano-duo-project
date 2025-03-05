@@ -1,7 +1,7 @@
 // eslint-disable-next-file
-import { STRAPI_URL, STRAPI_TOKEN } from '../constants/env.js';
+import { STRAPI_URL, STRAPI_TOKEN } from '../../constants/env.js';
 
-import type { StrapiEndpoints } from '../../types/strapi.js';
+import type { StrapiEndpoints } from '../types.js';
 
 export const strapiFetch = async (collection: StrapiEndpoints, language:string, id?: string): Promise<unknown> => {
     const path = id ?

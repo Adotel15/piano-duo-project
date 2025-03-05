@@ -1,6 +1,5 @@
-import type { StrapiArray, StrapiObject } from '../../types/strapi.js';
+import type { StrapiArray, StrapiObject } from '../types.js';
 
-// TODO: Do this more generic
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any>>, collection: string) => {
     if (collection === 'reviews') {
@@ -63,7 +62,7 @@ export const formatStrapiArray = (strapiResponse: StrapiArray<Record<string, any
                 : item.attributes.piece_author.data || null,
 
         }));
-    } else{
+    } else {
         return [];
     };
 };

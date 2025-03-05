@@ -14,33 +14,20 @@ const Navbar = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
 
     return (
         <nav
-            className={
-                isTransparent && !isMenuOpen ?
-                    styles['nav-container-transparent']:
-                    styles['nav-container']
-            }
+            className={isTransparent && !isMenuOpen ? styles['nav-container-transparent'] : styles['nav-container']}
         >
-            <div
-                className={styles['nav-logo-container']}
-            >
-                <Link
-                    to="/"
-                    onClick={() => setIsMenuOpen(false)}
-                >
+            <div className={styles['nav-logo-container']}>
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>
                     <img
                         src={PianoDuoLogo}
-                        className={
-                            isTransparent && !isMenuOpen ? styles['nav-logo-transparent'] : styles['nav-logo']
-                        }
+                        className={isTransparent && !isMenuOpen ? styles['nav-logo-transparent'] : styles['nav-logo']}
                         alt="piano-duo-logo"
                     />
                 </Link>
             </div>
             <div className={styles['nav-controls-container']}>
                 {!isMenuOpen && <WebMusicButton isTransparent={isTransparent}/>}
-                <Menu
-                    isTransparent={isTransparent}
-                />
+                <Menu isTransparent={isTransparent}/>
             </div>
         </nav>
     );

@@ -61,8 +61,8 @@ const Contact = () => {
                 throw new Error(data.error);
             }
 
+            setFormData({ name: '', email: '', subject: '', message: '', terms: false });
             alert(t('contact.form.success'));
-            setFormData(prev => ({ ...prev, name: '', email: '', subject: '', message: '', terms: false }));
         } catch (error) {
             // eslint-disable-next-line no-console
             console.error('Error:', error);
@@ -85,49 +85,53 @@ const Contact = () => {
             <div className={styles['contact-container']}>
                 <section className={styles['section-contact']}>
                     <div className={styles['container-image-contact']}>
-                        <img className={styles['image-contact']} src={imageContact} alt="Pianists"/>
+                        <img className={styles['image-contact']} src={imageContact} alt='Pianists'/>
                     </div>
                     <div className={styles['form-container']}>
                         <Header content={t('contact.title')}></Header>
                         <form className={styles['contact-form-container']} onSubmit={handleSubmit}>
                             <div className={styles['input-container']}>
                                 <input
+                                    id='name'
+                                    name='name'
+                                    type='text'
+                                    value={formData.name}
                                     className={styles['input-form']}
                                     placeholder={t('contact.form.name')}
-                                    name='name'
-                                    id="name"
-                                    type="text"
                                     onChange={e => onChange(e)}
                                 />
                                 <p className={styles['error-message']}>{errors.name}</p>
                             </div>
                             <div className={styles['input-container']}>
                                 <input
-                                    className={styles['input-form']}
+                                    id='email'
                                     name='email'
+                                    type='text'
+                                    value={formData.email}
+                                    className={styles['input-form']}
                                     placeholder={t('contact.form.email')}
-                                    id="email"
-                                    type="text"
                                     onChange={e => onChange(e)}
                                 />
                                 <p className={styles['error-message']}>{errors.email}</p>
                             </div>
                             <div className={styles['input-container']}>
                                 <input
-                                    className={styles['input-form']}
+                                    id='subject'
                                     name='subject'
+                                    type='text'
+                                    value={formData.subject}
+                                    className={styles['input-form']}
                                     placeholder={t('contact.form.case')}
-                                    id="subject"
-                                    type="text"
                                     onChange={e => onChange(e)}
                                 />
                                 <p className={styles['error-message']}>{errors.subject}</p>
                             </div>
                             <div className={styles['input-container']}>
                                 <textarea
-                                    className={[styles['input-form'], styles['contact-textarea']].join(' ')}
-                                    id="message"
+                                    id='message'
                                     name='message'
+                                    value={formData.message}
+                                    className={[styles['input-form'], styles['contact-textarea']].join(' ')}
                                     rows={7}
                                     onChange={e => onChange(e)}
                                     placeholder={t('contact.form.message')}
@@ -136,12 +140,12 @@ const Contact = () => {
                             </div>
                             <div className={styles['terms-and-conditions-container']}>
                                 <div className={styles['checkbox-container']}>
-                                    <input name='terms' id="checkbox" type="checkbox" className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
+                                    <input name='terms' id='checkbox' type='checkbox' className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
                                 </div>
                                 <label className={styles['terms-conditions']} dangerouslySetInnerHTML={{__html: t('contact.form.terms')}}/>
                             </div>
                             <p className={styles['error-message']}>{errors.terms}</p>
-                            <input type="submit" value={t('contact.form.send')}/>
+                            <input type='submit' value={t('contact.form.send')}/>
                         </form>
                     </div>
                 </section>

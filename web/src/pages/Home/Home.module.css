@@ -1,4 +1,4 @@
-main {
+.home-main {
   width: 100%;
   height: 100vh;
   background-color: #F4EFDF;
@@ -10,7 +10,7 @@ main {
   top: 0;
   z-index: 100;
   opacity: 1;
-  animation: fadeInImage 3s ease backwards 4s;
+  animation: opacityZeroToOne 3s ease backwards 4s;
 }
 
 .home-intro {
@@ -22,41 +22,18 @@ main {
 
 .home-logo {
   opacity: 0;
-  font-size: 5rem;
-  animation: fadeIn 2s ease forwards;
+  animation: fadeIn 2.5s ease forwards;
 }
 
-.container-header-img {
-  position: absolute;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  transform: scale(0, 0);
-  animation: animate 1s ease-in forwards 2s;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.header-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  animation: fadeInImage 2s ease forwards 3s;
-}
-
-.content-animate {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  overflow: hidden;
-  opacity: 0;
-  animation: fadeInText 2s ease forwards 3s;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 @keyframes animate {
@@ -71,15 +48,19 @@ main {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(50%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%);
-  }
+.home-container-img {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  transform: scale(0, 0);
+  animation: animate 1s ease forwards 2s;
+  overflow: hidden;
+  z-index: 1;
 }
 
 @keyframes fadeInText {
@@ -93,7 +74,24 @@ main {
   }
 }
 
-@keyframes fadeInImage {
+.home-content-animate {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInText 2s ease forwards 3s;
+}
+
+.home-background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: opacityZeroToOne 2s ease forwards 3s;
+}
+
+@keyframes opacityZeroToOne {
   from {
     opacity: 0;
   }

@@ -1,9 +1,9 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
 import { StrapiService } from './service.js';
-import { collectionExists } from '../helpers/collections.js';
+import { collectionExists } from './helpers/collections.js';
 
-import { StrapiEndpoints } from '../../types/strapi.js';
+import { StrapiEndpoints } from './types.js';
 
 export class StrapiRoutes {
     strapiService: StrapiService;
