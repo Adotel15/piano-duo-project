@@ -4,8 +4,9 @@ import styles from './WebMusicButton.module.css';
 
 import MusicLogo from '../../assets/Navbar/music-button.png';
 
-const WebMusicButton = () => {
+const WebMusicButton = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
     const { isMusicPlaying, setIsMusicPlaying } = useAppContext();
+
     return (
         <div className={styles['music-button-container']}>
             {
@@ -33,7 +34,7 @@ const WebMusicButton = () => {
                                     }
                                     .bar {
                                         animation: spinner 0.9s linear infinite;
-                                        fill: var(--secondary_color);
+                                        fill: ${!isTransparent ? 'var(--secondary_color)' : 'white'};
                                         transition: fill 0.3s ease-in-out;
                                     }
                                     svg:hover .bar {
@@ -54,12 +55,10 @@ const WebMusicButton = () => {
                             <rect className="bar" x="20.2" y="6" width="2.8" height="12" />
                         </svg>
                     </div>
-
                     :
-
                     <img
                         src={MusicLogo}
-                        className={styles['music-logo']}
+                        className={isTransparent ? styles['music-logo'] : ''}
                         alt="music-logo"
                         onClick={() => setIsMusicPlaying(true)}
                     />

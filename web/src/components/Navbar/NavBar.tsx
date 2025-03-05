@@ -9,25 +9,38 @@ import styles from './Navbar.module.css';
 
 import PianoDuoLogo from '../../assets/piano-duo-logo.png';
 
-const Navbar = () => {
-    const { isMenuOpen } = useAppContext();
+const Navbar = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
+    const { isMenuOpen, setIsMenuOpen } = useAppContext();
 
     return (
-        <nav className={styles['nav-container']}>
+        <nav
+            className={
+                isTransparent && !isMenuOpen ?
+                    styles['nav-container-transparent']:
+                    styles['nav-container']
+            }
+        >
             <div
                 className={styles['nav-logo-container']}
             >
-                <Link to="/">
+                <Link
+                    to="/"
+                    onClick={() => setIsMenuOpen(false)}
+                >
                     <img
                         src={PianoDuoLogo}
-                        className={styles['nav-logo']}
+                        className={
+                            isTransparent && !isMenuOpen ? styles['nav-logo-transparent'] : styles['nav-logo']
+                        }
                         alt="piano-duo-logo"
                     />
                 </Link>
             </div>
             <div className={styles['nav-controls-container']}>
-                {!isMenuOpen && <WebMusicButton />}
-                <Menu />
+                {!isMenuOpen && <WebMusicButton isTransparent={isTransparent}/>}
+                <Menu
+                    isTransparent={isTransparent}
+                />
             </div>
         </nav>
     );

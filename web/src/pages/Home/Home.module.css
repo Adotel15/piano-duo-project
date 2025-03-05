@@ -1,26 +1,103 @@
 main {
   width: 100%;
-  background-color: #F4EFDF;
-  
-}
-
-.container_header_img {
-  width: 100%;
   height: 100vh;
-  overflow: hidden;
+  background-color: #F4EFDF;
 }
 
-.header_img {
+.home-navbar {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  animation: fadeInImage 3s ease backwards 4s;
 }
 
-.section {
+.home-intro {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+}
+
+.home-logo {
+  opacity: 0;
+  font-size: 5rem;
+  animation: fadeIn 2s ease forwards;
+}
+
+.container-header-img {
+  position: absolute;
+  top: 0;
   height: 100vh;
+  width: 100%;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  transform: scale(0, 0);
+  animation: animate 1s ease-in forwards 2s;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fadeInImage 2s ease forwards 3s;
+}
+
+.content-animate {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInText 2s ease forwards 3s;
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(0, 0.005);
+  }
+  50% {
+    transform: scaleY(0.005);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

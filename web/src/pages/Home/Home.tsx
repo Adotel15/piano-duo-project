@@ -6,14 +6,26 @@ import Navbar from '../../components/Navbar/NavBar';
 const Home = () => {
     return (
         <main>
-            <Navbar />
-            <div className={styles['section']}>
-                <div>
-                    <img src={logoImage} alt='Logo'/>
-                </div>
+            <div className={styles['home-navbar']}>
+                <Navbar
+                    isTransparent={true}
+                />
             </div>
-            <div className={styles['container_header_img']}>
-                <img className={styles['header_img']} src={headerImage} alt="Pianists" />
+            <div className={styles['home-intro']}>
+                <img
+                    src={logoImage}
+                    alt='Logo'
+                    className={styles['home-logo']}
+                />
+            </div>
+            <div className={styles['container-header-img']}>
+                <section className={styles['content-animate']}>
+                    <img
+                        className={styles['header-img']}
+                        src={headerImage}
+                        alt="Pianists"
+                    />
+                </section>
             </div>
         </main>
     );

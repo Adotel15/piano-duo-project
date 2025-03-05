@@ -11,7 +11,7 @@ import { routes } from '../../constants/routes';
 
 import WebMusicButton from '../WebMusicButton/WebMusicButton';
 
-const Menu = () => {
+const Menu = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
     const location = useLocation();
     const { isMenuOpen, i18n, setIsMenuOpen } = useAppContext();
     const { t } = useTranslation();
@@ -34,8 +34,8 @@ const Menu = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
                 <div className={styles['hamburger-icon']}>
-                    <span className={styles['bar']}></span>
-                    <span className={styles['bar']}></span>
+                    <span className={isTransparent && !isMenuOpen ? styles['bar-transparent'] : styles['bar']}></span>
+                    <span className={isTransparent && !isMenuOpen ? styles['bar-transparent'] : styles['bar']}></span>
                 </div>
             </button>
             <div className={`${styles['menu-container']} ${isMenuOpen ? styles['open'] : ''}`}>
