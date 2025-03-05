@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
-import { BrevoService } from './service';
+import { BrevoService } from './service.js';
 
 export class BrevoRoutes {
     brevoService: BrevoService;
