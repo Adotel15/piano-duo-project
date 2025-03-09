@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import FadeIn from 'react-fade-in';
+
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
@@ -57,7 +59,7 @@ const Reviews = () => {
                 <div>
                     <Header content={t('reviews.title')}></Header>
                 </div>
-                <div className={styles['reviews-container']}>
+                <FadeIn className={styles['reviews-container']}>
                     {loading && <Loader />}
                     {/** This should not happen */}
                     {!loading && (reviews?.length === 0 || !reviews) && <p>Language not translated</p>}
@@ -97,7 +99,7 @@ const Reviews = () => {
                             </section>
                         );
                     })}
-                </div>
+                </FadeIn>
             </div>
             <Footer />
         </div>
