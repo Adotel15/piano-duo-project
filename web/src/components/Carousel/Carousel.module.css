@@ -1,18 +1,13 @@
 .carousel {
-    position: absolute;
-    bottom: 20%;
-    right: 5%;
+    width: 35%;
+    height: 2px;
     font-family: 'Cormorant Infant', serif;
     color: white;
     font-size: 28px;
     font-weight: 300;
     text-align: center;
-    z-index: 12;
-    width: 80%;
-    max-width: 400px;
 }
 
-/* Animaciones de Fade In / Fade Out */
 .fade-in {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -24,6 +19,7 @@
     transform: translateY(-30px) scale(0.95);
     transition: opacity 0.7s ease-in-out, transform 0.8s ease-in-out;
 }
+
 @keyframes fadeSlide {
     0% {
         opacity: 0;
@@ -45,31 +41,15 @@
 
 .phrase {
     opacity: 0;
-    animation: fadeSlide 6s ease-in-out infinite;
+    animation: fadeSlide 9s ease-in-out infinite;
     display: inline-block; 
+    text-wrap: balance;
 }
 
-@media (max-width: 1054px) {
+@media (max-width: 800px) {
     .carousel {
         font-size: 20px;
-        width: 300px;
-        right: 5%;
-    }
-
-}
-
-@media (min-width: 1800px) {
-    .carousel {
-        position: absolute;
-        bottom: 20%;
-        right: 10%;
-        font-family: 'Cormorant Infant', serif;
-        color: white;
-        font-size: 36px;
-        font-weight: 300;
-        text-align: center;
-        z-index: 12;
-        width: 80%;
-        max-width: 600px;
+        width: 90%;
     }
 }
+

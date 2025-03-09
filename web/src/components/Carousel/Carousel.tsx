@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import styles from './Carousel.module.css';
 
-const phrases = [
-    '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”',
-    '“Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ”',
-    '“Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.”',
-    '“Superó todas mis expectativas.”',
-];
-
-const Carousel: React.FC = () => {
+const Carousel = () => {
     const [index, setIndex] = useState(0);
+    const { t } = useTranslation();
+
+    const phrases = t('home', { returnObjects: true }) as string[];
+
     useEffect(() => {
         const interval = setInterval(() => {
-            setIndex(prevIndex => (prevIndex + 1) % phrases.length); // Cambia la frase
-            // Tiempo de desvanecimiento
-        }, 6000); // Tiempo total antes de cambiar de frase
+            setIndex(prevIndex => (prevIndex + 1) % phrases.length);
+        }, 9000);
 
         return () => clearInterval(interval);
     }, []);
@@ -22,7 +20,7 @@ const Carousel: React.FC = () => {
     return (
         <div className={styles['carousel']}>
             <p key={index} className={styles['phrase']}>
-                {phrases[index]}
+                "{phrases[index]}"
             </p>
         </div>
     );
