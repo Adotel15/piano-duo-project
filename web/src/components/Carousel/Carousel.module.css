@@ -1,0 +1,55 @@
+.carousel {
+    width: 35%;
+    height: 2px;
+    font-family: 'Cormorant Infant', serif;
+    color: white;
+    font-size: 28px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.7s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+    transition: opacity 0.7s ease-in-out, transform 0.8s ease-in-out;
+}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+}
+
+.phrase {
+    opacity: 0;
+    animation: fadeSlide 9s ease-in-out infinite;
+    display: inline-block; 
+    text-wrap: balance;
+}
+
+@media (max-width: 800px) {
+    .carousel {
+        font-size: 20px;
+        width: 90%;
+    }
+}
+
