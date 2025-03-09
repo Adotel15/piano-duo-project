@@ -1,15 +1,15 @@
 .carousel {
     position: absolute;
     bottom: 20%;
-    right: 10%;
+    right: 5%;
     font-family: 'Cormorant Infant', serif;
     color: white;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 300;
     text-align: center;
     z-index: 12;
     width: 80%;
-    max-width: 600px;
+    max-width: 400px;
 }
 
 /* Animaciones de Fade In / Fade Out */
@@ -47,4 +47,29 @@
     opacity: 0;
     animation: fadeSlide 6s ease-in-out infinite;
     display: inline-block; 
+}
+
+@media (max-width: 1054px) {
+    .carousel {
+        font-size: 20px;
+        width: 300px;
+        right: 5%;
+    }
+
+}
+
+@media (min-width: 1800px) {
+    .carousel {
+        position: absolute;
+        bottom: 20%;
+        right: 10%;
+        font-family: 'Cormorant Infant', serif;
+        color: white;
+        font-size: 36px;
+        font-weight: 300;
+        text-align: center;
+        z-index: 12;
+        width: 80%;
+        max-width: 600px;
+    }
 }

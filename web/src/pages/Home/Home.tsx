@@ -38,9 +38,18 @@ const Home = () => {
                         src={HeroImage}
                         alt="Pianists"
                     />
-
                 </section>
             </div>
+            <section className={styles['black-container-mobile']}>
+                <div  className={styles['carousel-container-mobile']}>
+                    <Carousel />
+                </div>
+                <img
+                    className={styles['white-logo-img']}
+                    src={WhiteLogo}
+                    alt="White Logo"
+                />
+            </section>
         </main>
     );
 };
