@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import FadeIn from 'react-fade-in';
+
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 import Navbar from '../../components/Navbar/NavBar';
@@ -62,15 +64,14 @@ const Gallery = () => {
                 {!loading && (photos?.length === 0 || !photos) && <p>Language not translated</p>}
                 {
                     !loading && photos &&
-                        <div className={styles['gallery-container']}>
-                            {photos.map((photo, index) =>
-                                <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
-                                    <img className={styles['gallery-photo']} src={photo} alt="" loading="lazy" />
-                                </div>
-                            )}
-                        </div>
+                    <FadeIn className={styles['gallery-container']}>
+                        {photos.map((photo, index) =>
+                            <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
+                                <img className={styles['gallery-photo']} src={photo} alt="" loading="lazy" />
+                            </div>
+                        )}
+                    </FadeIn>
                 }
-
                 {/* Modal */}
                 {selectedPhoto &&
                     <div className={`${styles.modal} ${selectedPhoto ? styles.show : ''} ${closing ? styles.closing : ''}`} onClick={closeModal}>

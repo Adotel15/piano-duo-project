@@ -141,7 +141,7 @@
 
 .menu-item:hover {
     background-color: rgba(212, 181, 137, 0.27);
-    font-family: 'Cormorant Infant', serif;
+    /* font-family: 'Cormorant Infant', serif; */
     font-weight: 600;
     margin: 4px 0;
 }
