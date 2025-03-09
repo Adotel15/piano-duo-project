@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import FadeIn from 'react-fade-in';
+
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/Header/Header';
@@ -100,17 +102,17 @@ const Repertoire = () => {
                                             <div className={styles['repertorie-title-conatiner']} key={repertoire.id}>
                                                 <div>{repertoire.title}</div>
                                             </div>
-                                            <div className={`${styles['piece-author-content-container']} ${repertoire.id === '4' ? styles['piece-author-4-content-container'] : ''}`}>
+                                            <FadeIn delay={100} className={`${styles['piece-author-content-container']} ${repertoire.id === '4' ? styles['piece-author-4-content-container'] : ''}`}>
                                                 {repertoire.piece_author.map(piece_author => {
                                                     return (
-                                                        <div className={`${styles['piece-author-conatiner']} ${repertoire.id === '4' ? styles['piece-author-4-container'] : ''}`}>
+                                                        <div key={piece_author.title} className={`${styles['piece-author-conatiner']} ${repertoire.id === '4' ? styles['piece-author-4-container'] : ''}`}>
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
                                                             <p>{piece_author.author}</p>
                                                         </div>
                                                     );
                                                 })}
-                                            </div>
+                                            </FadeIn>
                                         </div>
                                     );
                                 })}

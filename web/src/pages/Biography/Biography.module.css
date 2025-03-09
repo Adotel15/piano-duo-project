@@ -68,7 +68,7 @@
 
 .text-image-container-biography{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 10px;
 }
 
@@ -80,6 +80,11 @@ span {
     font-weight: 500;
     text-decoration: none;
     background-color: rgba(212, 181, 137, 0.27);
+}
+
+.image-biography {
+    max-width: 1200px;
+    align-self: center;
 }
 
 @media (min-width: 600px) and (max-width: 1195px) {

@@ -6,6 +6,8 @@ import Navbar from '../../components/Navbar/NavBar';
 import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/footer/Footer';
 
+import FadeIn from 'react-fade-in';
+
 import styles from'./Biography.module.css';
 
 import { data } from '../../data/biography';
@@ -29,39 +31,39 @@ const Biography = () => {
                     <Loader />
                     :
                     <div className={styles['content-container']}>
-                        <section className={styles['titles-container']}>
+                        <FadeIn className={styles['titles-container']}>
                             <div>
-                                <ul className={styles['biography_element']}>
+                                <FadeIn className={styles['biography_element']}>
                                     <h3 className={styles['title-list']}>{t('biography.educationSection.header')}</h3>
                                     {educations.map(education =>
                                         <li className={styles['list-container']}>{education.school}<br />{education.location} </li>
                                     )}
-                                </ul>
+                                </FadeIn>
                             </div>
                             <div>
-                                <ul className={styles['biography_element']}>
+                                <FadeIn className={styles['biography_element']}>
                                     <h3 className={styles['title-list']}>{t('biography.titlesSection.header')}</h3>
                                     {titles.map(titleItem =>
                                         <li className={styles['list-container']}>{titleItem.title}<br />{titleItem.school}<br />{titleItem.location}</li>
                                     )}
-                                </ul>
+                                </FadeIn>
                             </div>
                             <div>
-                                <ul className={styles['biography_element']}>
+                                <FadeIn className={styles['biography_element']}>
                                     <h3 className={styles['title-list']}>{t('biography.awardsSection.header')}</h3>
                                     {awards.map(awardItem =>
                                         <li className={styles['list-container']}>{awardItem.award}<br />{awardItem.contest}</li>
                                     )}
-                                </ul>
+                                </FadeIn>
                             </div>
-                        </section>
+                        </FadeIn>
                         <section className={styles['biography-container']}>
                             <h3 className={styles['biography-title']}>{t('biography.biographyContent.header')}</h3>
-                            <div>
+                            <FadeIn>
                                 {biography.map(paragraph=>
                                     <p className={styles['p']} dangerouslySetInnerHTML={{__html: paragraph.paragraph}} />
                                 )}
-                            </div>
+                            </FadeIn>
                             <img className={styles['image-biography']} src={data.image} alt="Concert" />
                             <div className={styles['text-image-container-biography']}>
                                 <p className={styles['text-image-biography']}>Carnegie Hall, Weill Recital Hall</p>

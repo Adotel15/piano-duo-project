@@ -7,6 +7,9 @@ import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/footer/Footer';
 
 import styles from './Cds.module.css';
+
+import FadeIn from 'react-fade-in';
+
 //Assets
 import toggleImage from '../../assets/Cds/material-symbols_flip-camera-android-rounded.png';
 
@@ -116,20 +119,23 @@ const Music = () => {
                                 <h4>{cd.subtitle}</h4>
                                 <div className={styles['ol-container']}>
                                     <ol>
-                                        {cd.pieces && cd.pieces.map(piece =>
-                                            <li className= {`${
-                                                piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
-                                            }`} key={piece.id}> {piece.name}
-                                                <ol className={styles['piece-sections-container']}>
-                                                    {piece.sections?.map((section, index) =>
-                                                        <li key={`${piece.id}-section-${index}`}
-                                                            className={styles['piece-sections-container']}>
-                                                            {section}
-                                                        </li>
-                                                    )}
-                                                </ol>
-                                            </li>
-                                        )}
+
+                                        <FadeIn delay={100}>
+                                            {cd.pieces && cd.pieces.map(piece =>
+                                                <li className= {`${
+                                                    piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
+                                                }`} key={piece.id}> {piece.name}
+                                                    <ol className={styles['piece-sections-container']}>
+                                                        {piece.sections?.map((section, index) =>
+                                                            <li key={`${piece.id}-section-${index}`}
+                                                                className={styles['piece-sections-container']}>
+                                                                {section}
+                                                            </li>
+                                                        )}
+                                                    </ol>
+                                                </li>
+                                            )}
+                                        </FadeIn>
                                     </ol>
                                 </div>
                             </div>
