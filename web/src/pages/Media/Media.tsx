@@ -108,7 +108,7 @@ const Media = () => {
                             </main>
                         }
                         {page === 'video' &&
-                            <main className={styles['videos-page-container']}>
+                            <FadeIn className={styles['videos-page-container']}>
                                 {!loading && (video?.length === 0 || !video) && <p>Language not translated</p>}
                                 {video && video.map(videos =>{
                                     return(
@@ -123,7 +123,7 @@ const Media = () => {
                                         />
                                     );
                                 })}
-                            </main>
+                            </FadeIn>
                         }
                     </>
                     }
