@@ -19,7 +19,7 @@ type AudioPlayerProps = {
 }
 
 const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: AudioPlayerProps) => {
-    const { id, number, name, author, audio } = data;
+    const { id, number, name, author, link } = data;
 
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
@@ -149,7 +149,7 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                     </div>
                     <ReactAudioPlayer
                         ref={audioPlayerRef}
-                        src={audio}
+                        src={link}
                         loop={false}
                         volume={1}
                         muted={false}
