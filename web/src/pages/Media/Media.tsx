@@ -22,7 +22,6 @@ const Media = () => {
     const [page, setPage] = useState<'audio' | 'video'>('audio');
     const [loading, setLoading] = useState<boolean>(true);
     const [isPlaying, setIsPlaying] = useState<number | null>(null);
-    const [hover, setHover] = useState<number>(-1);
     const [audio, setAudio] = useState <AudioPlayerType[] | null> ([]);
     const [video, setVideo] = useState <VideoPlayerType[] | null> ([]);
 
@@ -93,8 +92,6 @@ const Media = () => {
                                             <AudioPlayer
                                                 key={audios.id}
                                                 data={audios}
-                                                hover={hover}
-                                                setHover={setHover}
                                                 isPlaying={isPlaying}
                                                 togglePausePlay={togglePausePlay}
                                             />

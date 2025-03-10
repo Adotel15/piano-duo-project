@@ -3,8 +3,6 @@ import ReactAudioPlayer from 'react-audio-player';
 
 import PauseImage from '../../assets/Media/gridicons_pause.png';
 import StartImage from '../../assets/Media/gridicons_play.svg';
-// import DownloadImage from '../../assets/Media/material-symbols-light_download.png';
-// import ShareImage from '../../assets/Media/material-symbols-light_share-outline.png';
 
 import styles from './AudioPlayer.module.css';
 
@@ -12,14 +10,12 @@ import { AudioPlayerType } from '../../types';
 
 type AudioPlayerProps = {
     data: AudioPlayerType,
-    hover: number,
-    setHover: (id: number) => void,
     isPlaying: number | null,
     togglePausePlay: (id: number) => void,
 }
 
-const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: AudioPlayerProps) => {
-    const { id, number, name, author, audio } = data;
+const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => {
+    const { id, name, author, audio } = data;
 
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
@@ -89,8 +85,6 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                     <div className={styles['audio-right-section-container']}>
                         {/** DESKTOP BUTTON */}
                         <div
-                            onMouseEnter={() => setHover(id)}
-                            onMouseLeave={() => setHover(-1)}
                             onClick={handlePlayPause}
                             className={styles['audio-toggle-pause-button']}
                         >
@@ -99,12 +93,10 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                                     <img src={PauseImage} className={styles['audio-pause-button']} alt="start" />
                                 </div>
                                 :
-                                hover === id ?
-                                    <div className={styles['audio-pause-button-container']}>
-                                        <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
-                                    </div>
-                                    :
-                                    <p className={styles['audio-number']}>{number}</p>
+                                <div className={styles['audio-pause-button-container']}>
+                                    <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
+                                </div>
+
                             }
                         </div>
                         <div className={styles['audio-name-author-container']}>

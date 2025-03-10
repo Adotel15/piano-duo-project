@@ -10,7 +10,9 @@
   top: 0;
   z-index: 100;
   opacity: 1;
-  animation: opacityZeroToOne 3s ease backwards 4s;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  animation: fadeInAbove 1.5s ease-in-out backwards 4s;
 }
 
 .home-intro {
@@ -22,30 +24,7 @@
 
 .home-logo {
   opacity: 0;
-  animation: fadeIn 2.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
-@keyframes animate {
-  0% {
-    transform: scale(0, 0.005);
-  }
-  50% {
-    transform: scaleY(0.005);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+  animation: fadeInBelow 2.5s ease forwards;
 }
 
 .home-container-img {
@@ -63,16 +42,7 @@
   z-index: 1;
 }
 
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-    transform: translateY(10%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
+
 
 .home-content-animate {
   width: 100%;
@@ -127,6 +97,52 @@
 
 .home-background-img-tablet {
   display: none;
+}
+
+@keyframes fadeInBelow {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fadeInAbove {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(0, 0.005);
+  }
+  50% {
+    transform: scaleY(0.005);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
 @keyframes opacityZeroToOne {
