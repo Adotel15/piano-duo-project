@@ -65,6 +65,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                 url={audio?.link}
                 volume={0.2}
                 playing={isMusicPlaying}
+                playsinline={true}
                 style={{ display: 'none' }}
                 onEnded={() => setIsMusicPlaying(false)}
             />
