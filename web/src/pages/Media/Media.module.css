@@ -107,7 +107,7 @@
         width: 100%;
         display: flex;
         margin-top: 50px;
-        gap: 100px;
+        gap: 50px;
         justify-content: center;
         color: var(--secondary_color);
         font-family: "Hind", sans-serif;
