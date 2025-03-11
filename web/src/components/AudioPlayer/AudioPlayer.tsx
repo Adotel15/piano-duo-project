@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 
 import PauseImage from '../../assets/Media/gridicons_pause.png';
@@ -19,6 +19,11 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
 
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth <= 768);
+    }, []);
 
     const playerRef = useRef<ReactPlayer>(null);
     const sliderRef = useRef<HTMLInputElement>(null);
@@ -57,6 +62,9 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
     const handlePlayPause = () => {
         togglePausePlay(isPlaying === id ? -1 : id);
     };
+
+    const playerWidth = isMobile ? '1px' : '0';
+    const playerHeight = isMobile ? '1px' : '0';
 
     return (
         <div key={id} className={styles['audio-content-container']}>
@@ -127,8 +135,10 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                         volume={1}
                         muted={false}
                         controls={false}
-                        width="0"
-                        height="0"
+                        width={playerWidth}
+                        playsinline={isPlaying === id}
+                        height={playerHeight}
+                        style={isMobile ? { position: 'relative', left: '-99999px'} : undefined}
                         onReady={handleReady}
                         onProgress={handleProgress}
                         progressInterval={1000}
