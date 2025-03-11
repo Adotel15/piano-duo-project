@@ -1,29 +1,32 @@
 .video-title-container {
-    width:  600px;
-}
-
-.video-container {
+    width: 500px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    width: 100%;
-    height: auto;
 }
+
+.video-wrapper {
+    width: 500px;
+    aspect-ratio: 16 / 9; 
+    position: relative;
+}
+
 
 @media (max-width: 768px) {
 
     .video-title-container {
-    height: 350px;
-    justify-content: center;
-    }
-
-    .video-container {
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
         align-items: center;
-        width: auto;
-        height: 100%;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 16 / 9; 
+        position: relative;
     }
 }

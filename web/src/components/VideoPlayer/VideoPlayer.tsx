@@ -18,17 +18,18 @@ const VideoPlayer = ({ data, isActive, onPlay }:VideoPlayerProps) => {
 
     return(
         <main key={id} className={styles['video-title-container']}>
-            <div className={styles['video-container']}>
+            <div className={styles['video-wrapper']}>
                 <ReactPlayer
                     ref={playerRef}
                     url={link}
                     width= '100%'
+                    height="100%"
                     playing={isActive}
                     onPlay={onPlay}
                     controls
                 />
-                {title}
             </div>
+            {title}
         </main>
     );
 };
