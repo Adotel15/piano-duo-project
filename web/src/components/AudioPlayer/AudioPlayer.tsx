@@ -1,10 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+import { useRef, useState } from 'react';
+import ReactPlayer from 'react-player';
 
 import PauseImage from '../../assets/Media/gridicons_pause.png';
 import StartImage from '../../assets/Media/gridicons_play.svg';
-// import DownloadImage from '../../assets/Media/material-symbols-light_download.png';
-// import ShareImage from '../../assets/Media/material-symbols-light_share-outline.png';
 
 import styles from './AudioPlayer.module.css';
 
@@ -23,7 +21,8 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
 
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
-    const audioPlayerRef = useRef<ReactAudioPlayer>(null);
+
+    const playerRef = useRef<ReactPlayer>(null);
     const sliderRef = useRef<HTMLInputElement>(null);
 
     const formatTime = (seconds: number) => {
@@ -32,50 +31,29 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
-    useEffect(() => {
-        const audioElement = audioPlayerRef.current?.audioEl.current;
-        if (!audioElement) return;
-
-        const updateTime = () => setCurrentTime(audioElement.currentTime);
-        const updateDuration = () => setAudioDuration(audioElement.duration);
-
-        audioElement.addEventListener('timeupdate', updateTime);
-        audioElement.addEventListener('loadedmetadata', updateDuration);
-
-        return () => {
-            audioElement.removeEventListener('timeupdate', updateTime);
-            audioElement.removeEventListener('loadedmetadata', updateDuration);
-        };
-    }, []);
-
-    useEffect(() => {
-        const audioElement = audioPlayerRef.current?.audioEl.current;
-        if (!audioElement) return;
-
-        if (isPlaying === id) {
-            audioElement.play();
-        } else {
-            audioElement.pause();
+    const handleReady = () => {
+        if (playerRef.current) {
+            const duration = playerRef.current.getDuration();
+            setAudioDuration(duration);
         }
-    }, [isPlaying, id]);
+    };
 
-    useEffect(() => {
+    const handleProgress = (progress: { playedSeconds: number }) => {
+        setCurrentTime(progress.playedSeconds);
         if (sliderRef.current && audioDuration > 0) {
-            const progressPercent = (currentTime / audioDuration) * 100;
+            const progressPercent = (progress.playedSeconds / audioDuration) * 100;
             sliderRef.current.style.setProperty('--seek-before-width', `${progressPercent}%`);
         }
-    }, [currentTime, audioDuration]);
+    };
 
     const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const audioElement = audioPlayerRef.current?.audioEl.current;
-        if (!audioElement || !audioDuration) return;
-
-        const newTime = Number(e.target.value);
-        audioElement.currentTime = newTime;
-        setCurrentTime(newTime);
-
-        const progressPercent = newTime / audioDuration * 100;
-        e.target.style.setProperty('--seek-before-width', `${progressPercent}%`);
+        if (playerRef.current && audioDuration > 0) {
+            const newTime = Number(e.target.value);
+            playerRef.current.seekTo(newTime);
+            setCurrentTime(newTime);
+            const progressPercent = (newTime / audioDuration) * 100;
+            e.target.style.setProperty('--seek-before-width', `${progressPercent}%`);
+        }
     };
 
     const handlePlayPause = () => {
@@ -136,7 +114,7 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                                     type="range"
                                     className={styles['audio-slider']}
                                     min={0}
-                                    max={audioPlayerRef.current?.audioEl.current?.duration || 0}
+                                    max={audioDuration}
                                     value={currentTime}
                                     onChange={handleSliderChange}
                                 />
@@ -147,14 +125,19 @@ const AudioPlayer = ({ data, hover, setHover, isPlaying, togglePausePlay }: Audi
                             </div>
                         </div>
                     </div>
-                    <ReactAudioPlayer
-                        ref={audioPlayerRef}
-                        src={link}
+                    <ReactPlayer
+                        ref={playerRef}
+                        url={link}
+                        playing={isPlaying === id}
                         loop={false}
                         volume={1}
                         muted={false}
                         controls={false}
-                        onEnded={() => setCurrentTime(0)}
+                        width="0"
+                        height="0"
+                        onReady={handleReady}
+                        onProgress={handleProgress}
+                        progressInterval={1000}
                     />
                 </div>
             </section>
