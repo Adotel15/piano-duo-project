@@ -19,6 +19,7 @@ type AppContextType = {
     i18n: i18n | null;
     isMusicPlaying: boolean;
     setIsMusicPlaying: Dispatch<SetStateAction<boolean>>;
+    isMobile: boolean;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -27,12 +28,15 @@ const AppContext = createContext<AppContextType>({
     i18n: null,
     isMusicPlaying: false,
     setIsMusicPlaying: () => {},
+    isMobile: false,
 });
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMusicPlaying, setIsMusicPlaying] = useState(false);
     const [audio, setAudio] = useState<AudioPlayerType | null>();
+    const [isMobile, setIsMobile] = useState(false);
+
     const { i18n } = useTranslation();
 
     const getData = async () => {
@@ -48,7 +52,11 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         getData();
+        setIsMobile(window.innerWidth <= 768);
     }, []);
+
+    const playerWidth = isMobile ? '1px' : '0';
+    const playerHeight = isMobile ? '1px' : '0';
 
     return (
         <AppContext.Provider
@@ -58,6 +66,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                 isMusicPlaying,
                 setIsMenuOpen,
                 setIsMusicPlaying,
+                isMobile,
             }}
         >
             {children}
@@ -65,8 +74,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                 url={audio?.link}
                 volume={0.2}
                 playing={isMusicPlaying}
-                playsinline={true}
-                style={{ display: 'none' }}
+                width={playerWidth}
+                height={playerHeight}
+                playsinline={isMusicPlaying}
+                style={{ position: 'absolute', left: '-99999px'}}
                 onEnded={() => setIsMusicPlaying(false)}
             />
         </AppContext.Provider>

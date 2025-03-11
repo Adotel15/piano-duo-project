@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
+
+import { useAppContext } from '../../context/AppContext';
 
 import PauseImage from '../../assets/Media/gridicons_pause.png';
 import StartImage from '../../assets/Media/gridicons_play.svg';
@@ -17,13 +19,10 @@ type AudioPlayerProps = {
 const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => {
     const { id, name, author, link } = data;
 
+    const { isMobile } = useAppContext();
+
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth <= 768);
-    }, []);
 
     const playerRef = useRef<ReactPlayer>(null);
     const sliderRef = useRef<HTMLInputElement>(null);
@@ -136,8 +135,8 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                         muted={false}
                         controls={false}
                         width={playerWidth}
-                        playsinline={isPlaying === id}
                         height={playerHeight}
+                        playsinline={isPlaying === id}
                         style={isMobile ? { position: 'relative', left: '-99999px'} : undefined}
                         onReady={handleReady}
                         onProgress={handleProgress}
