@@ -107,7 +107,7 @@
         width: 100%;
         display: flex;
         margin-top: 50px;
-        gap: 50px;
+        gap: 100px;
         justify-content: center;
         color: var(--secondary_color);
         font-family: "Hind", sans-serif;
@@ -115,6 +115,7 @@
         font-size: 16px;
         flex-wrap: wrap;
     }
+
 }
 
 @media (max-width: 943px) {
