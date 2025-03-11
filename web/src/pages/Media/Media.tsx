@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
+import FadeIn from 'react-fade-in';
 
 import AudioPlayer from '../../components/AudioPlayer/AudioPlayer';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
@@ -85,7 +86,7 @@ const Media = () => {
                         </div>
                         {page === 'audio' &&
                             <main className={styles['audios-page-container']}>
-                                <div className={styles['all-audios-container']}>
+                                <FadeIn delay={70} className={styles['all-audios-container']}>
                                     {!loading && (audio?.length === 0 || !audio) && <p>Language not translated</p>}
                                     {audio && audio.map(audios => {
                                         return (
@@ -97,14 +98,14 @@ const Media = () => {
                                             />
                                         );
                                     })}
-                                </div>
+                                </FadeIn>
                                 <div className={styles['audio-image-container']}>
                                     <img className={styles['audio-image']} src={AudioImage} alt="" />
                                 </div>
                             </main>
                         }
                         {page === 'video' &&
-                            <main className={styles['videos-page-container']}>
+                            <FadeIn className={styles['videos-page-container']}>
                                 {!loading && (video?.length === 0 || !video) && <p>Language not translated</p>}
                                 {video && video.map(videos =>{
                                     return(
@@ -119,7 +120,7 @@ const Media = () => {
                                         />
                                     );
                                 })}
-                            </main>
+                            </FadeIn>
                         }
                     </>
                     }

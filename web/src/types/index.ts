@@ -11,7 +11,7 @@ export type AudioPlayerType =  {
     name: string,
     author: string,
     duration: string,
-    audio: string
+    link: string
 }
 
 export type VideoPlayerType = {

@@ -93,7 +93,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         name: item.attributes.name || null,
         author: item.attributes.author || null,
         duration: item.attributes.duration || null,
-        audio: item.attributes.audio?.data ? item.attributes.audio.data.attributes.url : null,
+        link: item.attributes.link,
     })),
 
     videos: (data): VideoFormatted[] => data.map((item: GenericObject) => ({

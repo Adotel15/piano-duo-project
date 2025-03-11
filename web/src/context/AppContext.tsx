@@ -9,7 +9,7 @@ import {
     useEffect
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import ReactAudioPlayer from 'react-audio-player';
+import ReactPlayer from 'react-player';
 import fetchData from '../utils/api';
 import { AudioPlayerType } from '../types';
 
@@ -39,7 +39,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         try {
             // TODO: Decide the audio
             const audiosResponse = await fetchData<AudioPlayerType[]>('audios', i18n.language);
-            if(audiosResponse && audiosResponse?.length > 0) setAudio(audiosResponse[1]);
+            if(audiosResponse && audiosResponse?.length > 0) setAudio(audiosResponse[2]);
         } catch (error) {
             // eslint-disable-next-line no-console
             console.error('Error fetching audio', error);
@@ -61,15 +61,13 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             }}
         >
             {children}
-            {isMusicPlaying &&
-                <ReactAudioPlayer
-                    src={audio?.audio}
-                    autoPlay
-                    volume={0.2}
-                    style={{ display: 'none' }}
-                    onEnded={() => setIsMusicPlaying(false)}
-                />
-            }
+            <ReactPlayer
+                url={audio?.link}
+                volume={0.2}
+                playing={isMusicPlaying}
+                style={{ display: 'none' }}
+                onEnded={() => setIsMusicPlaying(false)}
+            />
         </AppContext.Provider>
     );
 };
