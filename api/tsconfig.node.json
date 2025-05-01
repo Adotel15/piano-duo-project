@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": ["ES2023"],
+        "module": "ESNext",
+        "skipLibCheck": true,
+        "types": ["jest", "node"],
+
+        /* Bundler mode */
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "esModuleInterop": true,
+
+        /* Output */
+        "outDir": "./dist",
+        "rootDir": "./app",
+        "declaration": true, 
+        "declarationMap": true, 
+        "sourceMap": true,
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["app"],
+    "exclude": ["node_modules"]
+}

@@ -1,0 +1,144 @@
+{
+    "menu": {
+        "biography": "Biography",
+        "reviews": "Press",
+        "media": "Media",
+        "audioAndVideo": "(audios and videos)",
+        "repertoire": "Repertoire",
+        "gallery": "Gallery",
+        "cds": "CDs",
+        "contact": "Contact"
+    },
+    "home": [
+        "Top-tier masters",
+        "There are moments when it feels like listening to a whole orchestra",
+        "A perfect synchronization combined with great individual sensitivity",
+        "An exceptional piano duo at the Barcelona Palau",
+        "Extraordinary rapport, impeccable technique, and exquisite nuance in each of the performed pieces"
+    ],
+    "biography": {
+        "title": "—Biography",
+        "educationSection": {
+            "header": "Education",
+            "educations": [
+                {
+                    "school": "Liceu Conservatory.",
+                    "location": "Barcelona"
+                },
+                {
+                    "school": "Franz Liszt Academy.",
+                    "location": "Budapest"
+                },
+                {
+                    "school": "Manhattan School of Music.",
+                    "location": "New York"
+                }
+            ]
+        },
+        "titlesSection": {
+            "header": "Degrees",
+            "titles": [
+                {
+                    "title": "“Doctor of Musical Arts”",
+                    "school": "Manhattan School of Music.",
+                    "location": "New York"
+                },
+                {
+                    "title": "“Master of Music”",
+                    "school": "Manhattan School of Music.",
+                    "location": "New York"
+                }
+            ]
+        },
+        "awardsSection": {
+            "header": "Awards",
+            "awards": [
+                {
+                    "award": "1st Prize",
+                    "contest": "Jeunesses Musicales Competition — Spain"
+                },
+                {
+                    "award": "1st Prize",
+                    "contest": "International Competitions of Finale-Ligure — Italy"
+                },
+                {
+                    "award": "Special Prize “Friends of Mozart”",
+                    "contest": "International Chamber Music Competition — Paris"
+                },
+                {
+                    "award": "2nd Prize",
+                    "contest": "International Competition of Caltanissetta — Italy"
+                },
+                {
+                    "award": "3rd Prize",
+                    "contest": "Murray Dranoff Two-Piano Competition — Miami"
+                },
+                {
+                    "award": "1st Prize",
+                    "contest": "International Artists Auditions"
+                }
+            ]
+        },
+        "biographyContent": {
+            "header": "Luis and Lourdes Pérez-Molina",
+            "paragraphs": [
+                {
+                    "paragraph": "Luis and Mª Lourdes Pérez Molina form an outstanding piano duo, recognized for their performances at both national and international levels. The siblings studied at the Liceu Conservatory of Barcelona, the Franz Liszt Academy in Budapest, and the Manhattan School of Music in New York, where they earned a <span>Master’s</span> and a <span>Doctorate in Musical Arts</span>."
+                },
+                {
+                    "paragraph": "Throughout their professional careers, they have toured in countries such as Spain, Italy, Switzerland, Hungary, Bulgaria, the United States (New York, New Jersey, Illinois, Missouri, Connecticut, Wisconsin, and Florida), and Colombia (Bogotá, Cali, Medellín, and Bucaramanga)."
+                },
+                {
+                    "paragraph": "As soloists, they have collaborated with orchestras such as the Barcelona Symphony Orchestra and National Orchestra of Catalonia, the European Union Chamber Orchestra, the Florida Philharmonic Orchestra, the Royal Philharmonic of Galicia, the 'Soloists of Catalonia,' the “Valle del Cauca” Symphony Orchestra, and the “Julià Carbonell” Symphony Orchestra, under the direction of renowned conductors such as Antoni Ros Marbà, Christian Zacharias, Francesco Belli, Matthias Wollong, Virgínia Martínez, Alfons Reverté, ..."
+                },
+                {
+                    "paragraph": "The duo has recorded several CDs (<span>The Two Pianos in the 20th Century</span>, <span>Fantasies for Piano Duo</span>, etc.), and has made numerous recordings for radio and television in Spain and abroad. Additionally, they have received multiple chamber music awards, including the <span>first prize</span> in the 5th Permanent Competition of Spain’s Jeunesses Musicales, the <span>second prize</span> in the 2nd Yamaha Competition, the <span>special prize 'Friends of Mozart'</span> in the International Chamber Music Competition in Paris, <span>first prize</span> in Finale-Ligure (Italy), <span>second prize</span> in Caltanissetta (Italy), and the <span>third prize</span> in the International “Dranoff” Two-Piano Competition in Miami. In 1993, they won the “Artists International Auditions” and made their New York debut at Carnegie Hall’s Weill Recital Hall, marking a significant boost to their careers."
+                },
+                {
+                    "paragraph": "The Pérez Molina siblings have also conducted valuable research into the literature for two pianos and piano four hands."
+                }
+            ]
+        }
+    },
+    "reviews": {
+        "title": "—Press"
+    },
+    "media": {
+        "title": "—Media"
+    },
+    "repertoire": {
+        "title": "—Repertoire"
+    },
+    "gallery": {
+        "title": "—Gallery"
+    },
+    "cds": {
+        "title": "—CDs"
+    },
+    "contact": {
+        "title": "—Contact",
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "case": "Subject",
+            "message": "Message",
+            "terms": "I have read and accept the <span>terms and conditions</span> and agree to the <span>privacy policy</span>",
+            "send": "Send",
+            "error": {
+                "name": "*Enter the name",
+                "email": "*Enter a valid email",
+                "subject": "*Enter the subject",
+                "message": "*Enter the message",
+                "terms": "*You must accept the terms and conditions and the privacy policy"
+            },
+            "success": "Message sent successfully, we will contact you as soon as possible",
+            "failure": "There was an error sending the message, please try again"
+        }
+    },
+    "footer": {
+        "rights": "© 2024. Pérez Molina Piano Duo. All rights reserved",
+        "terms": "Terms and conditions",
+        "privacy": "Privacy policy",
+        "cookies": "Cookies policy"
+    }
+}

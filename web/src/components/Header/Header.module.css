@@ -1,0 +1,8 @@
+.h2 {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 600;
+    font-size: 3em;
+    line-height: 2.7em;
+    color: var(--secondary_color);
+    margin-bottom: 0.5em;
+}

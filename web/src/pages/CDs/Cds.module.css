@@ -1,0 +1,183 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.header-container {
+    width: 90%;
+}
+
+.sections-container {
+    width: 100%;
+    padding-left: 4em;
+    padding-right: 4em;
+    display: flex;
+    flex-direction: column;
+    color: var(--secondary_color);
+    font-family: 'Hind', sans-serif;
+}
+
+
+.section-cd {
+    width: 100%;
+    display: flex;
+    margin-bottom: 3.2em;
+}
+
+.images-container {
+    height: auto;
+    width: 40%;
+    overflow: hidden;
+    position: relative;
+}
+
+.CD-front-image-container, .CD-back-image-container, .CD-back-image-container-only {
+    display: flex;
+    align-items: flex-start;
+    height: 0;
+    width: 500px;
+    backface-visibility: hidden; 
+    transition: all 0.5s ease-in-out;
+    transform-origin: center top;
+    z-index: 1;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    height: auto;
+}
+
+.show {
+    height: auto;
+    transform: rotateY(0deg) scale(1) translateX(0);
+    opacity: 1;
+}
+
+.hide {
+    height: 0;
+    transform: rotateY(-90deg) scale(1) translateX(-50px);
+    opacity: 0;
+}
+
+.CD-image {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+
+.toggle-image-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.toggle-image {
+    width: 50px;
+    position: absolute;
+    top: 85%;
+    left: 5%;
+}
+
+.content-container {
+    margin-left: 3.2em;
+}
+
+.h3-container {
+    border-top: var(--secondary_color) solid ;
+    width: 100%;
+    margin-right: 7em;
+}
+
+.h3 {
+    padding-top: 0.5em;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.author {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.ol-container {
+    padding-left: 15px;
+    font-weight: 500;
+}
+
+
+.pieces-list {
+    font-size: 14px;
+    line-height: 1.9em;
+}
+
+.piece-status-incative {
+    color: #cdcdcde2;
+}
+
+.piece-sections-container {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 800px) {
+    .section-cd {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 30px;
+        border-bottom: var(--secondary_color) solid;
+    }
+
+    .content-container {
+        margin-left: 0;
+    }
+
+    .h3-container {
+        border: none;
+        width: 100%;
+        font-size: 14px;
+        margin-right: 0;
+    }
+
+    .CD-image {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+    }
+
+    .sections-container {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        color: var(--secondary_color);
+        font-family: 'Hind', sans-serif;
+        padding: 0;
+    }
+
+    .pieces-list {
+        font-size: 10px;
+        line-height: 1.9em;
+    }
+
+    .images-container {
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .toggle-image {
+        width: 40px;
+        position: absolute;
+        top: 85%;
+        left: 5%;
+    }
+}

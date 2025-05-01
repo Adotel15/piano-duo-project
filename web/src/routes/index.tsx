@@ -4,14 +4,24 @@ import Contact from '../pages/Contact/Contact';
 import Home from '../pages/Home/Home';
 import Media from '../pages/Media/Media';
 import Reviews from '../pages/Reviews/Reviews';
+import Gallery from '../pages/Gallery/Gallery';
+import Cds from '../pages/CDs/Cds';
+import Repertoire from '../pages/Repertoire/Repertoire';
+import Biography from '../pages/Biography/Biography';
+
+import { routes } from '../constants/routes';
 
 const AppRoutes = () =>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="media" element={<Media />} />
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path={routes.biography} element={<Biography />}/>
+            <Route path={routes.reviews} element={<Reviews />} />
+            <Route path={routes.media} element={<Media />} />
+            <Route path={routes.gallery} element={<Gallery />}/>
+            <Route path={routes.music} element={<Cds />}/>
+            <Route path={routes.repertoire} element={<Repertoire />}/>
+            <Route path={routes.contact} element={<Contact />} />
         </Routes>
     </BrowserRouter>
 ;

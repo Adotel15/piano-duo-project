@@ -1,0 +1,60 @@
+steps:
+  - name: "bash"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "VITE_API_URL=${_VITE_API_URL}" > web/.env
+        echo "VITE_PORT=${_VITE_PORT}" >> web/.env
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--no-cache'
+      - '-t'
+      - >-
+        $_DOCKER_LOCATION/$_GCP_PROJECT_ID/$_GCP_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - web
+      - '-f'
+      - web/Dockerfile
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - >-
+        $_DOCKER_LOCATION/$_GCP_PROJECT_ID/$_GCP_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+    id: Push
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - '--platform=managed'
+      - >-
+        --image=$_DOCKER_LOCATION/$_GCP_PROJECT_ID/$_GCP_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
+images:
+  - >-
+    $_DOCKER_LOCATION/$_GCP_PROJECT_ID/$_GCP_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _TRIGGER_ID: ab5c0198-d69f-4c83-b34f-8f52d8bada50
+  _DEPLOY_REGION: europe-west1
+  _DOCKER_LOCATION: europe-west1-docker.pkg.dev
+  _GCP_REPOSITORY: cloud-run-source-deploy
+  _GCP_PROJECT_ID: decent-envoy-432908-j0
+  _PLATFORM: managed
+  _SERVICE_NAME: piano-duo-project
+  _VITE_API_URL: injected-api-url
+  _VITE_PORT: injected-port
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - piano-duo-project

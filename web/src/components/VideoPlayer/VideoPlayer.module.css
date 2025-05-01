@@ -1,0 +1,32 @@
+.video-title-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.video-wrapper {
+    width: 500px;
+    aspect-ratio: 16 / 9; 
+    position: relative;
+}
+
+
+@media (max-width: 768px) {
+
+    .video-title-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 16 / 9; 
+        position: relative;
+    }
+}

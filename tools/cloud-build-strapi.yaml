@@ -1,0 +1,92 @@
+steps:
+  - name: "bash"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "HOST=${_HOST}" > strapi/.env
+        echo "PORT=${_PORT}" >> strapi/.env
+        echo "APP_KEYS=${_APP_KEYS}" >> strapi/.env
+        echo "API_TOKEN_SALT=${_API_TOKEN_SALT}" >> strapi/.env
+        echo "ADMIN_JWT_SECRET=${_ADMIN_JWT_SECRET}" >> strapi/.env
+        echo "TRANSFER_TOKEN_SALT=${_TRANSFER_TOKEN_SALT}" >> strapi/.env
+
+        echo "DATABASE_CLIENT=${_DATABASE_CLIENT}" >> strapi/.env
+        echo "DATABASE_HOST=${_DATABASE_HOST}" >> strapi/.env
+        echo "DATABASE_PORT=${_DATABASE_PORT}" >> strapi/.env
+        echo "DATABASE_NAME=${_DATABASE_NAME}" >> strapi/.env
+        echo "DATABASE_USERNAME=${_DATABASE_USERNAME}" >> strapi/.env
+        echo "DATABASE_PASSWORD=${_DATABASE_PASSWORD}" >> strapi/.env
+        echo "DATABASE_SSL=${_DATABASE_SSL}" >> strapi/.env
+        echo "JWT_SECRET=${_JWT_SECRET}" >> strapi/.env
+
+        echo "GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON=${_GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON}" >> strapi/.env
+        echo "GOOGLE_CLOUD_BUCKET_NAME=${_GOOGLE_CLOUD_BUCKET_NAME}" >> strapi/.env
+        echo "NODE_ENV=${_NODE_ENV}" >> strapi/.env
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--no-cache'
+      - '-t'
+      - >-
+        $_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - strapi
+      - '-f'
+      - strapi/Dockerfile
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - >-
+        $_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+    id: Push
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - '--platform=managed'
+      - >-
+        --image=$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
+images:
+  - >-
+    $_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _PLATFORM: managed
+  _SERVICE_NAME: piano-duo-strapi
+  _DEPLOY_REGION: europe-west1
+  _AR_HOSTNAME: europe-west1-docker.pkg.dev
+  _AR_REPOSITORY: cloud-run-source-deploy
+  _TRIGGER_ID: 744721ec-6be0-403f-82db-2719b41a1c36
+  _AR_PROJECT_ID: decent-envoy-432908-j0ç
+  _HOST: injected-host
+  _PORT: injected-port
+  _APP_KEYS: injected-app-keys
+  _API_TOKEN_SALT: injected-api-token-salt
+  _ADMIN_JWT_SECRET: injected-admin-jwt-secret
+  _TRANSFER_TOKEN_SALT: injected-transfer-token-salt
+  _DATABASE_CLIENT: injected-database-client
+  _DATABASE_HOST: injected-database-host
+  _DATABASE_PORT: injected-database-port
+  _DATABASE_NAME: injected-database-name
+  _DATABASE_USERNAME: injected-database-username
+  _DATABASE_PASSWORD: injected-database-password
+  _DATABASE_SSL: injected-database-ssl
+  _JWT_SECRET: injected-jwt-secret
+  _GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON: injected-google-cloud-service-account-json
+  _GOOGLE_CLOUD_BUCKET_NAME: injected-google-cloud-bucket-name
+  _NODE_ENV: injected-node-env
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - piano-duo-strapi
