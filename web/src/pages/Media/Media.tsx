@@ -8,7 +8,7 @@ import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/footer/Footer';
 
 import styles from'./Media.module.css';
 
