@@ -54,7 +54,7 @@
 }
 
 .menu-list-item a {
-    color: #344FAB;
+    color: var(--secondary_color);
     letter-spacing: normal;
     font-size: 19px;
     font-family: 'DM Sans', sans-serif;
@@ -99,7 +99,7 @@
 
 .rights-container{
     width: 50%;
-    color: #344FAB;
+    color: var(--secondary_color);
     font-weight: 400;
 }
 
@@ -115,7 +115,7 @@
     cursor: pointer;
     text-decoration: underline 1px;
     transition: 0.3s ease-in-out;
-    color: #344FAB;
+    color: var(--secondary_color);
 }
 
 .conditions-container p:hover{

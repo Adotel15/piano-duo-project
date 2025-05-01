@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/NavBar';
 import Loader from '../../components/Loader/Loader';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/Footer/Footer';
 
 import FadeIn from 'react-fade-in';
 
@@ -35,24 +35,24 @@ const Biography = () => {
                             <div>
                                 <FadeIn className={styles['biography_element']}>
                                     <h3 className={styles['title-list']}>{t('biography.educationSection.header')}</h3>
-                                    {educations.map(education =>
-                                        <li className={styles['list-container']}>{education.school}<br />{education.location} </li>
+                                    {educations.map((education, index) =>
+                                        <li key={index} className={styles['list-container']}>{education.school}<br />{education.location} </li>
                                     )}
                                 </FadeIn>
                             </div>
                             <div>
                                 <FadeIn className={styles['biography_element']}>
                                     <h3 className={styles['title-list']}>{t('biography.titlesSection.header')}</h3>
-                                    {titles.map(titleItem =>
-                                        <li className={styles['list-container']}>{titleItem.title}<br />{titleItem.school}<br />{titleItem.location}</li>
+                                    {titles.map((titleItem, index) =>
+                                        <li key={index} className={styles['list-container']}>{titleItem.title}<br />{titleItem.school}<br />{titleItem.location}</li>
                                     )}
                                 </FadeIn>
                             </div>
                             <div>
                                 <FadeIn className={styles['biography_element']}>
                                     <h3 className={styles['title-list']}>{t('biography.awardsSection.header')}</h3>
-                                    {awards.map(awardItem =>
-                                        <li className={styles['list-container']}>{awardItem.award}<br />{awardItem.contest}</li>
+                                    {awards.map((awardItem, index) =>
+                                        <li key={index} className={styles['list-container']}>{awardItem.award}<br />{awardItem.contest}</li>
                                     )}
                                 </FadeIn>
                             </div>
@@ -60,8 +60,8 @@ const Biography = () => {
                         <section className={styles['biography-container']}>
                             <h3 className={styles['biography-title']}>{t('biography.biographyContent.header')}</h3>
                             <FadeIn>
-                                {biography.map(paragraph=>
-                                    <p className={styles['p']} dangerouslySetInnerHTML={{__html: paragraph.paragraph}} />
+                                {biography.map((paragraph, index) =>
+                                    <p key={index} className={styles['p']} dangerouslySetInnerHTML={{__html: paragraph.paragraph}} />
                                 )}
                             </FadeIn>
                             <img className={styles['image-biography']} src={data.image} alt="Concert" />

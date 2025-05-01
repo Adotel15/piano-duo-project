@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import FadeIn from 'react-fade-in';
 
 import Navbar from '../../components/Navbar/NavBar';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 
@@ -95,17 +95,24 @@ const Repertoire = () => {
                             {/** This should not happen */}
                             {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
                             {
-                                selectedId && repertoires &&
+                                selectedId &&
+                                repertoires &&
                                 repertoires.filter(repertoire => repertoire.id === selectedId).map(repertoire => {
                                     return (
-                                        <div className={styles['repertories-conatiner']}>
-                                            <div className={styles['repertorie-title-conatiner']} key={repertoire.id}>
+                                        <div key={repertoire.id} className={styles['repertories-conatiner']}>
+                                            <div className={styles['repertorie-title-conatiner']}>
                                                 <div>{repertoire.title}</div>
                                             </div>
-                                            <FadeIn delay={100} className={`${styles['piece-author-content-container']} ${repertoire.id === '4' ? styles['piece-author-4-content-container'] : ''}`}>
-                                                {repertoire.piece_author.map(piece_author => {
+                                            <FadeIn
+                                                delay={10}
+                                                className= {styles['piece-author-content-container']}
+                                            >
+                                                {repertoire.piece_author.map((piece_author, index) => {
                                                     return (
-                                                        <div key={piece_author.title} className={`${styles['piece-author-conatiner']} ${repertoire.id === '4' ? styles['piece-author-4-container'] : ''}`}>
+                                                        <div
+                                                            key={index}
+                                                            className={styles['piece-author-conatiner']}
+                                                        >
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
                                                             <p>{piece_author.author}</p>
@@ -136,10 +143,7 @@ const Repertoire = () => {
                                         key={repertoire.id}
                                         className={styles['repertoire-list-element-mobile']}
                                     >
-                                        <div
-                                            key={repertoire.id}
-                                            onClick={() => setSelectedId(repertoire.id)}
-                                        >
+                                        <div onClick={() => setSelectedId(repertoire.id)}>
                                             <p
                                                 className={`${styles['repertoire-menu']} 
                                                     ${selectedId === repertoire.id ? styles['repertoire-menu-active'] : ''}`
@@ -152,8 +156,8 @@ const Repertoire = () => {
                                             selectedId === repertoire.id &&
                                             <div>
                                                 {
-                                                    repertoire.piece_author.map(piece_author =>
-                                                        <div className={styles['piece-author-conatiner']}>
+                                                    repertoire.piece_author.map((piece_author, index) =>
+                                                        <div key={index} className={styles['piece-author-conatiner']}>
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
                                                             <p>{piece_author.author}</p>

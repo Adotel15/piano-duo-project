@@ -17,7 +17,7 @@
     padding-right: 4em;
     display: flex;
     flex-direction: column;
-    color: #344FAB;
+    color: var(--secondary_color);
     font-family: 'Hind', sans-serif;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .h3-container {
-    border-top: #344FAB solid ;
+    border-top: var(--secondary_color) solid ;
     width: 100%;
     margin-right: 7em;
 }
@@ -132,7 +132,7 @@
         align-items: center;
         gap: 20px;
         padding-bottom: 30px;
-        border-bottom: #344FAB solid;
+        border-bottom: var(--secondary_color) solid;
     }
 
     .content-container {
@@ -157,7 +157,7 @@
         display: flex;
         flex-direction: column;
         justify-content:center;
-        color: #344FAB;
+        color: var(--secondary_color);
         font-family: 'Hind', sans-serif;
         padding: 0;
     }

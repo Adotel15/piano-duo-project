@@ -38,7 +38,7 @@ const WebMusicButton = ({ isTransparent = false }:{ isTransparent?: boolean }) =
                                         transition: fill 0.3s ease-in-out;
                                     }
                                     svg:hover .bar {
-                                        fill: rgba(212, 181, 137, 0.27);
+                                        fill: var(--hover_primary_color);
                                     }
                                     .bar:nth-child(2), .bar:nth-child(4) {
                                         animation-delay: -0.7s;

@@ -9,7 +9,7 @@ const fetchData = async <T>(collectionType: string, language: string): Promise<T
             throw new Error(`Error fetching data ${collectionType}: ${response.statusText}`);
         }
 
-        const { data }: { data:T } = await response.json();
+        const { data }: { data: T } = await response.json();
         return data;
     } catch (error) {
         // eslint-disable-next-line no-console
