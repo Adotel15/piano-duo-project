@@ -24,7 +24,7 @@ jobs:
           cd api
           npm install
           cd ../web
-          npm install
+          npm install --legacy-peer-deps
 
       - name: Build API
         working-directory: ./api
