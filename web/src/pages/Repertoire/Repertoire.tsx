@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import FadeIn from 'react-fade-in';
 
 import Navbar from '../../components/Navbar/NavBar';
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/footer/Footer';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 

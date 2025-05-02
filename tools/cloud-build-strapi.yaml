@@ -10,7 +10,6 @@ steps:
         echo "API_TOKEN_SALT=${_API_TOKEN_SALT}" >> strapi/.env
         echo "ADMIN_JWT_SECRET=${_ADMIN_JWT_SECRET}" >> strapi/.env
         echo "TRANSFER_TOKEN_SALT=${_TRANSFER_TOKEN_SALT}" >> strapi/.env
-
         echo "DATABASE_CLIENT=${_DATABASE_CLIENT}" >> strapi/.env
         echo "DATABASE_HOST=${_DATABASE_HOST}" >> strapi/.env
         echo "DATABASE_PORT=${_DATABASE_PORT}" >> strapi/.env
@@ -19,7 +18,6 @@ steps:
         echo "DATABASE_PASSWORD=${_DATABASE_PASSWORD}" >> strapi/.env
         echo "DATABASE_SSL=${_DATABASE_SSL}" >> strapi/.env
         echo "JWT_SECRET=${_JWT_SECRET}" >> strapi/.env
-
         echo "GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON=${_GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON}" >> strapi/.env
         echo "GOOGLE_CLOUD_BUCKET_NAME=${_GOOGLE_CLOUD_BUCKET_NAME}" >> strapi/.env
         echo "NODE_ENV=${_NODE_ENV}" >> strapi/.env
