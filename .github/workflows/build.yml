@@ -1,0 +1,25 @@
+# .github/workflows/build.yml
+name: build
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: build all services
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: build api
+        run: |
+          cd api
+          npm run build
+
+      - name: build web
+        run: |
+          cd web
+          npm run build
+
+
