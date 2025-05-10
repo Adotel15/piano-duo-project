@@ -1,66 +1,94 @@
-# Instrucciones para GitHub Copilot
+# Instructions for GitHub Copilot
 
-## Contexto del Proyecto
+## Project Context
 
-El repositorio contiene dos servicios principales:
+The repository contains two main services:
 
 ### 1. API
 - **Framework**: Fastify.
-- **Propósito**: Proveer endpoints para interactuar con el CMS (Strapi) y otros servicios como Brevo.
-- **Configuración**: La configuración de rutas se encuentra en `api/app/config/routes.ts`.
-- **Estructura**:
-  - `v1/`: Contiene módulos como `brevo`, `strapi`, `utils`, y `constants`.
-  - `app.ts`: Punto de entrada principal del servidor Fastify.
-- **Linting**: Configurado con ESLint (`api/eslint.config.js`) con reglas estrictas como:
-  - Uso obligatorio de `semi` y comillas simples.
-  - Prohibición de `console.log` en producción.
-  - Indentación de 4 espacios.
+- **Purpose**: Provide endpoints to interact with the CMS (Strapi) and other services like Brevo.
+- **Configuration**: Route configuration is found in `api/app/config/routes.ts`.
+- **Structure**:
+  - `v1/`: Contains modules like `brevo`, `strapi`, `utils`, and `constants`.
+  - `app.ts`: Main entry point for the Fastify server.
+- **Linting**: Configured with ESLint (`api/eslint.config.js`) with strict rules such as:
+  - Mandatory use of `semi` and single quotes.
+  - Prohibition of `console.log` in production.
+  - 4-space indentation.
 
 ### 2. Web
-- **Framework**: React con TypeScript.
+- **Framework**: React with TypeScript.
 - **Bundler**: Vite.
-- **Propósito**: Interfaz de usuario para el portafolio de pianistas.
-- **Configuración**: Configuración de Vite en `web/vite.config.ts`.
-- **Estructura**:
-  - `components/`: Contiene componentes reutilizables como `Navbar`, `Footer`, y `Menu`.
-  - `pages/`: Contiene las páginas principales como `Repertoire`.
-  - `utils/`: Funciones auxiliares.
-- **Linting**: Configurado con ESLint (`web/eslint.config.js`) con reglas similares a las del API.
+- **Purpose**: User interface for the pianists' portfolio.
+- **Configuration**: Vite configuration in `web/vite.config.ts`.
+- **Structure**:
+  - `components/`: Contains reusable components like `Navbar`, `Footer`, and `Menu`.
+  - `pages/`: Contains main pages like `Repertoire`.
+  - `utils/`: Helper functions.
+- **Linting**: Configured with ESLint (`web/eslint.config.js`) with rules similar to those of the API.
 
-## Arquitectura
+## Architecture
 
-La arquitectura del proyecto está compuesta por los siguientes elementos:
+The project's architecture is composed of the following elements:
 
 ```mermaid
 graph LR
-E(Nginx) --> B
+E(Nginx) --> G
 E --> D
-B(Strapi Headless CM) --> A(Base de Datos)
-B --> C(Bucket GC)
-D(Web) --> B 
+B(Strapi Service) --> A(Database)
+B --> C(GC Bucket)
+D(Web) --> F
+F(API) --> B
+G(Strapi UI) --> B
 ```
 
-- **Nginx**: Reverse proxy para seguridad adicional.
-- **Strapi**: CMS para gestionar contenido.
-- **PostgreSQL**: Base de datos para Strapi.
-- **Google Cloud**: Almacenamiento de archivos y despliegue.
+- **Nginx**: Reverse proxy for additional security.
+- **Web**: Piano Duo Frontend.
+- **API**: Fastify API service.
+- **Strapi UI**: UI for Strapi Service.
+- **Strapi Service**: Strapi Service with connection to Database and Bucket.
+- **PostgreSQL**: Database for Strapi.
+- **Google Cloud**: File storage and deployment.
 
-## Normas del Proyecto
+## Development Workflow
+
+1. **Branching**:
+   - Create a branch with the name format: `PD-{ClickUp task ID}`
+   - Each commit must include the branch name
+
+2. **Pull Requests**:
+   - Title must include the branch name and a brief description of what is being added
+   - Description must detail the objective, modifications, and tests for that task
+   - PRs must always target the `develop` branch
+
+## Cloud Infrastructure
+
+All infrastructure is deployed in Docker containers using Cloud Run on GCP. Deployment is managed through Cloud Builds that are directly integrated with GitHub and deploy the main branch, with one pipeline for each service (web, strapi, and api). 
+
+A GCP bucket is used to store all media uploaded to Strapi through a custom integration. A PostgreSQL database runs on a Google Cloud VM to serve Strapi.
+
+## Services Structure
+
+The API has been modified to have a service-based structure. Currently, there are two services:
+- **Strapi**: For content management
+- **Brevo**: For handling email communications
+
+## Project Standards
 
 1. **Commits**:
-   - Antes de cada commit, se ejecutan scripts automáticos para verificar la calidad del código y el formato del mensaje.
-   - Formato del mensaje: `"PD-{Código Tarea ClickUp} ...resto del mensaje commit"`.
+   - Before each commit, automatic scripts are executed to verify code quality and message format.
+   - Message format: `"PD-{ClickUp Task Code} ...rest of commit message"`.
 
 2. **Linting**:
-   - Se ejecuta automáticamente antes de los commits.
-   - Reglas estrictas para mantener la calidad del código.
+   - Automatically runs before commits.
+   - Strict rules to maintain code quality.
 
-3. **Despliegue**:
-   - Configuración de despliegue en Google Cloud mediante archivos YAML en `tools/`.
-   - Variables de entorno gestionadas a través de archivos `.env`.
+3. **Deployment**:
+   - Deployment configuration in Google Cloud through YAML files in `tools/`.
+   - Environment variables managed through `.env` files.
 
-## Políticas
+## Policies
 
-- **Calidad del Código**: Uso obligatorio de ESLint con reglas estrictas.
-- **Revisión de Código**: Todos los PR deben ser revisados antes de ser fusionados.
-- **Seguridad**: Uso de Nginx como reverse proxy y políticas de seguridad en Strapi (`middlewares.ts`).
+- **Code Quality**: Mandatory use of ESLint with strict rules.
+- **Code Review**: All PRs must be reviewed before being merged.
+- **Security**: Use of Nginx as a reverse proxy and security policies in Strapi (`middlewares.ts`).
