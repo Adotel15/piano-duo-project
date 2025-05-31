@@ -69,8 +69,8 @@ interface BiographyFormatted {
     title: string;
     content: Array<{
       id: number;
-      degree_title: string;
-      degree_institution: string;
+      degreeTitle: string;
+      degreeInstitution: string;
       city: string;
     }>;
   }>;
@@ -80,12 +80,12 @@ interface BiographyFormatted {
     content: Array<{
       id: number;
       award: string;
-      award_competition: string;
+      awardCompetition: string;
       city: string;
     }>;
   }>;
 
-  content_title: string;
+  contentTitle: string;
   //content_test: string; ESTA FET AMB MARKDOWN, POTSER FA FALTA INSTALAR ALGUNA LLIBRERIA
   caption: string;
 }
@@ -150,11 +150,10 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
             : item.attributes.piece_author?.data || null,
     })),
 
-    biography: (data): BiographyFormatted[] => data.map((item: GenericObject) => ({
-        content: item.attributes.content,
-
-        education: Array.isArray(item.attributes.education)
-            ? item.attributes.education.map((section: GenericObject) => ({
+    biography: (data): BiographyFormatted[] => [{
+        content: data.attributes.content,
+        education: Array.isArray(data.attributes.education)
+            ? data.attributes.education.map((section: GenericObject) => ({
                 title: section.title,
                 content: Array.isArray(section.content)
                     ? section.content.map((edu: GenericObject) => ({
@@ -166,37 +165,37 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
             }))
             : [],
 
-        degrees: Array.isArray(item.attributes.degrees)
-            ? item.attributes.degrees.map((section: GenericObject) => ({
+        degrees: Array.isArray(data.attributes.degrees)
+            ? data.attributes.degrees.map((section: GenericObject) => ({
                 title: section.title,
                 content: Array.isArray(section.content)
                     ? section.content.map((deg: GenericObject) => ({
                         id: deg.id,
-                        degree_title: deg.degree_title,
-                        degree_institution: deg.degree_institution,
+                        degreeTitle: deg.degreeTitle,
+                        degreeInstitution: deg.degreeInstitution,
                         city: deg.city,
                     }))
                     : [],
             }))
             : [],
 
-        awards: Array.isArray(item.attributes.awards)
-            ? item.attributes.awards.map((section: GenericObject) => ({
+        awards: Array.isArray(data.attributes.awards)
+            ? data.attributes.awards.map((section: GenericObject) => ({
                 title: section.title,
                 content: Array.isArray(section.content)
                     ? section.content.map((awd: GenericObject) => ({
                         id: awd.id,
                         award: awd.award,
-                        award_competition: awd.award_competition,
+                        awardCompetition: awd.awardCompetition,
                         city: awd.city,
                     }))
                     : [],
             }))
             : [],
 
-        content_title: item.attributes.content_title,
-        caption: item.attributes.caption,
-    }))
+        contentTitle: data.attributes.contentTitle,
+        caption: data.attributes.caption,
+    }]
 };
 
 export const formatStrapiArray = <T>(

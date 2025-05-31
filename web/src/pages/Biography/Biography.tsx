@@ -18,7 +18,6 @@ import i18n from '../../../i18n';
 
 type Biography = {
     content: string;
-
     education: Array<{
         title: string;
         content: Array<{
@@ -32,8 +31,8 @@ type Biography = {
         title: string;
         content: Array<{
             id: number;
-            degree_title: string;
-            degree_institution: string;
+            degreeTitle: string;
+            degreeInstitution: string;
             city: string;
         }>;
     }>;
@@ -43,17 +42,17 @@ type Biography = {
         content: Array<{
             id: number;
             award: string;
-            award_competition: string;
+            awardCompetition: string;
             city: string;
         }>;
     }>;
 
-    content_title: string;
+    contentTitle: string;
     caption: string;
 }
 
 const Biography = () => {
-    const [biography, setBiography] = useState <Biography | null> (null);
+    const [biography, setBiography] = useState <Biography | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const { t, ready } = useTranslation();
 
@@ -63,14 +62,11 @@ const Biography = () => {
     const biography = t('biography.biographyContent.paragraphs', { returnObjects: true }) as { paragraph: string }[];
 */
 
-    useEffect(() => {
-        getBiography();
-    }, []);
-
     const getBiography = async () => {
         try {
-            const data = await fetchData<Biography>('biography', i18n.language);
-            setBiography(data);
+            const data = await fetchData<Biography[]>('biography', i18n.language);
+
+            setBiography(data[0]);
             if (!data) return;
 
             setLoading(false);
@@ -79,6 +75,10 @@ const Biography = () => {
             console.log('Error fetching biography', error);
         }
     };
+
+    useEffect(() => {
+        getBiography();
+    }, []);
 
     return (
         <main className={styles['page-container']}>
@@ -107,7 +107,7 @@ const Biography = () => {
                                     <FadeIn className={styles['biography_element']}>
                                         <h3 className={styles['title-list']}>{section.title}</h3>
                                         {section.content.map(item =>
-                                            <li key={item.id}  className={styles['list-container']}>{item.degree_title}<br />{item.degree_institution}<br />{item.city}</li>
+                                            <li key={item.id}  className={styles['list-container']}>{item.degreeTitle}<br />{item.degreeInstitution}<br />{item.city}</li>
                                         )}
                                     </FadeIn>
                                 </div>
@@ -117,7 +117,7 @@ const Biography = () => {
                                     <FadeIn className={styles['biography_element']}>
                                         <h3 className={styles['title-list']}>{section.title}</h3>
                                         {section.content.map(item =>
-                                            <li key={item.id} className={styles['list-container']}>{item.award}<br />{item.award_competition} {item.city}</li>
+                                            <li key={item.id} className={styles['list-container']}>{item.award}<br />{item.awardCompetition} {item.city}</li>
                                         )}
                                     </FadeIn>
                                 </div>
@@ -126,7 +126,7 @@ const Biography = () => {
                         {biography &&
                         <section className={styles['biography-container']}>
 
-                            <h3 className={styles['biography-title']}>{biography.content_title}</h3>
+                            <h3 className={styles['biography-title']}>{biography.contentTitle}</h3>
                             <FadeIn>
 
                                 <p className={styles['p']} dangerouslySetInnerHTML={{__html: biography.content}} />
