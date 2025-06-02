@@ -65,8 +65,8 @@ const Biography = () => {
     const getBiography = async () => {
         try {
             const data = await fetchData<Biography[]>('biography', i18n.language);
-
-            setBiography(data[0]);
+            console.log('Fetched data:', data);
+            setBiography(data ? data[0] : null);
             if (!data) return;
 
             setLoading(false);
@@ -80,6 +80,10 @@ const Biography = () => {
         getBiography();
     }, []);
 
+    if (biography) {
+        console.log('biography.education:', biography.education);
+    }
+
     return (
         <main className={styles['page-container']}>
             <Navbar/>
@@ -92,6 +96,7 @@ const Biography = () => {
                     :
                     <div className={styles['content-container']}>
                         <FadeIn className={styles['titles-container']}>
+
                             {biography?.education.map((section, index) =>
                                 <div key={index}>
                                     <FadeIn className={styles['biography_element']}>

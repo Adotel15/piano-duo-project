@@ -152,45 +152,45 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
 
     biography: (data): BiographyFormatted[] => [{
         content: data.attributes.content,
-        education: Array.isArray(data.attributes.education)
-            ? data.attributes.education.map((section: GenericObject) => ({
-                title: section.title,
-                content: Array.isArray(section.content)
-                    ? section.content.map((edu: GenericObject) => ({
-                        id: edu.id,
+        education: data.attributes.education
+            ? [{
+                title: data.attributes.education.title,
+                content: Array.isArray(data.attributes.education.content)
+                    ? data.attributes.education.content.map((edu: GenericObject) => ({
+                        id: Number(edu.id),
                         location: edu.location,
                         city: edu.city,
                     }))
                     : [],
-            }))
+            }]
             : [],
 
-        degrees: Array.isArray(data.attributes.degrees)
-            ? data.attributes.degrees.map((section: GenericObject) => ({
-                title: section.title,
-                content: Array.isArray(section.content)
-                    ? section.content.map((deg: GenericObject) => ({
-                        id: deg.id,
+        degrees: data.attributes.degrees
+            ? [{
+                title: data.attributes.degrees.title,
+                content: Array.isArray(data.attributes.degrees.content)
+                    ? data.attributes.degrees.content.map((deg: GenericObject) => ({
+                        id: Number(deg.id),
                         degreeTitle: deg.degreeTitle,
                         degreeInstitution: deg.degreeInstitution,
                         city: deg.city,
                     }))
                     : [],
-            }))
+            }]
             : [],
 
-        awards: Array.isArray(data.attributes.awards)
-            ? data.attributes.awards.map((section: GenericObject) => ({
-                title: section.title,
-                content: Array.isArray(section.content)
-                    ? section.content.map((awd: GenericObject) => ({
-                        id: awd.id,
+        awards: data.attributes.awards
+            ? [{
+                title: data.attributes.awards.title,
+                content: Array.isArray(data.attributes.awards.content)
+                    ? data.attributes.awards.content.map((awd: GenericObject) => ({
+                        id: Number(awd.id),
                         award: awd.award,
                         awardCompetition: awd.awardCompetition,
                         city: awd.city,
                     }))
                     : [],
-            }))
+            }]
             : [],
 
         contentTitle: data.attributes.contentTitle,
