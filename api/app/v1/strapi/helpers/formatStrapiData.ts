@@ -21,12 +21,12 @@ interface CDFormatted {
   frontImage: string | null;
   backImage: string | null;
   subtitle: string;
-  pieces: Array<{
+  pieces: {
     id: number;
     name: string;
     sections: GenericObject | null;
     status: string | null;
-  }> | null;
+  }[] | null;
 }
 
 interface AudioFormatted {
@@ -47,10 +47,46 @@ interface VideoFormatted {
 interface RepertoireFormatted {
   id: number;
   title: string;
-  piece_author: Array<{
+  piece_author: {
     title: string;
     author: string;
-  }> | null;
+  }[] | null;
+}
+
+interface BiographyFormatted {
+  content: string;
+  education: {
+    title: string;
+    content: {
+      id: number;
+      location: string;
+      city: string;
+    }[];
+  };
+
+  degrees: {
+    title: string;
+    content: {
+      id: number;
+      degreeTitle: string;
+      degreeInstitution: string;
+      city: string;
+    }[];
+  };
+
+  awards: {
+    title: string;
+    content: {
+      id: number;
+      award: string;
+      awardCompetition: string;
+      city: string;
+    }[];
+  };
+
+  contentTitle: string;
+  //content_test: string; ESTA FET AMB MARKDOWN, POTSER FA FALTA INSTALAR ALGUNA LLIBRERIA
+  caption: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -112,6 +148,39 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
             }))
             : item.attributes.piece_author?.data || null,
     })),
+
+    biography: (data): BiographyFormatted[] => [{
+        content: data.attributes.content,
+        education: {
+            title: data.attributes.education[0].title,
+            content: data.attributes.education[0].content.map((edu: GenericObject) => ({
+                id: Number(edu.id),
+                location: edu.location,
+                city: edu.city,
+            }))
+        },
+        degrees:{
+            title: data.attributes.degrees[0].title,
+            content: data.attributes.degrees[0].content.map((deg: GenericObject) => ({
+                id: Number(deg.id),
+                degreeTitle: deg.degreeTitle,
+                degreeInstitution: deg.degreeInstitution,
+                city: deg.city,
+            }))
+        },
+        awards:{
+            title: data.attributes.awards[0].title,
+            content:  data.attributes.awards[0].content.map((awd: GenericObject) => ({
+                id: Number(awd.id),
+                award: awd.award,
+                awardCompetition: awd.awardCompetition,
+                city: awd.city,
+            }))
+
+        },
+        contentTitle: data.attributes.contentTitle,
+        caption: data.attributes.caption,
+    }]
 };
 
 export const formatStrapiArray = <T>(
