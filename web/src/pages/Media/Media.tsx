@@ -18,6 +18,7 @@ import { AudioPlayerType, VideoPlayerType } from '../../types';
 
 import i18n from '../../../i18n';
 import fetchData from '../../utils/api';
+import { audioOrder, excludedVideoTitle, videoLastOrder } from '../../constants/ui';
 
 const Media = () => {
     const [page, setPage] = useState<'audio' | 'video'>('audio');
@@ -88,7 +89,14 @@ const Media = () => {
                             <main className={styles['audios-page-container']}>
                                 <FadeIn delay={10} className={styles['all-audios-container']}>
                                     {!loading && (audio?.length === 0 || !audio) && <p>Language not translated</p>}
-                                    {audio && audio.map(audios => {
+                                    {audio && audio
+                                        .slice()
+                                        .sort((a, b) => {
+                                            const aIndex = audioOrder.indexOf(`${a.author} ${a.name}`);
+                                            const bIndex = audioOrder.indexOf(`${b.author} ${b.name}`);
+                                            return aIndex - bIndex;
+                                        })
+                                        .map(audios => {
                                         return (
                                             <AudioPlayer
                                                 key={audios.id}
@@ -107,10 +115,20 @@ const Media = () => {
                         {page === 'video' &&
                             <FadeIn className={styles['videos-page-container']}>
                                 {!loading && (video?.length === 0 || !video) && <p>Language not translated</p>}
-                                {video && video.map(videos =>{
-                                    return(
-                                        <VideoPlayer
-                                            key={videos.id}
+                                {video && video
+                                    .filter(v => v.title !== excludedVideoTitle)
+                                    .sort((a, b) => {
+                                        const aIndex = videoLastOrder.indexOf(a.title);
+                                        const bIndex = videoLastOrder.indexOf(b.title);
+                                        if (aIndex === -1 && bIndex === -1) return 0;
+                                        if (aIndex === -1) return -1;
+                                        if (bIndex === -1) return 1;
+                                        return aIndex - bIndex;
+                                    })
+                                    .map(videos =>{
+                                        return(
+                                            <VideoPlayer
+                                                key={videos.id}
                                             data={videos}
                                             isActive={isPlaying === videos.id}
                                             onPlay={() => {

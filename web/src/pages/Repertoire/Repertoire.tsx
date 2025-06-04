@@ -14,6 +14,7 @@ import ReperoireImage from '../../assets/Repertoire/Concerts_019.png';
 
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';
+import { repertoireOrder } from '../../constants/ui';
 
 type Repertoire = {
     id : string,
@@ -38,7 +39,10 @@ const Repertoire = () => {
     const getRepertoires = async () => {
         try {
             const data = await fetchData<Repertoire[]>('repertoires', i18n.language);
-            setRepertoires(data);
+            const ordered = data?.slice().sort((a, b) =>
+                repertoireOrder.indexOf(a.title) - repertoireOrder.indexOf(b.title)
+            );
+            setRepertoires(ordered);
 
             if (!data) return;
 

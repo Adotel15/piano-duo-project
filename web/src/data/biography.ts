@@ -43,15 +43,15 @@ export const data = {
             },
             {
                 award: '1er Premio',
-                contest: 'Concursos internacionales de Finale-Ligure — España',
+                contest: 'Concurso Internacional de Finale Ligure — Italia',
             },
             {
-                award: 'Premio especial “Amigos de Mozart”',
+                award: 'Premio especial “Amis de Mozart”',
                 contest: 'Concurso Internacional de Música de Cámara — París ',
             },
             {
                 award: '2º Premio',
-                contest: 'Caltanissetta — Italia',
+                contest: 'Concurso Internacional de Caltanissetta — Italia',
             },
             {
                 award: '3er Premio',

@@ -15,6 +15,7 @@ import toggleImage from '../../assets/Cds/material-symbols_flip-camera-android-r
 
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';
+import { cdOrder } from '../../constants/ui';
 
 type CD = {
     id : string,
@@ -64,8 +65,10 @@ const Music = () => {
     const getCDs = async () => {
         try{
             const data = await fetchData<CD[]>('cds', i18n.language);
-            // Antes del setCDS ordenar el data, spoiler .sort()
-            setCDs(data);
+            const ordered = data?.slice().sort(
+                (a, b) => cdOrder.indexOf(a.title) - cdOrder.indexOf(b.title)
+            );
+            setCDs(ordered);
             setLoading(false);
         } catch (error) {
             // eslint-disable-next-line no-console
