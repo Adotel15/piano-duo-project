@@ -16,59 +16,18 @@ import { data } from '../../data/biography';
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';
 
-type Biography = {
-    content: string;
-    education: Array<{
-        title: string;
-        content: Array<{
-            id: number;
-            location: string;
-            city: string;
-        }>;
-    }>;
-
-    degrees: Array<{
-        title: string;
-        content: Array<{
-            id: number;
-            degreeTitle: string;
-            degreeInstitution: string;
-            city: string;
-        }>;
-    }>;
-
-    awards: Array<{
-        title: string;
-        content: Array<{
-            id: number;
-            award: string;
-            awardCompetition: string;
-            city: string;
-        }>;
-    }>;
-
-    contentTitle: string;
-    caption: string;
-}
+import type { Biography } from './types';
 
 const Biography = () => {
     const [biography, setBiography] = useState <Biography | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const { t, ready } = useTranslation();
 
-    /*const educations = t('biography.educationSection.educations', { returnObjects: true }) as { school: string, location: string }[];
-    const titles = t('biography.titlesSection.titles', { returnObjects: true }) as { title: string, school: string, location: string }[];
-    const awards = t('biography.awardsSection.awards', { returnObjects: true }) as { award: string, contest: string }[];
-    const biography = t('biography.biographyContent.paragraphs', { returnObjects: true }) as { paragraph: string }[];
-*/
-
     const getBiography = async () => {
         try {
             const data = await fetchData<Biography[]>('biography', i18n.language);
-            console.log('Fetched data:', data);
-            setBiography(data ? data[0] : null);
             if (!data) return;
-
+            setBiography(data[0]);
             setLoading(false);
         } catch (error) {
             // eslint-disable-next-line no-console
@@ -79,10 +38,6 @@ const Biography = () => {
     useEffect(() => {
         getBiography();
     }, []);
-
-    if (biography) {
-        console.log('biography.education:', biography.education);
-    }
 
     return (
         <main className={styles['page-container']}>
@@ -97,54 +52,46 @@ const Biography = () => {
                     <div className={styles['content-container']}>
                         <FadeIn className={styles['titles-container']}>
 
-                            {biography?.education.map((section, index) =>
-                                <div key={index}>
-                                    <FadeIn className={styles['biography_element']}>
-                                        <h3 className={styles['title-list']}>{section.title}</h3>
-                                        {section.content.map(item =>
-                                            <li key={item.id} className={styles['list-container']}>{item.location}<br />{item.city} </li>
-                                        )}
-                                    </FadeIn>
-                                </div>
-                            )}
-                            {biography?.degrees.map((section, index) =>
-                                <div key={index}>
-                                    <FadeIn className={styles['biography_element']}>
-                                        <h3 className={styles['title-list']}>{section.title}</h3>
-                                        {section.content.map(item =>
-                                            <li key={item.id}  className={styles['list-container']}>{item.degreeTitle}<br />{item.degreeInstitution}<br />{item.city}</li>
-                                        )}
-                                    </FadeIn>
-                                </div>
-                            )}
-                            {biography?.awards.map((section, index) =>
-                                <div key={index}>
-                                    <FadeIn className={styles['biography_element']}>
-                                        <h3 className={styles['title-list']}>{section.title}</h3>
-                                        {section.content.map(item =>
-                                            <li key={item.id} className={styles['list-container']}>{item.award}<br />{item.awardCompetition} {item.city}</li>
-                                        )}
-                                    </FadeIn>
-                                </div>
-                            )}
+                            <div>
+                                <FadeIn className={styles['biography_element']}>
+                                    <h3 className={styles['title-list']}>{biography?.education.title}</h3>
+                                    {biography?.education.content.map(item =>
+                                        <li key={item.id} className={styles['list-container']}>{item.location}<br />{item.city} </li>
+                                    )}
+                                </FadeIn>
+                            </div>
+
+                            <div >
+                                <FadeIn className={styles['biography_element']}>
+                                    <h3 className={styles['title-list']}>{biography?.degrees.title}</h3>
+                                    {biography?.degrees.content.map(item =>
+                                        <li key={item.id}  className={styles['list-container']}>{item.degreeTitle}<br />{item.degreeInstitution}<br />{item.city}</li>
+                                    )}
+                                </FadeIn>
+                            </div>
+
+                            <div>
+                                <FadeIn className={styles['biography_element']}>
+                                    <h3 className={styles['title-list']}>{biography?.awards.title}</h3>
+                                    {biography?.awards.content.map(item =>
+                                        <li key={item.id} className={styles['list-container']}>{item.award}<br />{item.awardCompetition} {item.city}</li>
+                                    )}
+                                </FadeIn>
+                            </div>
                         </FadeIn>
                         {biography &&
-                        <section className={styles['biography-container']}>
-
-                            <h3 className={styles['biography-title']}>{biography.contentTitle}</h3>
-                            <FadeIn>
-
-                                <p className={styles['p']} dangerouslySetInnerHTML={{__html: biography.content}} />
-
-                            </FadeIn>
-                            <img className={styles['image-biography']} src={data.image} alt="Concert" />
-                            <div className={styles['text-image-container-biography']}>
-                                <p className={styles['text-image-biography']}>{biography.caption}</p>
-                            </div>
-                        </section>
+                            <section className={styles['biography-container']}>
+                                <h3 className={styles['biography-title']}>{biography.contentTitle}</h3>
+                                <FadeIn>
+                                    <p className={styles['p']} dangerouslySetInnerHTML={{__html: biography.content}} />
+                                </FadeIn>
+                                <img className={styles['image-biography']} src={data.image} alt="Concert" />
+                                <div className={styles['text-image-container-biography']}>
+                                    <p className={styles['text-image-biography']}>{biography.caption}</p>
+                                </div>
+                            </section>
                         }
                     </div>
-
             }
             <Footer />
         </main>
