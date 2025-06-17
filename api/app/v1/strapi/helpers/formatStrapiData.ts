@@ -51,6 +51,7 @@ interface RepertoireFormatted {
     title: string;
     author: string;
   }[] | null;
+  orderNumber: string;
 }
 
 interface BiographyFormatted {
@@ -141,6 +142,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
+        orderNumber: item.attributes.orderNumber,
         piece_author: Array.isArray(item.attributes.piece_author?.data)
             ? item.attributes.piece_author.data.map((piece_author: GenericObject) => ({
                 title: piece_author.title,

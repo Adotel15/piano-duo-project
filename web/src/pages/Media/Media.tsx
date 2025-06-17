@@ -88,16 +88,18 @@ const Media = () => {
                             <main className={styles['audios-page-container']}>
                                 <FadeIn delay={10} className={styles['all-audios-container']}>
                                     {!loading && (audio?.length === 0 || !audio) && <p>Language not translated</p>}
-                                    {audio && audio.map(audios => {
-                                        return (
-                                            <AudioPlayer
-                                                key={audios.id}
-                                                data={audios}
-                                                isPlaying={isPlaying}
-                                                togglePausePlay={togglePausePlay}
-                                            />
-                                        );
-                                    })}
+                                    {audio && [...audio]
+                                        .sort((a, b) => Number(a.orderNumber) - Number(b.orderNumber))
+                                        .map(audios => {
+                                            return (
+                                                <AudioPlayer
+                                                    key={audios.id}
+                                                    data={audios}
+                                                    isPlaying={isPlaying}
+                                                    togglePausePlay={togglePausePlay}
+                                                />
+                                            );
+                                        })}
                                 </FadeIn>
                                 <div className={styles['audio-image-container']}>
                                     <img className={styles['audio-image']} src={AudioImage} alt="" />
