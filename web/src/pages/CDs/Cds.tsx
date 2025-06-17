@@ -83,7 +83,7 @@ const Music = () => {
     };
 
     const formatPieceName = (section: string) => {
-        const italicTerms = ['Nit d’amor', 'Llàgrimes', 'Pàsqua russa', 'Barcarola'];
+        const italicTerms = ['Nit d’amor', 'Llàgrimes', 'Pàsqua russa', 'Barcarola', 'Nova-York 1991'];
         const regex = /"(.*?)"/g;
         const parts = section.split(regex); // divide por comillas
 
