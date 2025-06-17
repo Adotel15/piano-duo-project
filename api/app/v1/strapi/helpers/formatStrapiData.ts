@@ -36,6 +36,7 @@ interface AudioFormatted {
   author: string | null;
   duration: string | null;
   audio: string | null;
+  orderNumber: string;
 }
 
 interface VideoFormatted {
@@ -131,6 +132,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         author: item.attributes.author || null,
         duration: item.attributes.duration || null,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     videos: (data): VideoFormatted[] => data.map((item: GenericObject) => ({

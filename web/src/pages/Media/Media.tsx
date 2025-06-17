@@ -89,6 +89,7 @@ const Media = () => {
                                 <FadeIn delay={10} className={styles['all-audios-container']}>
                                     {!loading && (audio?.length === 0 || !audio) && <p>Language not translated</p>}
                                     {audio && [...audio]
+                                        .filter(a => !isNaN(Number(a.orderNumber)))
                                         .sort((a, b) => Number(a.orderNumber) - Number(b.orderNumber))
                                         .map(audios => {
                                             return (
