@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import React from 'react';
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
@@ -29,6 +29,7 @@ type CD = {
         sections: string[];
         status: string,
     }> | null;
+    orderNumber: string;
 }
 
 const Music = () => {
@@ -64,13 +65,39 @@ const Music = () => {
     const getCDs = async () => {
         try{
             const data = await fetchData<CD[]>('cds', i18n.language);
-            // Antes del setCDS ordenar el data, spoiler .sort()
-            setCDs(data);
+            // Ordenar por orderNumber de forma ascendente
+            if (data) {
+                const sortedData = data.sort((a, b) => {
+                    return Number(a.orderNumber) - Number(b.orderNumber);
+                });
+                setCDs(sortedData);
+            } else {
+                setCDs([]);
+            }
+
             setLoading(false);
         } catch (error) {
             // eslint-disable-next-line no-console
             console.error('Error fetching CDs:' , error);
         }
+    };
+
+    const formatPieceName = (section: string) => {
+        const italicTerms = ['Nit d’amor', 'Llàgrimes', 'Pàsqua russa', 'Barcarola'];
+        const regex = /"(.*?)"/g;
+        const parts = section.split(regex); // divide por comillas
+
+        return parts.map((part, index) => {
+            if (index % 2 === 1) {
+                // Dentro de comillas
+                if (italicTerms.includes(part.trim())) {
+                    return <em key={index}>{part}</em>; // sin comillas
+                } else {
+                    return  <React.Fragment key={index}>{part}</React.Fragment>;;
+                }
+            }
+            return  <React.Fragment key={index}>{part}</React.Fragment>;;
+        });
     };
 
     return (
@@ -121,20 +148,36 @@ const Music = () => {
                                     <ol>
 
                                         <FadeIn delay={100}>
-                                            {cd.pieces && cd.pieces.map(piece =>
-                                                <li className= {`${
-                                                    piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
-                                                }`} key={piece.id}> {piece.name}
-                                                    <ol className={styles['piece-sections-container']}>
-                                                        {piece.sections?.map((section, index) =>
-                                                            <li key={`${piece.id}-section-${index}`}
-                                                                className={styles['piece-sections-container']}>
-                                                                {section}
-                                                            </li>
-                                                        )}
-                                                    </ol>
-                                                </li>
-                                            )}
+                                            { cd.orderNumber === '4' ?
+                                                cd.pieces && cd.pieces.map(piece =>
+                                                    <ul className= {`${
+                                                        piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
+                                                    }`} key={piece.id}> {formatPieceName(piece.name)}
+                                                        <ol className={styles['piece-sections-container']}>
+                                                            {piece.sections?.map((section, index) =>
+                                                                <li key={`${piece.id}-section-${index}`}
+                                                                    className={styles['piece-sections-container']}>
+                                                                    {section}
+                                                                </li>
+                                                            )}
+                                                        </ol>
+                                                    </ul>
+                                                )
+                                                :
+                                                cd.pieces && cd.pieces.map(piece =>
+                                                    <li className= {`${
+                                                        piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
+                                                    }`} key={piece.id}> {formatPieceName(piece.name)}
+                                                        <ol className={styles['piece-sections-container']}>
+                                                            {piece.sections?.map((section, index) =>
+                                                                <li key={`${piece.id}-section-${index}`}
+                                                                    className={styles['piece-sections-container']}>
+                                                                    {section}
+                                                                </li>
+                                                            )}
+                                                        </ol>
+                                                    </li>
+                                                )}
                                         </FadeIn>
                                     </ol>
                                 </div>

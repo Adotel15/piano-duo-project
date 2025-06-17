@@ -27,6 +27,7 @@ interface CDFormatted {
     sections: GenericObject | null;
     status: string | null;
   }[] | null;
+  orderNumber: string;
 }
 
 interface AudioFormatted {
@@ -121,6 +122,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
                 status: piece?.status || null,
             }))
             : item.attributes.pieces?.data || null,
+        orderNumber: item.attributes.orderNumber || null,
     })),
 
     audios: (data): AudioFormatted[] => data.map((item: GenericObject) => ({
