@@ -43,6 +43,7 @@ interface VideoFormatted {
   id: number;
   title: string;
   link: string;
+  orderNumber: string;
 }
 
 interface RepertoireFormatted {
@@ -139,6 +140,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         id: item.id,
         title: item.attributes.title,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({

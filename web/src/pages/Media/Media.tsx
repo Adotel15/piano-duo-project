@@ -110,19 +110,22 @@ const Media = () => {
                         {page === 'video' &&
                             <FadeIn className={styles['videos-page-container']}>
                                 {!loading && (video?.length === 0 || !video) && <p>Language not translated</p>}
-                                {video && video.map(videos =>{
-                                    return(
-                                        <VideoPlayer
-                                            key={videos.id}
-                                            data={videos}
-                                            isActive={isPlaying === videos.id}
-                                            onPlay={() => {
-                                                if(isMusicPlaying) setIsMusicPlaying(false);
-                                                setIsPlaying(videos.id);
-                                            }}
-                                        />
-                                    );
-                                })}
+                                {video && [...video]
+                                    .filter(a => !isNaN(Number(a.orderNumber)))
+                                    .sort((a, b) => Number(a.orderNumber) - Number(b.orderNumber))
+                                    .map(videos => {
+                                        return(
+                                            <VideoPlayer
+                                                key={videos.id}
+                                                data={videos}
+                                                isActive={isPlaying === videos.id}
+                                                onPlay={() => {
+                                                    if(isMusicPlaying) setIsMusicPlaying(false);
+                                                    setIsPlaying(videos.id);
+                                                }}
+                                            />
+                                        );
+                                    })}
                             </FadeIn>
                         }
                     </>
