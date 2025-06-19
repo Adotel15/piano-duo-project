@@ -10,7 +10,7 @@ import Loader from '../../components/Loader/Loader';
 
 import styles from './Repertoire.module.css';
 
-import ReperoireImage from '../../assets/Repertoire/Concerts_019.png';
+// import ReperoireImage from '../../assets/Repertoire/Concerts_019.png';
 
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';
@@ -18,6 +18,7 @@ import i18n from '../../../i18n';
 type Repertoire = {
     id : string,
     title : string,
+    imageRepertoire : string,
     piece_author : Array<{
         title: string,
         author: string,
@@ -28,12 +29,19 @@ const Repertoire = () => {
     const [repertoires, setRepertoires] = useState <Repertoire[] | null> ([]);
     const [selectedId, setSelectedId] = useState('1');
     const [loading, setLoading] = useState<boolean>(true);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const { t } = useTranslation();
 
     useEffect(() => {
         getRepertoires();
     }, []);
+
+    useEffect(() => {
+        setImageLoaded(false);
+    }, [selectedId]);
+
+    const imageUrl = repertoires?.find(r => r.id === selectedId)?.imageRepertoire;
 
     const getRepertoires = async () => {
         try {
@@ -88,7 +96,14 @@ const Repertoire = () => {
                                 })}
                             </div>
                             <div className={styles['image-repertorie-conatiner']}>
-                                <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
+                                <img
+                                    key={imageUrl}
+                                    className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
+                                    src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                                    alt="Repertoire"
+                                    onLoad={() => setImageLoaded(true)}
+                                    loading="lazy"
+                                />
                             </div>
                         </div>
                         <div className={styles['right-repertorie-conatiner']}>
@@ -125,7 +140,12 @@ const Repertoire = () => {
                                 })}
                         </div>
                         <div className={styles['image-repertorie-conatiner-mobile']}>
-                            <img className={styles['image-repertorie-mobile']} src={ReperoireImage} alt="Repertoire" />
+                            <img className={styles['image-repertorie-mobile']}
+                                key={imageUrl}
+                                src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                                alt="Repertoire"
+                                onLoad={() => setImageLoaded(true)}
+                                loading="lazy" />
                         </div>
                     </>
                 }
@@ -173,7 +193,12 @@ const Repertoire = () => {
                     </>
                 }
                 <div className={styles['image-repertorie-conatiner']}>
-                    <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
+                    <img className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
+                        key={imageUrl}
+                        src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                        alt="Repertoire"
+                        onLoad={() => setImageLoaded(true)}
+                        loading="lazy" />
                 </div>
             </section>
             <Footer/>

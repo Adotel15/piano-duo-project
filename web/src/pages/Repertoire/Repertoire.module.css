@@ -87,9 +87,18 @@
 }
 
 .image-repertorie {
-    height: 400px;
-    width: auto;
+    height: auto;
+    width: 400px;
 }
+
+.image-repertorie {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+  
+  .image-loaded {
+    opacity: 1;
+  }
 
 .right-repertorie-conatiner {
     width: 100%;
