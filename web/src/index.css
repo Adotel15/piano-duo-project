@@ -16,6 +16,7 @@
     --hover_primary_color: rgba(212, 181, 137, 0.27);
     --secondary_color: #D4B589;
     --light_shadow_color: rgba(255, 255, 255, 0.1);
+    --nonImportant_text_color: #8E8E8E;
 }
 
 * {
