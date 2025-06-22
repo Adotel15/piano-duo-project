@@ -1,7 +1,7 @@
 .component-container{
     padding: 100px;
     width: 100%;
-    background: linear-gradient(rgb(244,239,223, 0.4), rgb(207,162,94, 0.39));
+    background: linear-gradient(rgba(30, 30, 30, 0.1), rgba(42, 46, 57, 1));
 }
 
 .footer-container{
@@ -17,6 +17,7 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    filter: brightness(0) invert(1);
 }
 
 .logo-title{
@@ -26,7 +27,7 @@
     font-family: 'Cormorant Infant', sans-serif;
     font-weight: 600;
     font-size: 21px;
-    color: var(--secondary_color)
+    color: var(--text_content_color)
 }
 
 .logo-title-item{
@@ -54,7 +55,7 @@
 }
 
 .menu-list-item a {
-    color: var(--secondary_color);
+    color: var(--text_content_color);
     letter-spacing: normal;
     font-size: 19px;
     font-family: 'DM Sans', sans-serif;
@@ -73,6 +74,7 @@
     justify-content: center;
     gap: 1.5em;
     align-items: center;
+    filter: brightness(0) invert(1);
 }
 
 .socials-list-container li {
@@ -99,7 +101,7 @@
 
 .rights-container{
     width: 50%;
-    color: var(--secondary_color);
+    color: var(--text_content_color);
     font-weight: 400;
 }
 
@@ -115,7 +117,7 @@
     cursor: pointer;
     text-decoration: underline 1px;
     transition: 0.3s ease-in-out;
-    color: var(--secondary_color);
+    color: var(--text_content_color);
 }
 
 .conditions-container p:hover{
