@@ -32,6 +32,7 @@ body {
     width: 100%;
     font-family: 'roboto', sans-serif;
     background-color: var(--primary_color);
+    color: var(--text_content_color);
 }
 
 a {

@@ -115,7 +115,7 @@ const Repertoire = () => {
                                                         >
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
-                                                            <p>{piece_author.author}</p>
+                                                            <p className={styles['author']}>{piece_author.author}</p>
                                                         </div>
                                                     );
                                                 })}
@@ -154,13 +154,13 @@ const Repertoire = () => {
                                         </div>
                                         {
                                             selectedId === repertoire.id &&
-                                            <div>
+                                            <div className={styles['piece-author-content-container']}>
                                                 {
                                                     repertoire.piece_author.map((piece_author, index) =>
                                                         <div key={index} className={styles['piece-author-conatiner']}>
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
-                                                            <p>{piece_author.author}</p>
+                                                            <p className={styles['author']}>{piece_author.author}</p>
                                                         </div>
                                                     )
                                                 }
