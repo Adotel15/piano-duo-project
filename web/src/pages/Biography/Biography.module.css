@@ -15,14 +15,22 @@
 .content-container {
     width: 90%;
     display: flex;
-    gap: 10px;
+    gap: 70px;
+}
+
+.titles-pre-container {
+    width: 30%;
 }
 
 .titles-container {
-    width: 30%;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--light_shadow_color);
 }
 
 .title-list{
@@ -51,7 +59,7 @@
 .biography-container {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
     color: var(--text_content_color);
     font-family: 'Hind', sans-serif;
     font-size: 1em;
