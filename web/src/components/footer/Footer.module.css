@@ -1,7 +1,7 @@
 .component-container{
     padding: 100px;
     width: 100%;
-    background: linear-gradient(rgba(30, 30, 30, 0.1), rgba(42, 46, 57, 1));
+    background: linear-gradient(rgba(30, 30, 30, 0), rgba(42, 46, 57, 1));
 }
 
 .footer-container{
@@ -63,7 +63,7 @@
 }
 
 .menu-list-item a:hover{
-    color: var(--hover_primary_color);
+    color: var(--hover_secondary_color);
 }
 
 

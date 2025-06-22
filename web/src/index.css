@@ -12,11 +12,14 @@
 :root/*[data-theme="dark"]*/ {
     --primary_color: #111111;
     --text_content_color: #FFFFFF;
-    --title_color: #D4B589;
+    --text_secondary_color: #DADADA; /* less white text*/
+    --title_color: #D4B589;/*Exclusive for titles*/
+    --secondary_color: #D4B589;/*For other details*/
     --hover_primary_color: rgba(212, 181, 137, 0.27);
-    --secondary_color: #D4B589;
+    --hover_secondary_color: rgba(179, 179, 179, 0.728); /*For hover in footer*/
     --light_shadow_color: rgba(255, 255, 255, 0.1);
     --nonImportant_text_color: #8E8E8E;
+    --error_message_color: #FF6767;
 }
 
 * {
