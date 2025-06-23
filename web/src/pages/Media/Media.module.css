@@ -37,20 +37,21 @@
     border-radius: 10px;
     font-family: 'Cormorant Infant';
     font-Size: 28px;
-    color: rgba(52, 79, 171, 0.51);
-    font-weight: 600;
+    color: var(--nonImportant_text_color);
+    font-weight: 400;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .media-button:hover {
-    background-color: var(--hover_primary_color);
-    color: var(--secondary_color);
+    background-color: var(--light_shadow_color);
+    color: var(--text_secondary_color);
 }
 
 .media-button.active {
-    background-color: var(--hover_primary_color);
-    color: var(--secondary_color);
+    background-color: var(--light_shadow_color);
+    color: var(--text_secondary_color);
+    font-weight: 600;
 }
 
 /*************AUDIO STYLES****************/

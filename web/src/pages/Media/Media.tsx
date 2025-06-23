@@ -75,13 +75,13 @@ const Media = () => {
                                 className={`${styles['media-button']} ${ page === 'audio' ? styles['active'] : ''}`}
                                 onClick={() => onChangePage('audio')}
                             >
-                                Audio
+                                Audios
                             </button>
                             <button
                                 className={`${styles['media-button']} ${ page === 'video' ? styles['active'] : ''}`}
                                 onClick={() => onChangePage('video')}
                             >
-                                Video
+                                Videos
                             </button>
                         </div>
                         {page === 'audio' &&
