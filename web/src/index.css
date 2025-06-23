@@ -19,6 +19,7 @@
     --hover_secondary_color: rgba(179, 179, 179, 0.728); /*For hover in footer*/
     --light_shadow_color: rgba(255, 255, 255, 0.1);
     --nonImportant_text_color: #8E8E8E;
+    --slider_background_color: #A0A0A2;
     --error_message_color: #FF6767;
 }
 

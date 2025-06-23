@@ -68,10 +68,10 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
     return (
         <div key={id} className={styles['audio-content-container']}>
             <section
-                className={styles['audio-section-container']}
+                className={`${styles['audio-section-container']} ${isPlaying === id ? styles['active'] : ''}`}
                 onClick={handlePlayPause}
             >
-                <div className={styles['audio-section-line-container']}>
+                <div className={`${styles['audio-section-line-container']} ${isPlaying === id ? styles['active'] : ''}`}>
                     <div className={styles['audio-right-section-container']}>
                         {/** DESKTOP BUTTON */}
                         <div
@@ -114,7 +114,7 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                                 <input
                                     ref={sliderRef}
                                     type="range"
-                                    className={styles['audio-slider']}
+                                    className={`${styles['audio-slider']} ${isPlaying === id ? styles['active'] : ''}`}
                                     min={0}
                                     max={audioDuration}
                                     value={currentTime}

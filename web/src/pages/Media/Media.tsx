@@ -65,7 +65,9 @@ const Media = () => {
         <div className={styles['media-page-container']}>
             <Navbar/>
             <div className={styles['media-page-content-container']}>
-                <Header content={t('media.title')}></Header>
+                <div className={styles['media-title-container']}>
+                    <Header content={t('media.title')}></Header>
+                </div>
                 <div className={styles['media-content-container']}>
                     {loading && <Loader />}
                     {!loading &&
