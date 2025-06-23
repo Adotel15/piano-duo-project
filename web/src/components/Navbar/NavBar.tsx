@@ -14,13 +14,13 @@ const Navbar = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
 
     return (
         <nav
-            className={isTransparent && !isMenuOpen ? styles['nav-container-transparent'] : styles['nav-container']}
+            className={styles['nav-container-transparent']}
         >
             <div className={styles['nav-logo-container']}>
                 <Link to="/" onClick={() => setIsMenuOpen(false)}>
                     <img
                         src={PianoDuoLogo}
-                        className={isTransparent && !isMenuOpen ? styles['nav-logo-transparent'] : styles['nav-logo']}
+                        className={styles['nav-logo-transparent']}
                         alt="piano-duo-logo"
                     />
                 </Link>
