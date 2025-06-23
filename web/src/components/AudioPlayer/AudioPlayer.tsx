@@ -67,7 +67,10 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
 
     return (
         <div key={id} className={styles['audio-content-container']}>
-            <section className={styles['audio-section-container']}>
+            <section
+                className={styles['audio-section-container']}
+                onClick={handlePlayPause}
+            >
                 <div className={styles['audio-section-line-container']}>
                     <div className={styles['audio-right-section-container']}>
                         {/** DESKTOP BUTTON */}
@@ -83,12 +86,11 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                                 <div className={styles['audio-pause-button-container']}>
                                     <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
                                 </div>
-
                             }
                         </div>
                         <div className={styles['audio-name-author-container']}>
                             <p>{name}</p>
-                            <p>{author}</p>
+                            <p className={styles['audio-author']}>{author}</p>
                         </div>
                     </div>
                     <div className={styles['audio-slider-timer-container']}>
@@ -105,7 +107,6 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                                 <div className={styles['audio-pause-button-container']}>
                                     <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
                                 </div>
-
                             }
                         </div>
                         <div className={styles['audio-slider-section']}>

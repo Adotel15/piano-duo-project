@@ -10,7 +10,7 @@
 */
 /* TODO: New Theme with adaptations */
 :root/*[data-theme="dark"]*/ {
-    --primary_color: #111111;
+    --primary_color: #1E1E1E;
     --text_content_color: #FFFFFF;
     --text_secondary_color: #DADADA; /* less white text*/
     --title_color: #D4B589;/*Exclusive for titles*/

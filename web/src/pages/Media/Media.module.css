@@ -38,7 +38,7 @@
     font-family: 'Cormorant Infant';
     font-Size: 28px;
     color: var(--nonImportant_text_color);
-    font-weight: 400;
+    font-weight: 300;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
