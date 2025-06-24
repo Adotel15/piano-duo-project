@@ -37,12 +37,14 @@ interface AudioFormatted {
   author: string | null;
   duration: string | null;
   audio: string | null;
+  orderNumber: string;
 }
 
 interface VideoFormatted {
   id: number;
   title: string;
   link: string;
+  orderNumber: string;
 }
 
 interface RepertoireFormatted {
@@ -52,6 +54,7 @@ interface RepertoireFormatted {
     title: string;
     author: string;
   }[] | null;
+  orderNumber: string;
 }
 
 interface BiographyFormatted {
@@ -132,17 +135,20 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         author: item.attributes.author || null,
         duration: item.attributes.duration || null,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     videos: (data): VideoFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
+        orderNumber: item.attributes.orderNumber,
         piece_author: Array.isArray(item.attributes.piece_author?.data)
             ? item.attributes.piece_author.data.map((piece_author: GenericObject) => ({
                 title: piece_author.title,

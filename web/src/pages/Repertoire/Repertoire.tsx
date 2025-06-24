@@ -18,6 +18,7 @@ import i18n from '../../../i18n';
 type Repertoire = {
     id : string,
     title : string,
+    orderNumber : string,
     piece_author : Array<{
         title: string,
         author: string,
@@ -39,6 +40,15 @@ const Repertoire = () => {
         try {
             const data = await fetchData<Repertoire[]>('repertoires', i18n.language);
             setRepertoires(data);
+
+            if (data) {
+                const sortedData = data.sort((a, b) => {
+                    return Number(a.orderNumber) - Number(b.orderNumber);
+                });
+                setRepertoires(sortedData);
+            } else {
+                setRepertoires([]);
+            }
 
             if (!data) return;
 
