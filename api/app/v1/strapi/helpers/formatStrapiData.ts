@@ -50,6 +50,7 @@ interface VideoFormatted {
 interface RepertoireFormatted {
   id: number;
   title: string;
+  imageRepertoire: string;
   piece_author: {
     title: string;
     author: string;
@@ -148,6 +149,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
+        imageRepertoire: item.attributes.imageRepertoire?.data ? item.attributes.imageRepertoire?.data[0].attributes.url : '',
         orderNumber: item.attributes.orderNumber,
         piece_author: Array.isArray(item.attributes.piece_author?.data)
             ? item.attributes.piece_author.data.map((piece_author: GenericObject) => ({
