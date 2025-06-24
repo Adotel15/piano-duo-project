@@ -7,10 +7,9 @@ import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
+import Background from '../../components/Background/Background';
 
 import styles from './Repertoire.module.css';
-
-import ReperoireImage from '../../assets/Repertoire/Concerts_019.png';
 
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';
@@ -18,16 +17,20 @@ import i18n from '../../../i18n';
 type Repertoire = {
     id : string,
     title : string,
-    piece_author : Array<{
+    imageRepertoire : string,
+    orderNumber : string,
+    piece_author :{
         title: string,
         author: string,
-    }>
+    }[]
 }
 
 const Repertoire = () => {
     const [repertoires, setRepertoires] = useState <Repertoire[] | null> ([]);
     const [selectedId, setSelectedId] = useState('1');
     const [loading, setLoading] = useState<boolean>(true);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageKey, setImageKey] = useState(0);
 
     const { t } = useTranslation();
 
@@ -35,12 +38,23 @@ const Repertoire = () => {
         getRepertoires();
     }, []);
 
+    useEffect(() => {
+        setImageKey(prev => prev + 1);
+        setImageLoaded(false);
+    }, [selectedId]);
+
     const getRepertoires = async () => {
         try {
             const data = await fetchData<Repertoire[]>('repertoires', i18n.language);
-            setRepertoires(data);
 
             if (!data) return;
+
+            if (data) {
+                const sortedData = data.sort((a, b) => {
+                    return Number(a.orderNumber) - Number(b.orderNumber);
+                });
+                setRepertoires(sortedData);
+            }
 
             const defaultRepertoire = data.find((rep: Repertoire) => rep.id === '1');
             if (defaultRepertoire) {
@@ -48,23 +62,25 @@ const Repertoire = () => {
             } else if (data.length > 0) {
                 setSelectedId(data[0].id);
             }
-            setLoading(false);
         } catch (error) {
             // eslint-disable-next-line no-console
             console.log('Error fetching repertoires', error);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className={styles['repertoire-page-container']}>
-            <Navbar/>
-            <div className={styles['header-repertoire-container']}>
-                <Header content={t('repertoire.title')}></Header>
-            </div>
-            {/** DESKTOP */}
-            <div className={styles['repertoire-content-container']}>
-                {loading && <Loader />}
-                {!loading &&
+        <>
+            <div className={styles['repertoire-page-container']}>
+                <Navbar/>
+                <div className={styles['header-repertoire-container']}>
+                    <Header content={t('repertoire.title')}></Header>
+                </div>
+                {/** DESKTOP */}
+                <div className={styles['repertoire-content-container']}>
+                    {loading && <Loader />}
+                    {!loading &&
                     <>
                         <div className={styles['left-repertoire-container']}>
                             <div className={styles['repertoire-menu-container']}>
@@ -88,7 +104,13 @@ const Repertoire = () => {
                                 })}
                             </div>
                             <div className={styles['image-repertorie-conatiner']}>
-                                <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
+                                <img
+                                    key={`desktop-${imageKey}`}
+                                    src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                                    className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
+                                    alt="Repertoire"
+                                    onLoad={() => setImageLoaded(true)}
+                                />
                             </div>
                         </div>
                         <div className={styles['right-repertorie-conatiner']}>
@@ -125,15 +147,20 @@ const Repertoire = () => {
                                 })}
                         </div>
                         <div className={styles['image-repertorie-conatiner-mobile']}>
-                            <img className={styles['image-repertorie-mobile']} src={ReperoireImage} alt="Repertoire" />
+                            <img className={`${styles['image-repertorie-mobile']} ${imageLoaded ? styles['image-loaded'] : ''}`}
+                                key={`tablet-${imageKey}`}
+                                src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                                alt="Repertoire"
+                                onLoad={() => setImageLoaded(true)}
+                                loading="lazy" />
                         </div>
                     </>
-                }
-            </div>
-            {/** MOBILE */}
-            <section className={styles['repertoire-content-container-mobile']}>
-                {loading && <Loader />}
-                {!loading &&
+                    }
+                </div>
+                {/** MOBILE */}
+                <section className={styles['repertoire-content-container-mobile']}>
+                    {loading && <Loader />}
+                    {!loading &&
                     <>
                         <div className={styles['repertoire-list-container-mobile']}>
                             {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
@@ -171,13 +198,20 @@ const Repertoire = () => {
                             }
                         </div>
                     </>
-                }
-                <div className={styles['image-repertorie-conatiner']}>
-                    <img className={styles['image-repertorie']} src={ReperoireImage} alt="Repertoire" />
-                </div>
-            </section>
-            <Footer/>
-        </div>
+                    }
+                    <div className={styles['image-repertorie-conatiner']}>
+                        <img className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
+                            key={`mobile-section-${imageKey}`}
+                            src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                            alt="Repertoire"
+                            onLoad={() => setImageLoaded(true)}
+                            loading="lazy" />
+                    </div>
+                </section>
+                <Footer/>
+            </div>
+            <Background />
+        </>
     );
 };
 

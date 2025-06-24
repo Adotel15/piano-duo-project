@@ -1,9 +1,10 @@
 .repertoire-page-container {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .header-repertoire-container {
@@ -100,9 +101,18 @@
 }
 
 .image-repertorie {
-    height: 400px;
-    width: auto;
+    height: auto;
+    width: 400px;
 }
+
+.image-repertorie {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+  
+  .image-loaded {
+    opacity: 1;
+  }
 
 .right-repertorie-conatiner {
     width: 70%;
@@ -267,6 +277,8 @@
     .image-repertorie-mobile{
         height: 400px;
         width: auto;
+        opacity: 0;
+        transition: opacity 1s ease-in;
     }
 }
 

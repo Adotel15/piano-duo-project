@@ -6,6 +6,7 @@ import FadeIn from 'react-fade-in';
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
+import Background from '../../components/Background/Background';
 
 import imageContact from '../../assets/Contact/Estudi_003.jpg';
 
@@ -82,80 +83,84 @@ const Contact = () => {
     };
 
     return (
-        <main className={styles['page-container']}>
-            <Navbar/>
-            <div className={styles['contact-container']}>
-                <section className={styles['section-contact']}>
-                    <div className={styles['container-image-contact']}>
-                        <img className={styles['image-contact']} src={imageContact} alt='Pianists'/>
-                    </div>
-                    <div className={styles['form-container']}>
-                        <Header content={t('contact.title')}></Header>
-                        <form className={styles['contact-form-container']} onSubmit={handleSubmit}>
-                            <FadeIn>
-                                <div className={styles['input-container']}>
-                                    <input
-                                        id='name'
-                                        name='name'
-                                        type='text'
-                                        value={formData.name}
-                                        className={styles['input-form']}
-                                        placeholder={t('contact.form.name')}
-                                        onChange={e => onChange(e)}
-                                    />
-                                    <p className={styles['error-message']}>{errors.name}</p>
-                                </div>
-                                <div className={styles['input-container']}>
-                                    <input
-                                        id='email'
-                                        name='email'
-                                        type='text'
-                                        value={formData.email}
-                                        className={styles['input-form']}
-                                        placeholder={t('contact.form.email')}
-                                        onChange={e => onChange(e)}
-                                    />
-                                    <p className={styles['error-message']}>{errors.email}</p>
-                                </div>
-                                <div className={styles['input-container']}>
-                                    <input
-                                        id='subject'
-                                        name='subject'
-                                        type='text'
-                                        value={formData.subject}
-                                        className={styles['input-form']}
-                                        placeholder={t('contact.form.case')}
-                                        onChange={e => onChange(e)}
-                                    />
-                                    <p className={styles['error-message']}>{errors.subject}</p>
-                                </div>
-                                <div className={styles['input-container']}>
-                                    <textarea
-                                        id='message'
-                                        name='message'
-                                        value={formData.message}
-                                        className={[styles['input-form'], styles['contact-textarea']].join(' ')}
-                                        rows={7}
-                                        onChange={e => onChange(e)}
-                                        placeholder={t('contact.form.message')}
-                                    />
-                                    <p className={styles['error-message']}>{errors.message}</p>
-                                </div>
-                                <div className={styles['terms-and-conditions-container']}>
-                                    <div className={styles['checkbox-container']}>
-                                        <input name='terms' id='checkbox' type='checkbox' className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
+        <>
+
+            <main className={styles['page-container']}>
+                <Navbar/>
+                <div className={styles['contact-container']}>
+                    <section className={styles['section-contact']}>
+                        <div className={styles['container-image-contact']}>
+                            <img className={styles['image-contact']} src={imageContact} alt='Pianists'/>
+                        </div>
+                        <div className={styles['form-container']}>
+                            <Header content={t('contact.title')}></Header>
+                            <form className={styles['contact-form-container']} onSubmit={handleSubmit}>
+                                <FadeIn>
+                                    <div className={styles['input-container']}>
+                                        <input
+                                            id='name'
+                                            name='name'
+                                            type='text'
+                                            value={formData.name}
+                                            className={styles['input-form']}
+                                            placeholder={t('contact.form.name')}
+                                            onChange={e => onChange(e)}
+                                        />
+                                        <p className={styles['error-message']}>{errors.name}</p>
                                     </div>
-                                    <label className={styles['terms-conditions']} dangerouslySetInnerHTML={{__html: t('contact.form.terms')}}/>
-                                </div>
-                                <p className={styles['error-message']}>{errors.terms}</p>
-                                <input type='submit' value={t('contact.form.send')}/>
-                            </FadeIn>
-                        </form>
-                    </div>
-                </section>
-            </div>
-            <Footer/>
-        </main>
+                                    <div className={styles['input-container']}>
+                                        <input
+                                            id='email'
+                                            name='email'
+                                            type='text'
+                                            value={formData.email}
+                                            className={styles['input-form']}
+                                            placeholder={t('contact.form.email')}
+                                            onChange={e => onChange(e)}
+                                        />
+                                        <p className={styles['error-message']}>{errors.email}</p>
+                                    </div>
+                                    <div className={styles['input-container']}>
+                                        <input
+                                            id='subject'
+                                            name='subject'
+                                            type='text'
+                                            value={formData.subject}
+                                            className={styles['input-form']}
+                                            placeholder={t('contact.form.case')}
+                                            onChange={e => onChange(e)}
+                                        />
+                                        <p className={styles['error-message']}>{errors.subject}</p>
+                                    </div>
+                                    <div className={styles['input-container']}>
+                                        <textarea
+                                            id='message'
+                                            name='message'
+                                            value={formData.message}
+                                            className={[styles['input-form'], styles['contact-textarea']].join(' ')}
+                                            rows={7}
+                                            onChange={e => onChange(e)}
+                                            placeholder={t('contact.form.message')}
+                                        />
+                                        <p className={styles['error-message']}>{errors.message}</p>
+                                    </div>
+                                    <div className={styles['terms-and-conditions-container']}>
+                                        <div className={styles['checkbox-container']}>
+                                            <input name='terms' id='checkbox' type='checkbox' className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
+                                        </div>
+                                        <label className={styles['terms-conditions']} dangerouslySetInnerHTML={{__html: t('contact.form.terms')}}/>
+                                    </div>
+                                    <p className={styles['error-message']}>{errors.terms}</p>
+                                    <input type='submit' value={t('contact.form.send')}/>
+                                </FadeIn>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <Footer/>
+            </main>
+            <Background />
+        </>
     );
 };
 
