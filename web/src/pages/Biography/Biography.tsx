@@ -10,6 +10,8 @@ import Background from '../../components/Background/Background';
 
 import FadeIn from 'react-fade-in';
 
+import { marked } from 'marked';
+
 import styles from'./Biography.module.css';
 
 import { data } from '../../data/biography';
@@ -23,12 +25,14 @@ const Biography = () => {
     const [biography, setBiography] = useState <Biography | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const { t, ready } = useTranslation();
+    const [content, setContent] = useState<string>('');
 
     const getBiography = async () => {
         try {
             const data = await fetchData<Biography[]>('biography', i18n.language);
             if (!data) return;
             setBiography(data[0]);
+            setContent(await marked.parse(data[0].contentTest));
             setLoading(false);
         } catch (error) {
             // eslint-disable-next-line no-console
@@ -62,8 +66,7 @@ const Biography = () => {
                                             )}
                                         </FadeIn>
                                     </div>
-
-                                    <div >
+                                    <div>
                                         <FadeIn className={styles['biography_element']}>
                                             <h3 className={styles['title-list']}>{biography?.degrees.title}</h3>
                                             {biography?.degrees.content.map(item =>
@@ -71,7 +74,6 @@ const Biography = () => {
                                             )}
                                         </FadeIn>
                                     </div>
-
                                     <div>
                                         <FadeIn className={styles['biography_element']}>
                                             <h3 className={styles['title-list']}>{biography?.awards.title}</h3>
@@ -86,7 +88,7 @@ const Biography = () => {
                                 <section className={styles['biography-container']}>
                                     <h3 className={styles['biography-title']}>{biography.contentTitle}</h3>
                                     <FadeIn>
-                                        <p className={styles['p']} dangerouslySetInnerHTML={{__html: biography.content}} />
+                                        <p className={styles['p']} dangerouslySetInnerHTML={{ __html: content }} />
                                     </FadeIn>
                                     <img className={styles['image-biography']} src={data.image} alt="Concert" />
                                     <div className={styles['text-image-container-biography']}>
