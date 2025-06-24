@@ -1,9 +1,10 @@
 .repertoire-page-container {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .header-repertoire-container {
