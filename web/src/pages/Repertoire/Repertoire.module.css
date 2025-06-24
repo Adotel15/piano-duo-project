@@ -248,6 +248,8 @@
     .image-repertorie-mobile{
     height: 400px;
     width: auto;
+    opacity: 0;
+    transition: opacity 1s ease-in;
     }
 }
 
