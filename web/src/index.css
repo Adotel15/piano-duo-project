@@ -1,18 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Hind:wght@300;400;500;600;700&family=Yuji+Boku&display=swap');
-
+/*
 :root[data-theme="light"] {
     --primary_color: #F4EFDF;
     --hover_primary_color: rgba(212, 181, 137, 0.27);
     --secondary_color: #344FAB;
 }
-
+*/
 /* TODO: New Theme with adaptations */
-:root[data-theme="dark"] {
-    --primary_color: #F4EFDF;
+:root/*[data-theme="dark"]*/ {
+    --primary_color: #111111;
+    --text_content_color: #FFFFFF;
+    --text_secondary_color: #DADADA; /* less white text*/
+    --title_color: #D4B589;/*Exclusive for titles*/
+    --secondary_color: #D4B589;/*For other details*/
     --hover_primary_color: rgba(212, 181, 137, 0.27);
-    --secondary_color: #344FAB;
+    --hover_secondary_color: rgba(179, 179, 179, 0.728); /*For hover in footer*/
+    --review_section_light_color: #353535;
+    --review_section_dark_color: rgba(254, 254, 254, 0.28);
+    --review_hover_focus_color: rgba(211, 182, 138, 0.3);
+    --light_shadow_color: rgba(255, 255, 255, 0.1);
+    --nonImportant_text_color: #8E8E8E;
+    --error_message_color: #FF6767;
 }
 
 * {
@@ -25,6 +35,7 @@ body {
     width: 100%;
     font-family: 'roboto', sans-serif;
     background-color: var(--primary_color);
+    color: var(--text_content_color);
 }
 
 a {

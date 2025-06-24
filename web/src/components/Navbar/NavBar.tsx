@@ -8,28 +8,40 @@ import { useAppContext } from '../../context/AppContext';
 import styles from './Navbar.module.css';
 
 import PianoDuoLogo from '../../assets/piano-duo-logo.png';
+import BackgroundImageDesktop from '../../assets/home-pd.png';
+import useBodyScrollFreeze from '../../hooks/useBodyScrollFreeze';
 
 const Navbar = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
     const { isMenuOpen, setIsMenuOpen } = useAppContext();
+    useBodyScrollFreeze(isMenuOpen);
 
     return (
-        <nav
-            className={isTransparent && !isMenuOpen ? styles['nav-container-transparent'] : styles['nav-container']}
-        >
-            <div className={styles['nav-logo-container']}>
-                <Link to="/" onClick={() => setIsMenuOpen(false)}>
-                    <img
-                        src={PianoDuoLogo}
-                        className={isTransparent && !isMenuOpen ? styles['nav-logo-transparent'] : styles['nav-logo']}
-                        alt="piano-duo-logo"
-                    />
-                </Link>
-            </div>
-            <div className={styles['nav-controls-container']}>
-                {!isMenuOpen && <WebMusicButton isTransparent={isTransparent}/>}
-                <Menu isTransparent={isTransparent}/>
-            </div>
-        </nav>
+        <>
+            {isMenuOpen &&
+                    <div className={styles['background-container']}>
+                        <img
+                            src={BackgroundImageDesktop}
+                            className={styles['background-image-desktop']}
+                        />
+                    </div>
+            }
+            <nav className={styles['nav-container-transparent']}>
+                <div className={styles['nav-logo-container']}>
+                    <Link to="/" onClick={() => setIsMenuOpen(false)}>
+                        <img
+                            src={PianoDuoLogo}
+                            className={styles['nav-logo-transparent']}
+                            alt="piano-duo-logo"
+                        />
+                    </Link>
+                </div>
+                <div className={styles['nav-controls-container']}>
+                    {!isMenuOpen && <WebMusicButton isTransparent={isTransparent}/>}
+                    <Menu isTransparent={isTransparent}/>
+                </div>
+            </nav>
+        </>
+
     );
 };
 

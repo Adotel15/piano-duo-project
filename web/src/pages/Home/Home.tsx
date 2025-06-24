@@ -5,7 +5,7 @@ import styles from './Home.module.css';
 
 import MainLogo from '../../assets/OfficialHeroLogo.png';
 import WhiteLogo from '../../assets/PianoDuoLogo.png';
-import HeroImage from '../../assets/HomePD.png';
+import HeroImage from '../../assets/home-pd.png';
 import HeroImageTablet from '../../assets/home-pd-tablet.png';
 import HeroImageMobile from '../../assets/home-pd-mobile.png';
 
@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <main className={styles['home-main']}>
             <div className={styles['home-navbar']}>
-                <Navbar isTransparent={true}/>
+                <Navbar/>
             </div>
             <div className={styles['home-intro']}>
                 <img

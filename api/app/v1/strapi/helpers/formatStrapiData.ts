@@ -90,7 +90,7 @@ interface BiographyFormatted {
   };
 
   contentTitle: string;
-  //content_test: string; ESTA FET AMB MARKDOWN, POTSER FA FALTA INSTALAR ALGUNA LLIBRERIA
+  contentTest: string; // ESTA FET AMB MARKDOWN, POTSER FA FALTA INSTALAR ALGUNA LLIBRERIA
   caption: string;
 }
 
@@ -189,6 +189,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
 
         },
         contentTitle: data.attributes.contentTitle,
+        contentTest: data.attributes.contentTest,
         caption: data.attributes.caption,
     }]
 };

@@ -7,10 +7,9 @@ import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
+import Background from '../../components/Background/Background';
 
 import styles from './Repertoire.module.css';
-
-// import ReperoireImage from '../../assets/Repertoire/Concerts_019.png';
 
 import fetchData from '../../utils/api';
 import i18n from '../../../i18n';
@@ -72,15 +71,16 @@ const Repertoire = () => {
     };
 
     return (
-        <div className={styles['repertoire-page-container']}>
-            <Navbar/>
-            <div className={styles['header-repertoire-container']}>
-                <Header content={t('repertoire.title')}></Header>
-            </div>
-            {/** DESKTOP */}
-            <div className={styles['repertoire-content-container']}>
-                {loading && <Loader />}
-                {!loading &&
+        <>
+            <div className={styles['repertoire-page-container']}>
+                <Navbar/>
+                <div className={styles['header-repertoire-container']}>
+                    <Header content={t('repertoire.title')}></Header>
+                </div>
+                {/** DESKTOP */}
+                <div className={styles['repertoire-content-container']}>
+                    {loading && <Loader />}
+                    {!loading &&
                     <>
                         <div className={styles['left-repertoire-container']}>
                             <div className={styles['repertoire-menu-container']}>
@@ -137,7 +137,7 @@ const Repertoire = () => {
                                                         >
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
-                                                            <p>{piece_author.author}</p>
+                                                            <p className={styles['author']}>{piece_author.author}</p>
                                                         </div>
                                                     );
                                                 })}
@@ -155,12 +155,12 @@ const Repertoire = () => {
                                 loading="lazy" />
                         </div>
                     </>
-                }
-            </div>
-            {/** MOBILE */}
-            <section className={styles['repertoire-content-container-mobile']}>
-                {loading && <Loader />}
-                {!loading &&
+                    }
+                </div>
+                {/** MOBILE */}
+                <section className={styles['repertoire-content-container-mobile']}>
+                    {loading && <Loader />}
+                    {!loading &&
                     <>
                         <div className={styles['repertoire-list-container-mobile']}>
                             {!loading && (repertoires?.length === 0 || !repertoires) && <p>Language not translated</p>}
@@ -181,13 +181,13 @@ const Repertoire = () => {
                                         </div>
                                         {
                                             selectedId === repertoire.id &&
-                                            <div>
+                                            <div className={styles['piece-author-content-container']}>
                                                 {
                                                     repertoire.piece_author.map((piece_author, index) =>
                                                         <div key={index} className={styles['piece-author-conatiner']}>
                                                             <p>{piece_author.title}</p>
                                                             <p className={styles['line-repertoire']}></p>
-                                                            <p>{piece_author.author}</p>
+                                                            <p className={styles['author']}>{piece_author.author}</p>
                                                         </div>
                                                     )
                                                 }
@@ -198,18 +198,20 @@ const Repertoire = () => {
                             }
                         </div>
                     </>
-                }
-                <div className={styles['image-repertorie-conatiner']}>
-                    <img className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
-                        key={`mobile-section-${imageKey}`}
-                        src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
-                        alt="Repertoire"
-                        onLoad={() => setImageLoaded(true)}
-                        loading="lazy" />
-                </div>
-            </section>
-            <Footer/>
-        </div>
+                    }
+                    <div className={styles['image-repertorie-conatiner']}>
+                        <img className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
+                            key={`mobile-section-${imageKey}`}
+                            src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
+                            alt="Repertoire"
+                            onLoad={() => setImageLoaded(true)}
+                            loading="lazy" />
+                    </div>
+                </section>
+                <Footer/>
+            </div>
+            <Background />
+        </>
     );
 };
 

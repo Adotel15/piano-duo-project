@@ -15,14 +15,22 @@
 .content-container {
     width: 90%;
     display: flex;
-    gap: 10px;
+    gap: 70px;
+}
+
+.titles-pre-container {
+    width: 30%;
 }
 
 .titles-container {
-    width: 30%;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--light_shadow_color);
 }
 
 .title-list{
@@ -44,15 +52,15 @@
     padding-bottom: 0.5em;
     font-size: 0.87em;
     font-family: 'Hind', sans-serif;
-    color: var(--secondary_color);
+    color: var(--text_content_color);
     line-height: 1.2em;
 }
 
 .biography-container {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    color: var(--secondary_color);
+    width: 60%;
+    color: var(--text_content_color);
     font-family: 'Hind', sans-serif;
     font-size: 1em;
 }
@@ -60,6 +68,7 @@
 .biography-title {
     color: var(--secondary_color);
     font-weight: 500;
+    margin-bottom: 15px;
 }
 
 .p {
@@ -96,12 +105,15 @@ span {
         flex-direction: column;
         justify-content: center;
         align-items: left;
-        gap: 10px;
+        gap: 40px;
+    }
 
+    .titles-pre-container {
+        width: 100%;
     }
 
     .titles-container {
-        width: 90%;
+        width: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -113,7 +125,7 @@ span {
         display: flex;
         flex-direction: column;
         width: 100%;
-        color: var(--secondary_color);
+        color: var(--text_content_color);
         font-family: 'Hind', sans-serif;
         font-size: 1em;
     }
@@ -127,8 +139,11 @@ span {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 10px;
-        margin-left: none;
+        gap: 40px;
+    }
+
+    .titles-pre-container {
+        width: 100%;
     }
 
     .titles-container {
@@ -143,7 +158,6 @@ span {
         display: flex;
         flex-direction: column;
         width: 100%;
-        color: var(--secondary_color);
         font-family: 'Hind', sans-serif;
         font-size: 1em;
     }
