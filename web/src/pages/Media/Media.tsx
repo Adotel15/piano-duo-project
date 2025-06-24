@@ -47,8 +47,18 @@ const Media = () => {
                 fetchData<AudioPlayerType[]>('audios', i18n.language),
                 fetchData<VideoPlayerType[]>('videos', i18n.language),
             ]);
-            setAudio(audiosResponse);
-            setVideo(videosResponse);
+            if(audiosResponse){
+                setAudio(audiosResponse
+                    .filter(a => !isNaN(Number(a.orderNumber)))
+                    .sort((a, b) => Number(a.orderNumber) - Number(b.orderNumber))
+                );
+            }
+            if(videosResponse) {
+                setVideo(videosResponse
+                    .filter(a => !isNaN(Number(a.orderNumber)))
+                    .sort((a, b) => Number(a.orderNumber) - Number(b.orderNumber))
+                );
+            }
         } catch (error) {
             // eslint-disable-next-line no-console
             console.error('Error fetching media', error);
@@ -88,16 +98,17 @@ const Media = () => {
                             <main className={styles['audios-page-container']}>
                                 <FadeIn delay={10} className={styles['all-audios-container']}>
                                     {!loading && (audio?.length === 0 || !audio) && <p>Language not translated</p>}
-                                    {audio && audio.map(audios => {
-                                        return (
-                                            <AudioPlayer
-                                                key={audios.id}
-                                                data={audios}
-                                                isPlaying={isPlaying}
-                                                togglePausePlay={togglePausePlay}
-                                            />
-                                        );
-                                    })}
+                                    {audio && audio
+                                        .map(audios => {
+                                            return (
+                                                <AudioPlayer
+                                                    key={audios.id}
+                                                    data={audios}
+                                                    isPlaying={isPlaying}
+                                                    togglePausePlay={togglePausePlay}
+                                                />
+                                            );
+                                        })}
                                 </FadeIn>
                                 <div className={styles['audio-image-container']}>
                                     <img className={styles['audio-image']} src={AudioImage} alt="" />
@@ -107,19 +118,20 @@ const Media = () => {
                         {page === 'video' &&
                             <FadeIn className={styles['videos-page-container']}>
                                 {!loading && (video?.length === 0 || !video) && <p>Language not translated</p>}
-                                {video && video.map(videos =>{
-                                    return(
-                                        <VideoPlayer
-                                            key={videos.id}
-                                            data={videos}
-                                            isActive={isPlaying === videos.id}
-                                            onPlay={() => {
-                                                if(isMusicPlaying) setIsMusicPlaying(false);
-                                                setIsPlaying(videos.id);
-                                            }}
-                                        />
-                                    );
-                                })}
+                                {video && video
+                                    .map(videos => {
+                                        return(
+                                            <VideoPlayer
+                                                key={videos.id}
+                                                data={videos}
+                                                isActive={isPlaying === videos.id}
+                                                onPlay={() => {
+                                                    if(isMusicPlaying) setIsMusicPlaying(false);
+                                                    setIsPlaying(videos.id);
+                                                }}
+                                            />
+                                        );
+                                    })}
                             </FadeIn>
                         }
                     </>

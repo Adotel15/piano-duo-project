@@ -27,6 +27,7 @@ interface CDFormatted {
     sections: GenericObject | null;
     status: string | null;
   }[] | null;
+  orderNumber: string;
 }
 
 interface AudioFormatted {
@@ -36,21 +37,25 @@ interface AudioFormatted {
   author: string | null;
   duration: string | null;
   audio: string | null;
+  orderNumber: string;
 }
 
 interface VideoFormatted {
   id: number;
   title: string;
   link: string;
+  orderNumber: string;
 }
 
 interface RepertoireFormatted {
   id: number;
   title: string;
+  imageRepertoire: string;
   piece_author: {
     title: string;
     author: string;
   }[] | null;
+  orderNumber: string;
 }
 
 interface BiographyFormatted {
@@ -121,6 +126,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
                 status: piece?.status || null,
             }))
             : item.attributes.pieces?.data || null,
+        orderNumber: item.attributes.orderNumber || null,
     })),
 
     audios: (data): AudioFormatted[] => data.map((item: GenericObject) => ({
@@ -130,17 +136,21 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         author: item.attributes.author || null,
         duration: item.attributes.duration || null,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     videos: (data): VideoFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
+        imageRepertoire: item.attributes.imageRepertoire?.data ? item.attributes.imageRepertoire?.data[0].attributes.url : '',
+        orderNumber: item.attributes.orderNumber,
         piece_author: Array.isArray(item.attributes.piece_author?.data)
             ? item.attributes.piece_author.data.map((piece_author: GenericObject) => ({
                 title: piece_author.title,

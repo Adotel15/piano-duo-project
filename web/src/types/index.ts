@@ -12,10 +12,12 @@ export type AudioPlayerType =  {
     author: string,
     duration: string,
     link: string
+    orderNumber: string,
 }
 
 export type VideoPlayerType = {
     id: number,
     title: string,
-    link: string
+    link: string,
+    orderNumber: string,
 }
