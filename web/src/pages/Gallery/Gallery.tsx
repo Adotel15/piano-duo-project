@@ -7,6 +7,7 @@ import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 import Navbar from '../../components/Navbar/NavBar';
 import Footer from '../../components/footer/Footer';
+import Background from '../../components/Background/Background';
 
 import fetchData from '../../utils/api';
 
@@ -53,17 +54,18 @@ const Gallery = () => {
     }
 
     return (
-        <div>
-            <Navbar/>
-            <div className={styles['gallery-page-container']}>
-                <div className={styles['gallery-header-container']}>
-                    <Header content={t('gallery.title')}></Header>
-                </div>
-                {loading && <Loader /> }
-                {/** This should not happen */}
-                {!loading && (photos?.length === 0 || !photos) && <p>Language not translated</p>}
-                {
-                    !loading && photos &&
+        <>
+            <div>
+                <Navbar/>
+                <div className={styles['gallery-page-container']}>
+                    <div className={styles['gallery-header-container']}>
+                        <Header content={t('gallery.title')}></Header>
+                    </div>
+                    {loading && <Loader /> }
+                    {/** This should not happen */}
+                    {!loading && (photos?.length === 0 || !photos) && <p>Language not translated</p>}
+                    {
+                        !loading && photos &&
                     <FadeIn className={styles['gallery-container']}>
                         {photos.map((photo, index) =>
                             <div key={index} className={styles['photo-container']} onClick={() => openModal(photo)}>
@@ -71,18 +73,20 @@ const Gallery = () => {
                             </div>
                         )}
                     </FadeIn>
-                }
-                {/* Modal */}
-                {selectedPhoto &&
+                    }
+                    {/* Modal */}
+                    {selectedPhoto &&
                     <div className={`${styles.modal} ${selectedPhoto ? styles.show : ''} ${closing ? styles.closing : ''}`} onClick={closeModal}>
                         <div className={styles['modal-content']}>
                             <img src={selectedPhoto} alt="Selected" className={styles['modal-photo']} />
                         </div>
                     </div>
-                }
+                    }
+                </div>
+                <Footer/>
             </div>
-            <Footer/>
-        </div>
+            <Background />
+        </>
     );
 };
 
