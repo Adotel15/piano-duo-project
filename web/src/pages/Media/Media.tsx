@@ -77,7 +77,9 @@ const Media = () => {
             <div className={styles['media-page-container']}>
                 <Navbar/>
                 <div className={styles['media-page-content-container']}>
-                    <Header content={t('media.title')}></Header>
+                    <div className={styles['media-title-container']}>
+                        <Header content={t('media.title')}></Header>
+                    </div>
                     <div className={styles['media-content-container']}>
                         {loading && <Loader />}
                         {!loading &&
@@ -87,13 +89,13 @@ const Media = () => {
                                 className={`${styles['media-button']} ${ page === 'audio' ? styles['active'] : ''}`}
                                 onClick={() => onChangePage('audio')}
                             >
-                                Audio
+                                Audios
                             </button>
                             <button
                                 className={`${styles['media-button']} ${ page === 'video' ? styles['active'] : ''}`}
                                 onClick={() => onChangePage('video')}
                             >
-                                Video
+                                Videos
                             </button>
                         </div>
                         {page === 'audio' &&
