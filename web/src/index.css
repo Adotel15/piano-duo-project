@@ -19,6 +19,7 @@
     --hover_secondary_color: rgba(179, 179, 179, 0.728); /*For hover in footer*/
     --review_section_light_color: #353535;
     --review_section_dark_color: rgba(254, 254, 254, 0.28);
+    --review_hover_focus_color: rgba(211, 182, 138, 0.3);
     --light_shadow_color: rgba(255, 255, 255, 0.1);
     --nonImportant_text_color: #8E8E8E;
     --error_message_color: #FF6767;

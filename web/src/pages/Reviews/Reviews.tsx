@@ -65,7 +65,9 @@ const Reviews = () => {
                     {!loading && (reviews?.length === 0 || !reviews) && <p>Language not translated</p>}
                     {!loading && reviews && reviews.map((review, index) => {
                         return (
-                            <section key={review.id} className={`${styles['review-section-container']} ${index % 2 === 0 ? styles['review-section-dark'] : styles['review-section-light']}`}>
+                            <section key={review.id} className={`${styles['review-section-container']} ${index % 2 === 0 ? styles['review-section-dark'] : styles['review-section-light']} ${
+                                minimized === review.id ? styles['review-section-focus'] : ''
+                            }`}>
                                 <div className={styles['heading-container']} onClick={() => openReview(review.id)}>
                                     <div className={styles['title-publisher-date-container']}>
                                         <div className={styles['title-container']}>
