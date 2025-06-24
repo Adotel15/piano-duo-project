@@ -28,7 +28,7 @@ export type Biography = {
             city: string;
         }[];
     };
-
+    contentTest: string;
     contentTitle: string;
     caption: string;
 }

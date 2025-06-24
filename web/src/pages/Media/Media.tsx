@@ -9,6 +9,7 @@ import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/footer/Footer';
+import Background from '../../components/Background/Background';
 
 import styles from'./Media.module.css';
 
@@ -72,13 +73,14 @@ const Media = () => {
     }, []);
 
     return(
-        <div className={styles['media-page-container']}>
-            <Navbar/>
-            <div className={styles['media-page-content-container']}>
-                <Header content={t('media.title')}></Header>
-                <div className={styles['media-content-container']}>
-                    {loading && <Loader />}
-                    {!loading &&
+        <>
+            <div className={styles['media-page-container']}>
+                <Navbar/>
+                <div className={styles['media-page-content-container']}>
+                    <Header content={t('media.title')}></Header>
+                    <div className={styles['media-content-container']}>
+                        {loading && <Loader />}
+                        {!loading &&
                     <>
                         <div className={styles['media-buttons-container']}>
                             <button
@@ -135,11 +137,13 @@ const Media = () => {
                             </FadeIn>
                         }
                     </>
-                    }
+                        }
+                    </div>
                 </div>
+                <Footer/>
             </div>
-            <Footer/>
-        </div>
+            <Background />
+        </>
     );
 };
 
