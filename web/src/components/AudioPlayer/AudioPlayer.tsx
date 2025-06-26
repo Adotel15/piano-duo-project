@@ -17,12 +17,13 @@ type AudioPlayerProps = {
 }
 
 const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => {
-    const { id, name, author, link } = data;
+    const { id, name, author, link, orderNumber } = data;
 
     const { isMobile } = useAppContext();
 
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [audioDuration, setAudioDuration] = useState<number>(0);
+    const [hovered, setHovered] = useState(false);
 
     const playerRef = useRef<ReactPlayer>(null);
     const sliderRef = useRef<HTMLInputElement>(null);
@@ -71,21 +72,23 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                 className={`${styles['audio-section-container']} ${isPlaying === id ? styles['active'] : ''}`}
                 onClick={handlePlayPause}
             >
-                <div className={`${styles['audio-section-line-container']} ${isPlaying === id ? styles['active'] : ''}`}>
+                <div className={`${styles['audio-section-line-container']} ${isPlaying === id ? styles['active'] : ''}`} onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}>
                     <div className={styles['audio-right-section-container']}>
                         {/** DESKTOP BUTTON */}
+
                         <div
                             onClick={handlePlayPause}
                             className={styles['audio-toggle-pause-button']}
                         >
-                            {isPlaying === id ?
-                                <div>
-                                    <img src={PauseImage} className={styles['audio-pause-button']} alt="start" />
-                                </div>
+                            {hovered ?
+                                isPlaying === id ?
+                                    <img src={PauseImage} className={styles['audio-pause-button']} alt="Pause" />
+                                    :
+                                    <img src={StartImage} className={styles['audio-pause-button']} alt="Start" />
+
                                 :
-                                <div className={styles['audio-pause-button-container']}>
-                                    <img src={StartImage} className={styles['audio-pause-button']} alt="Pause" />
-                                </div>
+                                <div className={styles['audios-orderNumber']}>{orderNumber}</div>
                             }
                         </div>
                         <div className={styles['audio-name-author-container']}>
