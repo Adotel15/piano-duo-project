@@ -3,7 +3,7 @@ import Carousel from '../../components/Carousel/Carousel';
 
 import styles from './Home.module.css';
 
-import MainLogo from '../../assets/OfficialHeroLogo.png';
+// import MainLogo from '../../assets/OfficialHeroLogo.png';
 import WhiteLogo from '../../assets/PianoDuoLogo.png';
 import HeroImage from '../../assets/home-pd.png';
 import HeroImageTablet from '../../assets/home-pd-tablet.png';
@@ -14,13 +14,6 @@ const Home = () => {
         <main className={styles['home-main']}>
             <div className={styles['home-navbar']}>
                 <Navbar/>
-            </div>
-            <div className={styles['home-intro']}>
-                <img
-                    src={MainLogo}
-                    alt='logo-piano-duo-web'
-                    className={styles['home-logo']}
-                />
             </div>
             <div className={styles['home-container-img']}>
                 <section className={styles['home-content-animate']}>
