@@ -1,27 +1,39 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import styles from './Carousel.module.css';
 
-const Carousel = () => {
+const Carousel = (
+    { headlines }:
+    { headlines:{ author: string, content: string}[] }
+) => {
     const [index, setIndex] = useState(0);
-    const { t } = useTranslation();
-
-    const phrases = t('home', { returnObjects: true }) as string[];
 
     useEffect(() => {
+        if (headlines.length <= 1) return;
+
         const interval = setInterval(() => {
-            setIndex(prevIndex => (prevIndex + 1) % phrases.length);
+            setIndex(prevIndex => (prevIndex + 1) % headlines.length);
         }, 9000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [headlines.length]);
+
+    useEffect(() => {
+        setIndex(0);
+    }, [headlines]);
+
+    if (headlines.length === 0) {
+        return null;
+    }
 
     return (
         <div className={styles['carousel']}>
-            <p key={index} className={styles['phrase']}>
-                "{phrases[index]}"
-            </p>
+            <div key={`${index}-${headlines[index]?.content}`} className={styles['phrase-container']}>
+                <p className={styles['phrase']}>
+                    "{headlines[index].content}"
+                </p>
+                <p className={styles['author']}>{headlines[index].author}</p>
+            </div>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import styles from './WebMusicButton.module.css';
 
 import MusicLogo from '../../assets/Navbar/music-button.png';
 
-const WebMusicButton = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
+const WebMusicButton = () => {
     const { isMusicPlaying, setIsMusicPlaying } = useAppContext();
 
     return (
@@ -58,7 +58,7 @@ const WebMusicButton = ({ isTransparent = false }:{ isTransparent?: boolean }) =
                     :
                     <img
                         src={MusicLogo}
-                        className={isTransparent ? styles['music-logo'] : ''}
+                        className={styles['music-logo']}
                         alt="music-logo"
                         onClick={() => setIsMusicPlaying(true)}
                     />
