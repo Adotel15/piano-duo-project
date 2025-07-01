@@ -199,14 +199,14 @@ const Repertoire = () => {
                         </div>
                     </>
                     }
-                    <div className={styles['image-repertorie-conatiner']}>
+                    {/* <div className={styles['image-repertorie-conatiner']}>
                         <img className={`${styles['image-repertorie']} ${imageLoaded ? styles['image-loaded'] : ''}`}
                             key={`mobile-section-${imageKey}`}
                             src={repertoires?.find(r => r.id === selectedId)?.imageRepertoire}
                             alt="Repertoire"
                             onLoad={() => setImageLoaded(true)}
                             loading="lazy" />
-                    </div>
+                    </div> */}
                 </section>
                 <Footer/>
             </div>
