@@ -166,7 +166,7 @@
     width: 100%;
     cursor: pointer;
     --slider-background: var(--slider_background_color);
-    --seek-before-color: var(--slider_background_color); /*grey*/
+    --seek-before-color: var(--secondary_color); /*grey*/
     --seek-before-width: 50%;
     appearance: none;
     position: relative;
