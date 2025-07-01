@@ -119,19 +119,27 @@ const Music = () => {
                                 <div className= {styles['images-container']}>
                                     {cd.frontImage ?
                                         <>
+                                            {/** Toggle Image */}
                                             <div className={styles['toggle-image-container']} onClick={() => handleToggle(cd.id)} >
                                                 <img className={styles['toggle-image']} src={toggleImage} />
+                                            </div>                                            {/** Front Cover */}
+                                            <div
+                                                className={`${styles['CD-front-image-container']} ${
+                                                    isFrontVisible ? styles['show'] : styles['hide']
+                                                }`}
+                                            >
+                                                <img className={styles['CD-image']} src={cd.frontImage} alt="CD Front" />
                                             </div>
-                                            <div className={`${styles['CD-front-image-container']} ${
-                                                isFrontVisible ? styles['show'] : styles['hide']
-                                            }`}>
-                                                <img className={styles['CD-image']} src={cd.frontImage} alt="CD 1" />
+
+                                            {/** Back Cover */}
+                                            <div
+                                                className={`${styles['CD-back-image-container']} ${
+                                                    !isFrontVisible ? styles['show'] : styles['hide']
+                                                }`}
+                                            >
+                                                <img className={styles['CD-image']} src={cd.backImage} alt="CD Back" />
                                             </div>
-                                            <div className={`${styles['CD-back-image-container']} ${
-                                                isFrontVisible ? styles['hide'] : styles['show']
-                                            }`}>
-                                                <img className={styles['CD-image']} src={cd.backImage} alt="CD 1" />
-                                            </div>
+
                                         </>
                                         :
                                         <div className={styles['CD-back-image-container-only']}>

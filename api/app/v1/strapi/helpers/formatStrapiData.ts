@@ -94,6 +94,13 @@ interface BiographyFormatted {
   caption: string;
 }
 
+interface HeadlinesFormatted {
+  content: {
+    author: string;
+    content: string;
+  }[];
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FormatterFunction<T> = (data: any) => T;
 
@@ -191,7 +198,12 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         contentTitle: data.attributes.contentTitle,
         contentTest: data.attributes.contentTest,
         caption: data.attributes.caption,
-    }]
+    }],
+
+    headline: (data): HeadlinesFormatted[] => data.attributes.content.map((headline: GenericObject) => ({
+        content: headline.content,
+        author: headline.author,
+    })),
 };
 
 export const formatStrapiArray = <T>(

@@ -5,5 +5,6 @@ export const STRAPI_ENDPOINTS = [
     'videos',
     'gallery',
     'repertoires',
-    'biography'
+    'biography',
+    'headline'
 ] as const;

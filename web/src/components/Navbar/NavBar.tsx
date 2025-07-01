@@ -11,7 +11,7 @@ import PianoDuoLogo from '../../assets/piano-duo-logo.png';
 import BackgroundImageDesktop from '../../assets/home-pd.png';
 import useBodyScrollFreeze from '../../hooks/useBodyScrollFreeze';
 
-const Navbar = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
+const Navbar = () => {
     const { isMenuOpen, setIsMenuOpen } = useAppContext();
     useBodyScrollFreeze(isMenuOpen);
 
@@ -36,8 +36,8 @@ const Navbar = ({ isTransparent = false }:{ isTransparent?: boolean }) => {
                     </Link>
                 </div>
                 <div className={styles['nav-controls-container']}>
-                    {!isMenuOpen && <WebMusicButton isTransparent={isTransparent}/>}
-                    <Menu isTransparent={isTransparent}/>
+                    {!isMenuOpen && <WebMusicButton />}
+                    <Menu />
                 </div>
             </nav>
         </>
