@@ -140,7 +140,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        top: -4px;
+        top: -9px;
     }
 
     .audio-pause-button {
@@ -194,9 +194,9 @@
 
 .audio-slider::before {
     content: '';
-    background-color: var(--seek-before-color);/*crec que no fa res*/
+    background-color: var(--seek-before-color);
     border-radius: 4px;
-    width: var(--secondary_color); /*crec que no fa res*/
+    width: var(--seek-before-width);
     height: 4px;
     position: absolute;
     top: 0;

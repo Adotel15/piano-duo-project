@@ -53,7 +53,6 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
         if (playerRef.current && audioDuration > 0) {
             const newTime = Number(e.target.value);
             playerRef.current.seekTo(newTime);
-            setCurrentTime(newTime);
             const progressPercent = (newTime / audioDuration) * 100;
             e.target.style.setProperty('--seek-before-width', `${progressPercent}%`);
         }
@@ -72,15 +71,14 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                 className={`${styles['audio-section-container']} ${isPlaying === id ? styles['active'] : ''}`}
                 onClick={handlePlayPause}
             >
-                <div className={`${styles['audio-section-line-container']} ${isPlaying === id ? styles['active'] : ''}`} onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}>
+                <div
+                    className={`${styles['audio-section-line-container']} ${isPlaying === id ? styles['active'] : ''}`}
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                >
                     <div className={styles['audio-right-section-container']}>
                         {/** DESKTOP BUTTON */}
-
-                        <div
-                            onClick={handlePlayPause}
-                            className={styles['audio-toggle-pause-button']}
-                        >
+                        <div className={styles['audio-toggle-pause-button']}>
                             {hovered ?
                                 isPlaying === id ?
                                     <img src={PauseImage} className={styles['audio-pause-button']} alt="Pause" />
@@ -98,10 +96,7 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                     </div>
                     <div className={styles['audio-slider-timer-container']}>
                         {/** MOBILE BUTTON */}
-                        <div
-                            onClick={handlePlayPause}
-                            className={styles['audio-toggle-pause-button-mobile']}
-                        >
+                        <div className={styles['audio-toggle-pause-button-mobile']}>
                             {isPlaying === id ?
                                 <div>
                                     <img src={PauseImage} className={styles['audio-pause-button']} alt="start" />
@@ -112,6 +107,7 @@ const AudioPlayer = ({ data, isPlaying, togglePausePlay }: AudioPlayerProps) => 
                                 </div>
                             }
                         </div>
+
                         <div className={styles['audio-slider-section']}>
                             <div className={styles['audio-slider-container']}>
                                 <input
