@@ -50,11 +50,6 @@ const Home = () => {
                             src={GoldLogo}
                             alt="piano-duo-logo-gold"
                         />
-                        {/* <img
-                            className={styles['background-design-img']}
-                            src={BackgroundDesign}
-                            alt="background-design"
-                        /> */}
                     </div>
                 </div>
                 <img

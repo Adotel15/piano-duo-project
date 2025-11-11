@@ -96,7 +96,7 @@
   }
 }
 
-@media (min-width: 600px) and (max-width: 800px) {
+@media (min-width: 600px) and (max-width: 900px) {
 
   .home-background-img-tablet {
     width: 100%;
@@ -110,10 +110,21 @@
   .home-background-img-mobile {
     display: none;
   }
+
+  .carousel-container {
+     padding-bottom: 90px;
+  }
   
 }
 
-@media (max-width: 800px) {
+@media (max-width: 599px) {
+  .carousel-container {
+    padding-bottom: 40px;
+  }
+
+}
+
+@media (max-width: 1024px) {
 
   .home-background-img {
     display: none;
@@ -137,6 +148,7 @@
   .right-piano-container {
     clip-path: polygon(0% 70%, 100% 60%, 100% 100%, 0% 100%);
     padding-bottom: 0;
+    height: 100%;
   }
 
   .carousel-container {
@@ -147,7 +159,6 @@
     justify-content: flex-end;
     align-items: center;
     gap: 50px;
-    padding-bottom: 80px;
     padding-right: 0;
   }
 }
