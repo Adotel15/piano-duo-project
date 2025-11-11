@@ -21,12 +21,13 @@ interface CDFormatted {
   frontImage: string | null;
   backImage: string | null;
   subtitle: string;
-  pieces: Array<{
+  pieces: {
     id: number;
     name: string;
     sections: GenericObject | null;
     status: string | null;
-  }> | null;
+  }[] | null;
+  orderNumber: string;
 }
 
 interface AudioFormatted {
@@ -36,21 +37,68 @@ interface AudioFormatted {
   author: string | null;
   duration: string | null;
   audio: string | null;
+  orderNumber: string;
 }
 
 interface VideoFormatted {
   id: number;
   title: string;
   link: string;
+  orderNumber: string;
 }
 
 interface RepertoireFormatted {
   id: number;
   title: string;
-  piece_author: Array<{
+  imageRepertoire: string;
+  piece_author: {
     title: string;
     author: string;
-  }> | null;
+  }[] | null;
+  orderNumber: string;
+}
+
+interface BiographyFormatted {
+  content: string;
+  education: {
+    title: string;
+    content: {
+      id: number;
+      location: string;
+      city: string;
+    }[];
+  };
+
+  degrees: {
+    title: string;
+    content: {
+      id: number;
+      degreeTitle: string;
+      degreeInstitution: string;
+      city: string;
+    }[];
+  };
+
+  awards: {
+    title: string;
+    content: {
+      id: number;
+      award: string;
+      awardCompetition: string;
+      city: string;
+    }[];
+  };
+
+  contentTitle: string;
+  contentTest: string; // ESTA FET AMB MARKDOWN, POTSER FA FALTA INSTALAR ALGUNA LLIBRERIA
+  caption: string;
+}
+
+interface HeadlinesFormatted {
+  content: {
+    author: string;
+    content: string;
+  }[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -85,6 +133,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
                 status: piece?.status || null,
             }))
             : item.attributes.pieces?.data || null,
+        orderNumber: item.attributes.orderNumber || null,
     })),
 
     audios: (data): AudioFormatted[] => data.map((item: GenericObject) => ({
@@ -94,23 +143,66 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         author: item.attributes.author || null,
         duration: item.attributes.duration || null,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     videos: (data): VideoFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
         link: item.attributes.link,
+        orderNumber: item.attributes.orderNumber,
     })),
 
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
+        imageRepertoire: item.attributes.imageRepertoire?.data ? item.attributes.imageRepertoire?.data[0].attributes.url : '',
+        orderNumber: item.attributes.orderNumber,
         piece_author: Array.isArray(item.attributes.piece_author?.data)
             ? item.attributes.piece_author.data.map((piece_author: GenericObject) => ({
                 title: piece_author.title,
                 author: piece_author.author,
             }))
             : item.attributes.piece_author?.data || null,
+    })),
+
+    biography: (data): BiographyFormatted[] => [{
+        content: data.attributes.content,
+        education: {
+            title: data.attributes.education[0].title,
+            content: data.attributes.education[0].content.map((edu: GenericObject) => ({
+                id: Number(edu.id),
+                location: edu.location,
+                city: edu.city,
+            }))
+        },
+        degrees:{
+            title: data.attributes.degrees[0].title,
+            content: data.attributes.degrees[0].content.map((deg: GenericObject) => ({
+                id: Number(deg.id),
+                degreeTitle: deg.degreeTitle,
+                degreeInstitution: deg.degreeInstitution,
+                city: deg.city,
+            }))
+        },
+        awards:{
+            title: data.attributes.awards[0].title,
+            content:  data.attributes.awards[0].content.map((awd: GenericObject) => ({
+                id: Number(awd.id),
+                award: awd.award,
+                awardCompetition: awd.awardCompetition,
+                city: awd.city,
+            }))
+
+        },
+        contentTitle: data.attributes.contentTitle,
+        contentTest: data.attributes.contentTest,
+        caption: data.attributes.caption,
+    }],
+
+    headline: (data): HeadlinesFormatted[] => data.attributes.content.map((headline: GenericObject) => ({
+        content: headline.content,
+        author: headline.author,
     })),
 };
 

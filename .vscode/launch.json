@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug API",
+        "type": "node",
+        "request": "attach",
+        "port": 9229,
+        "address": "localhost",
+        "restart": false,
+        "localRoot": "${workspaceFolder}/api",
+        "remoteRoot": "${workspaceFolder}/api"
+      },
+      {
+        "name": "Debug Web",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder}/web",
+        "sourceMaps": true
+      }
+    ]
+  }

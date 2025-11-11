@@ -20,8 +20,8 @@ const Footer = () => {
                 <div className={styles['logo-container']}>
                     <img src={Logo} alt="Logo" />
                     <div className={styles['logo-title']}>
-                        <p className={styles['logo-title-item']}>PEREZ MOLINA</p>
-                        <p className={styles['logo-title-item']}>PIANO DÚO</p>
+                        <p className={styles['logo-title-item']}>PÉREZ MOLINA</p>
+                        <p className={styles['logo-title-item']}>piano duo</p>
                     </div>
                 </div>
                 <div className={styles['menu-socials-container']}>

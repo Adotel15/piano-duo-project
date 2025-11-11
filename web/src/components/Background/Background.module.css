@@ -1,0 +1,16 @@
+.background-container {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+
+.background-container img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    mask: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 10%, rgba(0, 0, 0, 0.8) 30%, black 60%);
+    -webkit-mask: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 10%, rgba(0, 0, 0, 0.8) 30%, black 60%);
+}
