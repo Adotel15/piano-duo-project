@@ -39,7 +39,7 @@ steps:
         DATABASE_SSL=${_DATABASE_SSL},
         JWT_SECRET=${_JWT_SECRET},
         GOOGLE_CLOUD_BUCKET_NAME=${_GOOGLE_CLOUD_BUCKET_NAME},
-        NODE_ENV=production,
+        NODE_ENV=production
     id: 'Deploy'
 
 images:
