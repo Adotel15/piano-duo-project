@@ -22,10 +22,10 @@ steps:
       - '--region=$_DEPLOY_REGION'
       - '--platform=managed'
       - '--quiet'
+      - '--port=8082'
       - '--set-env-vars'
       - |
         HOST=${_HOST},
-        PORT=${_PORT},
         APP_KEYS=${_APP_KEYS},
         API_TOKEN_SALT=${_API_TOKEN_SALT},
         ADMIN_JWT_SECRET=${_ADMIN_JWT_SECRET},
