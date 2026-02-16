@@ -34,7 +34,7 @@ steps:
         BREVO_API_KEY=${_BREVO_API_KEY},
         EMAIL_DESTINATION=${_EMAIL_DESTINATION},
         EMAIL_FROM=${_EMAIL_FROM},
-        NODE_ENV=production,
+        NODE_ENV=production
     id: 'Deploy'
 
 images:
