@@ -1,18 +1,16 @@
-FROM node:20-alpine AS builder
-
+# Stage 1: Build
+FROM node:20-alpine AS build
 WORKDIR /app
-
+ARG VITE_API_URL
+ARG VITE_PORT
 COPY package.json package-lock.json ./
-RUN npm install --frozen-lockfile --force
-
+RUN npm ci --legacy-peer-deps
 COPY . .
+RUN npm run build
 
-RUN npm run build --debug
-
+# Stage 2: Serve
 FROM nginx:alpine
-
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf 
-
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
