@@ -1,0 +1,55 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', 
+      '-t', '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA',
+      '.' 
+    ]
+    id: 'Build'
+    dir: 'strapi'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA']
+    id: 'Push'
+    dir: 'strapi'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '$_SERVICE_NAME'
+      - '--image=$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+      - '--region=$_DEPLOY_REGION'
+      - '--platform=managed'
+      - '--quiet'
+      - '--set-env-vars'
+      - |
+        HOST=${_HOST},
+        PORT=${_PORT},
+        APP_KEYS=${_APP_KEYS},
+        API_TOKEN_SALT=${_API_TOKEN_SALT},
+        ADMIN_JWT_SECRET=${_ADMIN_JWT_SECRET},
+        TRANSFER_TOKEN_SALT=${_TRANSFER_TOKEN_SALT},
+        DATABASE_CLIENT=${_DATABASE_CLIENT},
+        DATABASE_HOST=${_DATABASE_HOST},
+        DATABASE_PORT=${_DATABASE_PORT},
+        DATABASE_NAME=${_DATABASE_NAME},
+        DATABASE_USERNAME=${_DATABASE_USERNAME},
+        DATABASE_PASSWORD=${_DATABASE_PASSWORD},
+        DATABASE_SSL=${_DATABASE_SSL},
+        JWT_SECRET=${_JWT_SECRET},
+        GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON=${_GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON},
+        GOOGLE_CLOUD_BUCKET_NAME=${_GOOGLE_CLOUD_BUCKET_NAME},
+        NODE_ENV=production,
+    id: 'Deploy'
+
+images:
+  - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+
+substitutions:
+  _SERVICE_NAME: piano-duo-strapi
+  _DEPLOY_REGION: europe-west1
+  _AR_HOSTNAME: europe-west1-docker.pkg.dev
+  _AR_REPOSITORY: cloud-run-source-deploy
+  
