@@ -1,11 +1,20 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-const GCP_SERVICE_ACCOUNT = JSON.parse(process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON);
+const serviceAccountRaw = process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON;
 const BUCKET_NAME = process.env.GOOGLE_CLOUD_BUCKET_NAME;
 
-if(!GCP_SERVICE_ACCOUNT || !BUCKET_NAME) {
-    throw new Error('Please provide a valid GOOGLE_CLOUD_SERVICE_ACCOUNT_JSON and GOOGLE_CLOUD_BUCKET_NAME');
+let gcpServiceAccount = undefined;
+if (serviceAccountRaw) {
+  try {
+    gcpServiceAccount = JSON.parse(serviceAccountRaw);
+  } catch (e) {
+    console.warn('El JSON de la Service Account no es válido, intentando usar ADC...');
+  }
+}
+
+if (!BUCKET_NAME) {
+    throw new Error('Por favor define GOOGLE_CLOUD_BUCKET_NAME');
 }
 
 export default () => ({
@@ -16,10 +25,10 @@ export default () => ({
             bucketName: BUCKET_NAME,
             publicFiles: true,
             uniform: true,
-            serviceAccount: GCP_SERVICE_ACCOUNT, 
+            serviceAccount: gcpServiceAccount, 
             baseUrl: `https://storage.googleapis.com/${BUCKET_NAME}`,
             basePath: '',
-	    sizeLimit: 500 * 1024 * 1024,
+            sizeLimit: 500 * 1024 * 1024,
         },
       },
     },

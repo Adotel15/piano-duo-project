@@ -1,0 +1,44 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'VITE_API_URL=${_VITE_API_URL}'
+      - '--build-arg'
+      - 'VITE_PORT=${_VITE_PORT}'
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+      - '.'
+    id: 'Build'
+    dir: 'web'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+    id: 'Push'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '$_SERVICE_NAME'
+      - '--image=$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+      - '--region=$_DEPLOY_REGION'
+      - '--platform=managed'
+      - '--quiet'
+    id: 'Deploy'
+
+images:
+  - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+
+substitutions:
+  _SERVICE_NAME: piano-duo-web
+  _DEPLOY_REGION: europe-west1
+  _AR_HOSTNAME: europe-west1-docker.pkg.dev
+  _AR_REPOSITORY: cloud-run-source-deploy
+
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY

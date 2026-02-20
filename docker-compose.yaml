@@ -1,43 +1,51 @@
-version: '3.8'
+name: piano-duo
+
 services:
-  web:
+  piano-duo-web:
     build:
       context: ./web
       dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8081/v1/api}
+        VITE_PORT: ${VITE_PORT:-8080}
     image: piano-duo-images/web
-    container_name: web
+    container_name: piano-duo-web
     ports:
       - "8080:8080"
     depends_on:
-      - api
-      - strapi
+      - piano-duo-api
+      - piano-duo-strapi
     networks:
-      - piano_duo_network
+      - piano-duo-network
 
-  api:
+  piano-duo-api:
     build:
       context: ./api
       dockerfile: Dockerfile
     image: piano-duo-images/api
-    container_name: api
+    container_name: piano-duo-api
     ports:
       - "8081:8081"
+    env_file:
+      - ./api/.env
     depends_on:
-      - strapi
+      - piano-duo-strapi
     networks:
-      - piano_duo_network
+      - piano-duo-network
 
-  strapi:
+  piano-duo-strapi:
     build:
       context: ./strapi
       dockerfile: Dockerfile
     image: piano-duo-images/strapi
-    container_name: strapi
+    container_name: piano-duo-strapi
     ports:
       - "8082:8082"
+    env_file:
+      - ./strapi/.env
     networks:
-      - piano_duo_network
+      - piano-duo-network
 
 networks:
-  piano_duo_network:
+  piano-duo-network:
     driver: bridge
