@@ -17,6 +17,16 @@
     },
     "piece_author": {
       "type": "json"
+    },
+    "imageRepertoire": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "orderNumber": {
+      "type": "string"
     }
   }
 }

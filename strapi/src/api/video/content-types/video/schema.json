@@ -19,6 +19,10 @@
     "link": {
       "type": "string",
       "required": true
+    },
+    "orderNumber": {
+      "type": "string",
+      "required": true
     }
   }
 }

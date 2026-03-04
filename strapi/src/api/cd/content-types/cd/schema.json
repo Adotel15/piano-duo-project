@@ -42,6 +42,9 @@
     "pieces": {
       "type": "json",
       "required": true
+    },
+    "orderNumber": {
+      "type": "string"
     }
   }
 }

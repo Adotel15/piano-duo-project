@@ -362,139 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCdCd extends Schema.CollectionType {
-  collectionName: 'cds';
-  info: {
-    singularName: 'cd';
-    pluralName: 'cds';
-    displayName: 'CDs';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    composer: Attribute.String;
-    front: Attribute.Media<'images'>;
-    back: Attribute.Media<'images'>;
-    subtitle: Attribute.String & Attribute.Required;
-    pieces: Attribute.JSON & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::cd.cd', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::cd.cd', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPhotoPhoto extends Schema.CollectionType {
-  collectionName: 'photos';
-  info: {
-    singularName: 'photo';
-    pluralName: 'photos';
-    displayName: 'Gallery';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    photos: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::photo.photo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::photo.photo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiReviewReview extends Schema.CollectionType {
-  collectionName: 'reviews';
-  info: {
-    singularName: 'review';
-    pluralName: 'reviews';
-    displayName: 'Criticas';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    content: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    images: Attribute.Media<'images', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    reviewer: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    publisher_date: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::review.review',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::review.review',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::review.review',
-      'oneToMany',
-      'api::review.review'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -934,10 +801,11 @@ export interface ApiAudioAudio extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    audio: Attribute.Media<'audios'> & Attribute.Required;
     author: Attribute.String;
     duration: Attribute.String;
     number: Attribute.String;
+    link: Attribute.String & Attribute.Required;
+    orderNumber: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -956,12 +824,101 @@ export interface ApiAudioAudio extends Schema.CollectionType {
   };
 }
 
+export interface ApiBiographyBiography extends Schema.SingleType {
+  collectionName: 'biographies';
+  info: {
+    singularName: 'biography';
+    pluralName: 'biographies';
+    displayName: 'Biography';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    contentTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contentTest: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    education: Attribute.JSON &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    degrees: Attribute.JSON &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    awards: Attribute.JSON &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    caption: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::biography.biography',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::biography.biography',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::biography.biography',
+      'oneToMany',
+      'api::biography.biography'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiCdCd extends Schema.CollectionType {
   collectionName: 'cds';
   info: {
     singularName: 'cd';
     pluralName: 'cds';
     displayName: 'CDs';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -973,6 +930,7 @@ export interface ApiCdCd extends Schema.CollectionType {
     back: Attribute.Media<'images'>;
     subtitle: Attribute.String & Attribute.Required;
     pieces: Attribute.JSON & Attribute.Required;
+    orderNumber: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1014,6 +972,53 @@ export interface ApiGalleryGallery extends Schema.SingleType {
   };
 }
 
+export interface ApiHeadlineHeadline extends Schema.SingleType {
+  collectionName: 'headlines';
+  info: {
+    singularName: 'headline';
+    pluralName: 'headlines';
+    displayName: 'Headline';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Attribute.JSON &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::headline.headline',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::headline.headline',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::headline.headline',
+      'oneToMany',
+      'api::headline.headline'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiRepertoireRepertoire extends Schema.CollectionType {
   collectionName: 'repertoires';
   info: {
@@ -1028,6 +1033,8 @@ export interface ApiRepertoireRepertoire extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     piece_author: Attribute.JSON;
+    imageRepertoire: Attribute.Media<'images'>;
+    orderNumber: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1135,6 +1142,7 @@ export interface ApiVideoVideo extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     link: Attribute.String & Attribute.Required;
+    orderNumber: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1163,7 +1171,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::photo.photo': ApiPhotoPhoto;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1173,8 +1180,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::audio.audio': ApiAudioAudio;
+      'api::biography.biography': ApiBiographyBiography;
       'api::cd.cd': ApiCdCd;
       'api::gallery.gallery': ApiGalleryGallery;
+      'api::headline.headline': ApiHeadlineHeadline;
       'api::repertoire.repertoire': ApiRepertoireRepertoire;
       'api::review.review': ApiReviewReview;
       'api::video.video': ApiVideoVideo;

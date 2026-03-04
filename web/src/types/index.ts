@@ -11,7 +11,7 @@ export type AudioPlayerType =  {
     name: string,
     author: string,
     duration: string,
-    link: string
+    link: string,
     orderNumber: string,
 }
 
