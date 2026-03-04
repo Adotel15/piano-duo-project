@@ -156,7 +156,7 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
     repertoires: (data): RepertoireFormatted[] => data.map((item: GenericObject) => ({
         id: item.id,
         title: item.attributes.title,
-        imageRepertoire: item.attributes.imageRepertoire?.data ? item.attributes.imageRepertoire?.data[0].attributes.url : '',
+        imageRepertoire: item.attributes.imageRepertoire?.data ? item.attributes.imageRepertoire?.data[0]?.attributes?.url : '',
         orderNumber: item.attributes.orderNumber,
         piece_author: Array.isArray(item.attributes.piece_author?.data)
             ? item.attributes.piece_author.data.map((piece_author: GenericObject) => ({
@@ -210,13 +210,19 @@ export const formatStrapiArray = <T>(
     strapiResponse: StrapiArray<GenericObject>,
     collection: string
 ): T => {
-    const formatter = formatters[collection];
+    try {
+        const formatter = formatters[collection];
 
-    if (formatter) return formatter(strapiResponse) as T;
+        if (formatter) return formatter(strapiResponse) as T;
 
+        // eslint-disable-next-line no-console
+        console.warn(`No formatter defined for collection: ${collection}`);
+        return strapiResponse as unknown as T;
+    } catch (error) {
     // eslint-disable-next-line no-console
-    console.warn(`No formatter defined for collection: ${collection}`);
-    return strapiResponse as unknown as T;
+        console.error(`Error formatting data for collection: ${collection}`, error);
+        return strapiResponse as unknown as T;
+    }
 };
 
 export const formatStrapiObject = (strapiResponse: StrapiObject<GenericObject>) => strapiResponse;
