@@ -142,6 +142,10 @@
     line-height: 1.9em;
 }
 
+.pieces-list-padding {
+    padding: 2px 0;
+}
+
 .piece-status-incative {
     color: var(--nonImportant_text_color);
 }
@@ -149,6 +153,7 @@
 .piece-sections-container {
     display: flex;
     flex-direction: column;
+    padding: 0 0 0 10px;
 }
 
 .ol-container ol,

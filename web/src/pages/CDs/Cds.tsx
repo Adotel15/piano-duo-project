@@ -175,7 +175,7 @@ const Music = () => {
                                                     )
                                                     :
                                                     cd.pieces && cd.pieces.map(piece =>
-                                                        <li className= {`${
+                                                        <li className= {`pieces-list-padding ${
                                                             piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
                                                         }`} key={piece.id}> {formatPieceName(piece.name)}
                                                             <ol className={styles['piece-sections-container']}>
