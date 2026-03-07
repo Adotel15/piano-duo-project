@@ -162,12 +162,12 @@ const Music = () => {
                                                     cd.pieces && cd.pieces.map(piece =>
                                                         <ul className= {`${
                                                             piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
-                                                        }`} key={piece.id}> {formatPieceName(piece.name)}
+                                                        }`} key={piece.id}> {piece.name}
                                                             <ol className={styles['piece-sections-container']}>
                                                                 {piece.sections?.map((section, index) =>
                                                                     <li key={`${piece.id}-section-${index}`}
                                                                         className={styles['piece-sections-container']}>
-                                                                        {section}
+                                                                        {formatPieceName(section)}
                                                                     </li>
                                                                 )}
                                                             </ol>
@@ -177,12 +177,12 @@ const Music = () => {
                                                     cd.pieces && cd.pieces.map(piece =>
                                                         <li className= {`pieces-list-padding ${
                                                             piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
-                                                        }`} key={piece.id}> {formatPieceName(piece.name)}
+                                                        }`} key={piece.id}> {piece.name}
                                                             <ol className={styles['piece-sections-container']}>
                                                                 {piece.sections?.map((section, index) =>
                                                                     <li key={`${piece.id}-section-${index}`}
                                                                         className={styles['piece-sections-container']}>
-                                                                        {section}
+                                                                        {formatPieceName(section)}
                                                                     </li>
                                                                 )}
                                                             </ol>
