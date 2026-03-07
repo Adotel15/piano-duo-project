@@ -160,7 +160,7 @@ const Music = () => {
                                             <FadeIn delay={100}>
                                                 { cd.orderNumber === '4' ?
                                                     cd.pieces && cd.pieces.map(piece =>
-                                                        <ul className= {`${
+                                                        <ul className= {`pieces-list-padding${
                                                             piece.status ? `pieces-list ${styles['piece-status-incative']}` : ''
                                                         }`} key={piece.id}> {piece.name}
                                                             <ol className={styles['piece-sections-container']}>
