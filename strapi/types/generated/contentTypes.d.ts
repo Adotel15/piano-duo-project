@@ -1019,6 +1019,38 @@ export interface ApiHeadlineHeadline extends Schema.SingleType {
   };
 }
 
+export interface ApiIntroductionMusicIntroductionMusic
+  extends Schema.SingleType {
+  collectionName: 'introduction_musics';
+  info: {
+    singularName: 'introduction-music';
+    pluralName: 'introduction-musics';
+    displayName: 'Introduction Music';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    link: Attribute.String & Attribute.Required;
+    loop: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::introduction-music.introduction-music',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::introduction-music.introduction-music',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRepertoireRepertoire extends Schema.CollectionType {
   collectionName: 'repertoires';
   info: {
@@ -1184,6 +1216,7 @@ declare module '@strapi/types' {
       'api::cd.cd': ApiCdCd;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::headline.headline': ApiHeadlineHeadline;
+      'api::introduction-music.introduction-music': ApiIntroductionMusicIntroductionMusic;
       'api::repertoire.repertoire': ApiRepertoireRepertoire;
       'api::review.review': ApiReviewReview;
       'api::video.video': ApiVideoVideo;
