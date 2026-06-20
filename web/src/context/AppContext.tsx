@@ -71,7 +71,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             {children}
             <ReactPlayer
                 url={audio?.link}
-                volume={0.2}
+                volume={0.6}
                 playing={isMusicPlaying}
                 width={playerWidth}
                 height={playerHeight}
