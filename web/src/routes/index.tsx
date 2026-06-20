@@ -8,6 +8,7 @@ import Gallery from '../pages/Gallery/Gallery';
 import Cds from '../pages/CDs/Cds';
 import Repertoire from '../pages/Repertoire/Repertoire';
 import Biography from '../pages/Biography/Biography';
+import LegalPage from '../pages/Legal/LegalPage';
 
 import { routes } from '../constants/routes';
 
@@ -22,6 +23,8 @@ const AppRoutes = () =>
             <Route path={routes.music} element={<Cds />}/>
             <Route path={routes.repertoire} element={<Repertoire />}/>
             <Route path={routes.contact} element={<Contact />} />
+            <Route path={routes.terms} element={<LegalPage doc="terms" />} />
+            <Route path={routes.privacy} element={<LegalPage doc="privacy" />} />
         </Routes>
     </BrowserRouter>
 ;

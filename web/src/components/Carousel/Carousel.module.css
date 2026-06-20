@@ -24,7 +24,9 @@
 
 .phrase {
     margin: 0;
+    width: 100%;
     text-wrap: balance;
+    overflow-wrap: break-word;
     line-height: 1.4;
 }
 
@@ -68,7 +70,9 @@
 
 .phrase {
     margin: 0;
+    width: 100%;
     text-wrap: balance;
+    overflow-wrap: break-word;
     line-height: 1.4;
 }
 

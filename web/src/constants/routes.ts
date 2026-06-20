@@ -6,4 +6,6 @@ export const routes ={
     gallery: '/gallery',
     music: '/music',
     contact: '/contact',
+    terms: '/terms',
+    privacy: '/privacy',
 } as const;

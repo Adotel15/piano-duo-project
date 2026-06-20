@@ -41,7 +41,7 @@
             "email": "Correu electrònic",
             "case": "Assumpte",
             "message": "Missatge",
-            "terms": "He llegit i accepto els <span>termes i condicions</span> i accepto la <span>política de privacitat</span>",
+            "terms": "He llegit i accepto els <terms>termes i condicions</terms> i accepto la <privacy>política de privacitat</privacy>",
             "send": "Enviar",
             "error": {
                 "name": "*Introdueix el nom",
@@ -55,9 +55,7 @@
         }
     },
     "footer": {
-        "rights": "© 2024. Pérez Molina Piano Dúo. Tots els drets reservats",
-        "terms": "Termes i condicions",
-        "privacy": "Política de privacitat",
-        "cookies": "Política de galetes"
+        "rights": "© {{year}}. Pérez Molina Piano Dúo. Tots els drets reservats",
+        "privacy": "Política de privacitat"
     }
 }

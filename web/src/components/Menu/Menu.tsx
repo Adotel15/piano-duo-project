@@ -36,6 +36,7 @@ const Menu = () => {
                 <div className={styles['hamburger-icon']}>
                     <span className={styles['bar']}></span>
                     <span className={styles['bar']}></span>
+                    <span className={styles['bar']}></span>
                 </div>
             </button>
             <div className={`${styles['menu-container']} ${isMenuOpen ? styles['open'] : ''}`}>

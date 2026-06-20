@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './Footer.module.css';
 
 import { menuOptions } from '../../constants/ui';
+import { routes } from '../../constants/routes';
 
 import Logo from '../../assets/PianoDuoLogo.png';
 import Youtube from '../../assets/Socials/youtube_1.png';
@@ -44,12 +45,12 @@ const Footer = () => {
                 </div>
                 <div className={styles['info-container']}>
                     <div className={styles['rights-container']}>
-                        <p>{t('footer.rights')}</p>
+                        <p>{t('footer.rights', { year: new Date().getFullYear() })}</p>
                     </div>
                     <div className={styles['conditions-container']}>
-                        <p>{t('footer.terms')}</p>
-                        <p>{t('footer.privacy')}</p>
-                        <p>{t('footer.cookies')}</p>
+                        <p>
+                            <Link to={routes.privacy} className={styles['privacy-link']}>{t('footer.privacy')}</Link>
+                        </p>
                     </div>
                 </div>
             </div>

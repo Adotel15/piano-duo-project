@@ -124,6 +124,11 @@
     color: var(--hover_primary_color);
 }
 
+.privacy-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 @media (max-width: 1195px) {
     .component-container{
         padding: 10px;

@@ -1,7 +1,10 @@
 import {  useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import FadeIn from 'react-fade-in';
+
+import { routes } from '../../constants/routes';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
@@ -148,7 +151,15 @@ const Contact = () => {
                                         <div className={styles['checkbox-container']}>
                                             <input name='terms' id='checkbox' type='checkbox' className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
                                         </div>
-                                        <label className={styles['terms-conditions']} dangerouslySetInnerHTML={{__html: t('contact.form.terms')}}/>
+                                        <label className={styles['terms-conditions']}>
+                                            <Trans
+                                                i18nKey='contact.form.terms'
+                                                components={{
+                                                    terms: <Link to={routes.terms} className={styles['terms-link']} />,
+                                                    privacy: <Link to={routes.privacy} className={styles['terms-link']} />,
+                                                }}
+                                            />
+                                        </label>
                                     </div>
                                     <p className={styles['error-message']}>{errors.terms}</p>
                                     <input type='submit' value={t('contact.form.send')}/>

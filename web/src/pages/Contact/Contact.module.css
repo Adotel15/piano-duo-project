@@ -136,6 +136,12 @@ label > span{
     text-decoration: underline 1px var(--secondary_color);
 }
 
+.terms-link {
+    color: inherit;
+    text-decoration: underline 1px var(--secondary_color);
+    cursor: pointer;
+}
+
 input[type="submit"]{
     background-color: var(--secondary_color);
     color: var(--primary_color);

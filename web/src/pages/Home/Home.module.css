@@ -96,39 +96,12 @@
   }
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
-
-  .home-background-img-tablet {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    filter: grayscale(100%) contrast(0.5) brightness(0.7);
-    animation: opacity-zero-to-one  1s ease forwards 1s;
-  }
-
-  .home-background-img-mobile {
-    display: none;
-  }
-
-  .carousel-container {
-     padding-bottom: 90px;
-  }
-  
-}
-
-@media (max-width: 599px) {
-  .carousel-container {
-    padding-bottom: 40px;
-  }
-
-}
-
+/* Tablet / mobile: la banda de headlines pasa a ser una banda negra
+   inferior, centrada y de altura adaptable (anclada abajo, no flota). */
 @media (max-width: 1024px) {
 
   .home-background-img {
     display: none;
-
   }
 
   .home-background-img-mobile {
@@ -146,20 +119,61 @@
   }
 
   .right-piano-container {
-    clip-path: polygon(0% 70%, 100% 60%, 100% 100%, 0% 100%);
-    padding-bottom: 0;
-    height: 100%;
+    top: auto;
+    bottom: 0;
+    height: auto;
+    min-height: 38%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 20px 36px;
+    clip-path: polygon(0% 18%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .carousel-container {
     width: 100%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    height: auto;
+    box-sizing: border-box;
+    justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 24px;
     padding-right: 0;
+  }
+}
+
+/* iPad / tablet: usar la imagen de fondo específica de tablet */
+@media (min-width: 600px) and (max-width: 900px) {
+
+  .home-background-img-tablet {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    filter: grayscale(100%) contrast(0.5) brightness(0.7);
+    animation: opacity-zero-to-one  1s ease forwards 1s;
+  }
+
+  .home-background-img-mobile {
+    display: none;
+  }
+}
+
+/* Móviles pequeños: banda más compacta */
+@media (max-width: 599px) {
+
+  .right-piano-container {
+    min-height: 34%;
+    padding: 56px 16px 28px;
+    clip-path: polygon(0% 14%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .white-logo-img {
+    width: 70px;
+  }
+
+  .carousel-container {
+    gap: 16px;
   }
 }
 

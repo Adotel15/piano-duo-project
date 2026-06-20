@@ -41,7 +41,7 @@
             "email": "Email",
             "case": "Subject",
             "message": "Message",
-            "terms": "I have read and accept the <span>terms and conditions</span> and agree to the <span>privacy policy</span>",
+            "terms": "I have read and accept the <terms>terms and conditions</terms> and agree to the <privacy>privacy policy</privacy>",
             "send": "Send",
             "error": {
                 "name": "*Enter the name",
@@ -55,9 +55,7 @@
         }
     },
     "footer": {
-        "rights": "© 2024. Pérez Molina Piano Duo. All rights reserved",
-        "terms": "Terms and conditions",
-        "privacy": "Privacy policy",
-        "cookies": "Cookies policy"
+        "rights": "© {{year}}. Pérez Molina Piano Duo. All rights reserved",
+        "privacy": "Privacy policy"
     }
 }
