@@ -204,6 +204,11 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         content: headline.content,
         author: headline.author,
     })),
+
+    'introduction-music': (data): HeadlinesFormatted[] => data.attributes.content.map((headline: GenericObject) => ({
+        link: headline.link,
+        loop: headline.loop,
+    })),
 };
 
 export const formatStrapiArray = <T>(

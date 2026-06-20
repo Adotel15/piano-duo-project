@@ -11,7 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player';
 import fetchData from '../utils/api';
-import { AudioPlayerType } from '../types';
+import { IntroductionMusicType } from '../types';
 
 type AppContextType = {
     isMenuOpen: boolean;
@@ -34,16 +34,15 @@ const AppContext = createContext<AppContextType>({
 const AppProvider = ({ children }: { children: ReactNode }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-    const [audio, setAudio] = useState<AudioPlayerType | null>();
+    const [audio, setAudio] = useState<IntroductionMusicType | null>();
     const [isMobile, setIsMobile] = useState(false);
 
     const { i18n } = useTranslation();
 
     const getData = async () => {
         try {
-            // TODO: Decide the audio
-            const audiosResponse = await fetchData<AudioPlayerType[]>('audios', i18n.language);
-            if(audiosResponse && audiosResponse?.length > 0) setAudio(audiosResponse[2]);
+            const introMusic = await fetchData<IntroductionMusicType>('introduction-music', i18n.language);
+            if(introMusic) setAudio(introMusic);
         } catch (error) {
             // eslint-disable-next-line no-console
             console.error('Error fetching audio', error);
@@ -79,6 +78,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                 playsinline={isMusicPlaying}
                 style={{ position: 'absolute', left: '-99999px'}}
                 onEnded={() => setIsMusicPlaying(false)}
+                loop={audio?.loop ?? false}
             />
         </AppContext.Provider>
     );

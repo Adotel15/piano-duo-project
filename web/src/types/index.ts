@@ -21,3 +21,8 @@ export type VideoPlayerType = {
     link: string,
     orderNumber: string,
 }
+
+export type IntroductionMusicType = {
+    link: string,
+    loop: boolean,
+}
