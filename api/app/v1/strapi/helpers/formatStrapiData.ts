@@ -101,6 +101,11 @@ interface HeadlinesFormatted {
   }[];
 }
 
+interface IntroductionMusicFormatted {
+    link: string;
+    loop: boolean;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FormatterFunction<T> = (data: any) => T;
 
@@ -204,6 +209,11 @@ const formatters: Record<string, FormatterFunction<unknown>> = {
         content: headline.content,
         author: headline.author,
     })),
+
+    'introduction-music': (data): IntroductionMusicFormatted => ({
+        link: data.attributes.link,
+        loop: data.attributes.loop,
+    }),
 };
 
 export const formatStrapiArray = <T>(
