@@ -3,7 +3,7 @@
 Personal portfolio for a professional pianist duo. This is a **Fullstack** monorepo with the following stack:
 
 - **React** with **TypeScript** for the Frontend (using **Vite** as bundler)
-- **Fastify** API service to interact with Strapi and other services like Brevo
+- **Fastify** API service to interact with Strapi
 - **Strapi** as a Headless CMS
 - **PostgreSQL** on **Neon** (serverless) for Strapi data
 - **Google Cloud Storage** bucket for multimedia content
@@ -37,7 +37,7 @@ G(Strapi UI) --> B
 ```
 
 - **Web**: React/TypeScript frontend served by Nginx in production.
-- **API**: Fastify service that acts as middleware between the frontend and Strapi/Brevo.
+- **API**: Fastify service that acts as middleware between the frontend and Strapi.
 - **Strapi UI**: Admin panel for content management.
 - **Strapi Service**: Headless CMS connected to Database and GCP Bucket.
 - **Database**: PostgreSQL on Neon (serverless).
@@ -158,6 +158,5 @@ Before executing a **commit**, automatic scripts will run to check the quality o
 
 ### API Services
 
-The API is structured into two integration modules:
+The API is structured around one integration module:
 - **Strapi**: For content management (proxying CMS data to the frontend)
-- **Brevo**: For handling email communications

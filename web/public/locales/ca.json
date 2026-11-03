@@ -36,22 +36,16 @@
     },
     "contact": {
         "title": "—Contacte",
-        "form": {
-            "name": "Nom",
-            "email": "Correu electrònic",
-            "case": "Assumpte",
-            "message": "Missatge",
-            "terms": "He llegit i accepto els <terms>termes i condicions</terms> i accepto la <privacy>política de privacitat</privacy>",
-            "send": "Enviar",
-            "error": {
-                "name": "*Introdueix el nom",
-                "email": "*Introdueix un correu electrònic vàlid",
-                "subject": "*Introdueix l'assumpte",
-                "message": "*Introdueix el missatge",
-                "terms": "*Has d'acceptar els termes i condicions i la política de privacitat"
-            },
-            "success": "Missatge enviat correctament, ens posarem en contacte amb tu al més aviat possible",
-            "failure": "Hi ha hagut un error en enviar el missatge, si us plau, intenta-ho de nou"
+        "intro": "Vols organitzar un concert amb nosaltres o tens alguna pregunta? Escriu-nos per correu electrònic o per WhatsApp i et respondrem al més aviat possible.",
+        "email": {
+            "title": "Correu electrònic",
+            "button": "Escriu-nos un correu",
+            "subject": "Contacte des del web"
+        },
+        "whatsapp": {
+            "title": "WhatsApp",
+            "button": "Obrir WhatsApp",
+            "message": "Hola, us escric des del vostre web."
         }
     },
     "footer": {
