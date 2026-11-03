@@ -45,3 +45,8 @@ export const contactInfo = {
     emails: ['lluisgpemo@gmail.com', 'mperez@esmuc.cat'],
     whatsappPhone: '+34 686 16 13 74',
 } as const;
+
+export const socialLinks = {
+    youtube: 'https://www.youtube.com/@m.lourdesperezmolina8135',
+    spotify: 'https://open.spotify.com/artist/0JmG4WmxfxjGTHuBAsLhZe',
+} as const;

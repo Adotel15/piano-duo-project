@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from './Footer.module.css';
 
-import { menuOptions } from '../../constants/ui';
+import { menuOptions, socialLinks } from '../../constants/ui';
 import { routes } from '../../constants/routes';
 
 import Logo from '../../assets/PianoDuoLogo.png';
@@ -35,13 +35,21 @@ const Footer = () => {
                             )}
                         </ul>
                     </div>
-                    <div className={styles['socials-list-container']}>
-                        <li className={styles['list-container']}><img src={Youtube} alt="" /></li>
+                    <ul className={styles['socials-list-container']}>
+                        <li className={styles['list-container']}>
+                            <a href={socialLinks.youtube} target='_blank' rel='noopener noreferrer'>
+                                <img src={Youtube} alt='YouTube' />
+                            </a>
+                        </li>
                         {/* <li className={styles['list-container']}><img src={Linkedin} alt="" /></li> */}
                         {/* <li className={styles['list-container']}><img src={Instagram} alt="" /></li> */}
                         {/* <li className={styles['list-container']}><img src={Facebook} alt="" /></li> */}
-                        <li className={styles['list-container']}><img src={Spotify} alt="" /></li>
-                    </div>
+                        <li className={styles['list-container']}>
+                            <a href={socialLinks.spotify} target='_blank' rel='noopener noreferrer'>
+                                <img src={Spotify} alt='Spotify' />
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div className={styles['info-container']}>
                     <div className={styles['rights-container']}>
