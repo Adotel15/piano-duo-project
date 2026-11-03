@@ -1,10 +1,8 @@
-import {  useState, useCallback } from 'react';
-import { useTranslation, Trans } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import FadeIn from 'react-fade-in';
 
-import { routes } from '../../constants/routes';
+import { contactInfo } from '../../constants/ui';
 
 import Navbar from '../../components/Navbar/NavBar';
 import Header from '../../components/Header/Header';
@@ -15,79 +13,27 @@ import imageContact from '../../assets/Contact/Estudi_003.jpg';
 
 import styles from './Contact.module.css';
 
+const MailIcon = () =>
+    <svg className={styles['card-icon']} viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' aria-hidden='true'>
+        <rect x='3' y='5' width='18' height='14' rx='2' />
+        <path d='m3.5 6.5 8.5 6.5 8.5-6.5' strokeLinecap='round' strokeLinejoin='round' />
+    </svg>
+;
+
+const WhatsappIcon = () =>
+    <svg className={styles['card-icon']} viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
+        <path d='M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z' />
+    </svg>
+;
+
 const Contact = () => {
     const { t } = useTranslation();
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        terms: false,
-    });
-
-    const [errors, setErrors] = useState<Record<string, string>>({});
-
-    const validateForm = useCallback(() => {
-        const newErrors: Record<string, string> = {};
-        const fields = ['name', 'email', 'subject', 'message'] as const;
-
-        fields.forEach(field => {
-            if (!formData[field]) {
-                newErrors[field] = t(`contact.form.error.${field}`);
-            }
-        });
-
-        if (!formData.terms) {
-            newErrors.terms = t('contact.form.error.terms');
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    }, [formData, t]);
-
-    const handleSubmit = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if (!validateForm()) return;
-
-        try {
-            const { name, email, subject, message } = formData;
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/send-mail`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    from: email,
-                    subject: `${name} - ${subject}`,
-                    content: message,
-                }),
-            });
-
-            if (!response.ok) {
-                const data = await response.json();
-                throw new Error(data.error);
-            }
-
-            setFormData({ name: '', email: '', subject: '', message: '', terms: false });
-            alert(t('contact.form.success'));
-        } catch (error) {
-            // eslint-disable-next-line no-console
-            console.error('Error:', error);
-            alert(t('contact.form.failure'));
-        }
-    }, [formData, validateForm, t]);
-
-    const onChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const target = event.target as HTMLInputElement;
-        const { name, value, type, checked } = target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: type === 'checkbox' ? checked : value,
-        }));
-    };
+    const mailtoLink = `mailto:${contactInfo.emails.join(',')}?subject=${encodeURIComponent(t('contact.email.subject'))}`;
+    const whatsappLink = `https://wa.me/${contactInfo.whatsappPhone.replace(/\D/g, '')}?text=${encodeURIComponent(t('contact.whatsapp.message'))}`;
 
     return (
         <>
-
             <main className={styles['page-container']}>
                 <Navbar/>
                 <div className={styles['contact-container']}>
@@ -95,76 +41,42 @@ const Contact = () => {
                         <div className={styles['container-image-contact']}>
                             <img className={styles['image-contact']} src={imageContact} alt='Pianists'/>
                         </div>
-                        <div className={styles['form-container']}>
+                        <div className={styles['info-container']}>
                             <Header content={t('contact.title')}></Header>
-                            <form className={styles['contact-form-container']} onSubmit={handleSubmit}>
-                                <FadeIn>
-                                    <div className={styles['input-container']}>
-                                        <input
-                                            id='name'
-                                            name='name'
-                                            type='text'
-                                            value={formData.name}
-                                            className={styles['input-form']}
-                                            placeholder={t('contact.form.name')}
-                                            onChange={e => onChange(e)}
-                                        />
-                                        <p className={styles['error-message']}>{errors.name}</p>
+                            <FadeIn className={styles['cards-container']}>
+                                <p className={styles['intro']}>{t('contact.intro')}</p>
+                                <article className={styles['contact-card']}>
+                                    <div className={styles['card-header']}>
+                                        <MailIcon />
+                                        <h3 className={styles['card-title']}>{t('contact.email.title')}</h3>
                                     </div>
-                                    <div className={styles['input-container']}>
-                                        <input
-                                            id='email'
-                                            name='email'
-                                            type='text'
-                                            value={formData.email}
-                                            className={styles['input-form']}
-                                            placeholder={t('contact.form.email')}
-                                            onChange={e => onChange(e)}
-                                        />
-                                        <p className={styles['error-message']}>{errors.email}</p>
+                                    <ul className={styles['card-details']}>
+                                        {contactInfo.emails.map(email =>
+                                            <li key={email}>
+                                                <a href={`mailto:${email}`} className={styles['detail-link']}>{email}</a>
+                                            </li>
+                                        )}
+                                    </ul>
+                                    <a href={mailtoLink} className={`${styles['contact-button']} ${styles['contact-button-primary']}`}>
+                                        {t('contact.email.button')}
+                                    </a>
+                                </article>
+                                <article className={styles['contact-card']}>
+                                    <div className={styles['card-header']}>
+                                        <WhatsappIcon />
+                                        <h3 className={styles['card-title']}>{t('contact.whatsapp.title')}</h3>
                                     </div>
-                                    <div className={styles['input-container']}>
-                                        <input
-                                            id='subject'
-                                            name='subject'
-                                            type='text'
-                                            value={formData.subject}
-                                            className={styles['input-form']}
-                                            placeholder={t('contact.form.case')}
-                                            onChange={e => onChange(e)}
-                                        />
-                                        <p className={styles['error-message']}>{errors.subject}</p>
-                                    </div>
-                                    <div className={styles['input-container']}>
-                                        <textarea
-                                            id='message'
-                                            name='message'
-                                            value={formData.message}
-                                            className={[styles['input-form'], styles['contact-textarea']].join(' ')}
-                                            rows={7}
-                                            onChange={e => onChange(e)}
-                                            placeholder={t('contact.form.message')}
-                                        />
-                                        <p className={styles['error-message']}>{errors.message}</p>
-                                    </div>
-                                    <div className={styles['terms-and-conditions-container']}>
-                                        <div className={styles['checkbox-container']}>
-                                            <input name='terms' id='checkbox' type='checkbox' className={styles['checkbox-style']} checked={formData.terms} onChange={e => onChange(e)}/>
-                                        </div>
-                                        <label className={styles['terms-conditions']}>
-                                            <Trans
-                                                i18nKey='contact.form.terms'
-                                                components={{
-                                                    terms: <Link to={routes.terms} className={styles['terms-link']} />,
-                                                    privacy: <Link to={routes.privacy} className={styles['terms-link']} />,
-                                                }}
-                                            />
-                                        </label>
-                                    </div>
-                                    <p className={styles['error-message']}>{errors.terms}</p>
-                                    <input type='submit' value={t('contact.form.send')}/>
-                                </FadeIn>
-                            </form>
+                                    <p className={styles['card-details']}>{contactInfo.whatsappPhone}</p>
+                                    <a
+                                        href={whatsappLink}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        className={`${styles['contact-button']} ${styles['contact-button-secondary']}`}
+                                    >
+                                        {t('contact.whatsapp.button')}
+                                    </a>
+                                </article>
+                            </FadeIn>
                         </div>
                     </section>
                 </div>

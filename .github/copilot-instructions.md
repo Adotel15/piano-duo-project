@@ -6,10 +6,10 @@ The repository contains two main services:
 
 ### 1. API
 - **Framework**: Fastify.
-- **Purpose**: Provide endpoints to interact with the CMS (Strapi) and other services like Brevo.
+- **Purpose**: Provide endpoints to interact with the CMS (Strapi).
 - **Configuration**: Route configuration is found in `api/app/config/routes.ts`.
 - **Structure**:
-  - `v1/`: Contains modules like `brevo`, `strapi`, `utils`, and `constants`.
+  - `v1/`: Contains modules like `strapi`, `utils`, and `constants`.
   - `app.ts`: Main entry point for the Fastify server.
 - **Linting**: Configured with ESLint (`api/eslint.config.js`) with strict rules such as:
   - Mandatory use of `semi` and single quotes.
@@ -69,9 +69,8 @@ A GCP bucket is used to store all media uploaded to Strapi through a custom inte
 
 ## Services Structure
 
-The API has been modified to have a service-based structure. Currently, there are two services:
+The API has been modified to have a service-based structure. Currently, there is one service:
 - **Strapi**: For content management
-- **Brevo**: For handling email communications
 
 ## Project Standards
 

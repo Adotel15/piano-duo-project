@@ -41,3 +41,7 @@ export const menuOptions: MenuOptions[] = [
     },
 ];
 
+export const contactInfo = {
+    emails: ['lluisgpemo@gmail.com', 'mperez@esmuc.cat'],
+    whatsappPhone: '+34 686 16 13 74',
+} as const;

@@ -36,22 +36,16 @@
     },
     "contact": {
         "title": "—Contact",
-        "form": {
-            "name": "Name",
-            "email": "Email",
-            "case": "Subject",
-            "message": "Message",
-            "terms": "I have read and accept the <terms>terms and conditions</terms> and agree to the <privacy>privacy policy</privacy>",
-            "send": "Send",
-            "error": {
-                "name": "*Enter the name",
-                "email": "*Enter a valid email",
-                "subject": "*Enter the subject",
-                "message": "*Enter the message",
-                "terms": "*You must accept the terms and conditions and the privacy policy"
-            },
-            "success": "Message sent successfully, we will contact you as soon as possible",
-            "failure": "There was an error sending the message, please try again"
+        "intro": "Would you like to book a concert with us or do you have any questions? Write to us by email or WhatsApp and we will get back to you as soon as possible.",
+        "email": {
+            "title": "Email",
+            "button": "Send us an email",
+            "subject": "Contact from the website"
+        },
+        "whatsapp": {
+            "title": "WhatsApp",
+            "button": "Open WhatsApp",
+            "message": "Hello, I am writing to you from your website."
         }
     },
     "footer": {
